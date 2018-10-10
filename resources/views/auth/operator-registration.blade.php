@@ -53,6 +53,17 @@
                             </div>
                         </div>
 
+                        <div class="col-md-6">
+                                <input id="company-name" type="text" class="form-control{{ $errors->has('company-name') ? ' is-invalid' : '' }}" name="company-name" value="{{ old('company-name') }}" required autofocus>
+
+                                @if ($errors->has('company-name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('company-name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
