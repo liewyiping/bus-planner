@@ -17,7 +17,8 @@ class CreateOperatorsTable extends Migration
             $table->increments('id');
             $table->string('name',250);
             $table->string('email')->unique();
-            $table->string('license_number', 10);            
+            $table->string('license_number', 10);  
+            $table->string('company-name',250);          
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
