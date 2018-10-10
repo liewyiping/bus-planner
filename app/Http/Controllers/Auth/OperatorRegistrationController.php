@@ -53,6 +53,7 @@ class OperatorRegistrationController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:operators',
             'license_number'=> 'required|string|max:23',
+            'company-name' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -64,6 +65,7 @@ class OperatorRegistrationController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'license_number'=> $data['license_number'],
+            'company-name' => $data['company-name'],
             'password' => Hash::make($data['password']),
         ]);
     }
