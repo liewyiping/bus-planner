@@ -87,17 +87,17 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => busplannersystem\User::class,
+            'model' => bus-planner\User::class,
         ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => busplannersystem\Admin::class,
+            'model' => bus-planner\Admin::class,
         ],
 
         'operators' => [
             'driver' => 'eloquent',
-            'model' => busplannersystem\Operator::class,
+            'model' => bus-planner\Operator::class,
 
         ],
 
