@@ -53,6 +53,8 @@
                             </div>
                         </div>
 
+                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
                         <div class="col-md-6">
                                 <input id="company-name" type="text" class="form-control{{ $errors->has('company-name') ? ' is-invalid' : '' }}" name="company-name" value="{{ old('company-name') }}" required autofocus>
 
