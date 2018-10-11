@@ -23,8 +23,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view ('operator-insert-bus')
+        return view ('operator-insert-bus');
     }
+
 
     /**
      * Store a newly created resource in storage.
