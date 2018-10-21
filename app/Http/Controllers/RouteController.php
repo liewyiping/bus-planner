@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace busplannersystem\Http\Controllers;
+use busplannersystem\Route;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class RouteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
     public function index()
     {
-        //
+        $routes = route::all();
+        $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
+        return view ('posts.operator-insert-route-info')->with('routes',$routes);
+
+
+
     }
 
     /**
@@ -21,9 +22,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    
+    
+
+
+    public function create(array $data)
     {
-        return view ('operator-insert-bus');
+
+           
+        
+
     }
 
 
@@ -35,7 +44,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'route_name' => 'required|string|max:255',            
+            'origin_terminal' => 'required|string|max:255',
+            'destination_terminal'=> 'required|string|max:255',
+            'operatorID' => 'required|integer|max:255',
+           
+
+        ]);
+
+        //Create a new route
+            $routes = new route();
+            $routes -> route_name =         $request ->  input('route_name');            
+            $routes -> origin_terminal =      $request ->  input('origin_terminal');
+            $routes -> destination_terminal = $request ->  input('destination_terminal');
+            $routes -> operatorID =          $request ->  input('operatorID');
+          
+            $routes -> save();
+
+            return redirect('operator/insert-route-info');
+
+
     }
 
     /**
@@ -83,3 +113,5 @@ class PostController extends Controller
         //
     }
 }
+
+
