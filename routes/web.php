@@ -30,6 +30,15 @@ Route::prefix('admin')->group(function(){
 
 });
 
+Route::get('/seatlist/{ID}','BookSeatController@index');
+
+
+Route::get('/seatlist/create','BookSeatController@create');
+
+Route::post('/seatlist','BookSeatController@store');
+
+
+
 /* For operator */
 Route::prefix('operator')->group(function(){
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
