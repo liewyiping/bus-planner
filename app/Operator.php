@@ -12,7 +12,7 @@ class Operator extends Authenticatable
 
     protected $guard ='operator';
     protected $table = 'operators';
-    // protected $primaryKey = 'operatorID';
+
    
     /**
      * The attributes that are mass assignable.
