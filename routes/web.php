@@ -49,4 +49,12 @@ Route::prefix('operator')->group(function(){
 
 }); // grouped by operator. Easier to read
 
+//Operator Insert Bus Info
+Route::get('/insert-bus-info', 'BusController@index')->name('operator.insertBusInfo');
+Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
+
+}); // grouped by operator. Easier to read
+
+Route::resource('/ticket', 'TicketController');
+
 
