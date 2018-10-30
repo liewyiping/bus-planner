@@ -47,13 +47,14 @@ Route::prefix('operator')->group(function(){
 	Route::get('/registration', 'Auth\OperatorRegistrationController@showRegistrationForm')->name('operator.registration');
 	Route::post('/registration', 'Auth\OperatorRegistrationController@register')->name('operator.registration.submit');
 
-}); // grouped by operator. Easier to read
-
-//Operator Insert Bus Info
+	//Operator Insert Bus Info
 Route::get('/insert-bus-info', 'BusController@index')->name('operator.insertBusInfo');
 Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
-
 }); // grouped by operator. Easier to read
+
+
+
+
 
 Route::resource('/ticket', 'TicketController');
 
