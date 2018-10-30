@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /* For admin */
-Route::prefix('admin')->group(function(){
+Route::group(['prefix' => 'admin',  'middleware' => 'app\Http\Middleware\adminMiddleware.php'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
@@ -40,7 +40,8 @@ Route::post('/seatlist','BookSeatController@store');
 
 
 /* For operator */
-Route::prefix('operator')->group(function(){
+Route::group(['prefix' => 'operator',  'middleware' => 'app\Http\Middleware\operatorMiddleware.php'], function()
+{
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
 	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
 	Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); //using name route easier for maintenance 
@@ -52,6 +53,8 @@ Route::get('/insert-bus-info', 'BusController@index')->name('operator.insertBusI
 Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 }); // grouped by operator. Easier to read
 
+
+    
 
 
 
