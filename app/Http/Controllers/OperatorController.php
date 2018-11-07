@@ -28,6 +28,12 @@ class OperatorController extends Controller
 
     public function RegisterOperator(){
 
+
         
+
+
+
+
+
     }
 }
