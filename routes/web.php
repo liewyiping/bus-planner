@@ -45,8 +45,11 @@ Route::group(['prefix' => 'operator',  'middleware' => 'app\Http\Middleware\oper
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
 	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
 	Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
-	Route::get('/registration', 'Auth\OperatorRegistrationController@showRegistrationForm')->name('operator.registration');
-	Route::post('/registration', 'Auth\OperatorRegistrationController@register')->name('operator.registration.submit');	
+	// Route::get('/registration', 'Auth\OperatorRegistrationController@showRegistrationForm')->name('operator.registration');
+	// Route::post('/registration', 'Auth\OperatorRegistrationController@register')->name('operator.registration.submit');
+	Route::get('/operator-application','OperatorController@showApplicationForm')->name('operator.application');
+	Route::post('/operator-application','OperatorController@create')->name('operator.applicaition.submit');
+	
 	Route::get('/insert-bus-info', 'BusController@index')->name('operator.insertBusInfo');
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 }); // grouped by operator. Easier to read
