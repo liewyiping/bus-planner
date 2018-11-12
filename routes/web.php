@@ -47,10 +47,10 @@ Route::group(['prefix' => 'operator',  'middleware' => 'app\Http\Middleware\oper
 	Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
 									
 									/* Admin register operator */
-	Route::get('/registration', 'Auth\OperatorRegistrationController@showRegistrationForm')->name('operator.registration');
+	 Route::get('/registration', 'Auth\OperatorRegistrationController@showRegistrationForm')->name('operator.registration');
 	 Route::post('/registration', 'Auth\OperatorRegistrationController@register')->name('operator.registration.submit');
-						/* Operator wants to sign up the application form */
 
+						/* Operator wants to sign up the application form */
 	Route::get('/operator-application','OperatorController@showApplicationForm')->name('operator.application');
 	Route::post('/operator-application','OperatorController@create')->name('operator.applicaition.submit');
 	
