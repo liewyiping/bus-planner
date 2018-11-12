@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /* For admin */
-Route::group(['prefix' => 'admin',  'middleware' => 'app\Http\Middleware\adminMiddleware.php'], function(){
+Route::group(['prefix' => 'admin'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
@@ -40,7 +40,7 @@ Route::post('/seatlist','BookSeatController@store');
 
 
 /* For operator */
-Route::group(['prefix' => 'operator',  'middleware' => 'app\Http\Middleware\operatorMiddleware.php'], function()
+Route::group(['prefix' => 'operator'], function()
 {
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
 	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
