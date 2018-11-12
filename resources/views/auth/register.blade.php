@@ -46,16 +46,11 @@
                         </div>
 
                         <div class="form-group row">
-<<<<<<< HEAD
                             <label for="role" class="col-md-4 text-md-right">{{ __('Role') }}</label>
-=======
-                            <label for="role" class="col-md-4 text-md-right">{{ __('Register As') }}</label>
->>>>>>> ba80cd29c27641df872bbc3d1dcfd785884b5f54
 
                             <div class="col-md-6">
                                 Customer <input type="radio" name="role" id="customer" value="customer"> &nbsp;&nbsp;
                                 Operator <input type="radio" name="role" id="operator" value="operator">
-<<<<<<< HEAD
                         
                                 <div id="ifYes">
                                     <div class="row">
@@ -86,8 +81,6 @@
                                         </div>
                                     </div>
                                 </div>
-=======
->>>>>>> ba80cd29c27641df872bbc3d1dcfd785884b5f54
                             </div>
                         </div>
 
