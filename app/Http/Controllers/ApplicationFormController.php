@@ -37,9 +37,9 @@ class ApplicationFormController extends Controller
     {
         $this->validate($request,[
 
-            'name' => 'required|string|max:20',
-            'email' => 'required|email|max:20',
-            'company_name' => 'required|string|max:20',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'company_name' => 'required|string|max:255',
             'operator_resume' => 'required|file|max:1999',
             'operator_license' => 'required|file|max:1999',
 
@@ -48,36 +48,57 @@ class ApplicationFormController extends Controller
 
         ]);
 
-        //Handle file upload
-        if($request->hasFile('operator_resume'||'operator_license'))
+      
+
+                //Handle resume upload
+                if($request->hasFile('operator_resume'))
         
-        {
-
-            $resumeWithExt=$request -> file('operator_resume')->getClientOriginalName();
-            $licenseWithExt=$request -> file('operator_license')->getClientOriginalName();
-
-        // Get the full file name
-            $resumefilename = pathinfo($resumefilename,PATHINFO_FILENAME); 
-            $licensefilename= pathinfo($licensefilename,PATHINFO_FILENAME);     
-
-        //Get the extension file name
-            $resumeextension = $request ->file('operator_resume')-> getClientOriginalExtension();
-            $licenseextension = $request ->file('operator_license')-> getClientOriginalExtension();
-
-
-        //File name to store
-        $resumefileNameToStore=$resumefilename.'_'.time().'.'.$resumeextension;
-        $licensefileNameToStore=$licensefilename.'_'.time().'.'.$licenseextension;
+                {
         
-        //Upload Pdf file
-        $resumepath =$request ->file('operator_resume')->storeAs('public/operator_resume',$resumefileNameToStore);
-        $licensepath =$request ->file('operator_license')->storeAs('public/operator_license',$licensefileNameToStore);
-
+                    $resumeWithExt=$request -> file('operator_resume')->getClientOriginalName();
         
-        }
-            else{
-                $fileNameToStore = 'noPDF.pdf';
-            }
+                // Get the full file name
+                    $resumefilename = pathinfo($resumeWithExt,PATHINFO_FILENAME);            
+        
+                //Get the extension file name
+                    $resumeextension = $request ->file('operator_resume')-> getClientOriginalExtension();
+                //File name to store
+                $resumefileNameToStore=$resumefilename.'_'.time().'.'.$resumeextension;
+                
+                //Upload Pdf file
+                $path =$request ->file('operator_resume')->storeAs('public/operator_resume',$resumefileNameToStore);
+                
+                }
+                    else{
+                        $resumefileNameToStore = 'noPDF.pdf';
+                    }
+
+                //Handle license upload
+                    if($request->hasFile('operator_license'))
+        
+                    {
+            
+                        $licenseWithExt=$request -> file('operator_license')->getClientOriginalName();
+            
+                    // Get the full file name
+                        $licensefilename = pathinfo($licenseWithExt,PATHINFO_FILENAME);            
+            
+                    //Get the extension file name
+                        $licenseextension = $request ->file('operator_license')-> getClientOriginalExtension();
+                    //File name to store
+                    $licensefileNameToStore=$licensefilename.'_'.time().'.'.$licenseextension;
+                    
+                    //Upload Pdf file
+                    $path =$request ->file('operator_license')->storeAs('public/operator_license',$licensefileNameToStore);
+                    
+                    }
+                        else{
+                            $licensefileNameToStore = 'noPDF.pdf';
+                        }
+    
+
+                
+                    
             
 
         
