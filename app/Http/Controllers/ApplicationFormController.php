@@ -96,11 +96,12 @@ class ApplicationFormController extends Controller
             $application_forms -> operator_resume_link = $resumefileNameToStore;
             $application_forms -> operator_license =  $licenseWithExt;
             $application_forms -> operator_license_link = $licensefileNameToStore;  
-          
-            
-
             $application_forms -> save();
+
+            return redirect('/');
+
     }
+
 
     /**
      * Display the specified resource.
