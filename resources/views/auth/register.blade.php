@@ -1,3 +1,9 @@
+<style type="text/css">
+    #ifYes, #ifNo { display: none;}
+    #operator:checked ~ #ifYes {display: block;} 
+    #customer:checked ~ #ifNo {display: block;}
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -36,6 +42,45 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 text-md-right">{{ __('Role') }}</label>
+
+                            <div class="col-md-6">
+                                Customer <input type="radio" name="role" id="customer" value="customer"> &nbsp;&nbsp;
+                                Operator <input type="radio" name="role" id="operator" value="operator">
+                        
+                                <div id="ifYes">
+                                    <div class="row">
+                                        <label for="licence_number" class="col-form-label">{{ __('Licence Number') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="licence_number" type="licence_number" class="form-control{{ $errors->has('licence_number') ? ' is-invalid' : '' }}" name="licence_number" required>
+
+                                                @if ($errors->has('licence_number'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('licence_number') }}</strong>
+                                                    </span>
+                                                @endif
+                                        </div>
+                                    </div> <br>
+
+                                    <div class="row">
+                                        <label for="company_name" class="col-form-label">{{ __('Company Name') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="company_name" type="company_name" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" required>
+
+                                                @if ($errors->has('company_name'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('company_name') }}</strong>
+                                                    </span>
+                                                @endif
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
