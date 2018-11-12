@@ -88,17 +88,18 @@ class ApplicationFormController extends Controller
         
        
             
-            $application_forms = new Program();
-            $programs -> lecturer_name = $request -> input('lecturer_name');
-            $programs -> fakulti = $request -> input('fakulti');
-            $programs -> doc_title =$request -> input('doc_title');
-            $programs -> file_name = $fileNameWithExt;
-            $programs -> file_link = $fileNameToStore;
-            $programs -> lecturer_id = $lecturer_id;
-            $programs -> status_program = ('Belum disemak');
+            $application_forms = new ApplicationForm();
+            $application_forms -> name = $request -> input('name');
+            $application_forms -> email = $request -> input('email');
+            $application_forms -> company_name = $request -> input('company_name');          
+            $application_forms -> operator_resume = $resumeWithExt;
+            $application_forms -> operator_resume_link = $resumefileNameToStore;
+            $application_forms -> operator_license =  $licenseWithExt;
+            $application_forms -> operator_license_link = $licensefileNameToStore;  
+          
             
 
-            $programs -> save();
+            $application_forms -> save();
     }
 
     /**

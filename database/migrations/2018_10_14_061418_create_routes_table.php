@@ -16,8 +16,8 @@ class CreateRoutesTable extends Migration
         Schema::create('routes', function (Blueprint $table) {
             $table->increments('routeID');
             $table->string('route_name');
-            $table->integer('operatorID')->unsigned();
-            $table->foreign('operatorID')->references('operatorID')->on('operators');
+            // $table->integer('operatorID')->unsigned();
+            // $table->foreign('operatorID')->references('operatorID')->on('operators');
             $table->string('origin_terminal');
             $table->string('destination_terminal');
             $table->timestamps();

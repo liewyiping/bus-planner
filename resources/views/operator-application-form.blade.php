@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                    
-                    <form method="POST" action="{{ route('operator.application.submit') }}">
+                    <form method="POST" action="{{ route('operator.application.submit') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">

@@ -51,8 +51,8 @@ Route::post('/seatlist','BookSeatController@store');
 /* For operator */
 Route::group(['prefix' => 'operator'], function()
 {
-	Route::get('/new-application', 'Auth\ApplicationFormController@create')->name('operator.application.show');
-	Route::get('/new-application', 'Auth\ApplicationFormController@store')->name('operator.application.submit');
+	Route::get('/new-application', 'ApplicationFormController@create')->name('operator.application.show');
+	Route::post('/new-application', 'ApplicationFormController@store')->name('operator.application.submit');
 
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
 	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
