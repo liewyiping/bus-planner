@@ -14,7 +14,7 @@ class ApplicationForm extends Model
  
     ];
  
-    protected $table = 'programs';
+    protected $table = 'application_forms';
  
 
     public function user(){

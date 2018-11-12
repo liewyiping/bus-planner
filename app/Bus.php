@@ -23,5 +23,7 @@ class Bus extends Model
         return $this->belongsTo('busplannersystem\User');
     
      }
+
+     
     
 }
