@@ -18,5 +18,10 @@ class Bus extends Model
 
     protected $primaryKey = 'busID';
 
+    public function user(){
+
+        return $this->belongsTo('busplannersystem\User');
+    
+     }
     
 }
