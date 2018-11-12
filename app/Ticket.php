@@ -19,4 +19,12 @@ class Ticket extends Model
            'time',
            'priceTot',
         ];
+
+
+        public function user(){
+
+            return $this->belongsTo('busplannersystem\User');
+        
+         }
+
 }
