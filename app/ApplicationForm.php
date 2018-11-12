@@ -17,7 +17,11 @@ class ApplicationForm extends Model
     protected $table = 'programs';
  
 
+    public function user(){
 
+        return $this->belongsTo('busplannersystem\User');
+
+    }
 
 
 

@@ -38,4 +38,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('busplannersystem\Bus');
     }
 
+    public function applicationform(){
+
+        return $this->hasOne('busplannersystem\ApplicationForm');
+
+    }
+
 }
