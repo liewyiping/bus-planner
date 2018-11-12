@@ -22,6 +22,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/* For operator and customer */
+Route::get('/operator',function(){
+	return view('/operator');
+})->middleware('auth','operator');
+
+Route::get('/customer',function(){
+	return view('/home');
+})->middleware('auth','customer');
+
 /* For admin */
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

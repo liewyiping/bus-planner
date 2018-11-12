@@ -4,6 +4,8 @@ namespace busplannersystem\Http\Controllers\Auth;
 
 use busplannersystem\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectPath() {
+        if (Auth::user()->role == 'customer') {
+            return '/customer';
+        }
+        else {
+            return '/operator';
+        }
+    }
 
     /**
      * Create a new controller instance.
