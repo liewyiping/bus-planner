@@ -14,12 +14,16 @@ class CreateCompaniesTable extends Migration
     public function up()
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->increments('busCompanyID')->unique();
-            $table->string('busCompanyName');
+            $table->increments('bus_company_id')->unique();
+            $table->string('bus_company_name');
+            $table->string('bus_company_phone_no');
+            $table->string('bus_company_address');
+            $table->string('bus_company_registration_no');
             $table->rememberToken();
             $table->timestamps();
-
         });
+
+        DB::update("ALTER TABLE companies AUTO_INCREMENT = 5001;");        
     }
 
     /**

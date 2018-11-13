@@ -14,14 +14,16 @@ class CreateRoutesTable extends Migration
     public function up()
     {
         Schema::create('routes', function (Blueprint $table) {
-            $table->increments('routeID');
+            $table->increments('route_id');
             $table->string('route_name');
-            // $table->integer('operatorID')->unsigned();
-            // $table->foreign('operatorID')->references('operatorID')->on('operators');
-            $table->string('origin_terminal');
-            $table->string('destination_terminal');
+            $table->integer('operator_id')->unsigned();
+            $table->foreign('operator_id')->references('operator_id')->on('operators');
+            $table->string('origin');
+            $table->string('destination');
             $table->timestamps();
         });
+
+        DB::update("ALTER TABLE routes AUTO_INCREMENT = 7000001;");        
     }
 
     /**
