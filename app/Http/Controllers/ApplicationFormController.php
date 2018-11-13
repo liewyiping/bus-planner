@@ -14,7 +14,8 @@ class ApplicationFormController extends Controller
      */
     public function index()
     {
-      
+        $application_forms = ApplicationForm::all();
+        return view ('admin/view-new-applications')->with('application_forms',$application_forms);
     }
 
     /**
@@ -74,7 +75,8 @@ class ApplicationFormController extends Controller
                     }
 
                 //Handle license upload
-                    if($request->hasFile('operator_license'))
+                
+                if($request->hasFile('operator_license'))
         
                     {
             
