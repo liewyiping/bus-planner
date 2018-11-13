@@ -67,8 +67,10 @@ Route::group(['prefix' => 'operator'], function()
 	// Route::get('/operator-application','OperatorController@showApplicationForm')->name('operator.application');
 	// Route::post('/operator-application','OperatorController@create')->name('operator.applicaition.submit');
 	
+	//Operator Insert Bus Info
 	Route::get('/insert-bus-info', 'BusController@index')->name('operator.insertBusInfo');
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
+	Route::get('/view-bus-info', 'BusController@indexView');
 }); // grouped by operator. Easier to read
 
 // For ticket controller

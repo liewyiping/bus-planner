@@ -26,28 +26,28 @@
                         </div>
 
                        <div class="form-group row">
-                            <label for="totSeat" class="col-md-4 col-form-label text-md-right">{{ __('No of seats') }}</label>
+                            <label for="total_seat" class="col-md-4 col-form-label text-md-right">{{ __('No of seats') }}</label>
 
                             <div class="col-md-6">
-                                <input id="totSeat" type="text" class="form-control{{ $errors->has('totSeat') ? ' is-invalid' : '' }}" name="totSeat" value="{{ old('totSeat') }}" required autofocus>
+                                <input id="total_seat" type="text" class="form-control{{ $errors->has('total_seat') ? ' is-invalid' : '' }}" name="total_seat" value="{{ old('total_seat') }}" required autofocus>
 
-                                @if ($errors->has('totSeat'))
+                                @if ($errors->has('total_seat'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('totSeat') }}</strong>
+                                        <strong>{{ $errors->first('total_seat') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="id" class="col-md-4 col-form-label text-md-right">{{ __('Operator ID') }}</label>
+                            <label for="operator_id" class="col-md-4 col-form-label text-md-right">{{ __('Operator ID') }}</label>
 
                             <div class="col-md-6">
-                                <input id="id" type="text" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" name="id" value="{{ old('id') }}" required autofocus>
+                                <input id="operator_id" type="text" class="form-control{{ $errors->has('operator_id') ? ' is-invalid' : '' }}" name="id" value="{{ old('id') }}" required autofocus>
 
-                                @if ($errors->has('id'))
+                                @if ($errors->has('operator_id'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('id') }}</strong>
+                                        <strong>{{ $errors->first('operator_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
