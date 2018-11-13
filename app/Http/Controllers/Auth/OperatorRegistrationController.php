@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 
 class OperatorRegistrationController extends Controller
@@ -24,7 +25,8 @@ class OperatorRegistrationController extends Controller
 
     public function showRegistrationForm(){
 
-        return view('auth.operator-registration');
+        $company_list = DB::table('companies')->get();
+        return view('auth.operator-registration')->with('company_list', $company_list);
 
     }
 
@@ -41,7 +43,7 @@ class OperatorRegistrationController extends Controller
         //$this->guard()->login($operator);
 
        //Redirects operator
-        return redirect('/operator');
+        return redirect('/operator/login');
     }
 
 
@@ -53,7 +55,7 @@ class OperatorRegistrationController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:operators',
             'license_number'=> 'required|string|max:23',
-            'company-name' => 'required|string|max:255',
+            'bus_company_id' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -65,7 +67,7 @@ class OperatorRegistrationController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'license_number'=> $data['license_number'],
-            'company-name' => $data['company-name'],
+            'bus_company_id' => $data['bus_company_id'],
             'password' => Hash::make($data['password']),
         ]);
     }

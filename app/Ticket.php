@@ -6,25 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $fillable = [
-           'ticketID',
-           'routeID',
-           'busID',
-           'busCompanyID',
+
+  protected $fillable = [
+           'ticket_id',
+           'route_id',
+           'bus_id',
+           'bus_company_id',
            'destination',
            'depart',
-           'bookedTot',
-           'seatNo',
+           'booked_total',
+           'seat_no',
            'date',
            'time',
-           'priceTot',
-        ];
-
-
-        public function user(){
-
-            return $this->belongsTo('busplannersystem\User');
-        
-         }
+           'price_total',
+         ];
 
 }

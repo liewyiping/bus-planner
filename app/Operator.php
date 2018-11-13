@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Operator extends Authenticatable
+class Operator extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -19,8 +19,11 @@ class Operator extends Authenticatable
      *
      * @var array
      */
+
+    protected $primaryKey = 'operator_id';
+
     protected $fillable = [
-        'name', 'email','license_number', 'password','company_name',
+        'name', 'email','license_number', 'bus_company_id', 'password',
     ];
 
    

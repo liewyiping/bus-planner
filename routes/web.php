@@ -11,16 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Route::get('contact', function () {
     return view('contact');
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/* verify customer email */
+Auth::routes(['verify' => true]);
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 /* For operator and customer */
 Route::get('/operator',function(){
@@ -39,12 +36,16 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
+/* For seatList */
 Route::get('/seatlist/{ID}','BookSeatController@index');
-
-
 Route::get('/seatlist/create','BookSeatController@create');
-
 Route::post('/seatlist','BookSeatController@store');
+
+/* Display route for operator */
+Route::get('/', 'DisplayRouteController@index', function () {
+    return view('index');
+});
+Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
 
 
 
@@ -70,12 +71,9 @@ Route::group(['prefix' => 'operator'], function()
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 }); // grouped by operator. Easier to read
 
-
-    
-
-
-
-
+// For ticket controller
 Route::resource('/ticket', 'TicketController');
+// For bus controller
+Route::resource('/bus', 'BusController');
 
 

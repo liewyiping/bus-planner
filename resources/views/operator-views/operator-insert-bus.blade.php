@@ -58,42 +58,12 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Insert a new bus') }}
                                 </button>
+
+                                <a href="{{ url('/operator/view-bus-info') }}" class="active" class="btn btn-primary">View</a>
+
                             </div>
                         </div>
-
-                         <hr>
-
-<h4> Existing bus  </h4>
-<hr>
-
-@if(isset($buses))
-@if (count($buses)>0)
-
-@foreach($buses as $bus)
-   <div class ='well'>
-       <h6> Bus Registration Plate: {{$bus->registration_plate}} </h6>
-       <h6> Number of seats : {{$bus->totSeat}}  </h6>
-       <h6> Operator ID : {{$bus->id}}  </h6>
-       
-<hr>
-
-</div> 
-@endforeach
-@else
-
-<p> No buses found </p>
-
-@endif
-@endif
-
-                        
-
-                         
-
-                        
-
-                       
-                
+                    </form>
             </div>
         </div>
     </div>

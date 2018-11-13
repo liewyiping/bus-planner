@@ -101,39 +101,7 @@ return [
 
         ],
 
-        'tickets' => [
-            'driver' => 'eloquent',
-            'model' => busplannersystem\Ticket::class,
-
-        ],
-
-        'routes' => [
-            'driver' => 'eloquent',
-            'model' => busplannersystem\Route::class,
-
-        ],
-
-        'companies' => [
-            'driver' => 'eloquent',
-            'model' => busplannersystem\Company::class,
-
-        ],
-
-        'seats' => [
-            'driver' => 'eloquent',
-            'model' => busplannersystem\Seat::class,
-
-        ],
-
-        'buses' => [
-            'driver' => 'eloquent',
-            'model' => busplannersystem\Bus::class,
-
-        ],
-        
-      
-
-        'users' => [
+        /* 'users' => [
             'driver' => 'database',
             'table' => 'users',
         ],
@@ -148,30 +116,7 @@ return [
             'table' => 'operators',
         ],
 
-        'buses' => [
-            'driver' => 'database',
-            'table' => 'buses',
-        ],
-
-        'companies' => [
-            'driver' => 'database',
-            'table' => 'companies',
-        ],
-
-        'routes' => [
-            'driver' => 'database',
-            'table' => 'routes',
-        ],
-
-        'seats' => [
-            'driver' => 'database',
-            'table' => 'seats',
-        ],
-
-        'tickets' => [
-            'driver' => 'database',
-            'table' => 'tickets',
-        ],
+        */
 
         
     ],
@@ -200,7 +145,7 @@ return [
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 15,
         ],
         'operators' => [
             'provider' => 'operators',

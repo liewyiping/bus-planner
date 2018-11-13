@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in as <strong>Operator</strong>!
+                    <br>
+                    <a href="operator/insert-bus-info" class="active">Insert Bus Info</a>
                 </div>
             </div>
         </div>
