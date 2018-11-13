@@ -16,4 +16,10 @@ class Bus extends Model
     ];
 
     protected $table = 'buses';
+
+    public function user(){
+
+        return $this->belongsTo('busplannersystem\User');
+    
+     }
 }

@@ -20,5 +20,12 @@ class Ticket extends Model
            'time',
            'price_total',
          ];
+         
+         public function user(){
+
+          return $this->belongsTo('busplannersystem\User');
+      
+       }
+         
 
 }
