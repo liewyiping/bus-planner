@@ -44,8 +44,13 @@
 @foreach($application_forms as $application_form)
 <tr>
 <th scope="row">{{$application_form->id}}</th>
-<td><a href="/programs/{{$application_form->id}}">{{$application_form->operator_resume}}</td>               
+<td>{{$application_form->name}} </td>
+<td>{{$application_form->email}} </td>
 <td>{{$application_form->company_name}} </td>
+<td><a href="/programs/{{$application_form->operator_resume_link}}">{{$application_form->operator_resume}}</td>               
+<td><a href="/programs/{{$application_form->operator_license_link}}">{{$application_form->operator_license}}</td>               
+
+
 
 </tr>
 @endforeach
