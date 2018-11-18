@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace busplannersystem\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Bus;
+use busplannersystem\Bus;
 use Illuminate\Support\Facades\DB;
 
 class BookSeatController extends Controller

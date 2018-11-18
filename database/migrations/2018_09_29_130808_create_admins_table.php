@@ -18,10 +18,13 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('job_title')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::update("ALTER TABLE admins AUTO_INCREMENT = 301;");
     }
 
     /**

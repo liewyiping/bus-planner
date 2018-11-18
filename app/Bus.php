@@ -7,23 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Bus extends Model
 {
     
+    protected $primaryKey = 'bus_id';
 
     protected $fillable = [
-         'totSeat','id', 'registration_plate'
+         'total_seat', 'registration_plate', 'operator_id',
 
 
     ];
 
     protected $table = 'buses';
 
-    protected $primaryKey = 'busID';
-
     public function user(){
 
         return $this->belongsTo('busplannersystem\User');
     
      }
-
-     
-    
 }

@@ -15,15 +15,17 @@ class CreateBusesTable extends Migration
     {
         Schema::create('buses', function (Blueprint $table) {
             
-            $table->increments('busID');
-            $table->integer('totSeat');
+            $table->increments('bus_id');
+            $table->integer('total_seat');
             $table->string('registration_plate')->unique();            
-            $table->integer('id')->unsigned();
-            $table->foreign('id')->references('id')->on('operators');
+            $table->integer('operator_id')->unsigned();
+            $table->foreign('operator_id')->references('operator_id')->on('operators');
             $table->rememberToken();
             $table->timestamps();
-
         });
+
+        DB::update("ALTER TABLE buses AUTO_INCREMENT = 40001;");
+
     }
 
     /**

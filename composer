@@ -1,0 +1,4 @@
+
+Warning: require(C:\xampp\htdocs\bus-planner/vendor/autoload.php): failed to open stream: No such file or directory in C:\xampp\htdocs\bus-planner\artisan on line 18
+
+Fatal error: require(): Failed opening required 'C:\xampp\htdocs\bus-planner/vendor/autoload.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\bus-planner\artisan on line 18

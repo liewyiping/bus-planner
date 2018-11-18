@@ -66,7 +66,6 @@
                                                 @endif
                                         </div>
                                     </div> <br>
-
                                     <div class="row">
                                         <label for="company_name" class="col-form-label">{{ __('Company Name') }}</label>
 
