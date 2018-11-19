@@ -16,7 +16,7 @@
 
 @foreach($buses as $bus)
 
-    {{ Form::open(['method' => 'DELETE', 'route' => ['bus.destroy', $bus->busID]]) }}
+    {{ Form::open(['method' => 'DELETE', 'route' => ['bus.destroy', $bus->bus_id)]]) }}
     {{ Form::button('Delete', array('type' => 'submit', 'class' => 'btn btn-danger'))}}
     {{ Form::close() }}
 
@@ -24,6 +24,8 @@
        <h6> Bus Registration Plate: {{$bus->registration_plate}} </h6>
        <h6> Number of seats : {{$bus->total_seat}}  </h6>
        <h6> Operator ID : {{$bus->id}}  </h6>
+       <h6> Created  : {{$bus->created_at}}  </h6>
+
     </div>
     <hr>
 

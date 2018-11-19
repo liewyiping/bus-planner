@@ -118,10 +118,10 @@
         </main>
     </div>
 
-    <div class="navbar_bottom">
+    <!-- <div class="navbar_bottom">
         <a href="{{ url('/') }}" class="active">Home</a>
         <a href="{{ url('/operator/login') }}">Operator Login</a>
         <a href="{{ url('/operator/registration') }}">Operator Register</a>
-    </div>
+    </div> -->
 </body>
 </html>
