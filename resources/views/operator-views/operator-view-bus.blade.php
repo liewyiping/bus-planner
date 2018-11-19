@@ -22,7 +22,7 @@
 
     <div class ='well'>
        <h6> Bus Registration Plate: {{$bus->registration_plate}} </h6>
-       <h6> Number of seats : {{$bus->totSeat}}  </h6>
+       <h6> Number of seats : {{$bus->total_seat}}  </h6>
        <h6> Operator ID : {{$bus->id}}  </h6>
     </div>
     <hr>
