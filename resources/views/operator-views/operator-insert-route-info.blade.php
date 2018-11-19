@@ -70,6 +70,17 @@
                             </div>
                         </div>
 
+
+                        
+         <table class="table table-striped">
+
+<thead>
+    <tr>
+    <th scope="col">Route ID</th>
+    <th scope="col">Route name</th>
+    <th scope="col">Origin Terminal</th>
+    <th scope="col">Destination Terminal</th>
+    <th scope="col">File</th>
                         
                         
 
@@ -91,7 +102,7 @@
 
                         @foreach($routes as $route)
                             <div class ='well'>
-                                <h6> RouteID: {{$route->routeID}} </h6>
+                                <h6> RouteID: {{$route->route_id}} </h6>
                                 <h6> Route Name : {{$route->route_name}} </h6>
                                 <h6> Origin Terminal : {{$route->origin_terminal}}  </h6>
                                 <h6> Destination Terminal : {{$route->destination_terminal}} </h6>                            
