@@ -47,8 +47,10 @@
 <td>{{$application_form->name}} </td>
 <td>{{$application_form->email}} </td>
 <td>{{$application_form->company_name}} </td>
-<td><a href="storage/operator_resume/{{$application_form->operator_resume_link}}">{{$application_form->operator_resume}}</td>               
-<td><a href="storage/operator_license/{{$application_form->operator_license_link}}">{{$application_form->operator_license}}</td>               
+<td><a href="<?php echo asset("storage/operator_resume/$application_form->operator_resume_link")?>">{{basename($application_form->operator_resume)}}</td> 
+<td><a href="<?php echo asset("storage/operator_license/$application_form->operator_license_link")?>">{{basename($application_form->operator_license)}}</td> 
+
+            
 
 
 
