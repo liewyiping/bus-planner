@@ -8,8 +8,8 @@
                 <div class="card-header">List of operators new applications</div>
 
             <div class="card-body">
-            <!-- <form method="POST" action="{{ route('program.page.submit') }}" enctype="multipart/form-data">
-                        @csrf           -->
+             {{--<form method="POST" action="{{ route('program.page.submit') }}" enctype="multipart/form-data">--}}
+                        @csrf           
 
                      
 
