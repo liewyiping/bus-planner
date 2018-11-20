@@ -170,6 +170,7 @@
         <div class="navbar navbar-expand-md navbar-light navbar-laravel" id="bs-example-navbar-collapse-1 top-right links">
             <ul class="nav navbar-nav">
                 <li class="links"><a href="/">Bus Planner System</a></li>
+                <li class="links"><a href="/home">Dashboard</a></li>
                 <li>
             </ul>
 
@@ -238,12 +239,12 @@
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="from">From</label>
-                            <select id="origin" name="origin" class="form-control input-lg dynamic" data-dependent="destination">
+                            <select id="origin_terminal" name="origin_terminal" class="form-control input-lg dynamic" data-dependent="destination_terminal">
                                 
                                 <option value="">Select Origin</option>
-                                @foreach($route_list as  $origin)
+                                @foreach($route_list as  $origin_terminal)
 
-                                <option value="{{ $origin->origin}}">{{ $origin->origin}}</option>
+                                <option value="{{ $origin_terminal->origin_terminal}}">{{ $origin_terminal->origin_terminal}}</option>
 
                                 @endforeach
                             </select>
@@ -251,7 +252,7 @@
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="to">To</label>
-                            <select id="destination" name="destination" class="form-control input-lg">
+                            <select id="destination_terminal" name="destination_terminal" class="form-control input-lg">
 
                                 <option value="">Select Destination</option>
 

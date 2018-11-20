@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Insert Bus Info</div>
+                <div class="card-header"><h5 align="center"><strong>===== Insert Bus Information =====</strong></h5></div>
 
             <div class="card-body">
                     <form method="POST" action="{{ route('operator.insertBusInfo.submit') }}">
@@ -62,10 +62,10 @@
 
                                 <!-- <a href="{{ url('/operator/view-bus-info') }}" class="active" class="btn btn-primary">View</a> -->
 
-                                 <a href="{{ url('/operator/view-bus-info') }}">
+                                <!-- <a href="{{ url('/operator/view-bus-info') }}">
                                     <input type="button" class="btn btn-primary" value="View Buses" />
                                     
-                                  </a>
+                                </a> -->
 
                             </div>
                         </div>

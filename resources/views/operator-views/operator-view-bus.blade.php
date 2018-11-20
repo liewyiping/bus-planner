@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Insert Bus Info</div>
+                <div class="card-header"><h5 align="center"><strong>===== Bus Information =====</strong></h5></div>
 <br>
-<h5 align="center"><strong>Existing bus</strong></h5>
+<h5 align="center"><strong><i>Existing bus</i></strong></h5>
 <h5 align="center">Total buses = [ {{ $buses->total() }} ]</h5>
 <hr>
 
@@ -17,10 +17,10 @@
 @foreach($buses as $bus)
 
     <div class ='well'>
-       <h6> Bus Registration Plate: {{$bus->registration_plate}} </h6>
-       <h6> Number of seats : {{$bus->total_seat}}  </h6>
-       <h6> Operator ID : {{$bus->operator_id}}  </h6>
-       <h6> Created  : {{$bus->created_at}}  </h6>
+       <h6> &nbsp;&nbsp;&nbsp; Bus Registration Plate: {{$bus->registration_plate}} </h6>
+       <h6> &nbsp;&nbsp;&nbsp; Number of seats : {{$bus->total_seat}}  </h6>
+       <h6> &nbsp;&nbsp;&nbsp; Operator ID : {{$bus->operator_id}}  </h6>
+       <h6> &nbsp;&nbsp;&nbsp; Created  : {{$bus->created_at}}  </h6>
 
     </div>
     <hr>
