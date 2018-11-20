@@ -51,16 +51,20 @@ class BusController extends Controller
 
             'registration_plate' => 'required|string|max:20',
             'total_seat'=> 'required|integer|max:50',
-            'operator_id'=> 'required|integer|max:300',
+            
 
 
         ]);
+
+
+        $operator_id = auth()->user()->user_id;
 
         //Create a new bus
             $buses = new Bus();
             $buses -> registration_plate = $request -> input('registration_plate');
             $buses -> total_seat = $request -> input('total_seat');
-            $buses -> operator_id = $request -> input('operator_id');
+            $buses -> operator_id = $operator_id;
+
 
             $buses -> save();
 
