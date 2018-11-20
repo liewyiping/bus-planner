@@ -16,4 +16,11 @@ class Route extends Model
     
     protected $table = 'routes';
     
+
+    public function buses(){
+
+
+        return $this->belongsTo('SPDP\Bus','bus_id');
+
+    }
 }

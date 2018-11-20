@@ -49,7 +49,7 @@
                                     {{ __('Insert a new route') }}
                                 </button>
                             </div>
-                        </div>
+                    </div>
                         <hr>
 
                         

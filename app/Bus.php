@@ -22,4 +22,12 @@ class Bus extends Model
         return $this->belongsTo('busplannersystem\User');
     
      }
+
+     public function routes(){
+
+          return $this->hasMany('busplannersystem\Route');
+      
+       }
+
+
 }

@@ -58,7 +58,13 @@ class RouteController extends Controller
 
         //Create the route name
 
-        $origin_terminal =  $request ->  input('origin_terminal');
+        // $origin_terminal_id =  $request ->  input('origin_terminal');
+        // $destination_terminal_id = $request ->input('destination_terminal');
+
+        // $origin_terminal =Terminal::find($origin_terminal_id);
+        // $destination_terminal= Terminal::find($destination_terminal_id);
+
+        // $origin_terminal= $origin_terminal->terminal
             
 
         //Create a new route
