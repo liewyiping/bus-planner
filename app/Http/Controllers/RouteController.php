@@ -11,7 +11,7 @@ class RouteController extends Controller
     {
         $routes = route::all();
         $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
-        return view ('posts.operator-insert-route-info')->with('routes',$routes);
+        return view ('operator-views.operator-insert-route-info')->with('routes',$routes);
 
 
 
@@ -55,7 +55,7 @@ class RouteController extends Controller
         ]);
 
         //Create a new route
-            $routes = new route();
+            $routes = new Route();
             $routes -> route_name =         $request ->  input('route_name');            
             $routes -> origin_terminal =      $request ->  input('origin_terminal');
             $routes -> destination_terminal = $request ->  input('destination_terminal');
