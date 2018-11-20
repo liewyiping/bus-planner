@@ -68,6 +68,14 @@
                             </div>
                         </div> -->
 
+                     <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Insert a new route') }}
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
 
                         
          <table class="table table-striped">
@@ -83,14 +91,7 @@
                         
 
 
-                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Insert a new route') }}
-                                </button>
-                            </div>
-                        </div>
-                        <hr>
+                        
 
                         <h4> Existing Routes </h4>
                         <hr>
