@@ -167,7 +167,7 @@
 
     <body>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 top-right links">
+        <div class="navbar navbar-expand-md navbar-light navbar-laravel" id="bs-example-navbar-collapse-1 top-right links">
             <ul class="nav navbar-nav">
                 <li class="links"><a href="/">Bus Planner System</a></li>
                 <li>
@@ -175,27 +175,24 @@
 
             <ul class="nav navbar-nav navbar-right">
             
-                <li class="dropdown links">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"aria-expanded="false">Sign in <span class="caret"></span></a>
-                    
-                    <ul class="dropdown-menu">
+                <li class="collapse navbar-collapse links">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item links">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item links">
                                 @if (Route::has('register'))
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             </li>
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown links">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right links" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -208,7 +205,6 @@
                                 </div>
                             </li>
                         @endguest   
-                    </ul>
                 </li>
 
                 <li class="links"><a href="/contact">Contact Us</a></li>
@@ -218,7 +214,9 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome to BPS
+                
+                <img src="/img/logo.jpg" style="width: 500px; height: 220px; margin-right: auto; margin-left: auto; display: block; ">
+
                 </div>
             </div>
         </div>
