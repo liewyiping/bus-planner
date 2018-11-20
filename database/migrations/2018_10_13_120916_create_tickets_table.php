@@ -15,9 +15,9 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('trip_id');
-            //$table->string('company_name');
-            // $table->string('bus_id')->index();
-            // $table->foreign('bus_id')->references('bus_id')->on('buses');           
+            $table->string('company_name');
+            $table->string('from');
+            $table->string('to');           
             $table->string('date_depart');
             $table->string('time_depart');
             $table->string('ticket_price');
