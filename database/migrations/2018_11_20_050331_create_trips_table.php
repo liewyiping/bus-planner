@@ -17,7 +17,7 @@ class CreateTripsTable extends Migration
             $table->increments('trip_id');
             $table->integer('bus_id')->unsigned();
             $table->integer('route_id')->unsigned();
-            $table->string('date_depart');
+            $table->date('date_depart');
             $table->string('time_depart');
             // $table->decimal('ticket_price',19,4);
             $table->foreign('bus_id')->references('bus_id')->on('buses');
@@ -25,6 +25,8 @@ class CreateTripsTable extends Migration
 
             $table->timestamps();
         });
+
+        DB::update("ALTER TABLE routes AUTO_INCREMENT = 7000001;");        
     }
 
     /**

@@ -119,7 +119,7 @@
                     @if( ! $trips->isEmpty() )
                     @foreach($trips as $trip)
                     <tr>
-                    <th scope="row">{{$trip->route_id}}</th>               
+                    <th scope="row">{{$trip->trip_id}}</th>               
                     <td>{{$trip->date_depart}}</td>
                     <td>{{$trip->time_depart}}</td>
                     <td>{{$trip->ticket_price}}</td>
@@ -137,7 +137,7 @@
 
                     @else
 
-                    <p> Tiada cadangan program telah dijumpai </p>
+                    <p> No trips were found </p>
 
                     @endif
 

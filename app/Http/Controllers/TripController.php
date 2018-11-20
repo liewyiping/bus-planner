@@ -45,10 +45,10 @@ class TripController extends Controller
         $this->validate($request,[
 
             
-            'bus_id' => 'required|string|max:255',
+            'bus_id' => 'required|integer|max:255',
             'route_options'=> 'required|string|max:255',
-            'date_depart'=> 'required|string|max:255',
-            'time_depart'=> 'required|string|max:255',
+            'date_depart'=> 'required|date|after:yesterday',
+            'time_depart'=> 'required|string',
             //'ticket_price'=> 'required|between:0,1000.00'
            
 
