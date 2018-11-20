@@ -55,15 +55,17 @@ class TripController extends Controller
         ]);
 
 
-        $routes = new Route();
-        $routes -> bus_id = $request ->  input('bus_id');            
-        $routes -> origin_terminal = $origin_terminal;
-        $routes -> destination_terminal =$destination_terminal;
+        $trips = new Trip();
+        $trips -> bus_id = $request ->  input('bus_id');            
+        $trips -> route_id = $request ->  input('route_id');  
+        $trips -> date_depart = $request ->  input('date_depart');  
+        $trips -> time_depart = $request ->  input('time_depart');  
+        $trips -> ticket_price = $request ->  input('ticket_price');  
        
       
-        $routes -> save();
+        $trips -> save();
 
-        return redirect('operator/insert-route-info');
+        return redirect('operator/insert-trip-info');
 
 
     }

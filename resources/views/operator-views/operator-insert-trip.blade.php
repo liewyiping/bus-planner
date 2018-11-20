@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Please insert your commonly used route</div>
+                <div class="card-header">Please insert a trip</div>
             
 
 
             <div class="card-body">
-                    {{--<form method="POST" action="{{ route('operator.insertTripInfo.submit') }}">--}}
+                    <form method="POST" action="{{ route('operator.insertTripInfo.submit') }}">
                         @csrf
 
                          <div class="form-group row">
@@ -27,11 +27,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="bus_id" class="col-md-4 col-form-label text-md-right">{{ __('Route options') }}</label>
+                            <label for="route_id" class="col-md-4 col-form-label text-md-right">{{ __('Route options') }}</label>
 
                             <div class="col-md-6">
                             
-                            <select class=”form-control” name='bus_id' style="width:330px;" id='type'>                                
+                            <select class=”form-control” name='route_id' style="width:330px;" id='type'>                                
                             @foreach($routes as $route)
                                  <option value="{{ $route->route_id}}">{{ $route->origin_terminal}} to {{$route->destination_terminal}}</option>
                             @endforeach
