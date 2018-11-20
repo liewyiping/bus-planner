@@ -178,8 +178,13 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"aria-expanded="false">Sign in <span class="caret"></span></a>
                     
                     <ul class="dropdown-menu">
-                        <li class="links"><a href="{{ url('/login') }}" >Login</a></li>
-                        <li class="links"><a href="{{ url('/register') }}">Register</a></li>
+                        <h5 align="center" ><strong>Customer</strong></h5>
+                        <li class=""><a href="{{ url('/login') }}" >Login</a></li>
+                        <li class=""><a href="{{ url('/register') }}">Register</a></li>
+                        <hr>
+                        <h5 align="center" ><strong>Operator</strong></h5>
+                        <li class=""><a href="{{ url('/operator/login') }}" >Login</a></li>
+                        <li class=""><a href="{{ url('/operator/register') }}">Register</a></li>
                     </ul>
                 </li>
 
@@ -191,15 +196,6 @@
             <div class="content">
                 <div class="title m-b-md">
                     Welcome to BPS
-                </div>
-
-                <div class="links">
-                    <a href="">Fast</a>
-                    <a href="">Convenience</a>
-                    <a href="">Affordable</a>
-                    <a href="">Efficiency</a>
-                    <a href="">Responsibility</a>
-                    <a href="">Safety</a>
                 </div>
             </div>
         </div>
@@ -221,21 +217,27 @@
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="from">From</label>
-                            <select id="from" name="from">
-                                <option value="kl">Kuala Lumpur</option>
-                                <option value="penang">Penang</option>
-                                <option value="jb">Johor Bahru</option>
+                            <select id="origin" name="origin" class="form-control input-lg dynamic" data-dependent="destination">
+                                
+                                <option value="">Select Origin</option>
+                                @foreach($route_list as  $origin)
+
+                                <option value="{{ $origin->origin}}">{{ $origin->origin}}</option>
+
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="to">To</label>
-                            <select id="to" name="to">
-                                <option value="kl">Kuala Lumpur</option>
-                                <option value="penang">Penang</option>
-                                <option value="jb">Johor Bahru</option>
+                            <select id="destination" name="destination" class="form-control input-lg">
+
+                                <option value="">Select Destination</option>
+
                             </select>
                         </div>
+
+                        {{ csrf_field() }}
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="departure">Departure Date</label>
@@ -258,11 +260,28 @@
 
             </div>
         </div>
-        
-        <div class="navbar_bottom">
-            <a href="{{ url('/') }}" class="active">Home</a>
-            <a href="{{ url('/operator/login') }}">Operator Login</a>
-            <a href="{{ url('/operator/registration') }}">Operator Register</a>
-        </div>
     </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+        $('.dynamic').change(function(){
+            if($(this).val() != '')
+            {
+                var select = $(this).attr("id");
+                var value = $(this).val();
+                var dependent = $(this).data('dependent');
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url:"{{ route('index.fetch') }}",
+                    method:"POST",
+                    data:{select:select, value:value, _token:_token, dependent:dependent},
+                    success:function(result)
+                    {
+                        $('#'+dependent).html(result);
+                    }
+                })
+            }
+        });
+    });
+</script>
