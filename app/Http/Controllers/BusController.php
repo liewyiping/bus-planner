@@ -16,13 +16,13 @@ class BusController extends Controller
     public function index()
     {
         $buses = Bus::all();
-        return view ('operator-views.operator-insert-bus')->with('buses',$buses);;
+        return view ('operator-views.operator-insert-bus')->with('buses',$buses);
     }
 
     public function indexView()
     {
         $buses = Bus::paginate(3);
-        return view ('operator-views.operator-view-bus')->with('buses',$buses);;
+        return view ('operator-views.operator-view-bus')->with('buses',$buses);
     }
 
     /**

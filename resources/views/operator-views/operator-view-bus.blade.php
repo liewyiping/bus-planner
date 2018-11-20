@@ -6,9 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Insert Bus Info</div>
-
-<h4> Existing bus </h4>
-<h5>Total buses = [ {{ $buses->total() }} ]</h5>
+<br>
+<h5 align="center"><strong>Existing bus</strong></h5>
+<h5 align="center">Total buses = [ {{ $buses->total() }} ]</h5>
 <hr>
 
 @if(isset($buses))
@@ -19,7 +19,7 @@
     <div class ='well'>
        <h6> Bus Registration Plate: {{$bus->registration_plate}} </h6>
        <h6> Number of seats : {{$bus->total_seat}}  </h6>
-       <h6> Operator ID : {{$bus->id}}  </h6>
+       <h6> Operator ID : {{$bus->operator_id}}  </h6>
        <h6> Created  : {{$bus->created_at}}  </h6>
 
     </div>
