@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Insert Route Info</div>
+                <div class="card-header">Insert Terminal Info</div>
             
 
 
@@ -94,6 +94,7 @@
 <thead>
     <tr>
     <th scope="col">No</th>
+    <th scope="col">Terminal Location</th>
     <th scope="col">Terminal</th>
     <th scope="col">Area</th>
     <th scope="col">City</th>
@@ -108,6 +109,7 @@
                         @foreach($terminals as $terminal)
                         <tr>
                         <th scope="row">{{$terminal->terminal_id}}</th>
+                        <td> {{$terminal->terminal_location}}</td>          
                         <td> {{$terminal->terminal_station}}</td>               
                         <td>{{$terminal->terminal_area}}</td>
                         <td>{{$terminal->terminal_city}}</td>                       

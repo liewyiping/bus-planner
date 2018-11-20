@@ -18,7 +18,9 @@ class CreateTerminalsTable extends Migration
             $table->string('terminal_station');
             $table->string('terminal_area');
             $table->string('terminal_city');
-            $table->string('terminal_states');  
+            $table->string('terminal_states');
+            $table->string('terminal_location');
+
 
 
 
