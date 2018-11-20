@@ -11,9 +11,11 @@
 |
 */
 
+/* Autoload data from database and to be displayed in the main menu*/
 Route::get('/', 'DisplayRouteController@index', function () {
      return view('index');
 });
+Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
 
 Route::get('contact', function () {
     return view('contact');
@@ -43,17 +45,6 @@ Route::group(['prefix' => 'admin'], function(){
 Route::get('/seatlist/{ID}','BookSeatController@index');
 Route::get('/seatlist/create','BookSeatController@create');
 Route::post('/seatlist','BookSeatController@store');
-
-// /* Display route for operator */
-// Route::get('/', 'DisplayRouteController@index', function () {
-//     return view('index');
-// });
-
-
-
-Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
-
-
 
 /* For operator */
 Route::group(['prefix' => 'operator'], function()
