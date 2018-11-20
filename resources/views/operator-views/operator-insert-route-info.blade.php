@@ -10,7 +10,7 @@
 
 
             <div class="card-body">
-                    {{--<form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">--}}
+                    <form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">
                         @csrf
 
            
@@ -72,7 +72,7 @@
 <thead>
     <tr>
     <th scope="col">Route ID</th>
-    <th scope="col">Route name</th>
+    <!-- <th scope="col">Route name</th> -->
     <th scope="col">Origin Terminal</th>
     <th scope="col">Destination Terminal</th>
     <th scope="col">Bus</th>
@@ -84,9 +84,9 @@
                     @foreach($routes as $route)
                     <tr>
                     <th scope="row">{{$route->route_id}}</th>
-                    <td> {{$route->route_name}}</td>               
-                    <td>{{$route->origin}}</td>
-                    <td>{{$route->destination}}</td>
+                    <!-- <td> {{$route->route_name}}</td>                -->
+                    <td>{{$route->origin_terminal}}</td>
+                    <td>{{$route->destination_terminal}}</td>
                     <td>{{$route->bus_id}}</td>
                   
                   

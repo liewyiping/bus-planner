@@ -71,7 +71,8 @@ Route::group(['prefix' => 'operator'], function()
 	Route::get('/view-bus-info', 'BusController@indexView');
 
 	//Operator Insert Route Info
-	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertBusInfo');
+	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertRouteInfo');
+	Route::post('/insert-route-info', 'RouteController@store')->name('operator.insertRouteInfo.submit');
 	
 
 }); // grouped by operator. Easier to read
