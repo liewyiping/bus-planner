@@ -10,7 +10,7 @@
 
 
             <div class="card-body">
-                    <form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">
+                    <form method="POST" action="{{ route('admin.insertTerminal.submit') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -93,6 +93,7 @@
 
 <thead>
     <tr>
+    <th scope="col">No</th>
     <th scope="col">Terminal</th>
     <th scope="col">Area</th>
     <th scope="col">City</th>

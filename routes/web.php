@@ -35,6 +35,9 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
 	Route::get('/view-new-operator-application','ApplicationFormController@index')->name('admin.viewApplicationForm');
+
+	Route::get('/insert-new-terminal','TerminalController@index')->name('admin.insertTerminal');
+	Route::post('/insert-new-terminal','TerminalController@store')->name('admin.insertTerminal.submit');
 	
 
 });

@@ -15,6 +15,13 @@ class CreateTerminalsTable extends Migration
     {
         Schema::create('terminals', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('terminal_station');
+            $table->string('terminal_area');
+            $table->string('terminal_city');
+            $table->string('terminal_states');  
+
+
+
             $table->timestamps();
         });
     }
