@@ -17,7 +17,7 @@ class CreateRoutesTable extends Migration
             $table->increments('route_id');
             $table->string('route_name');
             $table->integer('operator_id')->unsigned();
-            $table->foreign('operator_id')->references('operator_id')->on('operators');
+            $table->foreign('operator_id')->references('user_id')->on('users');
             $table->string('origin');
             $table->string('destination');
             $table->timestamps();

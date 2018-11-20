@@ -86,36 +86,33 @@
     <th scope="col">Route name</th>
     <th scope="col">Origin Terminal</th>
     <th scope="col">Destination Terminal</th>
-    <th scope="col">File</th>
-                        
-                        
+  
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if( ! $routes->isEmpty() )
+                    @foreach($routes as $route)
+                    <tr>
+                    <th scope="row">{{$route->route_id}}</th>
+                    <td> {{$route->route_name}}</td>               
+                    <td>{{$route->origin}}</td>
+                    <td>{{$route->destination}}</td>
+                  
+                  
+
+                    </tr>
+                    @endforeach
+
+                    </tbody>
+                    </table>
 
 
-                        
 
-                        <h4> Existing Routes </h4>
-                        <hr>
+                    @else
 
-                        @if(isset($routes))
-                         @if (count($routes)>0)
+                    <p> Tiada cadangan program telah dijumpai </p>
 
-                        @foreach($routes as $route)
-                            <div class ='well'>
-                                <h6> RouteID: {{$route->route_id}} </h6>
-                                <h6> Route Name : {{$route->route_name}} </h6>
-                                <h6> Origin Terminal : {{$route->origin_terminal}}  </h6>
-                                <h6> Destination Terminal : {{$route->destination_terminal}} </h6>                            
-                                
-        <hr>
-        
-   </div> 
-   @endforeach
-@else
-
-<p> No previous routes are found </p>
-
-@endif
-@endif
+                    @endif
 
 
                       
