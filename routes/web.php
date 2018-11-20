@@ -12,8 +12,9 @@
 */
 
 /* Autoload data from database and to be displayed in the main menu*/
+
 Route::get('/', 'DisplayRouteController@index', function () {
-     return view('index');
+     return view('home');
 });
 Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
 

@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Please insert a trip</div>
+                <div class="card-header"><h5 align="center"><strong>===== Please insert a trip =====</strong></h5></div>
+
             
 
 

@@ -115,6 +115,11 @@ class BusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete
+        $bus = Bus::find($id);
+        $bus->delete();
+
+        // redirect
+        return Redirect('operator/view-bus-info');
     }
 }

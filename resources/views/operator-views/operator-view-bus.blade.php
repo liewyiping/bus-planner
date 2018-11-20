@@ -21,7 +21,13 @@
        <h6> &nbsp;&nbsp;&nbsp; Number of seats : {{$bus->total_seat}}  </h6>
        <h6> &nbsp;&nbsp;&nbsp; Operator ID : {{$bus->operator_id}}  </h6>
        <h6> &nbsp;&nbsp;&nbsp; Created  : {{$bus->created_at}}  </h6>
-
+       <div style="margin-left: 15px;">
+            {{  Form::open(array('url' => 'bus/' . $bus->bus_id, 'class' => 'pull-right')) }}
+                {{ Form::hidden('_method', 'DELETE') }}
+                {{ Form::submit('Delete', array('class' => 'btn btn-warning')) }}
+            {{ Form::close() }}
+        </div>
+       
     </div>
     <hr>
 

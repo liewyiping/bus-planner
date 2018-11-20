@@ -5,7 +5,6 @@
 <div class="container">
     <div class="card text-center">
       <div class="card-header">
-        
       </div>
 
       <div class="card-body">
@@ -16,6 +15,7 @@
                     @endif
                
         <table class="table table-hover">
+
           <thead>
             <tr>
               <th scope="col"></th>

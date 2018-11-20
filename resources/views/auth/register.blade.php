@@ -49,8 +49,8 @@
                             <label for="role" class="col-md-4 text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                Customer <input type="radio" name="role" id="customer" value="customer"> &nbsp;&nbsp;
-                                Operator <input type="radio" name="role" id="operator" value="operator">
+                                <input type="radio" name="role" id="customer" value="customer"> Customer &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="role" id="operator" value="operator"> Operator 
                             </div>
                         </div>
 
