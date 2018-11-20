@@ -32,7 +32,7 @@
                         <div class="form-group row">
                             <label for="destination_terminal" class="col-md-4 col-form-label text-md-right">{{ __('Arrive To') }}</label>
 
-                               <div class="col-md-6">
+                        <div class="col-md-6">
                             <select class=”form-control” name='destination_terminal' style="width:330px;" id='type'>
                                 
                             @foreach($terminals as $terminal)
@@ -42,6 +42,20 @@
                             </div>
                         </div>
 
+                         <div class="form-group row">
+                            <label for="bus_id" class="col-md-4 col-form-label text-md-right">{{ __('Arrive To') }}</label>
+
+                        <div class="col-md-6">
+                            <select class=”form-control” name='bus_id' style="width:330px;" id='type'>
+                                
+                            @foreach($buses as $bus)
+                                 <option value="{{ $bus->bus_id}}">{{ $bus->registration_plate}}</option>
+                            @endforeach
+                            </select>
+                            </div>
+                        </div>
+
+
                        
                      <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -49,7 +63,7 @@
                                     {{ __('Insert a new route') }}
                                 </button>
                             </div>
-                    </div>
+                     </div>
                         <hr>
 
                         
@@ -61,6 +75,7 @@
     <th scope="col">Route name</th>
     <th scope="col">Origin Terminal</th>
     <th scope="col">Destination Terminal</th>
+    <th scope="col">Bus</th>
   
                         </tr>
                     </thead>
@@ -72,6 +87,7 @@
                     <td> {{$route->route_name}}</td>               
                     <td>{{$route->origin}}</td>
                     <td>{{$route->destination}}</td>
+                    <td>{{$route->bus_id}}</td>
                   
                   
 

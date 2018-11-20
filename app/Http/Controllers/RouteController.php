@@ -3,6 +3,7 @@
 namespace busplannersystem\Http\Controllers;
 use busplannersystem\Route;
 use busplannersystem\Terminal;
+use busplannersystem\Bus;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -12,9 +13,10 @@ class RouteController extends Controller
     {
         $routes = Route::all();
         $terminals = Terminal::all();
+        $buses= Bus::all();
        // $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
     
-       return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('terminals',$terminals);
+       return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('terminals',$terminals)->with('buses',$buses);
 
 
 
