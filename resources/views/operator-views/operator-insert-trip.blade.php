@@ -42,7 +42,7 @@
                         </div>
 
                         
-                        <div class="form-group row">
+                         <div class="form-group row">
                             
                             <label for="date_depart" class="col-md-4 col-form-label text-md-right">{{ __('Depart Date') }}</label>   
                             
@@ -58,6 +58,7 @@
                         </div>
                         
                        <div class="form-group row">
+                            
                             <label for="time_depart" class="col-md-4 col-form-label text-md-right">{{ __('Depart Time') }}</label>
 
                                 <div class="col-md-6">
@@ -70,9 +71,9 @@
                                 @endif
 
                             </div>
-                        </div>
+                        </div> 
 
-                        <!-- <div class="form-group row">
+                        <div class="form-group row">
                             <label for="ticket_price" class="col-md-4 col-form-label text-md-right">{{ __('Price Ticket (RM)') }}</label>
 
                             <div class="col-md-6">
@@ -84,7 +85,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div> -->
+                        </div>
 
                         
                      
@@ -119,7 +120,8 @@
                     @if( ! $trips->isEmpty() )
                     @foreach($trips as $trip)
                     <tr>
-                    <th scope="row">{{$trip->trip_id}}</th>               
+                    <th scope="row">{{$trip->trip_id}}</th> 
+                    <td>{{$trip->route_id}}</td>   
                     <td>{{$trip->date_depart}}</td>
                     <td>{{$trip->time_depart}}</td>
                     <td>{{$trip->ticket_price}}</td>

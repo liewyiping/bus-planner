@@ -45,11 +45,15 @@ class TripController extends Controller
         $this->validate($request,[
 
             
-            'bus_id' => 'required|integer|max:255',
-            'route_options'=> 'required|string|max:255',
-            'date_depart'=> 'required|date|after:yesterday',
+            'bus_id' => 'required|integer|min:1',
+            'route_id'=> 'required|string|min:1',
+            // 'date_depart'=> 'required|date|after:yesterday',
+            'date_depart'=> 'required|string|',
             'time_depart'=> 'required|string',
-            //'ticket_price'=> 'required|between:0,1000.00'
+            //  'ticket_price'=> 'required|between:0,1000.00'
+            'ticket_price'=> 'required|regex:/^\d*(\.\d{1,4})?$/',
+            // 'ticket_price'=> 'required|regex:/^\d*(\.\d{2})?$/',
+           
            
 
         ]);
@@ -60,7 +64,7 @@ class TripController extends Controller
         $trips -> route_id = $request ->  input('route_id');  
         $trips -> date_depart = $request ->  input('date_depart');  
         $trips -> time_depart = $request ->  input('time_depart');  
-        // $trips -> ticket_price = $request ->  input('ticket_price');  
+         $trips -> ticket_price = $request ->  input('ticket_price');  
        
       
         $trips -> save();
