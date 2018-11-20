@@ -14,7 +14,15 @@ class CreateTripsTable extends Migration
     public function up()
     {
         Schema::create('trips', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('trip_id');
+            $table->integer('bus_id')->unsigned();
+            $table->integer('route_id')->unsigned();
+            $table->string('date_depart');
+            $table->string('time_depart');
+            $table->integer('ticket_price');
+            $table->foreign('bus_id')->references('bus_id')->on('buses');
+            $table->foreign('route_id')->references('route_id')->on('routes');
+
             $table->timestamps();
         });
     }

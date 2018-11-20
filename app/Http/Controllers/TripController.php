@@ -42,7 +42,32 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            
+            'bus_id' => 'required|string|max:255',
+            'route_options'=> 'required|string|max:255',
+            'date_depart'=> 'required|string|max:255',
+            'time_depart'=> 'required|string|max:255',
+            'ticket_price'=> 'required|string|max:255',
+           
+
+        ]);
+
+
+        $trips = new Trip();
+        $trips -> bus_id = $request ->  input('bus_id');            
+        $trips -> route_id = $request ->  input('route_id');  
+        $trips -> date_depart = $request ->  input('date_depart');  
+        $trips -> time_depart = $request ->  input('time_depart');  
+        $trips -> ticket_price = $request ->  input('ticket_price');  
+       
+      
+        $trips -> save();
+
+        return redirect('operator/insert-trip-info');
+
+
     }
 
     /**
