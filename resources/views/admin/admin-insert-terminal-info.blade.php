@@ -124,7 +124,7 @@
 
                         @else
 
-                        <p> Tiada cadangan terminal telah dijumpai </p>
+                        <p> Tiada terminal telah dijumpai </p>
 
                         @endif
 

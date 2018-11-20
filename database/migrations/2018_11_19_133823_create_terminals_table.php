@@ -14,7 +14,7 @@ class CreateTerminalsTable extends Migration
     public function up()
     {
         Schema::create('terminals', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('terminal_id');
             $table->string('terminal_station');
             $table->string('terminal_area');
             $table->string('terminal_city');
