@@ -72,9 +72,9 @@ class RouteController extends Controller
 
         //Create a new route
             $routes = new Route();
-            $routes -> bus_id =         $request ->  input('bus_id');            
-            $routes -> origin_terminal =     $origin_terminal;
-            $routes -> destination_terminal = $destination_terminal;
+            $routes -> bus_id = $request ->  input('bus_id');            
+            $routes -> origin_terminal = $origin_terminal;
+            $routes -> destination_terminal =$destination_terminal;
            
           
             $routes -> save();
