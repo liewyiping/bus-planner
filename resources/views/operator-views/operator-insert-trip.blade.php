@@ -13,7 +13,18 @@
                     <form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">
                         @csrf
 
-           
+                         <div class="form-group row">
+                            <label for="bus_id" class="col-md-4 col-form-label text-md-right">{{ __('Depart From') }}</label>
+
+                               <div class="col-md-6">
+                            <select class=”form-control” name='bus_id' style="width:330px;" id='type'>
+                                
+                            @foreach($buses as $bus)
+                                 <option value="{{ $bus->bus_id}}">{{ $bus->registration_plate}}</option>
+                            @endforeach
+                            </select>
+                            </div>
+                        </div>
 
                        <div class="form-group row">
                             <label for="origin_terminal" class="col-md-4 col-form-label text-md-right">{{ __('Depart From') }}</label>
