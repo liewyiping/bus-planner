@@ -19,7 +19,7 @@ class CreateBusesTable extends Migration
             $table->integer('total_seat');
             $table->string('registration_plate')->unique();            
             $table->integer('operator_id')->unsigned();
-            $table->foreign('operator_id')->references('operator_id')->on('operators');
+            $table->foreign('operator_id')->references('user_id')->on('users');
             $table->rememberToken();
             $table->timestamps();
         });
