@@ -20,7 +20,7 @@ class CreateRoutesTable extends Migration
             $table->foreign('operator_id')->references('user_id')->on('users');
             $table->foreign('bus_id')->references('bus_id')->on('buses');
             $table->string('origin_terminal');
-            $table->string('destinatiion_terminal');
+            $table->string('destination_terminal');
             $table->timestamps();
         });
 
