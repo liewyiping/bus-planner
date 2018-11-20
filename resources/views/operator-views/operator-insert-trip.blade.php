@@ -72,11 +72,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="ticket_price" class="col-md-4 col-form-label text-md-right">{{ __('Price Ticket (RM)') }}</label>
 
                             <div class="col-md-6">
-                                <input id="ticket_price" type="text" class="form-control{{ $errors->has('ticket_price') ? ' is-invalid' : '' }}" name="ticket_price" value="{{ old('ticket_price') }}" required autofocus>
+                                <input id="ticket_price" type="number" step="0.01" min="0" class="form-control{{ $errors->has('ticket_price') ? ' is-invalid' : '' }}" name="ticket_price" value="{{ old('ticket_price') }}" required autofocus>
 
                                 @if ($errors->has('ticket_price'))
                                     <span class="invalid-feedback" role="alert">
@@ -84,7 +84,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
 
                         
                      

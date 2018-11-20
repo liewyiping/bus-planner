@@ -76,7 +76,7 @@ Route::group(['prefix' => 'operator'], function()
 
 	//Operator insert trip info
 	Route::get('/insert-trip-info', 'TripController@index')->name('operator.insertTripInfo');
-	Route::post('/insert-trip-info', 'TripController@store')->name('operator.insertTrip.submit');
+	Route::post('/insert-trip-info', 'TripController@store')->name('operator.insertTripInfo.submit');
 
 	
 

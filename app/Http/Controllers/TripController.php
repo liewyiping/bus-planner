@@ -49,7 +49,7 @@ class TripController extends Controller
             'route_options'=> 'required|string|max:255',
             'date_depart'=> 'required|string|max:255',
             'time_depart'=> 'required|string|max:255',
-            'ticket_price'=> 'required|string|max:255',
+            //'ticket_price'=> 'required|between:0,1000.00'
            
 
         ]);
@@ -60,7 +60,7 @@ class TripController extends Controller
         $trips -> route_id = $request ->  input('route_id');  
         $trips -> date_depart = $request ->  input('date_depart');  
         $trips -> time_depart = $request ->  input('time_depart');  
-        $trips -> ticket_price = $request ->  input('ticket_price');  
+        // $trips -> ticket_price = $request ->  input('ticket_price');  
        
       
         $trips -> save();
