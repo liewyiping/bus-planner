@@ -47,10 +47,13 @@ Route::get('/seatlist/{ID}','BookSeatController@index');
 Route::get('/seatlist/create','BookSeatController@create');
 Route::post('/seatlist','BookSeatController@store');
 
-/* Display route for operator */
-Route::get('/', 'DisplayRouteController@index', function () {
-    return view('index');
-});
+// /* Display route for operator */
+// Route::get('/', 'DisplayRouteController@index', function () {
+//     return view('index');
+// });
+
+
+
 Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
 
 
@@ -64,6 +67,7 @@ Route::group(['prefix' => 'operator'], function()
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
 	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
 	Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
+
 									
 									/* Admin register operator */
 	 Route::get('/registration', 'Auth\OperatorRegistrationController@showRegistrationForm')->name('operator.registration');
@@ -77,6 +81,11 @@ Route::group(['prefix' => 'operator'], function()
 	Route::get('/insert-bus-info', 'BusController@index')->name('operator.insertBusInfo');
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 	Route::get('/view-bus-info', 'BusController@indexView');
+
+	//Operator Insert Route Info
+	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertBusInfo');
+	
+
 }); // grouped by operator. Easier to read
 
 // For ticket controller

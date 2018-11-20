@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Insert Route Info</div>
+                <div class="card-header">Please insert your commonly used route</div>
             
 
 
@@ -30,14 +30,13 @@
                        <div class="form-group row">
                             <label for="origin_terminal" class="col-md-4 col-form-label text-md-right">{{ __('Depart From') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="origin_terminal" type="text" class="form-control{{ $errors->has('origin_terminal') ? ' is-invalid' : '' }}" name="origin_terminal" value="{{ old('origin_terminal') }}" required autofocus>
-
-                                @if ($errors->has('origin_terminal'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('origin_terminal') }}</strong>
-                                    </span>
-                                @endif
+                               <div class="col-md-6">
+                            <select class=”form-control” name='origin_terminal' style="width:330px;" id='type'>
+                                
+                            @foreach($terminals as $terminal)
+                                 <option value="{{ $terminal->terminal_id}}">{{ $terminal->terminal_location}}</option>
+                            @endforeach
+                            </select>
                             </div>
                         </div>
 
@@ -45,14 +44,13 @@
                         <div class="form-group row">
                             <label for="destination_terminal" class="col-md-4 col-form-label text-md-right">{{ __('Arrive To') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="destination_terminal" type="text" class="form-control{{ $errors->has('destination_terminal') ? ' is-invalid' : '' }}" name="destination_terminal" value="{{ old('destination_terminal') }}" required autofocus>
-
-                                @if ($errors->has('destination_terminal'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('destination_terminal') }}</strong>
-                                    </span>
-                                @endif
+                               <div class="col-md-6">
+                            <select class=”form-control” name='destination_terminal' style="width:330px;" id='type'>
+                                
+                            @foreach($terminals as $terminal)
+                                 <option value="{{ $terminal->terminal_id}}">{{ $terminal->terminal_location}}</option>
+                            @endforeach
+                            </select>
                             </div>
                         </div>
 
