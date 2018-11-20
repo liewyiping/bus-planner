@@ -3,6 +3,8 @@
 namespace busplannersystem\Http\Controllers;
 
 use busplannersystem\Trip;
+use busplannersystem\Route;
+use busplannersystem\Bus;
 use Illuminate\Http\Request;
 
 class TripController extends Controller
@@ -14,7 +16,12 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $trips= Trip::all();
+        $routes=Route::all();
+        $buses= Bus::all();
+
+        return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
+
     }
 
     /**
