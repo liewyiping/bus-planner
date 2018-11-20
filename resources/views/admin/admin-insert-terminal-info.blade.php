@@ -107,7 +107,7 @@
                         @if( ! $terminals->isEmpty() )
                         @foreach($terminals as $terminal)
                         <tr>
-                        <th scope="row">{{$terminal->id}}</th>
+                        <th scope="row">{{$terminal->terminal_id}}</th>
                         <td> {{$terminal->terminal_station}}</td>               
                         <td>{{$terminal->terminal_area}}</td>
                         <td>{{$terminal->terminal_city}}</td>                       

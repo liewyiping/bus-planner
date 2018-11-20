@@ -55,7 +55,7 @@ class TerminalController extends Controller
           
             $terminals -> save();
 
-            return redirect('/insert-new-terminal');
+            return redirect('admin/insert-new-terminal');
     }
 
     /**
