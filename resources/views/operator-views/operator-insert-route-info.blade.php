@@ -13,7 +13,7 @@
                     {{--<form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">--}}
                         @csrf
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="route_name" class="col-md-4 col-form-label text-md-right">{{ __('Route name') }}</label>
 
                             <div class="col-md-6">
@@ -25,7 +25,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
 
                        <div class="form-group row">
                             <label for="origin_terminal" class="col-md-4 col-form-label text-md-right">{{ __('Depart From') }}</label>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="operatorID" class="col-md-4 col-form-label text-md-right">{{ __('Operator ID') }}</label>
 
                             <div class="col-md-6">
@@ -66,7 +66,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
 
 
                         
