@@ -23,6 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // return view('home');
+
+        $role = auth()->user()->role;
+        switch ($role) {
+            case 'operator':
+                    return view('operator-dashboard');
+                break;
+            case 'customer':
+                    return view('home');
+                break; 
+
+        }
+
     }
 }

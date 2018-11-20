@@ -19,14 +19,7 @@ Route::get('contact', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-/* For operator and customer */
-Route::get('/operator',function(){
-	return view('/operator');
-})->middleware('auth','operator');
 
-Route::get('/customer',function(){
-	return view('/home');
-})->middleware('auth','customer');
 
 /* For admin */
 Route::group(['prefix' => 'admin'], function(){
@@ -66,7 +59,7 @@ Route::group(['prefix' => 'operator'], function()
 
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
 	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
-	Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
+	// Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
 
 									
 									/* Admin register operator */

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace busplannersystem\Http\Middleware;
 
 use Closure;
 use Auth;
