@@ -9,8 +9,8 @@ class Route extends Model
     protected $fillable = [
         'route_name', 
         'operator_id' , 
-        'terminal_origin',
-        'terminal_destination',
+        'origin_terminal',
+        'destination_terminal',
         
     ];
     

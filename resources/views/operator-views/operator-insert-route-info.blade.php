@@ -13,19 +13,7 @@
                     {{--<form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">--}}
                         @csrf
 
-                        <!-- <div class="form-group row">
-                            <label for="route_name" class="col-md-4 col-form-label text-md-right">{{ __('Route name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="route_name" type="text" class="form-control{{ $errors->has('route_name') ? ' is-invalid' : '' }}" name="route_name" value="{{ old('route_name') }}" required autofocus>
-
-                                @if ($errors->has('route_name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('route_name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div> -->
+           
 
                        <div class="form-group row">
                             <label for="origin_terminal" class="col-md-4 col-form-label text-md-right">{{ __('Depart From') }}</label>
@@ -54,20 +42,7 @@
                             </div>
                         </div>
 
-                        <!-- <div class="form-group row">
-                            <label for="operatorID" class="col-md-4 col-form-label text-md-right">{{ __('Operator ID') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="operatorID" type="text" class="form-control{{ $errors->has('operatorID') ? ' is-invalid' : '' }}" name="operatorID" value="{{ old('operatorID') }}" required autofocus>
-
-                                @if ($errors->has('operatorID'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('operatorID') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div> -->
-
+                       
                      <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

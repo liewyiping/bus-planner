@@ -49,13 +49,17 @@ class RouteController extends Controller
     {
         $this->validate($request,[
 
-            'route_name' => 'required|string|max:255',            
+            
             'origin_terminal' => 'required|string|max:255',
             'destination_terminal'=> 'required|string|max:255',
-            'operatorID' => 'required|integer|max:255',
            
 
         ]);
+
+        //Create the route name
+
+        $origin_terminal =  $request ->  input('origin_terminal');
+            
 
         //Create a new route
             $routes = new Route();
