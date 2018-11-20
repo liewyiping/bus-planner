@@ -10,7 +10,7 @@
 
 
             <div class="card-body">
-                    <form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">
+                    {{--<form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">--}}
                         @csrf
 
                         <div class="form-group row">
