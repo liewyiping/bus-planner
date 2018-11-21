@@ -9,9 +9,9 @@ class DisplayRouteController extends Controller
 {
     function index()
     {
-    	$route_list = DB::table('routes')->groupBy('origin')->get();
+    	$route_list = DB::table('routes')->groupBy('origin_terminal')->get();
 
-    	return view('index')->with('route_list', $route_list);
+    	return view('/index')->with('route_list', $route_list);
     }
 
     function fetch(Request $request)

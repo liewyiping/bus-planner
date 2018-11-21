@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Insert Route Info</div>
+                <div class="card-header">Insert Terminal Info</div>
             
 
 
             <div class="card-body">
-                    <form method="POST" action="{{ route('operator.insertRouteInfo.submit') }}">
+                    <form method="POST" action="{{ route('admin.insertTerminal.submit') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -93,6 +93,8 @@
 
 <thead>
     <tr>
+    <th scope="col">No</th>
+    <th scope="col">Terminal Location</th>
     <th scope="col">Terminal</th>
     <th scope="col">Area</th>
     <th scope="col">City</th>
@@ -106,7 +108,8 @@
                         @if( ! $terminals->isEmpty() )
                         @foreach($terminals as $terminal)
                         <tr>
-                        <th scope="row">{{$terminal->id}}</th>
+                        <th scope="row">{{$terminal->terminal_id}}</th>
+                        <td> {{$terminal->terminal_location}}</td>          
                         <td> {{$terminal->terminal_station}}</td>               
                         <td>{{$terminal->terminal_area}}</td>
                         <td>{{$terminal->terminal_city}}</td>                       
@@ -123,7 +126,7 @@
 
                         @else
 
-                        <p> Tiada cadangan terminal telah dijumpai </p>
+                        <p> Tiada terminal telah dijumpai </p>
 
                         @endif
 

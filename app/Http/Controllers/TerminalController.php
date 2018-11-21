@@ -13,8 +13,9 @@ class TerminalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $terminals=Terminal::all();
+        return view('admin.admin-insert-terminal-info')->with('terminals',$terminals);
     }
 
     /**
@@ -35,7 +36,35 @@ class TerminalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'terminal_station' => 'required|string|max:255',            
+            'terminal_area' => 'required|string|max:255',  
+            'terminal_city' => 'required|string|max:255',  
+            'terminal_states' => 'required|string|max:255',  
+           
+
+        ]);
+
+        //Create the name for the terminal
+        $terminal_station= $request ->  input('terminal_station');          
+        $terminal_area=$request ->  input('terminal_area');
+        $terminal_city=  $request ->  input('terminal_city');
+        $terminal_states= $request ->  input('terminal_states');
+        $terminal_location= $terminal_station.', '.$terminal_area.', '.$terminal_city.', '.$terminal_states;
+
+
+        //Create a new terminal
+            $terminals = new Terminal();
+            $terminals -> terminal_station =  $terminal_station;            
+            $terminals -> terminal_area =   $terminal_area;                
+            $terminals -> terminal_city =     $terminal_city;              
+            $terminals -> terminal_states =      $terminal_states;     
+            $terminals -> terminal_location =      $terminal_location;         
+          
+            $terminals -> save();
+
+            return redirect('admin/insert-new-terminal');
     }
 
     /**

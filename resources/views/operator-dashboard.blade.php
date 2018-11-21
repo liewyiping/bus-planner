@@ -16,7 +16,31 @@
 
                     You are logged in as <strong>Operator</strong>!
                     <br>
-                    <a href="operator/insert-bus-info" class="active">Insert Bus Info</a>
+                    <div align="center">
+
+                        <br>
+                        
+                        <a href="{{ url('/operator/new-application') }}">
+                        <input type="button" class="btn btn-primary" value="Verify Account"/>
+                        </a>
+                        
+                        <a href="{{ url('/operator/insert-bus-info') }}">
+                        <input type="button" class="btn btn-primary" value="Insert Bus"/>
+                        </a>
+
+                        <a href="{{ url('/operator/view-bus-info') }}">
+                        <input type="button" class="btn btn-primary" value="View Bus"/>
+                        </a>
+
+                        <a href="{{ url('/operator/insert-route-info') }}">
+                        <input type="button" class="btn btn-primary" value="Insert Route"/>
+                        </a>
+
+                        <a href="{{ url('/operator/insert-trip-info') }}">
+                        <input type="button" class="btn btn-primary" value="Insert Trip"/>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>

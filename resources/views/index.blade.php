@@ -167,20 +167,45 @@
 
     <body>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 top-right links">
+        <div class="navbar navbar-expand-md navbar-light navbar-laravel" id="bs-example-navbar-collapse-1 top-right links">
             <ul class="nav navbar-nav">
                 <li class="links"><a href="/">Bus Planner System</a></li>
+                <li class="links"><a href="/home">Dashboard</a></li>
                 <li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown links">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"aria-expanded="false">Sign in <span class="caret"></span></a>
-                    
-                    <ul class="dropdown-menu">
-                        <li class="links"><a href="{{ url('/login') }}" >Login</a></li>
-                        <li class="links"><a href="{{ url('/register') }}">Register</a></li>
-                    </ul>
+            
+                <li class="collapse navbar-collapse links">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item links">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item links">
+                                @if (Route::has('register'))
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                @endif
+                            </li>
+                        @else
+                            <li class="nav-item dropdown links">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right links" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest   
                 </li>
 
                 <li class="links"><a href="/contact">Contact Us</a></li>
@@ -190,16 +215,9 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome to BPS
-                </div>
+                
+                <img src="/img/logo.jpg" style="width: 500px; height: 220px; margin-right: auto; margin-left: auto; display: block; ">
 
-                <div class="links">
-                    <a href="">Fast</a>
-                    <a href="">Convenience</a>
-                    <a href="">Affordable</a>
-                    <a href="">Efficiency</a>
-                    <a href="">Responsibility</a>
-                    <a href="">Safety</a>
                 </div>
             </div>
         </div>
@@ -221,21 +239,27 @@
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="from">From</label>
-                            <select id="from" name="from">
-                                <option value="kl">Kuala Lumpur</option>
-                                <option value="penang">Penang</option>
-                                <option value="jb">Johor Bahru</option>
+                            <select id="origin_terminal" name="origin_terminal" class="form-control input-lg dynamic" data-dependent="destination_terminal">
+                                
+                                <option value="">Select Origin</option>
+                                @foreach($route_list as  $origin_terminal)
+
+                                <option value="{{ $origin_terminal->origin_terminal}}">{{ $origin_terminal->origin_terminal}}</option>
+
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="to">To</label>
-                            <select id="to" name="to">
-                                <option value="kl">Kuala Lumpur</option>
-                                <option value="penang">Penang</option>
-                                <option value="jb">Johor Bahru</option>
+                            <select id="destination_terminal" name="destination_terminal" class="form-control input-lg">
+
+                                <option value="">Select Destination</option>
+
                             </select>
                         </div>
+
+                        {{ csrf_field() }}
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="departure">Departure Date</label>
@@ -258,11 +282,28 @@
 
             </div>
         </div>
-        
-        <div class="navbar_bottom">
-            <a href="{{ url('/') }}" class="active">Home</a>
-            <a href="{{ url('/operator/login') }}">Operator Login</a>
-            <a href="{{ url('/operator/registration') }}">Operator Register</a>
-        </div>
     </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+        $('.dynamic').change(function(){
+            if($(this).val() != '')
+            {
+                var select = $(this).attr("id");
+                var value = $(this).val();
+                var dependent = $(this).data('dependent');
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url:"{{ route('index.fetch') }}",
+                    method:"POST",
+                    data:{select:select, value:value, _token:_token, dependent:dependent},
+                    success:function(result)
+                    {
+                        $('#'+dependent).html(result);
+                    }
+                })
+            }
+        });
+    });
+</script>

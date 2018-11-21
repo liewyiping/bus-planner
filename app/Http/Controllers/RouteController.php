@@ -2,6 +2,8 @@
 
 namespace busplannersystem\Http\Controllers;
 use busplannersystem\Route;
+use busplannersystem\Terminal;
+use busplannersystem\Bus;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -9,9 +11,12 @@ class RouteController extends Controller
     //
     public function index()
     {
-        $routes = route::all();
-        $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
-        return view ('posts.operator-insert-route-info')->with('routes',$routes);
+        $routes = Route::all();
+        $terminals = Terminal::all();
+        $buses= Bus::all();
+       // $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
+    
+       return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('terminals',$terminals)->with('buses',$buses);
 
 
 
@@ -46,20 +51,31 @@ class RouteController extends Controller
     {
         $this->validate($request,[
 
-            'route_name' => 'required|string|max:255',            
+            
             'origin_terminal' => 'required|string|max:255',
             'destination_terminal'=> 'required|string|max:255',
-            'operatorID' => 'required|integer|max:255',
            
 
         ]);
 
+        //Create the route name
+
+        $origin_terminal_id =  $request ->  input('origin_terminal');
+        $destination_terminal_id = $request ->input('destination_terminal');
+
+        $origin_terminal =Terminal::find($origin_terminal_id);
+        $destination_terminal= Terminal::find($destination_terminal_id);
+
+        $origin_terminal= $origin_terminal->terminal_station;
+        $destination_terminal = $destination_terminal->terminal_station;
+            
+
         //Create a new route
-            $routes = new route();
-            $routes -> route_name =         $request ->  input('route_name');            
-            $routes -> origin_terminal =      $request ->  input('origin_terminal');
-            $routes -> destination_terminal = $request ->  input('destination_terminal');
-            $routes -> operatorID =          $request ->  input('operatorID');
+            $routes = new Route();
+            $routes -> bus_id = $request ->  input('bus_id');            
+            $routes -> origin_terminal = $origin_terminal;
+            $routes -> destination_terminal =$destination_terminal;
+           
           
             $routes -> save();
 
@@ -76,7 +92,7 @@ class RouteController extends Controller
      */
     public function show($id)
     {
-        //
+        //dhhhf
     }
 
     /**

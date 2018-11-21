@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Insert Bus Info</div>
+                <div class="card-header"><h5 align="center"><strong>===== Insert Bus Information =====</strong></h5></div>
 
             <div class="card-body">
                     <form method="POST" action="{{ route('operator.insertBusInfo.submit') }}">
@@ -39,11 +39,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="operator_id" class="col-md-4 col-form-label text-md-right">{{ __('Operator ID') }}</label>
 
                             <div class="col-md-6">
-                                <input id="operator_id" type="text" class="form-control{{ $errors->has('operator_id') ? ' is-invalid' : '' }}" name="id" value="{{ old('id') }}" required autofocus>
+                                <input id="operator_id" type="text" class="form-control{{ $errors->has('operator_id') ? ' is-invalid' : '' }}" name="operator_id" value="{{ old('operator_id') }}" required autofocus>
 
                                 @if ($errors->has('operator_id'))
                                     <span class="invalid-feedback" role="alert">
@@ -51,21 +51,28 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
 
                          <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                               
+                                <button type="submit" class="btn btn-default">
                                     {{ __('Insert a new bus') }}
                                 </button>
 
-                                <a href="{{ url('/operator/view-bus-info') }}" class="active" class="btn btn-primary">View</a>
+                                <!-- <a href="{{ url('/operator/view-bus-info') }}" class="active" class="btn btn-primary">View</a> -->
+
+                                <!-- <a href="{{ url('/operator/view-bus-info') }}">
+                                    <input type="button" class="btn btn-primary" value="View Buses" />
+                                    
+                                </a> -->
 
                             </div>
                         </div>
-                    </form>
+                   
             </div>
         </div>
     </div>
 </div>
+
 @endsection

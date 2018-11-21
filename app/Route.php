@@ -9,11 +9,18 @@ class Route extends Model
     protected $fillable = [
         'route_name', 
         'operator_id' , 
-        'terminal_origin',
-        'terminal_destination',
+        'origin_terminal',
+        'destination_terminal',
         
     ];
     
     protected $table = 'routes';
     
+
+    public function buses(){
+
+
+        return $this->belongsTo('SPDP\Bus','bus_id');
+
+    }
 }

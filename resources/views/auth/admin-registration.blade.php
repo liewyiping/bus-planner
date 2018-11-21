@@ -5,11 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h5 align="center"><strong>===== Operator Application Form =====</strong></h5></div>
+                <div class="card-header">{{ __('Admin Registration') }}</div>
 
                 <div class="card-body">
-                   
-                    <form method="POST" action="{{ route('operator.application.submit') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.registration.submit') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -40,57 +39,46 @@
                             </div>
                         </div>
 
-                       
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Job Title') }}</label>
 
-                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
-                        <div class="col-md-6">
-                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('company_name') }}" required autofocus>
+                            <div class="col-md-6">
+                                <input id="job_title" type="text" class="form-control{{ $errors->has('job_title') ? ' is-invalid' : '' }}" name="job_title" value="{{ old('job_title') }}" required autofocus>
 
-                                @if ($errors->has('company_name'))
+                                @if ($errors->has('job_title'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('company_name') }}</strong>
+                                        <strong>{{ $errors->first('job_title') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
                         
                         <div class="form-group row">
-                            <label for="operator_resume" class="col-md-4 col-form-label text-md-right">{{ __('Resume') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="operator_resume" type="file" class="form-control{{ $errors->has('operator_resume') ? ' is-invalid' : '' }}" name="operator_resume" value="{{ old('operator_resume') }}" required autofocus>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
-                                @if ($errors->has('operator_resume'))
+                                @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('operator_resume') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="operator_license" class="col-md-4 col-form-label text-md-right">{{ __('License File') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="operator_license" type="file" class="form-control{{ $errors->has('operator_license') ? ' is-invalid' : '' }}" name="operator_license" value="{{ old('operator_license') }}" required autofocus>
-
-                                @if ($errors->has('operator_license'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('operator_license') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
-
-                      
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Sign up') }}
+                                    {{ __('Register') }}
                                 </button>
                             </div>
                         </div>

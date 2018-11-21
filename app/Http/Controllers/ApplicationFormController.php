@@ -15,7 +15,7 @@ class ApplicationFormController extends Controller
     public function index()
     {
         $application_forms = ApplicationForm::all();
-        return view ('auth.admin.view-new-applications')->with('application_forms',$application_forms);
+        return view ('admin.view-new-applications')->with('application_forms',$application_forms);
     }
 
     /**

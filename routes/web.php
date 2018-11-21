@@ -11,6 +11,13 @@
 |
 */
 
+/* Autoload data from database and to be displayed in the main menu*/
+
+Route::get('/', 'DisplayRouteController@index', function () {
+     return view('home');
+});
+Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
+
 Route::get('contact', function () {
     return view('contact');
 });
@@ -19,14 +26,7 @@ Route::get('contact', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-/* For operator and customer */
-Route::get('/operator',function(){
-	return view('/operator');
-})->middleware('auth','operator');
 
-Route::get('/customer',function(){
-	return view('/home');
-})->middleware('auth','customer');
 
 /* For admin */
 Route::group(['prefix' => 'admin'], function(){
@@ -34,7 +34,13 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
+	Route::get('/registration', 'Auth\AdminRegistrationController@showRegistrationForm')->name('admin.registration');
+	Route::post('/registration', 'Auth\AdminRegistrationController@register')->name('admin.registration.submit');
+
 	Route::get('/view-new-operator-application','ApplicationFormController@index')->name('admin.viewApplicationForm');
+
+	Route::get('/insert-new-terminal','TerminalController@index')->name('admin.insertTerminal');
+	Route::post('/insert-new-terminal','TerminalController@store')->name('admin.insertTerminal.submit');
 	
 
 });
@@ -44,14 +50,6 @@ Route::get('/seatlist/{ID}','BookSeatController@index');
 Route::get('/seatlist/create','BookSeatController@create');
 Route::post('/seatlist','BookSeatController@store');
 
-/* Display route for operator */
-Route::get('/', 'DisplayRouteController@index', function () {
-    return view('index');
-});
-Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
-
-
-
 /* For operator */
 Route::group(['prefix' => 'operator'], function()
 {
@@ -60,7 +58,8 @@ Route::group(['prefix' => 'operator'], function()
 
 	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
 	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
-	Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
+	// Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
+
 									
 									/* Admin register operator */
 	 Route::get('/registration', 'Auth\OperatorRegistrationController@showRegistrationForm')->name('operator.registration');
@@ -74,6 +73,17 @@ Route::group(['prefix' => 'operator'], function()
 	Route::get('/insert-bus-info', 'BusController@index')->name('operator.insertBusInfo');
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 	Route::get('/view-bus-info', 'BusController@indexView');
+
+	//Operator Insert Route Info
+	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertRouteInfo');
+	Route::post('/insert-route-info', 'RouteController@store')->name('operator.insertRouteInfo.submit');
+
+	//Operator insert trip info
+	Route::get('/insert-trip-info', 'TripController@index')->name('operator.insertTripInfo');
+	Route::post('/insert-trip-info', 'TripController@store')->name('operator.insertTripInfo.submit');
+
+	
+
 }); // grouped by operator. Easier to read
 
 // For ticket controller

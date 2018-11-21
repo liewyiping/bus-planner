@@ -29,14 +29,18 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected function redirectPath() {
-        if (Auth::user()->role == 'customer') {
-            return '/customer';
-        }
-        else {
-            return '/operator';
-        }
-    }
+    // protected function redirectPath() {
+    //     if (Auth::user()->role == 'customer') {
+    //         return '/customer';
+    //     }
+    //     else {
+    //         return '/operator';
+    //     }
+    // }
+
+    protected $redirectTo = '/home';
+
+   
 
     /**
      * Create a new controller instance.
