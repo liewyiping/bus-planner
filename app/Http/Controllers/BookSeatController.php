@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace busplannersystem\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Bus;
-use App\Seat;
+use busplannersystem\Bus;
+use busplannersystem\Seat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
