@@ -56,6 +56,7 @@ class TerminalController extends Controller
 
         //Create a new terminal
             $terminals = new Terminal();
+            $terminals->create($request);
             $terminals -> terminal_station =  $terminal_station;            
             $terminals -> terminal_area =   $terminal_area;                
             $terminals -> terminal_city =     $terminal_city;              
