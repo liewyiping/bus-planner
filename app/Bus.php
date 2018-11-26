@@ -3,6 +3,7 @@
 namespace busplannersystem;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Bus extends Model
 {
@@ -16,6 +17,17 @@ class Bus extends Model
     ];
 
     protected $table = 'buses';
+
+    public function create(Request $request){
+
+     $operator_id = auth()->user()->user_id;
+
+     $buses -> registration_plate = $request -> input('registration_plate');
+     $buses -> total_seat = $request -> input('total_seat');
+     $buses -> operator_id = $operator_id;
+     $buses -> save();
+
+    }
 
     public function user(){
 

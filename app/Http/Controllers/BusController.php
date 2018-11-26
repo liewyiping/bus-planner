@@ -57,17 +57,10 @@ class BusController extends Controller
         ]);
 
 
-        $operator_id = auth()->user()->user_id;
-
+        
         //Create a new bus
             $buses = new Bus();
-            $buses -> registration_plate = $request -> input('registration_plate');
-            $buses -> total_seat = $request -> input('total_seat');
-            $buses -> operator_id = $operator_id;
-
-
-            $buses -> save();
-
+            $buses ->create($request);
             return redirect('operator/insert-bus-info');
 
 
@@ -120,6 +113,6 @@ class BusController extends Controller
         $bus->delete();
 
         // redirect
-        return Redirect('operator/view-bus-info');
+        return redirect('operator/view-bus-info');
     }
 }
