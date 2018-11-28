@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h5 align="center"><strong>===== Bus Information =====</strong></h5></div>
+                <div class="card-header" ><h5 align="center"><strong>===== Bus Information =====</strong></h5></div>
 <br>
 <h5 align="center"><strong><i>Existing bus</i></strong></h5>
 <h5 align="center">Total buses = [ {{ $buses->total() }} ]</h5>

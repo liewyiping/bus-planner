@@ -50,24 +50,17 @@ class BusController extends Controller
         $this->validate($request,[
 
             'registration_plate' => 'required|string|max:20',
-            'total_seat'=> 'required|integer|max:50',
+            'total_seat'=> 'required|string|max:50',
             
 
 
         ]);
 
 
-        $operator_id = auth()->user()->user_id;
-
+        
         //Create a new bus
             $buses = new Bus();
-            $buses -> registration_plate = $request -> input('registration_plate');
-            $buses -> total_seat = $request -> input('total_seat');
-            $buses -> operator_id = $operator_id;
-
-
-            $buses -> save();
-
+            $buses ->create($request);
             return redirect('operator/insert-bus-info');
 
 
@@ -138,6 +131,6 @@ class BusController extends Controller
         $bus->delete();
 
         // redirect
-        return Redirect('operator/view-bus-info');
+        return redirect('operator/view-bus-info');
     }
 }

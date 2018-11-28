@@ -5,7 +5,10 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Trip;
 use busplannersystem\Route;
 use busplannersystem\Bus;
+use busplannersystem\Seat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class TripController extends Controller
 {
@@ -58,18 +61,27 @@ class TripController extends Controller
 
         ]);
 
-
+        $bus_id=$request ->  input('bus_id');
         $trips = new Trip();
-        $trips -> bus_id = $request ->  input('bus_id');            
+        $trips -> bus_id =  $bus_id;           
         $trips -> route_id = $request ->  input('route_id');  
         $trips -> date_depart = $request ->  input('date_depart');  
         $trips -> time_depart = $request ->  input('time_depart');  
-         $trips -> ticket_price = $request ->  input('ticket_price');  
-       
-      
+         $trips -> ticket_price = $request ->  input('ticket_price');
         $trips -> save();
 
-        return redirect('operator/insert-trip-info');
+        //Get data from database into creating a seat
+        $trip_id=$trips->trip_id;
+        $totseat=[45]; //Assuming bus has 45 seats standard.
+        $busID=$trips->bus_id;
+        $bus_layout = DB::table('buses')->where('bus_id', $busID)->pluck('total_seat');
+
+        //return redirect('seat.createlist')->with('trip_id',$trip_id)->with($totseat)->with($bus_layout);
+
+        //return redirect('seat.createlist', compact('totseat','trip_id', 'bus_layout'));
+
+        return redirect()->route('operator.createSeatInfo', ['ID' => $trip_id]);
+        
 
 
     }

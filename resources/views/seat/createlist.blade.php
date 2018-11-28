@@ -11,9 +11,12 @@
 	<?php 
 // return total seat...buses[0]=total seat
 
-	echo "Bus ID: ".$busID ."<br />";
-	$totalseat=$totseat[0];
-    echo  "Num of seat: " . $totalseat."<br /> <br />" ;
+	echo "Trip ID: ".$trip_id ."<br />";
+	// $totalseat=$route_id -> total_seat;
+	
+	echo  "Num of seat: " . $totseat[0]."<br /> " ;
+	echo "Bus Layout: ". $bus_layout[0];
+
 
 
 
@@ -23,7 +26,8 @@ for ($i=1; $i <=$totseat[0] ; $i++) { ?>
 
 <br>
 
-<input type="hidden" name="busID" value="{{ $busID }}">
+<input type="hidden" name="trip_id" value="{{ $trip_id }}">
+<input type="hidden" name="bus_layout" value="{{ $bus_layout[0] }}">
  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <input type='submit' name="submit" class='buttons'>
 

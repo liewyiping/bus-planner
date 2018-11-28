@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Admin Dashboard</div>
                 
-                    <div>You are logged in as <strong>Admin</strong></div>
+                    <div>&nbsp;You are logged in as <strong>Admin</strong></div>
                     <br>
                     <div align="center">
                         <a href="{{ url('/admin/view-new-operator-application') }}">

@@ -1,6 +1,8 @@
 <?php
 
 namespace busplannersystem;
+use Illuminate\Http\Request;
+use busplannersystem\Seat;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +15,14 @@ class Trip extends Model
         'date_depart','time_depart','ticket_price',
         
     ];
+
+    public function create(Request $request){
+
+
+
+
+    }
+
 
   
 

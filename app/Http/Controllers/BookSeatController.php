@@ -3,7 +3,7 @@
 namespace busplannersystem\Http\Controllers;
 
 use Illuminate\Http\Request;
-use busplannersystem\Bus;
+use busplannersystem\Trip;
 use busplannersystem\Seat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -17,14 +17,22 @@ class BookSeatController extends Controller
      */
 
 
-    public function index($busID)
+    public function index($trip_id)
     {
         //  1)fetch totalseat from model Bus to generate seats at view
-        $totseat = DB::table('buses')->where('busID', $busID)->pluck('totalseat');
+        $trip_id=$trip_id;
+        $totseat = DB::table('trips')->where('trip_id', $trip_id)->pluck('total_seat');
+         $bus_layout = DB::table('trips')->where('trip_id', $trip_id)->pluck('bus_layout');
         
-              return view('seat.createlist', compact('totseat','busID'));
-}
-    /**
+              return view('seat.createlist', compact('totseat','trip_id', 'bus_layout'));
+    }
+
+    // {
+    //     $route_id=Seat::where('route_id', $route_id)->first();
+    //     return view('seat.createlist',['route_id' => $route_id]);
+    // }
+
+                  /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -33,13 +41,18 @@ class BookSeatController extends Controller
     {
     $seats= new Seat();
    // $seats -> seatidolll = $request->input('busID');
-        $seats -> busID = $request->input('busID');
+        $seats -> trip_id = $request->input('trip_id');
         $seats -> seatNo = implode(",", $request -> allseatNo); //store array
         $seats -> seatTaken = 0;
         $seats -> seatAvail= implode(",", $request -> allseatNo);
+        $seats -> bus_layout =$request->input('bus_layout');
         $seats -> save(); 
         
-        return 'berjaya';
+        
+        
+        //return 'berjaya';
+
+        return redirect('operator-views.operator-insert-trip');
     }
 
     /**
