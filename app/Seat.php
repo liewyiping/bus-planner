@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace busplannersystem;
 
 use Illuminate\Database\Eloquent\Model;
 

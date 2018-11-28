@@ -20,6 +20,7 @@ class CreateSeatsTable extends Migration
             $table->string('seatTaken');
             $table->string('seatAvail');
             $table->string('bus_layout');
+            $table->timestamps();
 
 
 
