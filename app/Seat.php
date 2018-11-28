@@ -11,4 +11,7 @@ class Seat extends Model
         'bus_layout' , 
         
     ];
+    
+
+    
 }
