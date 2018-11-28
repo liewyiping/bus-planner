@@ -21,7 +21,7 @@
                             
                             <select class="form-control" name='route_id' style="width:330px;" id='type'>                                
                             @foreach($routes as $route)
-                                 <option value="{{ $route->route_id}}">{{ $route->origin_terminal}} to {{$route->destination_terminal}}</option>
+                                 <option value="{{ $route->route_id}}">{{ $route->origin_terminal}} - {{$route->destination_terminal}}</option>
                             @endforeach
                             </select>
                             </div>
