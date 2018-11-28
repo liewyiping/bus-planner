@@ -43,7 +43,7 @@
                             <label for="bus_layout" class="col-md-4 col-form-label text-md-right">{{ __('Coach Type') }}</label>
 
                              <div class="col-md-6">
-                            <select class=”form-control” name='bus_layout' style="width:330px;" id='bus_layout'>
+                            <select class="form-control" name='bus_layout' id='bus_layout'>
                                 
                                 <option value=#>Please choose</option>
                                 <option value='A'>SVIP = 2(R)+2(L)</option>
@@ -60,7 +60,7 @@
                          <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                
-                                <button type="submit" class="btn btn-default">
+                                <button type="submit" class="btn btn-primary">
                                     {{ __('Insert a new bus') }}
                                 </button>
 

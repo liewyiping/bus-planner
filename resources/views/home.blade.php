@@ -12,8 +12,8 @@
                         </div>
                     @endif
                     <div class="">
-                    <h4><strong>===== Please select route =====</strong></h4>
-                      <select id="myInput">
+                    <h5><strong>Please select route</strong></h5>
+                      <select id="myInput" class="form-control">
                       <option value="">Select</option>
                       @foreach(busplannersystem\Route::all() as $route_list)
                       <option class="option "value="{{$route_list->route_id}}">{{$route_list->origin_terminal}} - {{$route_list->destination_terminal}}</option>
@@ -27,7 +27,7 @@
           <thead>
             <tr>
               <th scope="col"></th>
-              <th scope="col">Company Name</th>
+              <th scope="col">Registration Plate</th>
               <th scope="col">From</th>
               <th scope="col">To</th>
               <th scope="col">Date</th>
@@ -37,33 +37,27 @@
             </tr>
           </thead>
           <tbody id="myTable">
+                    @if( ! $trips->isEmpty() )
+                    @foreach($trips as $trip)
+                    <tr id="{{$trip->route_id}}">
+                    <th scope="row">{{$trip->trip_id}}</th> 
+                    <td>{{$trip->bus->registration_plate}}</td>   
+                    <td>{{$trip->route->origin_terminal}}</td>
+                    <td>{{$trip->route->destination_terminal}}</td>
+                    <td>{{$trip->date_depart}}</td>
+                    <td>{{$trip->time_depart}}</td>
+                    <td>RM {{$english_format_number = number_format($trip->ticket_price, 2, '.', '')}}</td>
+                    <td><a class='btn btn-primary active'>SELECT</a></td>
+                    </tr>
+                    @endforeach
 
-            <?php
-            $conn = mysqli_connect("localhost","root","","busplannersystem");
-            if ($conn -> connect_error) {
-              die("connection failed:".$conn -> connect_error);
-            }
-
-            $sql = "SELECT * FROM tickets";
-            $result = $conn -> query($sql);
-
-            if ($result -> num_rows > 0) {
-              while ($row = $result -> fetch_assoc()) {
-                echo "<tr id=". $row["route_id"]."><td>". $row["trip_id"]."</td><td>". $row["company_name"]."</td><td>". $row["from"].
-                "</td><td>".$row["to"]."</td><td>".$row["date_depart"]."</td><td>".$row['time_depart']."</td><td>
-                ".$row['ticket_price']."</td><td><a class='btn btn-primary active'>SELECT</a>"."</td></tr>";
-              }
-              echo "</table";
-            }
-            else{
-              echo "0 result";
-            }
-            $conn-> close();
-            ?>
-
-            
-          </tbody>
+            </tbody>
         </table>
+                    @else
+
+                      <p> No trips were found </p>
+
+                    @endif
       </div>
     </div>
 

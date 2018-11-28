@@ -33,7 +33,7 @@
                         </a>
 
                         <a href="{{ url('/operator/insert-route-info') }}">
-                        <input type="button" class="btn btn-primary" value="Insert Route"/>
+                        <input type="button" class="btn btn-primary" value="Insert Route (Bus)"/>
                         </a>
 
                         <a href="{{ url('/operator/insert-trip-info') }}">

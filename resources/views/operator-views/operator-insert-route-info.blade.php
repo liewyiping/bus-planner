@@ -19,7 +19,7 @@
 
                             <div class="col-md-6">
                             
-                            <select class=”form-control” name='route_id' style="width:330px;" id='type'>                                
+                            <select class="form-control" name='route_id' style="width:330px;" id='type'>                                
                             @foreach($routes as $route)
                                  <option value="{{ $route->route_id}}">{{ $route->origin_terminal}} to {{$route->destination_terminal}}</option>
                             @endforeach
@@ -31,7 +31,7 @@
                             <label for="bus_id" class="col-md-4 col-form-label text-md-right">{{ __('Select bus') }}</label>
 
                                <div class="col-md-6">
-                            <select class=”form-control” name='bus_id' style="width:330px;" id='type'>
+                            <select class="form-control" name='bus_id' style="width:330px;" id='type'>
                                 
                             @foreach($buses as $bus)
                                  <option value="{{ $bus->bus_id}}">{{$bus->registration_plate}}</option>

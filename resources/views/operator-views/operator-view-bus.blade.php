@@ -37,6 +37,8 @@
        
     </div>
 
+    <hr>
+
 @endforeach
 {{ $buses->links() }}
 @else
