@@ -1,0 +1,120 @@
+
+<style type="text/css">
+  body {
+  margin: 0;
+  padding: 0;
+  background: #f3f3f3;
+
+}
+
+.center
+{
+  
+  top: 500%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+}
+
+#A {
+ display: grid;
+  grid-template-columns: 50px 100px 50px 50px ;
+  grid-gap: 6px;
+  background-color: #fff;
+  color: #444;
+  margin-top: 70px;
+  margin-right: 300px;
+  margin-left: 50px;
+  padding-left: 30px
+  padding-top: 1px;
+  border: 1px solid blue;
+  
+  
+}
+
+#B
+{
+  display: grid;
+  grid-template-columns: 50px 100px 50px ;
+  grid-gap: 6px;
+  background-color: #fff;
+  color: #444;
+  margin-top: 70px;
+  margin-right: 300px;
+  margin-left: 50px;
+  padding-left: 30px
+  padding-top: 1px;
+  border: 1px solid blue;
+  
+}
+
+
+
+#preticket{
+  border: 1px solid blue;
+  background-color: lightblue;
+  padding: 10px;
+  width: 300px;
+  height: 200px;
+  margin-top: 150px;
+}
+/*.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+*/
+input[type="checkbox"]
+{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  -webkit-appearance:none; /*tukar tick dlm box jd kosong*/
+  background: #F0FFFF;
+  border-radius: 8px; /*kasi round sikit bucu*/
+  box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+  outline: none; /*tkde outline bila click*/
+  transition: .5s; /*masa dia ambil tukar untick kpd tick*/
+}
+ 
+
+input:checked[type="checkbox"]
+{
+  background: #03a9f4;
+}
+input[type="checkbox"]
+{
+  
+  position: relative;
+  width: 30px;
+  height: 30px;
+  -webkit-appearance:none; /*tukar tick dlm box jd kosong*/
+  background: #F0FFFF;
+  border-radius: 8px; /*kasi round sikit bucu*/
+  box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+  outline: none; /*tkde outline bila click*/
+  transition: .5s; 
+  
+}
+
+input:checked[type="checkbox"]
+{
+  background: #03a9f4;
+}
+
+.square {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+}
+
+#circle {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+</style>
+

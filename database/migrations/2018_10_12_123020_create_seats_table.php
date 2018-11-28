@@ -14,10 +14,12 @@ class CreateSeatsTable extends Migration
     public function up()
     {
         Schema::create('seats', function (Blueprint $table) {
-            $table->increments('bus_id');
-            $table->string('seat_no');
-            $table->string('seat_taken');
-            $table->string('seat_available');
+            $table->increments('seatid');
+            $table->string('trip_id');
+            $table->string('seatNo');
+            $table->string('seatTaken');
+            $table->string('seatAvail');
+            $table->string('bus_layout');
 
 
 

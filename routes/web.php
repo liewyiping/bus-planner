@@ -45,10 +45,6 @@ Route::group(['prefix' => 'admin'], function(){
 
 });
 
-/* For seatList */
-Route::get('/seatlist/{ID}','BookSeatController@index');
-Route::get('/seatlist/create','BookSeatController@create');
-Route::post('/seatlist','BookSeatController@store');
 
 /* For operator */
 Route::group(['prefix' => 'operator'], function()
@@ -99,4 +95,6 @@ Route::get('/seatlist/{ID}','CreateSeatController@index');
 // Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
 Route::post('/seatlist/edit','CreateSeatController@edit');
 
-
+Route::get('/payment', function () {
+    return view('payment');
+});
