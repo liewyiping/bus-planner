@@ -26,32 +26,22 @@
                         </div>
 
                        <div class="form-group row">
-                            <label for="total_seat" class="col-md-4 col-form-label text-md-right">{{ __('No of seats') }}</label>
+                            <label for="total_seat" class="col-md-4 col-form-label text-md-right">{{ __('Coach Type') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="total_seat" type="text" class="form-control{{ $errors->has('total_seat') ? ' is-invalid' : '' }}" name="total_seat" value="{{ old('total_seat') }}" required autofocus>
-
-                                @if ($errors->has('total_seat'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('total_seat') }}</strong>
-                                    </span>
-                                @endif
+                             <div class="col-md-6">
+                            <select class=”form-control” name='total_seat' style="width:330px;" id='total_seat'>
+                                
+                                <option value=#>Please choose</option>
+                                <option value='A'>SVIP = 2(R)+2(L)</option>
+                                <option value='B'>Executive = 2(R)+1(L) </option>
+                              
+                            </select>
                             </div>
+
+                         
                         </div>
 
-                        <!-- <div class="form-group row">
-                            <label for="operator_id" class="col-md-4 col-form-label text-md-right">{{ __('Operator ID') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="operator_id" type="text" class="form-control{{ $errors->has('operator_id') ? ' is-invalid' : '' }}" name="operator_id" value="{{ old('operator_id') }}" required autofocus>
-
-                                @if ($errors->has('operator_id'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('operator_id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div> -->
+                        
 
                          <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

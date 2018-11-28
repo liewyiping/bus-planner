@@ -50,7 +50,7 @@ class BusController extends Controller
         $this->validate($request,[
 
             'registration_plate' => 'required|string|max:20',
-            'total_seat'=> 'required|integer|max:50',
+            'total_seat'=> 'required|string|max:50',
             
 
 
