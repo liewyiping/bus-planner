@@ -16,12 +16,13 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('trip_id');
             $table->string('company_name');
-            $table->string('from');
-            $table->string('to');           
+            //$table->string('from');
+            //$table->string('to');           
             $table->string('date_depart');
             $table->string('time_depart');
             $table->string('ticket_price');
-            $table->string('route_id')->references('route_id')->on('routes');
+            $table->foreign('route_id')->references('route_id')->on('routes');
+            //$table->string('route_id')->references('route_id')->on('routes');
 
             $table->timestamps();
         });
