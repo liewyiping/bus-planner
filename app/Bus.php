@@ -41,7 +41,13 @@ class Bus extends Model
 
           return $this->hasMany('busplannersystem\Route');
       
-       }
+     }
+
+     public function buses(){
+
+        return $this->hasMany('busplannersystem\BusRoute');
+     
+     }
 
 
 }

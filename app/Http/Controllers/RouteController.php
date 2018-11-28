@@ -2,9 +2,10 @@
 
 namespace busplannersystem\Http\Controllers;
 use busplannersystem\Route;
-use busplannersystem\Terminal;
+use busplannersystem\BusRoute;
 use busplannersystem\Bus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class RouteController extends Controller
 {
@@ -12,11 +13,12 @@ class RouteController extends Controller
     public function index()
     {
         $routes = Route::all();
-        $terminals = Terminal::all();
         $buses= Bus::all();
+        $bus_routes = BusRoute::all();
+        
        // $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
-    
-       return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('terminals',$terminals)->with('buses',$buses);
+       
+       return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('buses',$buses)->with('bus_routes',$bus_routes);
 
 
 
@@ -47,25 +49,26 @@ class RouteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $this->validate($request,[
 
             
-            'origin_terminal' => 'required|string|max:255',
-            'destination_terminal'=> 'required|string|max:255',
+            'route_id' => 'required|integer|min:1',
+            'bus_id'=> 'required|string|min:1',
+           
            
 
         ]);
 
-                   
 
-        //Create a new route
-            $routes = new Route();
-            $routes->create($request);
-          
+        $bus_routes = new BusRoute();
+        $bus_routes -> route_id = $request ->  input('route_id');            
+        $bus_routes -> bus_id = $request ->  input('bus_id');
+        $bus_routes -> save();
 
-            return redirect('operator/insert-route-info');
+        return redirect('operator/insert-route-info');
 
 
     }

@@ -51,13 +51,9 @@ class BusController extends Controller
 
             'registration_plate' => 'required|string|max:20',
             'total_seat'=> 'required|string|max:50',
-            
-
 
         ]);
 
-
-        
         //Create a new bus
             $buses = new Bus();
             $buses ->create($request);

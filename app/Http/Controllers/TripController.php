@@ -16,9 +16,9 @@ class TripController extends Controller
      */
     public function index()
     {
-        $trips= Trip::all();
-        $routes=Route::all();
-        $buses= Bus::all();
+        $trips = Trip::all();
+        $routes = Route::all();
+        $buses = Bus::all();
 
         return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
 
@@ -64,7 +64,7 @@ class TripController extends Controller
         $trips -> route_id = $request ->  input('route_id');  
         $trips -> date_depart = $request ->  input('date_depart');  
         $trips -> time_depart = $request ->  input('time_depart');  
-         $trips -> ticket_price = $request ->  input('ticket_price');  
+        $trips -> ticket_price = $request ->  input('ticket_price');  
        
       
         $trips -> save();
