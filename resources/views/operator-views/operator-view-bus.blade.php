@@ -5,7 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" ><h5 align="center"><strong>Bus Information</strong></h5></div>
+                <div class="card-header">
+                    <a href="{{ url('/home') }}">
+                        <input type="button" class="btn btn-primary" value="Back"/>
+                    </a>
+
+                    <a href="{{ url('/operator/insert-bus-info') }}">
+                        <input type="button" class="btn btn-primary" value="Insert bus"/>
+                    </a>
+                    
+                    <h5 align="center"><strong>Bus Information</strong></h5>
+                </div>
 <br>
 <h5 align="center"><strong><i>Total existing buses = [ {{ $buses->total() }} ]</i></strong></h5>
 <hr>

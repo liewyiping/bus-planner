@@ -5,17 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">List of operators new applications</div>
+                <div class="card-header">
+                    <a href="{{ url('/home') }}">
+                        <input type="button" class="btn btn-primary" value="Back"/>
+                    </a>
+                    
+                    <h5 align="center"><strong>List of operators new applications</strong></h5>
+                </div>
 
             <div class="card-body">
              {{--<form method="POST" action="{{ route('program.page.submit') }}" enctype="multipart/form-data">--}}
                         @csrf           
 
-                     
-
-                                             
-
-      <a href="{{ url()->previous() }}" class="btn btn-default">Back</a>
                       
 <h4> List of new applications  </h4>
 
