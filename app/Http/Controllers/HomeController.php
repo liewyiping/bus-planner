@@ -23,8 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-
         $role = auth()->user()->role;
         switch ($role) {
             case 'operator':
@@ -32,7 +30,10 @@ class HomeController extends Controller
                 break;
             case 'customer':
                     return view('home');
-                break; 
+                break;
+            case 'admin':
+                return view('admin');
+            break;  
 
         }
 

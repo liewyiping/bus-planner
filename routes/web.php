@@ -12,8 +12,9 @@
 */
 
 /* Autoload data from database and to be displayed in the main menu*/
+
 Route::get('/', 'DisplayRouteController@index', function () {
-     return view('index');
+     return view('home');
 });
 Route::post('/fetch', 'DisplayRouteController@fetch')->name('index.fetch');
 
@@ -32,6 +33,9 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
+
+	Route::get('/registration', 'Auth\AdminRegistrationController@showRegistrationForm')->name('admin.registration');
+	Route::post('/registration', 'Auth\AdminRegistrationController@register')->name('admin.registration.submit');
 
 	Route::get('/view-new-operator-application','ApplicationFormController@index')->name('admin.viewApplicationForm');
 
@@ -73,6 +77,11 @@ Route::group(['prefix' => 'operator'], function()
 	//Operator Insert Route Info
 	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertRouteInfo');
 	Route::post('/insert-route-info', 'RouteController@store')->name('operator.insertRouteInfo.submit');
+
+	//Operator insert trip info
+	Route::get('/insert-trip-info', 'TripController@index')->name('operator.insertTripInfo');
+	Route::post('/insert-trip-info', 'TripController@store')->name('operator.insertTripInfo.submit');
+
 	
 
 }); // grouped by operator. Easier to read
@@ -81,5 +90,13 @@ Route::group(['prefix' => 'operator'], function()
 Route::resource('/ticket', 'TicketController');
 // For bus controller
 Route::resource('/bus', 'BusController');
+
+//seat
+Route::get('/createseat/{ID}','BookSeatController@index');
+Route::post('/createseat/created','BookSeatController@create');
+
+Route::get('/seatlist/{ID}','CreateSeatController@index');
+// Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
+Route::post('/seatlist/edit','CreateSeatController@edit');
 
 

@@ -16,13 +16,13 @@ class BusController extends Controller
     public function index()
     {
         $buses = Bus::all();
-        return view ('operator-views.operator-insert-bus')->with('buses',$buses);;
+        return view ('operator-views.operator-insert-bus')->with('buses',$buses);
     }
 
     public function indexView()
     {
         $buses = Bus::paginate(3);
-        return view ('operator-views.operator-view-bus')->with('buses',$buses);;
+        return view ('operator-views.operator-view-bus')->with('buses',$buses);
     }
 
     /**
@@ -57,17 +57,10 @@ class BusController extends Controller
         ]);
 
 
-        $operator_id = auth()->user()->user_id;
-
+        
         //Create a new bus
             $buses = new Bus();
-            $buses -> registration_plate = $request -> input('registration_plate');
-            $buses -> total_seat = $request -> input('total_seat');
-            $buses -> operator_id = $operator_id;
-
-
-            $buses -> save();
-
+            $buses ->create($request);
             return redirect('operator/insert-bus-info');
 
 
@@ -115,6 +108,11 @@ class BusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete
+        $bus = Bus::find($id);
+        $bus->delete();
+
+        // redirect
+        return redirect('operator/view-bus-info');
     }
 }

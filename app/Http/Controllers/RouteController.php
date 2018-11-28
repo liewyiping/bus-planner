@@ -58,26 +58,12 @@ class RouteController extends Controller
 
         ]);
 
-        //Create the route name
-
-        $origin_terminal_id =  $request ->  input('origin_terminal');
-        $destination_terminal_id = $request ->input('destination_terminal');
-
-        $origin_terminal =Terminal::find($origin_terminal_id);
-        $destination_terminal= Terminal::find($destination_terminal_id);
-
-        $origin_terminal= $origin_terminal->terminal_station;
-        $destination_terminal = $destination_terminal->terminal_station;
-            
+                   
 
         //Create a new route
             $routes = new Route();
-            $routes -> bus_id = $request ->  input('bus_id');            
-            $routes -> origin_terminal = $origin_terminal;
-            $routes -> destination_terminal =$destination_terminal;
-           
+            $routes->create($request);
           
-            $routes -> save();
 
             return redirect('operator/insert-route-info');
 
@@ -92,7 +78,7 @@ class RouteController extends Controller
      */
     public function show($id)
     {
-        //
+        //dhhhf
     }
 
     /**

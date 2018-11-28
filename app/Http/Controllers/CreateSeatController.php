@@ -3,43 +3,34 @@
 namespace busplannersystem\Http\Controllers;
 
 use Illuminate\Http\Request;
-use busplannersystem\Bus;
+use  busplannersystem\Bus;
 use busplannersystem\Seat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
-class BookSeatController extends Controller
+
+class CreateSeatController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-    public function index($busID)
+    public function index($seatid)
     {
-        //  1)fetch totalseat from model Bus to generate seats at view
-        $totseat = DB::table('buses')->where('busID', $busID)->pluck('totalseat');
-        
-              return view('seat.createlist', compact('totseat','busID'));
-}
+
+        $seatid=Seat::where('seatid', $seatid)->first();
+        return view('seat.seatlist',['seatid' => $seatid]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-    $seats= new Seat();
-   // $seats -> seatidolll = $request->input('busID');
-        $seats -> busID = $request->input('busID');
-        $seats -> seatNo = implode(",", $request -> allseatNo); //store array
-        $seats -> seatTaken = 0;
-        $seats -> seatAvail= implode(",", $request -> allseatNo);
-        $seats -> save(); 
-        
-        return 'berjaya';
+        //
     }
 
     /**
@@ -50,7 +41,7 @@ class BookSeatController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -61,8 +52,8 @@ class BookSeatController extends Controller
      */
     public function show($id)
     {
-        $post= Bus::find($id);  
-        return view('seat.seatlist')->with('post', $post);  }
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -70,9 +61,16 @@ class BookSeatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $seat = Seat::find($request -> seatid);
+        $seatSelect=$request-> seat;
+        $seatTaken = explode(",", $request->input('seatTaken'));
+        $seatTaken=array_merge($seatSelect, $seatTaken);
+        $seat -> seatTaken =implode(",", $seatTaken);
+        $seat ->save();
+        return 'yeah';
+        
     }
 
     /**
@@ -84,7 +82,7 @@ class BookSeatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

@@ -65,7 +65,8 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <ul class="nav navbar-nav">
-                    <li class="links"><a href="{{ url('/') }}">Home</a></li>
+                    <li class="links"><a href="{{ url('/') }}">Bus Planner System</a></li>
+                    <li class="links"><a href="{{ url('/home') }}">Dashboard</a></li>
                 </ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
