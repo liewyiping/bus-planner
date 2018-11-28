@@ -42,7 +42,7 @@ class Route extends Model
             
 
             $routes = new Route();
-            $routes -> bus_id = $request ->  input('bus_id');            
+            // $routes -> bus_id = $request ->  input('bus_id');            
             $routes -> origin_terminal = $origin_terminal;
             $routes -> destination_terminal =$destination_terminal;
             $routes -> save();
