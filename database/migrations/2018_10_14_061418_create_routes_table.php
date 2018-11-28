@@ -15,7 +15,7 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->increments('route_id');
-            $table->integer('bus_id')->unsigned();
+            //$table->integer('bus_id')->unsigned();
             // $table->integer('operator_id')->unsigned();
             // $table->foreign('operator_id')->references('user_id')->on('users');
             // $table->foreign('bus_id')->references('bus_id')->on('buses');
