@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace busplannersystem;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,4 +11,8 @@ class Seat extends Model
         'bus_layout' , 
         
     ];
+    
+    public $timestamps=false;
+
+    
 }

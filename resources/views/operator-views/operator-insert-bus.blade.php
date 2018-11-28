@@ -25,11 +25,25 @@
                             </div>
                         </div>
 
+                         <div class="form-group row">
+                            <label for="total_seat" class="col-md-4 col-form-label text-md-right">{{ __('Total number of seat') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="total_seat" type="number" class="form-control{{ $errors->has('total_seat') ? ' is-invalid' : '' }}" name="total_seat" value="{{ old('total_seat') }}" required autofocus>
+
+                                @if ($errors->has('total_seat'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('total_seat') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                        <div class="form-group row">
-                            <label for="total_seat" class="col-md-4 col-form-label text-md-right">{{ __('Coach Type') }}</label>
+                            <label for="bus_layout" class="col-md-4 col-form-label text-md-right">{{ __('Coach Type') }}</label>
 
                              <div class="col-md-6">
-                            <select class=”form-control” name='total_seat' style="width:330px;" id='total_seat'>
+                            <select class=”form-control” name='bus_layout' style="width:330px;" id='bus_layout'>
                                 
                                 <option value=#>Please choose</option>
                                 <option value='A'>SVIP = 2(R)+2(L)</option>

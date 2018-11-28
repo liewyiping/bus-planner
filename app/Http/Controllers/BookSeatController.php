@@ -21,8 +21,12 @@ class BookSeatController extends Controller
     {
         //  1)fetch totalseat from model Bus to generate seats at view
         $trip_id=$trip_id;
-        $totseat = DB::table('trips')->where('trip_id', $trip_id)->pluck('total_seat');
-         $bus_layout = DB::table('trips')->where('trip_id', $trip_id)->pluck('bus_layout');
+        // $totseat = DB::table('trips')->where('trip_id', $trip_id)->pluck('total_seat');
+        //  $bus_layout = DB::table('trips')->where('trip_id', $trip_id)->pluck('bus_layout');
+
+        $bus_id = DB::table('trips')->where('trip_id', $trip_id)->pluck('bus_id');
+        $totseat = DB::table('buses')->where('bus_id', $bus_id)->pluck('total_seat');
+        $bus_layout = DB::table('buses')->where('bus_id', $bus_id)->pluck('bus_layout');
         
               return view('seat.createlist', compact('totseat','trip_id', 'bus_layout'));
     }
@@ -39,7 +43,7 @@ class BookSeatController extends Controller
      */
     public function create(Request $request)
     {
-    $seats= new Seat();
+        $seats= new Seat();
    // $seats -> seatidolll = $request->input('busID');
         $seats -> trip_id = $request->input('trip_id');
         $seats -> seatNo = implode(",", $request -> allseatNo); //store array
@@ -50,7 +54,9 @@ class BookSeatController extends Controller
         
         
         
-        return 'berjaya';
+        //return 'berjaya';
+
+        return redirect('operator/insert-trip-info');
     }
 
     /**

@@ -13,8 +13,10 @@
 
 	echo "Trip ID: ".$trip_id ."<br />";
 	// $totalseat=$route_id -> total_seat;
-    echo  "Num of seat: " . $totseat[0]."<br /> " ;
-    echo "Bus Layout: ". $bus_layout[0];
+	
+	echo  "Num of seat: " . $totseat[0]."<br /> " ;
+	echo "Bus Layout: ". $bus_layout[0];
+
 
 
 
