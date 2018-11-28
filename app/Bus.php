@@ -22,6 +22,8 @@ class Bus extends Model
 
      $operator_id = auth()->user()->user_id;
 
+     //create a new Bus
+     $buses = new Bus();
      $buses -> registration_plate = $request -> input('registration_plate');
      $buses -> total_seat = $request -> input('total_seat');
      $buses -> operator_id = $operator_id;
