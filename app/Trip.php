@@ -27,4 +27,9 @@ class Trip extends Model
   
 
     protected $primaryKey="trip_id";
+
+    public function route()
+    {
+        return $this->belongsTo('busplannersystem\Route', 'route_id');
+    }
 }

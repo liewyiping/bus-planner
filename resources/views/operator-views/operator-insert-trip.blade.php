@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h5 align="center"><strong>===== Please insert a trip =====</strong></h5></div>
+                <div class="card-header"><h5 align="center"><strong>Please insert a trip</strong></h5></div>
 
             
 
@@ -122,10 +122,10 @@
                     @foreach($trips as $trip)
                     <tr>
                     <th scope="row">{{$trip->trip_id}}</th> 
-                    <td>{{$trip->route_id}}</td>   
+                    <td>{{$trip->route->origin_terminal}} - {{$trip->route->destination_terminal}}</td>   
                     <td>{{$trip->date_depart}}</td>
                     <td>{{$trip->time_depart}}</td>
-                    <td>{{$trip->ticket_price}}</td>
+                    <td>RM {{$english_format_number = number_format($trip->ticket_price, 2, '.', '')}}</td>
                    
                   
                   
