@@ -12,6 +12,7 @@ class Seat extends Model
         
     ];
     
+    public $timestamps=false;
 
     
 }
