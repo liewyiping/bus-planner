@@ -101,16 +101,13 @@ class BusController extends Controller
         //date_default_timezone_set("Asia/Kuala_Lumpur");
         //$date = date('d-m-Y H:i:s');
         $this->validate($request, [
-            'total_seat'    => 'required',
-            'registration_plate'    => 'required',
-            'operator_id'    => 'required',
-            'created_at'    => 'required',
+            'total_seat' => 'required',
+            'registration_plate' => 'required',
         ]);
+        
         $bus = Bus::find($id);
         $bus->total_seat = $request->get('total_seat');
         $bus->registration_plate = $request->get('registration_plate');
-        $bus->operator_id = $request->get('operator_id');
-        $bus->created_at  = $request->get('created_at ');
 
         // $bus->created_at =  $date;
         $bus->save();
