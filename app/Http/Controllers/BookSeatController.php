@@ -56,7 +56,7 @@ class BookSeatController extends Controller
         
         //return 'berjaya';
 
-        return redirect('operator-views.operator-insert-trip');
+        return redirect('operator/insert-trip-info');
     }
 
     /**
