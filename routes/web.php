@@ -88,7 +88,7 @@ Route::resource('/ticket', 'TicketController');
 Route::resource('/bus', 'BusController');
 
 //seat
-Route::get('/createseat/{ID}','BookSeatController@index');
+Route::get('/createseat/{ID}','BookSeatController@index')->name('operator.createSeatInfo');
 Route::post('/createseat/created','BookSeatController@create');
 
 Route::get('/seatlist/{ID}','CreateSeatController@index');

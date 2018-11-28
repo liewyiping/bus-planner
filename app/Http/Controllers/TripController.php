@@ -70,21 +70,18 @@ class TripController extends Controller
          $trips -> ticket_price = $request ->  input('ticket_price');
         $trips -> save();
 
-
+        //Get data from database into creating a seat
         $trip_id=$trips->trip_id;
-        $totseat=45; //Assuming bus has 45 seats standard.
+        $totseat=[45]; //Assuming bus has 45 seats standard.
         $busID=$trips->bus_id;
+        $bus_layout = DB::table('buses')->where('bus_id', $busID)->pluck('total_seat');
 
-    
-         $bus_layout = DB::table('buses')->where('bus_id', $busID)->pluck('total_seat');
-         return redirect('seat.createlist')->with($trip_id)->with($totseat)->with($bus_layout);
+        //return redirect('seat.createlist')->with('trip_id',$trip_id)->with($totseat)->with($bus_layout);
 
-        //return $trip_id;
-        // return $bus_layout;
+        //return redirect('seat.createlist', compact('totseat','trip_id', 'bus_layout'));
 
-
-
-        //return redirect('operator/insert-trip-info');
+        return redirect()->route('operator.createSeatInfo', ['ID' => $trip_id]);
+        
 
 
     }
