@@ -30,7 +30,10 @@ class HomeController extends Controller
                 break;
             case 'customer':
                     return view('home');
-                break; 
+                break;
+            case 'admin':
+                return view('admin');
+            break;  
 
         }
 

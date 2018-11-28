@@ -50,7 +50,8 @@
 
                             <div class="col-md-6">
                                 <input type="radio" name="role" id="customer" value="customer"> Customer &nbsp;&nbsp;&nbsp;
-                                <input type="radio" name="role" id="operator" value="operator"> Operator 
+                                <input type="radio" name="role" id="operator" value="operator"> Operator &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="role" id="admin" value="admin"> Admin 
                             </div>
                         </div>
 

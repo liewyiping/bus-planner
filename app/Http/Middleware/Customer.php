@@ -19,6 +19,9 @@ class Customer
         if (Auth::check() && Auth::user()->role == 'customer') {
             return $next($request);
         }
+        else if (Auth::user()->role == 'admin') {
+            return redirect('admin');
+        }
         else{
             return redirect('/operator');
         }
