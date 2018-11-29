@@ -47,7 +47,7 @@
                     <td>{{$trip->date_depart}}</td>
                     <td>{{$trip->time_depart}}</td>
                     <td>RM {{$english_format_number = number_format($trip->ticket_price, 2, '.', '')}}</td>
-                    <td><a class='btn btn-primary active'>SELECT</a></td>
+                    <td><a href="seatlist/4" class='btn btn-primary active'>SELECT</a></td>
                     </tr>
                     @endforeach
 

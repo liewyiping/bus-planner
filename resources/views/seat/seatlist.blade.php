@@ -10,36 +10,12 @@
 
 <body>
 
-<script>
-	$numseat=0;
-	function writeTo(object) 
-	{
-  var container = document.getElementById("container");
-  
-  if (object.checked==true) {
-      container.innerHTML = ++$numseat;
-      document.getElementById('container').style.color="black"
-  }
-  else if (object.checked==false)
-  {
-
-  	container.innerHTML=--$numseat;
-  	if ($numseat==0) 
-  	{
-  		document.getElementById("container").innerHTML = "No seat is selected...";
-  		document.getElementById('container').style.color="red";
-
-  	}
-  	
-  }
-    }
-
-</script>
 
 	<?php 
 
 $seatlist=explode(',', $seatid -> seatNo);
 $seatTaken=explode(',', $seatid -> seatTaken);
+$priceEach=$trip -> ticket_price;
 
 ?>
 <div  class="container"> 
@@ -96,24 +72,33 @@ $seatTaken=explode(',', $seatid -> seatTaken);
 
 
 	
-<div class="col order-last" id="preticket"> 
+	<div class="col order-last" id="preticket"> 
 
-	<!-- <div class="row" id="preticket"> -->
-		<div style ="font-size: 20px"> BOOKING SUMMARY <br></div>
-	    <div>Depart : </div>
-	    <p> Number of seat(s) selected: </p>
-        <span id="container"  > </span> 
-        <div> Total Price : <br> </div>
-        <input type='submit' name="submit" class='buttons' value="Proceed to payment >>"> 
-	<!-- </div> -->
 
-	<!-- <div class="row">
-		<p>Occupied seat</p>
-		<p>Available seat</p>
-	</div> -->
+	<div style ="font-size: 20px"> BOOKING SUMMARY <br></div>
+	
+	
+	<div>Date of Departure: {{ $trip -> date_depart }}</div>
+	<div>Time of Departure : {{ $trip -> time_depart }} </div>
+	<div> 
+		<span>  Number of seat(s) selected:  </span>
+		<span id="container"  ></span>
+
+	</div>
+	<span>Total Price: RM </span>
+	<span id="price"> 0.00 : <br> </span>
+	<div> <input type='submit' name="submit" class='buttons' value="Proceed to payment >>">  </div>
+<!-- </div> -->
+
+<!-- <div class="row">
+	<p>Occupied seat</p>
+	<p>Available seat</p>
+</div> -->
 
 
 </div>
+
+
 
 
 	
@@ -124,6 +109,39 @@ $seatTaken=explode(',', $seatid -> seatTaken);
 </div>
 
 </form>
+
+<script>
+	$numseat=0;
+	function writeTo(object) 
+	{
+  var container = document.getElementById("container");
+  
+  if (object.checked==true) {
+      container.innerHTML = ++$numseat;
+      document.getElementById('container').style.color="black"
+      $totalprice= $numseat * {{ $priceEach }};
+
+      document.getElementById('price').innerHTML=$totalprice;
+  }
+  else if (object.checked==false)
+  {
+	$totalprice= $totalprice - {{ $priceEach}} ;
+	document.getElementById('price').innerHTML=$totalprice;
+
+  	container.innerHTML=--$numseat;
+  	if ($numseat==0) 
+  	{
+  		document.getElementById("container").innerHTML = "No seat is selected...";
+  		document.getElementById('container').style.color="red";
+  		document.getElementById('price').innerHTML="0.00";
+
+
+  	}
+  	
+  }
+    }
+
+</script>
 
 
 </body>

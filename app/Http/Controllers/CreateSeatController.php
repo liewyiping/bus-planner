@@ -5,6 +5,7 @@ namespace busplannersystem\Http\Controllers;
 use Illuminate\Http\Request;
 use busplannersystem\Route;
 use busplannersystem\Seat;
+use busplannersystem\Trip;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
@@ -20,7 +21,18 @@ class CreateSeatController extends Controller
     {
 
         $seatid=Seat::where('seatid', $seatid)->first();
-        return view('seat.seatlist',['seatid' => $seatid]);
+
+        // $trip_id=$seat_id -> trip_id;
+        // $trip=Trip::where
+        // return view('seat.seatlist',['seatid' => $seatid]);
+
+        $trip_id=$seatid -> trip_id;
+        $trip=Trip::where('trip_id', $trip_id)->first();
+
+        $route_id=$trip -> route_id;
+        $route=Route::where('route_id', $route_id) -> first();
+
+        return view('seat.seatlist',['seatid' => $seatid], ['trip' => $trip], ['route'=> $route]);
         
         //  1)fetch totalseat from model Bus to generate seats at view
        
@@ -72,7 +84,7 @@ class CreateSeatController extends Controller
         $seatTaken=array_merge($seatSelect, $seatTaken);
         $seat -> seatTaken =implode(",", $seatTaken);
         $seat ->save();
-        return 'booked';
+        return view('payment');
         
     }
 

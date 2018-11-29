@@ -14,5 +14,6 @@ class Seat extends Model
     
     public $timestamps=false;
 
+    protected $primaryKey = 'seatid';
     
 }
