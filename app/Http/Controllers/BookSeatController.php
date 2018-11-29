@@ -28,7 +28,7 @@ class BookSeatController extends Controller
         $totseat = DB::table('buses')->where('bus_id', $bus_id)->pluck('total_seat');
         $bus_layout = DB::table('buses')->where('bus_id', $bus_id)->pluck('bus_layout');
         
-              return view('seat.createlist', compact('totseat','trip_id', 'bus_layout'));
+        return view('seat.createlist', compact('totseat','trip_id', 'bus_layout'));
     }
 
     // {
