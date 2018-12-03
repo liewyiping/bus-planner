@@ -18,6 +18,7 @@ class AdvertisementController extends Controller
         $companies= Company::all();
 
         return view('admin.insert-ads-info')->with('companies',$companies);
+        
     }
 
     /**

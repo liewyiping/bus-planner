@@ -41,6 +41,11 @@ Route::group(['prefix' => 'admin'], function(){
 
 	Route::get('/insert-new-terminal','TerminalController@index')->name('admin.insertTerminal');
 	Route::post('/insert-new-terminal','TerminalController@store')->name('admin.insertTerminal.submit');
+
+	Route::get('/insert-ads-info','AdvertisementController@index')->name('admin.insertAds');
+	Route::post('/insert-ads-info','AdvertisementController@store')->name('admin.insertAds.submit');
+
+
 	
 
 });
