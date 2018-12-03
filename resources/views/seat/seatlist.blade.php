@@ -10,36 +10,11 @@
 
 <body>
 
-<script>
-	$numseat=0;
-	function writeTo(object) 
-	{
-  var container = document.getElementById("container");
-  
-  if (object.checked==true) {
-      container.innerHTML = ++$numseat;
-      document.getElementById('container').style.color="black"
-  }
-  else if (object.checked==false)
-  {
-
-  	container.innerHTML=--$numseat;
-  	if ($numseat==0) 
-  	{
-  		document.getElementById("container").innerHTML = "No seat is selected...";
-  		document.getElementById('container').style.color="red";
-
-  	}
-  	
-  }
-    }
-
-</script>
-
 	<?php 
 
 $seatlist=explode(',', $seatid -> seatNo);
 $seatTaken=explode(',', $seatid -> seatTaken);
+// $priceEach=$trip -> ticket_price;
 
 ?>
 <div  class="container"> 
@@ -89,6 +64,7 @@ $seatTaken=explode(',', $seatid -> seatTaken);
 <input type="hidden" name="seatTaken" value="{{ $seatid -> seatTaken }}">
 <input type="hidden" name="seatid" value="{{ $seatid -> seatid }}">
  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+ <input type="hidden" name="trip_id" value="{{ $seatid -> trip_id }}">
 
 
 
@@ -103,7 +79,7 @@ $seatTaken=explode(',', $seatid -> seatTaken);
 	    <div>Depart : </div>
 	    <p> Number of seat(s) selected: </p>
         <span id="container"  > </span> 
-        <div> Total Price : <br> </div>
+        <div id="price" > Total Price : <br> </div>
         <input type='submit' name="submit" class='buttons' value="Proceed to payment >>"> 
 	<!-- </div> -->
 
@@ -116,14 +92,46 @@ $seatTaken=explode(',', $seatid -> seatTaken);
 </div>
 
 
-	
-
-
 
 </div>
 </div>
 
 </form>
+
+
+
+
+
+
+<script>
+	$numseat=0;
+	function writeTo(object) 
+	{
+  var container = document.getElementById("container");
+  
+  if (object.checked==true) {
+      container.innerHTML = ++$numseat;
+      document.getElementById('container').style.color="black"
+      // document.getElementById('price')=$priceEach;
+
+  }
+  else if (object.checked==false)
+  {
+
+  	container.innerHTML=--$numseat;
+  	if ($numseat==0) 
+  	{
+  		document.getElementById("container").innerHTML = "No seat is selected...";
+  		document.getElementById('container').style.color="red";
+
+  	}
+  	
+  }
+    }
+
+</script>
+
+
 
 
 </body>
