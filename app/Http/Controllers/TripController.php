@@ -64,12 +64,6 @@ class TripController extends Controller
        
         $trip = new Trip();
         $trip->create($request);
-      
-
-        //Redirect to create seat
-        // $trip_id=$trips->trip_id;
-        // return redirect()->route('operator.createSeatInfo', ['ID' => $trip_id]);
-
         return redirect('operator/insert-trip-info');
         
 

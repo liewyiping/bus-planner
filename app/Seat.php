@@ -21,14 +21,13 @@ class Seat extends Model
             $allseatNo = array();
             $bus_layout=$bus_layout;
         
-
+            //Array to create seats into an object
             for ($i = 1; $i <= $totseat[0]; ++$i) {
                 $allseatNo[] = $i;
             }
             
             $seats= new Seat();
             $seats -> trip_id =$trip_id;
-            // $seats -> seatNo = implode(",", $request -> allseatNo); //store array
             $seats -> seatNo = implode(",", $allseatNo); //store array
             $seats -> seatTaken = 0;
             $seats -> seatAvail= implode(",", $allseatNo);
