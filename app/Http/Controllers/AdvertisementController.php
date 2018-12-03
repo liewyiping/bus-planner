@@ -4,6 +4,7 @@ namespace busplannersystem\Http\Controllers;
 
 use busplannersystem\Advertisement;
 use Illuminate\Http\Request;
+use busplannersystem\Company;
 
 class AdvertisementController extends Controller
 {
@@ -14,7 +15,9 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        //
+        $companies= Company::all();
+
+        return view('admin.insert-ads-info')->with('companies',$companies);
     }
 
     /**
