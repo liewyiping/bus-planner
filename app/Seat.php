@@ -1,6 +1,7 @@
 <?php
 
 namespace busplannersystem;
+use Illuminate\Http\Request;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,29 @@ class Seat extends Model
     ];
     
     public $timestamps=false;
+
+    public function create(Request $request,$trip_id,$bus_id,$totseat,$bus_layout){
+
+
+            $allseatNo = array();
+            $bus_layout=$bus_layout;
+        
+
+            for ($i = 1; $i <= $totseat[0]; ++$i) {
+                $allseatNo[] = $i;
+            }
+            
+            $seats= new Seat();
+            $seats -> trip_id =$trip_id;
+            // $seats -> seatNo = implode(",", $request -> allseatNo); //store array
+            $seats -> seatNo = implode(",", $allseatNo); //store array
+            $seats -> seatTaken = 0;
+            $seats -> seatAvail= implode(",", $allseatNo);
+            $seats -> bus_layout =$bus_layout;
+            $seats -> save(); 
+             
+
+    }
 
     protected $primaryKey = 'seatid';
 
