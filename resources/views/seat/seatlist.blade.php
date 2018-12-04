@@ -35,8 +35,8 @@ $priceEach=$trip -> ticket_price;
 	     {
 		?>    
 		     <span class="booked"  style = "color:red;">
-			  <input  id="{{ $seatid -> seatNo }}"  class="seat-select" type="checkbox" value="{{ $seatlist }}"  name="seat[]" disabled />
-			  
+			 <label>  <input  id="{{ $seatid -> seatNo }}"  class="seat-select" type="checkbox" value="{{ $seatlist }}"  name="seat[]" disabled >
+			 {{ $seatlist }}</label>
 	         </span>
 	         
 	         
@@ -46,7 +46,8 @@ $priceEach=$trip -> ticket_price;
 	     else 
 	     {  ?>
 	     	<span  class="free" style = "color:MediumSeaGreen ;">
-		    <input id="{{ $seatid -> seatNo }}" class="seat-select" type="checkbox" value="{{ $seatlist }}" onclick="return writeTo(this)" name="seat[]" />
+		    <label><input id="{{ $seatid -> seatNo }}" class="seat-select" type="checkbox" value="{{ $seatlist }}" onclick="return writeTo(this)" name="seat[]" >
+		    {{ $seatlist }} </label>
 		   
 		    </span>
 		    
@@ -75,9 +76,9 @@ $priceEach=$trip -> ticket_price;
 
 
 	
-<div class="col order-last" id="preticket"> 
-
-	<!-- <div class="row" id="preticket"> -->
+<!-- <div class="col order-last" id="preticket">  -->
+<div class="col order-last" > 
+	<div class="row" id="preticket">
 		<h3> BOOKING SUMMARY <br></h3>
 		
 		
@@ -95,12 +96,12 @@ $priceEach=$trip -> ticket_price;
 
         
 
-	<!-- </div> -->
+	</div>
 
-	<!-- <div class="row">
+	<div class="row">
 		<p>Occupied seat</p>
 		<p>Available seat</p>
-	</div> -->
+	</div>
 
 
 </div>
