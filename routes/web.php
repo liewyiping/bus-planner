@@ -30,10 +30,10 @@ Route::any ('/home', function () {
 	$p = Input::get ( 'search_origin' );
 	$q = Input::get ( 'search_destination' );
 	$r = Input::get ( 'search_date' );
-	$s = Input::get ( 'search_operator' );
-	$seat = Seat::whereHas('trip', function($trip) use ($r, $s)
+	
+	$seat = Seat::whereHas('trip', function($trip) use ($r)
     {
-		$trip->where('date_depart','LIKE','%'.$r.'%')->where('bus_id','LIKE','%'.$s.'%');
+		$trip->where('date_depart','LIKE','%'.$r.'%');
 		
 	})->get();
 
