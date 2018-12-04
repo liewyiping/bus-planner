@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style='width:60rem;'>
                 <div class="card-header">
                     <a href="{{ url('/home') }}">
                         <input type="button" class="btn btn-primary" value="Back"/>

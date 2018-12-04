@@ -98,9 +98,6 @@ class AdvertisementController extends Controller
         $active_ad_count=$active_ad->count();
         $currentDayTime = Carbon::now('Asia/Kuala_Lumpur');
         $currentDayTime =$currentDayTime->toDateTimeString();  
-
-       
-        
        
 
     if($pending_ads_count!=0)
@@ -127,23 +124,14 @@ class AdvertisementController extends Controller
 
                 else{
                     // return 'hello world';
-
                     $banner_image_ads_link=$ad->banner_image_ads_link;
-
                    // return $banner_image_ads_link;
                     return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link);
-
                 }
             }
         }
         else{
-            
-            
-
             foreach($pending_ads as $pending_ad){
-
-                
-               
                 
                 if(($pending_ad->datetime_start)<=$currentDayTime){
                     
