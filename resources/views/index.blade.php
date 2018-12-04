@@ -119,7 +119,7 @@
                 float: left;
                 width: 25%;
                 padding: 10px;
-                height: 110px; /* Should be removed. Only for demonstration */
+                height: 90px; /* Should be removed. Only for demonstration */
             }
 
             /* Clear floats after the columns */
@@ -155,6 +155,10 @@
             .navbar_bottom a.active {
                 background-color: #4CAF50;
                 color: white;
+            }
+            button {
+                width: 100%;
+                height: 50%;
             }
 
         </style>
@@ -229,49 +233,44 @@
                 </div>
 
                 <div class="form-group">
-                    <form action="/action_page.php">
-                        <label for="trip">Trip</label>
-                        <div class="radio" id="select_route">
-                            <label><input name="route" type="radio" id="sway" value="single" checked> One Way</label>
-                            <label></label>
-                            <label><input name="route" type="radio" id="rway" value="return"> Route Way</label>
-                        </div>
+                <form action="/home" method="POST" role="search">
+                      {{ csrf_field() }}
+                      <h5><strong>Please select route</strong></h5>
 
                         <div class="column" style="background-color:#228B22;">
-                            <label for="from">From</label>
-                            <select id="origin_terminal" name="origin_terminal" class="form-control input-lg dynamic" data-dependent="destination_terminal">
-                                
-                                <option value="">Select Origin</option>
-                                @foreach($route_list as  $origin_terminal)
-
-                                <option value="{{ $origin_terminal->origin_terminal}}">{{ $origin_terminal->origin_terminal}}</option>
-
+                            <label for="from">Route (from - to)</label>
+                            <select id="" class="form-control" name="search_origin" >
+                                <option value="">Select</option>
+                                @foreach(busplannersystem\Route::all() as $route_list)
+                                <option  class="option "value="{{$route_list->origin_terminal}}">{{$route_list->origin_terminal}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="column" style="background-color:#228B22;">
-                            <label for="to">To</label>
-                            <select id="destination_terminal" name="destination_terminal" class="form-control input-lg">
-
-                                <option value="">Select Destination</option>
-
+                            <label for="from">Route (from - to)</label>
+                            <select id="" class="form-control" name="search_destination" >
+                                <option value="">Select</option>
+                                @foreach(busplannersystem\Route::all() as $route_list)
+                                <option  class="option "value="{{$route_list->destination_terminal}}">{{$route_list->destination_terminal}}</option>
+                                @endforeach
                             </select>
                         </div>
 
-                        {{ csrf_field() }}
-
                         <div class="column" style="background-color:#228B22;">
                             <label for="departure">Departure Date</label>
-                            <input type="date" id="departure" name="departure" required>
+                            <input type="date" class="form-control" name="search_date" placeholder="Search date" > <span class="input-group-btn">
                         </div>
 
                         <div class="column" style="background-color:#228B22;">
-                            <label for="return">Return Date</label>
-                            <input type="date" id="return" name="return" required="">
+                            <label for="">&nbsp;</label>
+                            <button type="submit" class="btn btn-default">
+                            <span class="button glyphicon glyphicon-search"> Search </span>
+                            </button>
+                            
                         </div>
-                        <!-- <input type="submit" value="Submit"> -->
-                    </form>
+                      
+                </form>
                 </div>
             </div>
         </div>

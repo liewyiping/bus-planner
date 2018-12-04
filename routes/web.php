@@ -22,6 +22,33 @@ Route::get('contact', function () {
     return view('contact');
 });
 
+/* Search bar such as searching for Origin, Destination, Date, Time and etc. */
+use busplannersystem\Seat;
+use busplannersystem\Trip;
+use Illuminate\Support\Facades\Input;
+Route::any ('/home', function () {
+	$p = Input::get ( 'search_origin' );
+	$q = Input::get ( 'search_destination' );
+	$r = Input::get ( 'search_date' );
+	$s = Input::get ( 'search_operator' );
+	$seat = Seat::whereHas('trip', function($trip) use ($r, $s)
+    {
+		$trip->where('date_depart','LIKE','%'.$r.'%')->where('bus_id','LIKE','%'.$s.'%');
+		
+	})->get();
+
+	/*$trip = Trip::whereHas('route', function($route) use ($p, $q)
+    {
+		$route->where('origin_terminal','LIKE','%'.$p.'%')->where('destination_terminal','LIKE','%'.$q.'%');
+		
+	})->get(); */
+	
+	if (count ( $seat ) > 0 )
+        return view ( 'home' )->withDetails ( $seat )->withQuery ( $r );
+    else
+        return view ( 'home' )->withMessage ( 'No Details found. Try to search again !' );
+} );
+
 /* verify customer email */
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
@@ -99,9 +126,9 @@ Route::resource('/bus', 'BusController');
 Route::get('/createseat/{ID}','BookSeatController@index')->name('operator.createSeatInfo');
 Route::post('/createseat/created','BookSeatController@create');
 
-Route::get('/seatlist/{ID}','CreateSeatController@index');
+Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');
 // Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
-Route::post('/seatlist/edit','CreateSeatController@edit');
+Route::post('/seatlist/edit','CreateSeatController@edit')->middleware('auth');
 
 Route::get('/payment', function () {
     return view('payment');
