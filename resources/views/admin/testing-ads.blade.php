@@ -20,7 +20,11 @@
                       
                       <div class="row">
                     <div class="column">
-                      <img src="="<?php echo asset("storage/banner_image_ads/$banner_image_ads_link")?>"" alt="Snow" style="width:100%">
+                      
+                      <img src= "<?php echo asset("storage/banner_image_ads/$banner_image_ads_link")?>" />
+
+                     
+                
                     </div>
                     <div class="column">
                       <img src="img_forest.jpg" alt="Forest" style="width:100%">

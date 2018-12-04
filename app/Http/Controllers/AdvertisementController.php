@@ -5,6 +5,7 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Advertisement;
 use Illuminate\Http\Request;
 use busplannersystem\Company;
+use Carbon;
 
 class AdvertisementController extends Controller
 {
@@ -87,48 +88,83 @@ class AdvertisementController extends Controller
     public function update(Request $request, Advertisement $advertisement)
     {   
         $ads_count=Advertisement::all()->count();
-        $pending_ads=Advertisement::where('status','Pending')->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
-
-        return $pending_ads;
-
-    //     $pending_ads_count=$pending_ads->count();
-    //     $active_ad=Advertisement::where('status','Active')->get(); //Get the object that is Active
-    //     $active_ad_count=$active_ad->count();
-    //     $currentDayTime = Carbon\Carbon::now('Asia/Kuala_Lumpur');
-    //     $currentDayTime =$currentDayTime->toDateTimeString();   
-
-
-    // while($pending_ads_count!==0)
-    // {
-    //     if($active_ad_count!=0){ //if active ad is present, check currentdate >= datetime_end
-    //         foreach($active_ad as $ad){
-    //             if($currentDayTime>=($ad->datetime_end)){
-    //                 $banner_image_ads_link='empty.png';
-    //                 $ad->status='Ended';
-                    
-    //             foreach($pending_ads as $pending_ad){
-
-    //                     if(($pending_ad->datetime_start)>=$currentDayTime){
-    //                         $banner_image_ads_link = $pending_ad->banner_image_ads_link;
-    //                         $pending_ad->status='Active';
-    //                     }
-    //                 }
-    //                 return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link
-    //             }
-    //         }
-    //     }
-    //     else{
+        // $pending_ads=Advertisement::where('status','Pending')->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
+        $pending_ads=Advertisement::where('status','Pending')->orderBy('datetime_start')->get(); //Get list of pending advertisements request based on datetime_start
+      
         
-    //         foreach($pending_ads as $pending_ad){
-    //             if(($pending_ad->datetime_start)>=$currentDayTime){
-    //                 $banner_image_ads_link = $pending_ad->banner_image_ads_link;
-    //                 $pending_ad->status='Active';
-    //                 return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
-    //             }
-    //         }
-    //     }
-    // }
+
+        $pending_ads_count=$pending_ads->count();
+        $active_ad=Advertisement::where('status','Active')->get(); //Get the object that is Active
+        $active_ad_count=$active_ad->count();
+        $currentDayTime = Carbon::now('Asia/Kuala_Lumpur');
+        $currentDayTime =$currentDayTime->toDateTimeString();  
+
        
+        
+       
+
+    if($pending_ads_count!=0)
+    {
+        if($active_ad_count!=0){ //if active ad is present, check currentdate >= datetime_end
+            foreach($active_ad as $ad){
+                if($currentDayTime>=($ad->datetime_end)){
+                   
+                    $banner_image_ads_link='empty.png';
+                    $ad->status='Ended';
+                    $ad->save();
+                    
+                foreach($pending_ads as $pending_ad){
+
+                        if(($pending_ad->datetime_start)<=$currentDayTime){
+                            $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                            $pending_ad->status='Active';
+                            $pending_ad->save();
+                        }
+                    }
+                        
+                   return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link);
+                }
+
+                else{
+                    // return 'hello world';
+
+                    $banner_image_ads_link=$ad->banner_image_ads_link;
+
+                   // return $banner_image_ads_link;
+                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link);
+
+                }
+            }
+        }
+        else{
+            
+            
+
+            foreach($pending_ads as $pending_ad){
+
+                
+               
+                
+                if(($pending_ad->datetime_start)<=$currentDayTime){
+                    
+                    $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                    $pending_ad->status='Active';
+                    $pending_ad->save();
+                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
+                }
+            }
+        }
+
+        
+        
+    }
+
+    else{
+    $banner_image_ads_link='empty.png';
+    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
+
+
+    }
     }
     /**
      * Remove the specified resource from storage.

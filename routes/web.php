@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 	Route::get('/insert-ads-info','AdvertisementController@index')->name('admin.insertAds');
 	Route::post('/insert-ads-info','AdvertisementController@store')->name('admin.insertAds.submit');
-	Route::get('/ads','AdvertisementController@show')->name('admin.showAds');
+	Route::get('/ads','AdvertisementController@update')->name('admin.showAds');
 
 	
 
