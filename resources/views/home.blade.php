@@ -37,20 +37,19 @@
             </tr>
           </thead>
           <tbody id="myTable">
-                    @if( ! $trips->isEmpty() )
-                    @foreach($trips as $trip)
-                    <tr id="{{$trip->route_id}}">
-                    <th scope="row">{{$trip->trip_id}}</th> 
-                    <td>{{$trip->bus->registration_plate}}</td>   
-                    <td>{{$trip->route->origin_terminal}}</td>
-                    <td>{{$trip->route->destination_terminal}}</td>
-                    <td>{{$trip->date_depart}}</td>
-                    <td>{{$trip->time_depart}}</td>
-                    <td>RM {{$english_format_number = number_format($trip->ticket_price, 2, '.', '')}}</td>
-                    <td><a class='btn btn-primary active'>SELECT</a></td>
+                    @if( ! $seats->isEmpty() )
+                    @foreach($seats as $seat)
+                    <tr id="{{$seat->trip->route_id}}">
+                    <th scope="row">{{$seat->trip->trip_id}}</th> 
+                    <td>{{$seat->trip->bus->registration_plate}}</td>   
+                    <td>{{$seat->trip->route->origin_terminal}}</td>
+                    <td>{{$seat->trip->route->destination_terminal}}</td>
+                    <td>{{$seat->trip->date_depart}}</td>
+                    <td>{{$seat->trip->time_depart}}</td>
+                    <td>RM {{$english_format_number = number_format($seat->trip->ticket_price, 2, '.', '')}}</td>
+                    <td><a href="seatlist/{{$seat->seatid}}" class='btn btn-primary active'>SELECT</a></td>
                     </tr>
                     @endforeach
-
             </tbody>
         </table>
                     @else

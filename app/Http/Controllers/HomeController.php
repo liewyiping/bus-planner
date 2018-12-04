@@ -3,7 +3,7 @@
 namespace busplannersystem\Http\Controllers;
 
 use Illuminate\Http\Request;
-use busplannersystem\Trip;
+use busplannersystem\Seat;
 
 class HomeController extends Controller
 {
@@ -30,8 +30,8 @@ class HomeController extends Controller
                     return view('operator-dashboard');
                 break;
             case 'customer':
-                    $trips = Trip::all();
-                    return view('home')->with('trips',$trips);
+                    $seats = Seat::all();
+                    return view('home')->with('seats',$seats);
                 break;
             case 'admin':
                 return view('admin');
