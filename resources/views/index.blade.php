@@ -273,10 +273,25 @@
 
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <h1>Advertisement</h1>
+
+            <div class="row">
+                    <div class="column">
+                      <img src="/img/ad_unifi.jpg" alt="Unifi" style="width:100%; height:150px;">
+                    </div>
+                    <div class="column">
+                      <img src="/img/ad_nike.jpg" alt="Nike" style="width:100%; height:150px;">
+                    </div>
+                    <div class="column">
+                      <img src="/img/ad_polident.jpg" alt="Polident" style="width:100%; height:150px;">
+                    </div>
+                    <div class="column">
+                      <img src="/img/ad_christmas.jpg" alt="Christmas" style="width:100%; height:150px;">
+                    </div>
+            </div> 
 
             </div>
         </div>
+        <br><br>
     </body>
 </html>
 
