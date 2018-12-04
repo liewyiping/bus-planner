@@ -173,11 +173,9 @@
 
         <div class="navbar navbar-expand-md navbar-light navbar-laravel" id="bs-example-navbar-collapse-1 top-right links">
             <ul class="nav navbar-nav">
-                <li class="links"><a href="/">Bus Planner System</a></li>
-                <li class="links"><a href="/home">Dashboard</a></li>
-                <li>
+                <li class="links"><a href="{{ url('/') }}">Bus Planner System</a></li>
+                <li class="links"><a href="{{ url('/home') }}">Dashboard</a></li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
             
                 <li class="collapse navbar-collapse links">
@@ -219,9 +217,8 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                
-                <img src="/img/logo.jpg" style="width: 500px; height: 220px; margin-right: auto; margin-left: auto; display: block; ">
 
+                <a href="/"><img src="/img/logo.jpg" style="width: 400px; height: 200px; margin-right: auto; margin-left: auto; display: block; "></a>
                 </div>
             </div>
         </div>
