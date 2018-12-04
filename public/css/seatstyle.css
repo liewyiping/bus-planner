@@ -25,8 +25,10 @@
   margin-right: 300px;
   margin-left: 50px;
   padding-left: 30px
+  padding-right:0px;
   padding-top: 1px;
   border: 1px solid blue;
+  /*margin: auto;*/
   
   
 }
@@ -57,14 +59,6 @@
   height: 200px;
   margin-top: 150px;
 }
-/*.box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 150%;
-}
-*/
 
 .booked input{
   position: relative;
@@ -77,6 +71,8 @@
   outline: none; /*tkde outline bila click*/
   transition: .5s; /*masa dia ambil tukar untick kpd tick*/
   cursor: not-allowed;
+  margin: auto;
+  display: block;
 }
 .free input{
   position: relative;
@@ -89,34 +85,19 @@
   outline: none; /*tkde outline bila click*/
   transition: .5s; /*masa dia ambil tukar untick kpd tick*/
   cursor: pointer
-  content:"ON";
+  margin: auto;
+  display: block;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+.free label{
+   text-align: center;
+
+}
+.booked label{
+   text-align: center;
+
 }
 
-/* Tooltip text */
-.tooltip .booked {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
- 
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .booked {
-    visibility: visible;
-}
 
 input:checked[type="checkbox"]
 {
