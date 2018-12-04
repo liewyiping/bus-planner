@@ -42,10 +42,8 @@ class AdvertisementController extends Controller
         $this->validate($request,[
 
             'company_name' => 'required|string|max:255',
-            'date_start'=> 'required|string|',
-            'date_end'=> 'required|string|',
-            'ads_time_start'=> 'required|string',
-            'ads_time_end'=> 'required|string',
+            'datetime_start'=> 'required|string|',
+            'datetime_end'=> 'required|string|',          
             'banner_image_ads' => 'required|file|max:1999',
 
         ]);
@@ -87,23 +85,57 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $advertisement)
     {
-        $advertisements =Advertisement::where('status','Pending')->get();
+        $pending_ads=Advertisement::where('status','Pending')->get();
+        $pending_ads_count=$pending_ads->count();
+        $active_ad=Advertisement::where('status','Active')->get();
+        $active_ad_count=$active_ad->count();
 
-        foreach($advertisements as $ads){
+    while($pending_ads_count!==0)
 
-            if(strtotime(date("Y-m-d")) > strtotime($result)){
-                exit;
-                echo "Success";
+    {
+
+        if($active_ad_count==0){
+
+            foreach($pending_ads as $pending_ad){
+
+                //if($pending_ad->)
+
+
             }
-            elseif(strtotime(date("Y-m-d")) < strtotime($result)){
-                return true;
-                echo "Failure";
-            }
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+        // foreach($advertisements as $ads){
+
+        //     if(strtotime(date("Y-m-d")) == strtotime($ads->date_start)){
+        //         exit;
+        //         echo "Success";
+        //     }
+        //     else if(strtotime(date("Y-m-d")) < strtotime($result)){
+        //         return true;
+        //         echo "Failure";
+        //     }
             
 
 
 
-        }
+        // }
     }
 
     /**

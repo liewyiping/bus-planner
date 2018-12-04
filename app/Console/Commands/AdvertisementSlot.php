@@ -4,7 +4,7 @@ namespace busplannersystem\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
  
-class UserStatistics extends Command
+class AdvertisementSlot extends Command
 {
   /**
    * The name and signature of the console command.
@@ -48,6 +48,9 @@ class UserStatistics extends Command
 
 
     $advertisements=Advertisement::all()->get();
+
+
+
      
     // update statistics table
     foreach($posts as $post)
