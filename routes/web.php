@@ -127,7 +127,7 @@ Route::post('/createseat/created','BookSeatController@create');
 
 Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');
 // Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
-Route::post('/seatlist/edit/abc','CreateSeatController@edit')->middleware('auth');
+Route::post('/seatlist/edit','CreateSeatController@edit')->middleware('auth');
 
 Route::get('/payment', function () {
     return view('payment');
