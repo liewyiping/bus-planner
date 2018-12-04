@@ -39,7 +39,21 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+
+            'company_name' => 'required|string|max:255',
+            'date_start'=> 'required|string|',
+            'date_end'=> 'required|string|',
+            'ads_time_start'=> 'required|string',
+            'ads_time_end'=> 'required|string',
+            'banner_image_ads' => 'required|file|max:1999',
+
+        ]);
+
+        $advertisement = new Advertisement();
+        $advertisement->create($request);
+        return redirect('/insert-ads-info');
+
     }
 
     /**

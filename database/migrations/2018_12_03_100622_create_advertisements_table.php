@@ -15,6 +15,12 @@ class CreateAdvertisementsTable extends Migration
     {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('bus_id')->unsigned();
+            $table->integer('route_id')->unsigned();
+            $table->date('date_start');
+            $table->date('date_end');
+             $table->string('time_depart');
+            $table->decimal('ticket_price',19,4);
             $table->timestamps();
         });
     }
