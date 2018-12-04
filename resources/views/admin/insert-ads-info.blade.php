@@ -15,7 +15,7 @@
 
                 <div class="card-body">
                    
-                    <form method="POST" action="{{ route('operator.application.submit') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.insertAds.submit') }}" enctype="multipart/form-data">
                         @csrf
 
                 

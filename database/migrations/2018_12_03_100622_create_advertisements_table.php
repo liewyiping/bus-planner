@@ -14,13 +14,17 @@ class CreateAdvertisementsTable extends Migration
     public function up()
     {
         Schema::create('advertisements', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('bus_id')->unsigned();
-            $table->integer('route_id')->unsigned();
+            $table->increments('advertisement_id');
+            $table->integer('company_name')->unsigned();
             $table->date('date_start');
             $table->date('date_end');
-             $table->string('time_depart');
-            $table->decimal('ticket_price',19,4);
+            $table->string('ads_time_start');
+            $table->string('ads_time_end');
+            $table->string('banner_image_ads');
+            $table->string('banner_image_ads_link');
+            $table->string('status');
+
+            $table->foreign('company_name')->references('bus_company_id')->on('companies');
             $table->timestamps();
         });
     }

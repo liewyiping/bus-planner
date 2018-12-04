@@ -52,7 +52,7 @@ class AdvertisementController extends Controller
 
         $advertisement = new Advertisement();
         $advertisement->create($request);
-        return redirect('/insert-ads-info');
+        return redirect('admin/insert-ads-info');
 
     }
 

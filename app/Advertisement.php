@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Advertisement extends Model
 {
     
-
+protected $primaryKey="advertisement_id";
 
 public function create(Request $request){
 
@@ -41,11 +41,10 @@ public function create(Request $request){
      $advertisements -> date_start = $request -> input('date_start');
      $advertisements -> date_end = $request -> input('date_end'); 
      $advertisements -> ads_time_start = $request -> input('ads_time_start');          
-     $advertisements -> ads_time_end = $request -> input('ads_time_end'); 
-     $advertisements -> operator_resume = $resumeWithExt;
-     $advertisements -> operator_resume_link = $resumefileNameToStore;
-     $advertisements -> operator_license =  $licenseWithExt;
-     $advertisements -> operator_license_link = $licensefileNameToStore;  
+     $advertisements -> ads_time_end = $request -> input('ads_time_end');
+     $advertisements -> status = 'Pending';  
+     $advertisements -> banner_image_ads = $resumeWithExt;
+     $advertisements -> banner_image_ads_link = $resumefileNameToStore;   
      $advertisements -> save();
 
     
