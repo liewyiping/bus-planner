@@ -91,7 +91,7 @@ $priceEach=$trip -> ticket_price;
 	    </div>
         <span>Total Price: RM </span>
         <span name="price" id="price"> 0.00   <br> </span>
-        <div> <input type='submit' name="submit" class='buttons' value="Proceed to payment >>" id="submit" disabled="" />  </div>
+        <div> <input type='submit' name="submit" class='btn btn-primary' value="Proceed to payment >>" id="submit" disabled="" />  </div>
        
 
         

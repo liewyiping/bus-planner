@@ -19,16 +19,27 @@ class CreateSeatController extends Controller
      */
     public function index($seatid)
     {
-
-        $seatid=Seat::where('seatid', $seatid)->first();
+        $role = auth()->user()->role;
+        switch ($role) {
+            case 'operator':
+                    return view('operator-dashboard');
+                break;
+            case 'customer':
+                $seatid=Seat::where('seatid', $seatid)->first();
         
-        $trip_id=$seatid -> trip_id;
-        $trip=Trip::where('trip_id', $trip_id)->first();
+                $trip_id=$seatid -> trip_id;
+                $trip=Trip::where('trip_id', $trip_id)->first();
 
-        $route_id=$trip -> route_id;
-        $route=Route::where('route_id', $route_id) -> first();
+                $route_id=$trip -> route_id;
+                $route=Route::where('route_id', $route_id) -> first();
 
-        return view('seat.seatlist',['seatid' => $seatid], ['trip' => $trip], ['route'=> $route]);
+                 return view('seat.seatlist',['seatid' => $seatid], ['trip' => $trip], ['route'=> $route]);
+                 break;
+            case 'admin':
+                return view('admin');
+            break;  
+
+        }
     }
 
     /**
