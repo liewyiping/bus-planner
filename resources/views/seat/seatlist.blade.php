@@ -66,6 +66,7 @@ $priceEach=$trip -> ticket_price;
 <input type="hidden" name="seatTaken" value="{{ $seatid -> seatTaken }}">
 <input type="hidden" name="seatid" value="{{ $seatid -> seatid }}">
  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+ <input id="totalprice" type="hidden" name="totalprice">
  
 
 
