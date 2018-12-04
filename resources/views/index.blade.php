@@ -264,7 +264,7 @@
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="">&nbsp;</label>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-default">
                             <span class="button glyphicon glyphicon-search"> Search </span>
                             </button>
                             
