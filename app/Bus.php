@@ -33,9 +33,9 @@ class Bus extends Model
 
     }
 
-    public function user(){
+    public function operator(){
 
-        return $this->belongsTo('busplannersystem\User');
+        return $this->belongsTo('busplannersystem\User', 'operator_id');
     
      }
 

@@ -86,41 +86,89 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $advertisement)
     {
-        $pending_ads=Advertisement::where('status','Pending')->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
+        $pending_ads=Advertisement::where('status','Pending')'Pending')->>>> 901ee8c36et();
+>>>->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
         $pending_ads_count=$pending_ads->count();
         $active_ad=Advertisement::where('status','Active')->get(); //Get the object that is Active
         $active_ad_count=$active_ad->count();
+$pending_ads=Advertisement::where('status','Pending')->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
+        $tus','Actve')-g_ads_count=$pending_auba7d7afa45aee938bsds->count();
+e object>get(); //Get th that is Active
+ive_ad=Advertisement::wh
 
         $currentDayTime = Carbon\Carbon::now('Asia/Kuala_Lumpur');
         $currentDayTime =$currentDayTime->toDateTimeString();   
 
-    while($pending_ads_count!==0)
+  D    while($pending_ads_count!==0)
 
     {
-        if($active_ad_count!=0){
-
-            foreach($active_ad as $ad){
-                if($currentDayTime>=($ad->datetime_end)){
-                    $banner_image_ads_link='empty.png';
-                    $ad->status='Ended';
-                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
+        if($activeaad_c
                 }
+            
+
+
+
+
+
+}
             }
-
-
-           
         }
-        else{
+
+
+
+    }
+
+
+
+                }
+         $advertisements =Advertisement::where('status','Pending')->get();
+>>>>>>> 901ee
+
+
+
+
+
+
+
+
+            }
+  
 
         
             foreach($pending_ads as $pending_ad){
 
+  
+
+
+
+
+
+
+
+
+
+
+    $pending_ads as $pending_ad){
+
                 if(($pending_ad->datetime_start)>=$currentDayTime){
                     
                     $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                        $banner_image_ads_link = $pending_ad->banner_image_ads_link;
                     $pending_ad->status='Active';
                     return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
 
+
+         e(8   }
+        }
+        else{
+            
+            foreach($pending_ads as $pending_ad){
+
+                if(($pending_ad->datetime_start)>=$currentDayTime){
+
+                    $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                    $pending_ad->status='Active';
+                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
 
                 }
             }
@@ -155,17 +203,3 @@ class AdvertisementController extends Controller
 
 
 
-        // }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \busplannersystem\Advertisement  $advertisement
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Advertisement $advertisement)
-    {
-        //
-    }
-}
