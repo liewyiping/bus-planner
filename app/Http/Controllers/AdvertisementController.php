@@ -105,13 +105,13 @@ class AdvertisementController extends Controller
         if($active_ad_count!=0){ //if active ad is present, check currentdate >= datetime_end
             foreach($active_ad as $ad){
                 if($currentDayTime>=($ad->datetime_end)){
-                   
+                   //if current day time is more and equal than datetime end, the ads will be removed/replaced. Will change status to ended.
                     $banner_image_ads_link='empty.png';
                     $ad->status='Ended';
                     $ad->save();
                     
                 foreach($pending_ads as $pending_ad){
-
+                        //active ad is removed and currently checking whether theres a next ad that matches current day time.
                         if(($pending_ad->datetime_start)<=$currentDayTime){
                             $banner_image_ads_link = $pending_ad->banner_image_ads_link;
                             $pending_ad->status='Active';
@@ -123,14 +123,15 @@ class AdvertisementController extends Controller
                 }
 
                 else{
-                    // return 'hello world';
+                    //if active ad is removed and theres no pending ad that matches the current day time
                     $banner_image_ads_link=$ad->banner_image_ads_link;
-                   // return $banner_image_ads_link;
+                  
                     return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link);
                 }
             }
         }
         else{
+            //if number of active ad is 0 (no active ad currently). Will check pending ad. SAME CODE IN LINE 114.
             foreach($pending_ads as $pending_ad){
                 
                 if(($pending_ad->datetime_start)<=$currentDayTime){
