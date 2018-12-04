@@ -17,7 +17,8 @@ class CreateAdvertisementsTable extends Migration
             $table->increments('advertisement_id');
             $table->integer('company_name')->unsigned();
             $table->datetime('datetime_start');
-            $table->datetime('datetime_end');            
+            $table->datetime('datetime_end');  
+            $table->integer('duration');
             $table->string('banner_image_ads');
             $table->string('banner_image_ads_link');
             $table->string('status');

@@ -99,7 +99,54 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+
+                        <table class="table table-striped">
+
+<thead>
+    <tr>
+    <th scope="col">Advertisement ID</th>
+    <th scope="col">Company name</th>
+    <th scope="col">Date/Time Start</th>
+    <th scope="col">Date/Time End</th>
+    <th scope="col">Duration(Hours)</th>
+    <th scope="col">Banner image link</th>
+    <th scope="col">Status</th>
+    <th scope="col">Created at</th>
+
+
+
+
+    
+    </tr>
+</thead>
+<tbody>
+
+ <!-- <table class="table  table-striped"> -->
+
+@if( ! $advertisements->isEmpty() )
+@foreach($advertisements as $ad)
+<tr>
+<th scope="row">{{$ad->advertisement_id}}</th>
+<td>{{$ad->company_name}} </td>
+<td>{{$ad->datetime_start}} </td>
+<td>{{$ad->datetime_end}} </td>
+<td>{{$ad->duration}} </td>
+<td><a href="<?php echo asset("storage/banner_image_ads/$ad->banner_image_ads_link")?>">{{basename($ad->banner_image_ads)}}</td> 
+<td>{{$ad->status}} </td>
+<td>{{$ad->created_at->format('h:i a d/m/Y')}} </td>
+
+
+            
+
+
+
+</tr>
+@endforeach
+@endif
+</tbody>
+</table>
+
+                   
                 </div>
             </div>
         </div>

@@ -14,10 +14,11 @@ class AdvertisementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $advertisements=Advertisement::all();
         $companies= Company::all();
 
-        return view('admin.insert-ads-info')->with('companies',$companies);
+        return view('admin.insert-ads-info')->with('companies',$companies)->with('advertisements',$advertisements);
         
     }
 
@@ -85,25 +86,44 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $advertisement)
     {
-        $pending_ads=Advertisement::where('status','Pending')->get();
+        $pending_ads=Advertisement::where('status','Pending')->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
         $pending_ads_count=$pending_ads->count();
-        $active_ad=Advertisement::where('status','Active')->get();
+        $active_ad=Advertisement::where('status','Active')->get(); //Get the object that is Active
         $active_ad_count=$active_ad->count();
+
+        $currentDayTime = Carbon\Carbon::now('Asia/Kuala_Lumpur');
+        $currentDayTime =$currentDayTime->toDateTimeString();   
 
     while($pending_ads_count!==0)
 
     {
+        if($active_ad_count!=0){
 
-        if($active_ad_count==0){
-
-            foreach($pending_ads as $pending_ad){
-
-                //if($pending_ad->)
-
-
+            foreach($active_ad as $ad){
+                if($currentDayTime>=($ad->datetime_end)){
+                    $banner_image_ads_link='empty.png';
+                    $ad->status='Ended';
+                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
+                }
             }
 
 
+           
+        }
+        else{
+
+        
+            foreach($pending_ads as $pending_ad){
+
+                if(($pending_ad->datetime_start)>=$currentDayTime){
+                    
+                    $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                    $pending_ad->status='Active';
+                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
+
+
+                }
+            }
         }
 
 
