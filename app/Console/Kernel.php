@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
 
-        'App\Console\Commands\AdvertisementSlot'
+        //'App\Console\Commands\AdvertisementSlot',
         //
     ];
 
@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         //Create a hourly task to check the advertisement slot.
-        $schedule->command('advertisement:company')->hourly();
+        //$schedule->command('advertisement:company')->hourly();
     }
 
     /**

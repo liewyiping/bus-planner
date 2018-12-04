@@ -14,10 +14,11 @@ class AdvertisementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $advertisements=Advertisement::all();
         $companies= Company::all();
 
-        return view('admin.insert-ads-info')->with('companies',$companies);
+        return view('admin.insert-ads-info')->with('companies',$companies)->with('advertisements',$advertisements);
         
     }
 
@@ -42,10 +43,8 @@ class AdvertisementController extends Controller
         $this->validate($request,[
 
             'company_name' => 'required|string|max:255',
-            'date_start'=> 'required|string|',
-            'date_end'=> 'required|string|',
-            'ads_time_start'=> 'required|string',
-            'ads_time_end'=> 'required|string',
+            'datetime_start'=> 'required|string|',
+            'datetime_end'=> 'required|string|',          
             'banner_image_ads' => 'required|file|max:1999',
 
         ]);
@@ -87,37 +86,120 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $advertisement)
     {
-<<<<<<< HEAD
-        //
-=======
-        $advertisements =Advertisement::where('status','Pending')->get();
+        $pending_ads=Advertisement::where('status','Pending')'Pending')->>>> 901ee8c36et();
+>>>->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
+        $pending_ads_count=$pending_ads->count();
+        $active_ad=Advertisement::where('status','Active')->get(); //Get the object that is Active
+        $active_ad_count=$active_ad->count();
+$pending_ads=Advertisement::where('status','Pending')->orderBy('datetime_start', 'desc')->get(); //Get list of pending advertisements request
+        $tus','Actve')-g_ads_count=$pending_auba7d7afa45aee938bsds->count();
+e object>get(); //Get th that is Active
+ive_ad=Advertisement::wh
 
-        foreach($advertisements as $ads){
+        $currentDayTime = Carbon\Carbon::now('Asia/Kuala_Lumpur');
+        $currentDayTime =$currentDayTime->toDateTimeString();   
 
-            if(strtotime(date("Y-m-d")) > strtotime($result)){
-                exit;
-                echo "Success";
-            }
-            elseif(strtotime(date("Y-m-d")) < strtotime($result)){
-                return true;
-                echo "Failure";
-            }
+  D    while($pending_ads_count!==0)
+
+    {
+        if($activeaad_c
+                }
             
 
 
 
+
+
+}
+            }
         }
->>>>>>> 8ef3b8da380369b7f10eb6dfee64b6544a3268cc
+
+
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \busplannersystem\Advertisement  $advertisement
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Advertisement $advertisement)
-    {
-        //
+
+
+                }
+         $advertisements =Advertisement::where('status','Pending')->get();
+>>>>>>> 901ee
+
+
+
+
+
+
+
+
+            }
+  
+
+        
+            foreach($pending_ads as $pending_ad){
+
+  
+
+
+
+
+
+
+
+
+
+
+    $pending_ads as $pending_ad){
+
+                if(($pending_ad->datetime_start)>=$currentDayTime){
+                    
+                    $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                        $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                    $pending_ad->status='Active';
+                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
+
+
+         e(8   }
+        }
+        else{
+            
+            foreach($pending_ads as $pending_ad){
+
+                if(($pending_ad->datetime_start)>=$currentDayTime){
+
+                    $banner_image_ads_link = $pending_ad->banner_image_ads_link;
+                    $pending_ad->status='Active';
+                    return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
+
+                }
+            }
+        }
+
+
+
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+        // foreach($advertisements as $ads){
+
+        //     if(strtotime(date("Y-m-d")) == strtotime($ads->date_start)){
+        //         exit;
+        //         echo "Success";
+        //     }
+        //     else if(strtotime(date("Y-m-d")) < strtotime($result)){
+        //         return true;
+        //         echo "Failure";
+        //     }
+            
+
+
+
