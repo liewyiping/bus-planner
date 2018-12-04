@@ -87,7 +87,23 @@ class AdvertisementController extends Controller
      */
     public function update(Request $request, Advertisement $advertisement)
     {
-        //
+        $advertisements =Advertisement::where('status','Pending')->get();
+
+        foreach($advertisements as $ads){
+
+            if(strtotime(date("Y-m-d")) > strtotime($result)){
+                exit;
+                echo "Success";
+            }
+            elseif(strtotime(date("Y-m-d")) < strtotime($result)){
+                return true;
+                echo "Failure";
+            }
+            
+
+
+
+        }
     }
 
     /**

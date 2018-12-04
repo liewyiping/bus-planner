@@ -13,6 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+
+        'App\Console\Commands\AdvertisementSlot'
         //
     ];
 
@@ -26,6 +28,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        //Create a hourly task to check the advertisement slot.
+        $schedule->command('advertisement:company')->hourly();
     }
 
     /**
