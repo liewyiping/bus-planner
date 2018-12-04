@@ -174,7 +174,6 @@
         <div class="navbar navbar-expand-md navbar-light navbar-laravel" id="bs-example-navbar-collapse-1 top-right links">
             <ul class="nav navbar-nav">
                 <li class="links"><a href="{{ url('/') }}">Bus Planner System</a></li>
-                <li class="links"><a href="{{ url('/home') }}">Dashboard</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             
