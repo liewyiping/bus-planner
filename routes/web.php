@@ -30,21 +30,20 @@ Route::any ('/home', function () {
 	$p = Input::get ( 'search_origin' );
 	$q = Input::get ( 'search_destination' );
 	$r = Input::get ( 'search_date' );
-	
+
 	$seat = Seat::whereHas('trip', function($trip) use ($r)
     {
 		$trip->where('date_depart','LIKE','%'.$r.'%');
 		
-	})->get();
-
-	/*$trip = Trip::whereHas('route', function($route) use ($p, $q)
+	})->whereHas('route', function($route) use ($p, $q)
     {
 		$route->where('origin_terminal','LIKE','%'.$p.'%')->where('destination_terminal','LIKE','%'.$q.'%');
 		
-	})->get(); */
+	})->get();	
+
 	
 	if (count ( $seat ) > 0 )
-        return view ( 'home' )->withDetails ( $seat )->withQuery ( $r );
+        return view ( 'home' )->withDetails ( $seat )->withQuery ( $p );
     else
         return view ( 'home' )->withMessage ( 'No Details found. Try to search again !' );
 } );

@@ -238,20 +238,20 @@
                       <h5><strong>Please select route</strong></h5>
 
                         <div class="column" style="background-color:#228B22;">
-                            <label for="from">Route (from - to)</label>
-                            <select id="" class="form-control" name="search_origin" >
+                            <label for="from">From</label>
+                            <select id="" class="form-control" name="search_origin" required>
                                 <option value="">Select</option>
-                                @foreach(busplannersystem\Route::all() as $route_list)
+                                @foreach(busplannersystem\Route::all()->unique('origin_terminal') as $route_list)
                                 <option  class="option "value="{{$route_list->origin_terminal}}">{{$route_list->origin_terminal}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="column" style="background-color:#228B22;">
-                            <label for="from">Route (from - to)</label>
-                            <select id="" class="form-control" name="search_destination" >
+                            <label for="from">To</label>
+                            <select id="" class="form-control" name="search_destination" required>
                                 <option value="">Select</option>
-                                @foreach(busplannersystem\Route::all() as $route_list)
+                                @foreach(busplannersystem\Route::all()->unique('destination_terminal') as $route_list)
                                 <option  class="option "value="{{$route_list->destination_terminal}}">{{$route_list->destination_terminal}}</option>
                                 @endforeach
                             </select>
@@ -259,12 +259,12 @@
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="departure">Departure Date</label>
-                            <input type="date" class="form-control" name="search_date" placeholder="Search date" > <span class="input-group-btn">
+                            <input type="date" class="form-control" name="search_date" placeholder="Search date" required> <span class="input-group-btn">
                         </div>
 
                         <div class="column" style="background-color:#228B22;">
                             <label for="">&nbsp;</label>
-                            <button type="submit" class="btn btn-default">
+                            <button type="submit" class="btn btn-primary">
                             <span class="button glyphicon glyphicon-search"> Search </span>
                             </button>
                             
@@ -277,7 +277,7 @@
 
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <h1>Coming Soon</h1>
+                <h1>Advertisement</h1>
 
             </div>
         </div>

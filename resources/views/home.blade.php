@@ -20,7 +20,6 @@
         <h4 align="left"><strong>{{$seat->trip->route->origin_terminal}} → {{$seat->trip->route->destination_terminal}}</strong></h4>
         <h5 align="right">{{$seat->trip->date_depart}}</h5>
     @endforeach
-
     <table class="table table-striped">
         <thead>
             <tr>
@@ -64,7 +63,7 @@
     @endif
 
 </div>
-
+        <br>
          <div class="row">
                     <div class="column">
                       <img src="img_snow.jpg" alt="Snow" style="width:100%">
