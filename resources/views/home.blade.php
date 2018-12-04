@@ -56,7 +56,8 @@
         </thead>
 
         <tbody>
-            <td>No details found. Try to search again !</td>
+            <td><a href="/">No details found.. Try to search again!</a></td>
+            
         </tbody>
     </table>
     
