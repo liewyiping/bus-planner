@@ -3,11 +3,11 @@
 namespace busplannersystem\Http\Controllers;
 
 use Illuminate\Http\Request;
-use busplannersystem\Route;
-use busplannersystem\Seat;
 use busplannersystem\Trip;
+use busplannersystem\Seat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use busplannersystem\Route;
 
 
 class CreateSeatController extends Controller
@@ -19,23 +19,27 @@ class CreateSeatController extends Controller
      */
     public function index($seatid)
     {
-
-        $seatid=Seat::where('seatid', $seatid)->first();
-
-        // $trip_id=$seat_id -> trip_id;
-        // $trip=Trip::where
-        // return view('seat.seatlist',['seatid' => $seatid]);
-
-        $trip_id=$seatid -> trip_id;
-        $trip=Trip::where('trip_id', $trip_id)->first();
-
-        $route_id=$trip -> route_id;
-        $route=Route::where('route_id', $route_id) -> first();
-
-        return view('seat.seatlist',['seatid' => $seatid], ['trip' => $trip], ['route'=> $route]);
+        $role = auth()->user()->role;
+        switch ($role) {
+            case 'operator':
+                    return view('operator-dashboard');
+                break;
+            case 'customer':
+                $seatid=Seat::where('seatid', $seatid)->first();
         
-        //  1)fetch totalseat from model Bus to generate seats at view
-       
+                $trip_id=$seatid -> trip_id;
+                $trip=Trip::where('trip_id', $trip_id)->first();
+
+                $route_id=$trip -> route_id;
+                $route=Route::where('route_id', $route_id) -> first();
+
+                 return view('seat.seatlist',['seatid' => $seatid], ['trip' => $trip], ['route'=> $route]);
+                 break;
+            case 'admin':
+                return view('admin');
+            break;  
+
+        }
     }
 
     /**
@@ -78,13 +82,21 @@ class CreateSeatController extends Controller
      */
     public function edit(Request $request)
     {
+        // $trip_id=Trip::where($request -> input('trip_id'));
+        // $priceEach= $trip_id -> ticket_price;
+
         $seat = Seat::find($request -> seatid);
         $seatSelect=$request-> seat;
+
+        // $priceTot=$priceEach * count($seatSelect);
+
         $seatTaken = explode(",", $request->input('seatTaken'));
         $seatTaken=array_merge($seatSelect, $seatTaken);
         $seat -> seatTaken =implode(",", $seatTaken);
         $seat ->save();
-        return view('payment');
+        $totalprice=$request -> totalprice;
+        
+        return view('payment')->with('totalprice', $totalprice);
         
     }
 

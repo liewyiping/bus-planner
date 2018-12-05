@@ -103,6 +103,7 @@ span.price {
 
 </style>
 <body>
+	
 
 	<div class="row">
 	  <div class="col-75">
@@ -133,6 +134,7 @@ span.price {
           </div>
 			
 			<div class="col-50">
+			<h1>Total Price: RM{{$totalprice}}</h1>
 			<h3>Payment</h3>
 			<label for="fname">Accepted Cards</label>
             <div class="icon-container">

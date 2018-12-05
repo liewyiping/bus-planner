@@ -43,5 +43,19 @@ class Seat extends Model
     {
         return $this->belongsTo('busplannersystem\Trip', 'trip_id');
     }
+
+    public function route()
+    {
+        return $this->hasManyThrough(
+            'busplannersystem\Route', 
+            'busplannersystem\Trip',
+            'trip_id',
+            'route_id',
+            'trip_id',
+            'route_id'
+        );
+    }
+
+    
     
 }
