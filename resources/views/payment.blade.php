@@ -134,7 +134,11 @@ span.price {
           </div>
 			
 			<div class="col-50">
+
 			<h1>Total Price: RM{{$totalprice}}</h1>
+
+
+
 			<h3>Payment</h3>
 			<label for="fname">Accepted Cards</label>
             <div class="icon-container">
@@ -143,18 +147,36 @@ span.price {
               <i class="fa fa-cc-mastercard" style="color:red;"></i>
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
-				<form action="/api/payment" method="post" id="payment-form">
+
+
+<!-- form -->
+          <form action="{{ action('CreateSeatController@store') }}" method="post" id="payment-form">  
+				<!-- <form action="/api/payment" method="post" id="payment-form"> -->
 				  <div class="form-row">
 				    <label for="card-element">
 				      Credit or debit card
 				    </label>
-				    <div id="card-element">
+<!-- card-->	     <!-- <div id="card-element"> -->
 				      <!-- A Stripe Element will be inserted here. -->
-				    </div>
+				    <!-- </div> -->
 
 				    <!-- Used to display form errors. -->
-				    <div id="card-errors" role="alert"></div>
+                    <!-- <div id="card-errors" role="alert"></div> -->
 				  </div><br>
+
+
+
+<!-- input hidden -->
+				  <input type="hidden" name="totalprice" value="{{ $totalprice }}">
+				  <input type="hidden" name="trip_id" value="{{ $trip_id }}
+				  ">
+				  
+				  
+				  
+				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+
 
 				  <button class="btn btn-primary">Submit Payment</button>
 				</form>

@@ -32,5 +32,6 @@ Route::post('/payment', function () {
 	    'source' => $token,
 	]);
 
-	print_r("PAYMENT SUCCESSFUL!");
+	// print_r("PAYMENT SUCCESSFUL!");
+	return 'ho';
 });

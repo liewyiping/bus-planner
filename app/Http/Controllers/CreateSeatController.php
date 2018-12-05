@@ -8,15 +8,11 @@ use busplannersystem\Seat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use busplannersystem\Route;
-
-
+use busplannersystem\Ticket;
+//DISPLAY SEAT LIST
 class CreateSeatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index($seatid)
     {
         $role = auth()->user()->role;
@@ -42,82 +38,82 @@ class CreateSeatController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    
+    
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //ADD SEAT NO IN SEAT TAKEN COLUMN AFTER SELECT SEAT
     public function edit(Request $request)
     {
-        // $trip_id=Trip::where($request -> input('trip_id'));
-        // $priceEach= $trip_id -> ticket_price;
-
+        
         $seat = Seat::find($request -> seatid);
         $seatSelect=$request-> seat;
-
-        // $priceTot=$priceEach * count($seatSelect);
-
         $seatTaken = explode(",", $request->input('seatTaken'));
         $seatTaken=array_merge($seatSelect, $seatTaken);
         $seat -> seatTaken =implode(",", $seatTaken);
         $seat ->save();
         $totalprice=$request -> totalprice;
+        $trip_id=$request -> trip_id;
         
-        return view('payment')->with('totalprice', $totalprice);
-        
+        // return view('payment')->with('totalprice', $totalprice);
+        return view('payment',['totalprice' => $totalprice],['trip_id' => $trip_id] );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+ //TICKET
+    public function store(Request $request)
+    {
+        $seats= new Seat();
+   // $seats -> seatidolll = $request->input('busID');
+        $seats -> trip_id = $request->input('trip_id');
+        $seats -> seatNo = implode(",", $request -> allseatNo); //store array
+        $seats -> seatTaken = 0;
+        $seats -> seatAvail= implode(",", $request -> allseatNo);
+        $seats -> bus_layout =$request->input('bus_layout');
+        $seats -> save(); 
+
+
+        $tickets= new Ticket();
+        $tickets -> trip_id = "1";
+        $tickets -> company_name = "-"; //store array
+        $tickets -> from = "-";
+        $tickets -> to= "-";
+        // $tickets -> date_depart =$request->input('date_depart');
+        // $tickets -> time_depart =$request->input('time_depart');
+        $tickets -> date_depart ="date";
+        $tickets -> time_depart ="time";
+        $tickets ->  ticket_price=$request->input('totalprice');
+        // $tickets ->  route_id=$request->input('');
+        $tickets ->  route_id="-";
+        $tickets -> save(); 
+
+        $trip_id=$request -> trip_id;
+        $totalprice=$request -> totalprice;
+        return view('ticket', ['trip_id' => $trip_id],['totalprice' => $totalprice]);
+    }
+
+public function create()
+    {
+        //
+    }
+
+
+   
+    
+
+    
+    public function show()
+    {
+        return 'success';
+    }
+
     public function update(Request $request, $id)
     {
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         //
