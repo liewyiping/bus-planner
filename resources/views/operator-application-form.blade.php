@@ -7,7 +7,6 @@
             <div class="card">
                 <div class="card-header">
                     <a href="{{ url('/home') }}">
-                        <input type="button" class="btn btn-primary" value="Back"/>
                     </a>
                     
                     <h5 align="center"><strong>Operator Application Form</strong></h5>
