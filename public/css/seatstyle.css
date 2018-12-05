@@ -60,6 +60,14 @@
   margin-top: 150px;
 }
 
+#reference{
+  border: 1px solid blue;
+  background: white;
+  
+  margin-top: 150px;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
 .booked input{
   position: relative;
   width: 30px;
