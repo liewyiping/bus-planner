@@ -64,14 +64,7 @@ class CreateSeatController extends Controller
  //TICKET
     public function store(Request $request)
     {
-        $seats= new Seat();
-   // $seats -> seatidolll = $request->input('busID');
-        $seats -> trip_id = $request->input('trip_id');
-        $seats -> seatNo = implode(",", $request -> allseatNo); //store array
-        $seats -> seatTaken = 0;
-        $seats -> seatAvail= implode(",", $request -> allseatNo);
-        $seats -> bus_layout =$request->input('bus_layout');
-        $seats -> save(); 
+       
 
 
         $tickets= new Ticket();
@@ -90,7 +83,8 @@ class CreateSeatController extends Controller
 
         $trip_id=$request -> trip_id;
         $totalprice=$request -> totalprice;
-        return view('ticket', ['trip_id' => $trip_id],['totalprice' => $totalprice]);
+        $trips= Trip::find($trip_id);
+        return view('ticket', ['trips' => $trips],['totalprice' => $totalprice]);
     }
 
 public function create()
