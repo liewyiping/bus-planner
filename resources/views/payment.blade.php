@@ -156,12 +156,12 @@ span.price {
 				    <label for="card-element">
 				      Credit or debit card
 				    </label>
-<!-- card-->	     <!-- <div id="card-element"> -->
+<!-- card-->	     <div id="card-element">
 				      <!-- A Stripe Element will be inserted here. -->
-				    <!-- </div> -->
+				    </div>
 
 				    <!-- Used to display form errors. -->
-                    <!-- <div id="card-errors" role="alert"></div> -->
+                    <div id="card-errors" role="alert"></div>
 				  </div><br>
 
 
