@@ -100,8 +100,8 @@ class AdvertisementController extends Controller
         $currentDayTime =$currentDayTime->toDateTimeString();  
        
 
-    if($pending_ads_count!=0)
-    {
+    if($pending_ads_count!=0){
+    
         if($active_ad_count!=0){ //if active ad is present, check currentdate >= datetime_end
             foreach($active_ad as $ad){
                 if($currentDayTime>=($ad->datetime_end)){
@@ -151,6 +151,7 @@ class AdvertisementController extends Controller
     }
 
     else{
+    
     $banner_image_ads_link='empty.png';
     return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
 
