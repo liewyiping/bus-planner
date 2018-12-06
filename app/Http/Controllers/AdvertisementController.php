@@ -112,7 +112,8 @@ class AdvertisementController extends Controller
                     
                 foreach($pending_ads as $pending_ad){
                         //active ad is removed and currently checking whether theres a next ad that matches current day time.
-                        if(($pending_ad->datetime_start)<=$currentDayTime){
+                        
+                        if($currentDayTime>=($pending_ad->datetime_start)){
                             $banner_image_ads_link = $pending_ad->banner_image_ads_link;
                             $pending_ad->status='Active';
                             $pending_ad->save();
@@ -124,7 +125,6 @@ class AdvertisementController extends Controller
 
                 else{
                     //if active ad is removed and theres no pending ad that matches the current day time
-                    
                     $banner_image_ads_link=$ad->banner_image_ads_link;                  
                     return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link);
                 }
@@ -136,7 +136,7 @@ class AdvertisementController extends Controller
         
             foreach($pending_ads as $pending_ad){
                 
-                if(($pending_ad->datetime_start)<=$currentDayTime){
+                if($currentDayTime>=($pending_ad->datetime_start)){
                     
                     $banner_image_ads_link = $pending_ad->banner_image_ads_link;
                     $pending_ad->status='Active';
