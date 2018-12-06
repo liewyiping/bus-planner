@@ -132,12 +132,9 @@ class AdvertisementController extends Controller
         }
         else{
             //if number of active ad is 0 (no active ad currently). Will check pending ad. SAME CODE IN LINE 114.
-
-        
             foreach($pending_ads as $pending_ad){
-                
+
                 if($currentDayTime>=($pending_ad->datetime_start)){
-                    
                     $banner_image_ads_link = $pending_ad->banner_image_ads_link;
                     $pending_ad->status='Active';
                     $pending_ad->save();
@@ -145,17 +142,12 @@ class AdvertisementController extends Controller
                 }
             }
         }
-
-        
         
     }
 
     else{
-    
     $banner_image_ads_link='empty.png';
     return view('admin.testing-ads')->with('banner_image_ads_link',$banner_image_ads_link); 
-
-
     }
     }
     /**
