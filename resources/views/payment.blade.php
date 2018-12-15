@@ -157,7 +157,11 @@ span.price {
 				      Credit or debit card
 				    </label>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- card-->	     <!-- <div id="card-element"> -->
+=======
+<!-- card	     <div id="card-element">  -->
+>>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
 =======
 <!-- card	     <div id="card-element">  -->
 >>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
@@ -166,8 +170,13 @@ span.price {
 
 				    <!-- Used to display form errors. -->
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <!-- <div id="card-errors" role="alert"></div>
 				  </div><br> -->
+=======
+                    <!-- <div id="card-errors" role="alert"></div> -->
+				  <!-- </div><br> -->
+>>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
 =======
                     <!-- <div id="card-errors" role="alert"></div> -->
 				  <!-- </div><br> -->
@@ -178,12 +187,16 @@ span.price {
 <!-- input hidden -->
 				  <input type="hidden" name="totalprice" value="{{ $totalprice }}">
 <<<<<<< HEAD
+<<<<<<< HEAD
 				  <input type="hidden" name="trip_id" value="{{ $trip_id }}
 				  ">
 				 
 				  <input type="hidden" name="route_id" value="{{ $route  }}">
 				  
 				  
+=======
+				  <input type="hidden" name="trip_id" value="{{ $trip_id }}">
+>>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
 =======
 				  <input type="hidden" name="trip_id" value="{{ $trip_id }}">
 >>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
