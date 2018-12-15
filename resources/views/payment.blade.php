@@ -156,28 +156,38 @@ span.price {
 				    <label for="card-element">
 				      Credit or debit card
 				    </label>
-<!-- card-->	     <div id="card-element">
+<<<<<<< HEAD
+<!-- card-->	     <!-- <div id="card-element"> -->
+=======
+<!-- card	     <div id="card-element">  -->
+>>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
 				      <!-- A Stripe Element will be inserted here. -->
-				    </div>
+				    <!-- </div> -->
 
 				    <!-- Used to display form errors. -->
-                    <div id="card-errors" role="alert"></div>
-				  </div><br>
+<<<<<<< HEAD
+                    <!-- <div id="card-errors" role="alert"></div>
+				  </div><br> -->
+=======
+                    <!-- <div id="card-errors" role="alert"></div> -->
+				  <!-- </div><br> -->
+>>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
 
 
 
 <!-- input hidden -->
 				  <input type="hidden" name="totalprice" value="{{ $totalprice }}">
+<<<<<<< HEAD
 				  <input type="hidden" name="trip_id" value="{{ $trip_id }}
 				  ">
+				 
+				  <input type="hidden" name="route_id" value="{{ $route  }}">
 				  
 				  
-				  
+=======
+				  <input type="hidden" name="trip_id" value="{{ $trip_id }}">
+>>>>>>> 8010c4844b3c30c18c3cab1134bdb74952c27003
 				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
-
-
 				  <button class="btn btn-primary">Submit Payment</button>
 				</form>
 			</div>
