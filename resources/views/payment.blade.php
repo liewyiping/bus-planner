@@ -178,7 +178,7 @@ span.price {
 				  <input type="hidden" name="trip_id" value="{{ $trip_id }}
 				  ">
 				 
-				  <input type="hidden" name="route_id" value="{{ $route  }}">
+				  <input type="hidden" name="route_id" value="{{ $route}}">
 				  
 				  
 
