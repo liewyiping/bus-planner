@@ -68,6 +68,7 @@ $priceEach=$trip -> ticket_price;
 <input type="hidden" name="seatid" value="{{ $seatid -> seatid }}">
  <input type="hidden" name="_token" value="{{ csrf_token() }}">
  <input id="totalprice" type="hidden" name="totalprice">
+ <input type="hidden" name="trip_id" value="{{ $trip -> trip_id }}">
  
 
 
@@ -102,9 +103,10 @@ $priceEach=$trip -> ticket_price;
 
 	</div>
 
-	<div class="row">
-		<p>Occupied seat</p>
-		<p>Available seat</p>
+	<div id="reference" class="row">
+		<div style="color: #B8B8B8 "> -> Occupied seat <br></div>
+		<div style="color:  #98FB98"> -> Available seat <br></div>
+		<div style="color: #03a9f4"> -> selected seat <br></div>
 	</div>
 
 

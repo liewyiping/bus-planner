@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 	Route::get('/insert-ads-info','AdvertisementController@index')->name('admin.insertAds');
 	Route::post('/insert-ads-info','AdvertisementController@store')->name('admin.insertAds.submit');
-	Route::get('/ads','AdvertisementController@show')->name('admin.showAds');
+	Route::get('/ads','AdvertisementController@update')->name('admin.showAds');
 
 	
 
@@ -128,6 +128,9 @@ Route::post('/createseat/created','BookSeatController@create');
 Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');
 // Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
 Route::post('/seatlist/edit','CreateSeatController@edit')->middleware('auth');
+
+Route::post('/seatlist/test','CreateSeatController@store');
+Route::post('/seatlist/ticket','CreateSeatController@show');
 
 Route::get('/payment', function () {
     return view('payment');
