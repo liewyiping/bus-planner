@@ -132,3 +132,8 @@ Route::post('/seatlist/edit','CreateSeatController@edit')->middleware('auth');
 Route::get('/payment', function () {
     return view('payment');
 });
+
+// google-api chart for bus companies
+Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
+
+?>
