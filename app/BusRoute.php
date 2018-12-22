@@ -22,9 +22,9 @@ class BusRoute extends Model
         return $this->belongsTo('busplannersystem\Bus', 'bus_id');
     }
 
-    public function route()
-    {
-        return $this->belongsTo('busplannersystem\Route', 'route_id');
-    }
+    // public function route()
+    // {
+    //     return $this->belongsTo('busplannersystem\Route', 'route_id');
+    // }
 
 }

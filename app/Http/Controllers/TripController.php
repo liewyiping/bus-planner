@@ -23,6 +23,7 @@ class TripController extends Controller
         $routes = Route::all();
         $buses = Bus::all();
 
+        // return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
         return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
 
     }
