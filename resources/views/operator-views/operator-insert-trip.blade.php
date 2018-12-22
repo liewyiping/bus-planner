@@ -16,6 +16,7 @@
             
 
 
+
             <div class="card-body">
                     <form method="POST" action="{{ route('operator.insertTripInfo.submit') }}">
                         @csrf
@@ -24,10 +25,10 @@
                             <label for="bus_id" class="col-md-4 col-form-label text-md-right">{{ __('Choose bus') }}</label>
 
                                <div class="col-md-6">
-                            <select class="form-control" name='bus_id' id='type'>
+                            <select class="form-control input-lg dynamic" data-dependant="route_id" name='bus_id' id='bus_id'>
                                 
                             @foreach($buses as $bus)
-                                 <option value="{{ $bus->bus_id}}">{{$bus->registration_plate}}</option>
+                                 <option value="{{ $bus->bus_id}}">{{$bus->bus_id}}</option>
                             @endforeach
                             </select>
                             </div>
@@ -38,10 +39,8 @@
 
                             <div class="col-md-6">
                             
-                            <select class="form-control" name='route_id' id='type'>                                
-                            @foreach($routes as $route)
-                                 <option value="{{ $route->route_id}}">{{ $route->origin_terminal}} to {{$route->destination_terminal}}</option>
-                            @endforeach
+                            <select class="form-control input-lg" name='route_id' id='route_id'>                                
+                            <option value="">Select Route</option>
                             </select>
 
                             </div>
@@ -93,12 +92,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        
-                     
-
-                     
-
 
                        
                      <div class="form-group row mb-0">
@@ -178,7 +171,42 @@
 
 </div>
 
+
   
 
 
 @endsection
+
+<script>
+$(document).ready(function(){
+
+ $('.dynamic').change(function(){
+  if($(this).val() != '')
+  {
+   var select = $(this).attr("id");
+   var value = $(this).val();
+   var dependent = $(this).data('dependent');
+   var _token = $('input[name="_token"]').val();
+   $.ajax({
+    url:"{{ route('dynamicdependent.fetch') }}",
+    method:"POST",
+    data:{select:select, value:value, _token:_token, dependent:dependent},
+    success:function(result)
+    {
+     $('#'+dependent).html(result);
+    }
+
+   })
+  }
+ });
+
+ $('#bus_id').change(function(){
+  $('#route_id').val('');
+
+ });
+
+
+ 
+
+});
+</script>

@@ -4,6 +4,13 @@ namespace busplannersystem\Http\Controllers;
 
 use busplannersystem\DynamicDependant;
 use Illuminate\Http\Request;
+use busplannersystem\Trip;
+use busplannersystem\Route;
+use busplannersystem\Bus;
+use busplannersystem\BusRoute;
+use busplannersystem\Seat;
+
+use Illuminate\Support\Facades\DB;
 
 class DynamicDependantController extends Controller
 {
@@ -13,8 +20,29 @@ class DynamicDependantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {   
+        $trips = Trip::all();
+        $buses = DB::table('bus_routes')
+        ->groupBy('bus_id')
+        ->get();    
+        return view('operator-views.insert-dynamic-trip')->with('buses',$buses);
+    }
+
+    function fetch(Request $request)
     {
-        //
+     $select = $request->get('select');
+     $value = $request->get('value');
+     $dependent = $request->get('dependent');
+     $data = DB::table('bus_routes')
+       ->where($select, $value)
+       ->groupBy($dependent)
+       ->get();
+     $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+     foreach($data as $row)
+     {
+      $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+     }
+     echo $output;
     }
 
     /**

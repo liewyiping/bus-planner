@@ -5,6 +5,7 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Trip;
 use busplannersystem\Route;
 use busplannersystem\Bus;
+use busplannersystem\BusRoute;
 use busplannersystem\Seat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,11 +21,19 @@ class TripController extends Controller
     public function index()
     {
         $trips = Trip::all();
-        $routes = Route::all();
-        $buses = Bus::all();
+        // $routes = Route::all();
+       //  $buses = BusRoute::all();
 
         // return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
-        return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
+
+
+        $buses = DB::table('bus_routes')
+        ->groupBy('bus_id')
+        ->get();
+    
+
+
+        return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('buses',$buses);
 
     }
 
@@ -36,6 +45,23 @@ class TripController extends Controller
     public function create()
     {
         //
+    }
+
+    function fetch(Request $request)
+    {
+     $select = $request->get('select');
+     $value = $request->get('value');
+     $dependent = $request->get('dependent');
+     $data = DB::table('bus_routes')
+       ->where($select, $value)
+       ->groupBy($dependent)
+       ->get();
+     $output = '<option value="">Select '.ucfirst($dependent).'</option>';
+     foreach($data as $row)
+     {
+      $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+     }
+     echo $output;
     }
 
     /**
