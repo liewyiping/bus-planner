@@ -19,12 +19,12 @@ class Route extends Model
     protected $table = 'routes';
     
 
-    public function buses(){
+    // public function buses(){
 
 
-        return $this->belongsTo('SPDP\Bus','bus_id');
+    //     return $this->belongsTo('SPDP\Bus','bus_id');
 
-    }
+    // }
 
     public function create(Request $request){
 
