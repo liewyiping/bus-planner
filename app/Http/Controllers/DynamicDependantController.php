@@ -19,13 +19,19 @@ class DynamicDependantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   
-        $trips = Trip::all();
-        $buses = DB::table('bus_routes')
-        ->groupBy('bus_id')
-        ->get();    
-        return view('operator-views.insert-dynamic-trip')->with('buses',$buses);
+    // public function index()
+    // {   
+    //     $trips = Trip::all();
+    //     $buses = DB::table('bus_routes')
+    //     ->groupBy('bus_id')
+    //     ->get();    
+    //     return view('operator-views.insert-dynamic-trip')->with('buses',$buses);
+    // }
+
+    public function index(){
+        $buses = DB::table("buses")->lists("registration_plate","bus_id");
+
+        return view('operator-views.insert-ajax-trip',compact('buses'));
     }
 
     function fetch(Request $request)
@@ -43,6 +49,20 @@ class DynamicDependantController extends Controller
       $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
      }
      echo $output;
+    }
+
+    public function myformAjax($id)
+
+    {
+
+        $cities = DB::table("bus_routes")
+
+                    ->where("bus_route_id",$id)
+
+                    ->lists("name","id");
+
+        return json_encode($cities);
+
     }
 
     /**

@@ -117,7 +117,7 @@ Route::group(['prefix' => 'operator'], function()
 
 	//Operator Insert Dynamic Dependant
 	Route::get('/insert-dynamic-trip', 'DynamicDependantController@index')->name('operator.insertDynamicDependant');
-	Route::post('/insert-dynamic-trip/fetch', 'DynamicDependantController@fetch')->name('dynamicdependent.fetch');
+	Route::get('/insert-dynamic-trip/fetch', 'DynamicDependantController@fetch')->name('dynamicdependent.fetch');
 	Route::post('/insert-dynamic-trip', 'DynamicDependant@store')->name('operator.insertDynamicDependant');
 
 

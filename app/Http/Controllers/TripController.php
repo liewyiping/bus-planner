@@ -1,16 +1,12 @@
 <?php
-
 namespace busplannersystem\Http\Controllers;
-
 use busplannersystem\Trip;
 use busplannersystem\Route;
 use busplannersystem\Bus;
-use busplannersystem\BusRoute;
 use busplannersystem\Seat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
-
 class TripController extends Controller
 {
     /**
@@ -21,22 +17,10 @@ class TripController extends Controller
     public function index()
     {
         $trips = Trip::all();
-        // $routes = Route::all();
-       //  $buses = BusRoute::all();
-
-        // return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
-
-
-        $buses = DB::table('bus_routes')
-        ->groupBy('bus_id')
-        ->get();
-    
-
-
-        return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('buses',$buses);
-
+        $routes = Route::all();
+        $buses = Bus::all();
+        return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -46,24 +30,6 @@ class TripController extends Controller
     {
         //
     }
-
-    function fetch(Request $request)
-    {
-     $select = $request->get('select');
-     $value = $request->get('value');
-     $dependent = $request->get('dependent');
-     $data = DB::table('bus_routes')
-       ->where($select, $value)
-       ->groupBy($dependent)
-       ->get();
-     $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-     foreach($data as $row)
-     {
-      $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
-     }
-     echo $output;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -73,7 +39,6 @@ class TripController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-
             
             'bus_id' => 'required|integer|min:1',
             'route_id'=> 'required|string|min:1',
@@ -85,18 +50,13 @@ class TripController extends Controller
             // 'ticket_price'=> 'required|regex:/^\d*(\.\d{2})?$/',
            
            
-
         ]);
-
        
         $trip = new Trip();
         $trip->create($request);
         return redirect('operator/insert-trip-info');
         
-
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -107,7 +67,6 @@ class TripController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -118,7 +77,6 @@ class TripController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -130,7 +88,6 @@ class TripController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
