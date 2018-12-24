@@ -14,8 +14,13 @@ class ApplicationFormController extends Controller
      */
     public function index()
     {
-        $application_forms = ApplicationForm::all();
-        return view ('admin.view-new-applications')->with('application_forms',$application_forms);
+        $application_forms = ApplicationForm::where("status","NEW")-> get();
+        return view ('admin.view-new-applications')->with('application_forms',$application_forms)->withMessage('User approved successfully');
+    }
+
+    public function approval()
+    {
+        return view('approval');
     }
 
     /**
