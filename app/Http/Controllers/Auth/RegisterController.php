@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
+use busplannersystem\Notifications\NewUser;
 
 class RegisterController extends Controller
 {
@@ -64,7 +65,6 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'role' => 'required|in:customer,operator,admin',
         ]);
     }
 
@@ -80,7 +80,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role'],
         ]);
+
+        $admin = User::where('admin',1)->first();
+        if ($admin) {
+            $admin->notify(new NewUser($user));
+        }
+        return $user;
     }
 }

@@ -139,4 +139,6 @@ Route::get('/payment', function () {
 // google-api chart for bus companies
 Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
 
+
+
 ?>

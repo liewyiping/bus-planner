@@ -10,7 +10,7 @@ class ApplicationForm extends Model
     
 
     protected $fillable = [
-        'name', 'email' , 'file_link' ,'company_name', 'operator_resume','operator_license'
+        'name', 'email' , 'file_link' ,'company_name', 'operator_resume','operator_license', 'admin','approved_at'
  
  
     ];
@@ -74,7 +74,8 @@ class ApplicationForm extends Model
      $application_forms -> operator_resume = $resumeWithExt;
      $application_forms -> operator_resume_link = $resumefileNameToStore;
      $application_forms -> operator_license =  $licenseWithExt;
-     $application_forms -> operator_license_link = $licensefileNameToStore;  
+     $application_forms -> operator_license_link = $licensefileNameToStore;
+     $application_forms -> status = "NEW";  
      $application_forms -> save();
      
     }
