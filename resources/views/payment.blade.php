@@ -134,12 +134,7 @@ span.price {
           </div>
 			
 			<div class="col-50">
-
-			
-			<h1 id="price">Total Price: RM{{$totalprice}}</h1>
-
-
-
+			<h1>Total Price: RM{{$totalprice}}</h1>
 			<h3>Payment</h3>
 			<label for="fname">Accepted Cards</label>
             <div class="icon-container">
@@ -148,55 +143,49 @@ span.price {
               <i class="fa fa-cc-mastercard" style="color:red;"></i>
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
-
-
-<!-- form -->
-          <form action="{{ action('CreateSeatController@store') }}" method="post" id="payment-form">  
-				<!-- <form action="/api/payment" method="post" id="payment-form"> -->
-		   <!-- input hidden -->
-				 <input type="hidden" name="totalprice" value="{{ $totalprice }}">
-				 <input type="hidden" name="trip_id" value="{{ $trip_id }}"> 
-				 <input type="hidden" name="route_id" value="{{ $route}}">
-				 <input type="hidden" name="trip_id" value="{{ $trip_id }}">
-				 <input type="hidden" name="trip_id" value="{{ $trip_id }}">
-				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
+				<form action="/api/payment" method="post" id="payment-form">
 				  <div class="form-row">
 				    <label for="card-element">
 				      Credit or debit card
 				    </label>
-<!-- card-->	     <!-- <div id="card-element">
+
+<!-- card-->	     <!-- <div id="card-element"> -->
+
+<!-- card	     <div id="card-element">  -->
+
+<!-- card	     <div id="card-element">  -->
+
+				      <!-- A Stripe Element will be inserted here. -->
 				    </div>
 
-                 <div id="card-errors" role="alert"></div> -->
-<!-- card--> 
-				  </div><br> 
+				    <!-- Used to display form errors. -->
+
+                    <!-- <div id="card-errors" role="alert"></div>
+				  </div><br> -->
+
+                    <!-- <div id="card-errors" role="alert"></div> -->
+				  <!-- </div><br> -->
+
+                    <!-- <div id="card-errors" role="alert"></div> -->
+				  <!-- </div><br> -->
 
 
 
 
-                
+<!-- input hidden -->
+				  <input type="hidden" name="totalprice" value="{{ $totalprice }}">
 
+				  <input type="hidden" name="trip_id" value="{{ $trip_id }}
+				  ">
+				 
+				  <input type="hidden" name="route_id" value="{{ $route}}">
+				  
+				  
 
+				  <input type="hidden" name="trip_id" value="{{ $trip_id }}">
 
-
-<!--redeem point-->
-
-                  <!-- <div class="form-row">
-                  	<h4>Current Point: {{ $point }}points</h4>
-                  	<p>You're eligible to redeem your reward! Here's rm10 off. Select below button to redeem:  </p>
-                  	<input type="button" name="redeem" value="Redeem" onclick="redeem()">
-
-                  	<?php
-                    // if ($point >50)
-                    {
-                      	
-                    }
-
-                  	?>
-                  </div> -->
- <!--redeem point-->
+				  <input type="hidden" name="trip_id" value="{{ $trip_id }}">
+				  <input type="hidden" name="_token" value="{{ csrf_token() }}">
 				  <button class="btn btn-primary">Submit Payment</button>
 				</form>
 			</div>
@@ -206,13 +195,6 @@ span.price {
 </div>
 
 	<script>
-
-		function redeem(){
-			$totalprice= $totalprice   - 10;
-			document.getElementById('price').innerHTML=$totalprice;
-
-		}
-
 		// Create a Stripe client.
 		var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 

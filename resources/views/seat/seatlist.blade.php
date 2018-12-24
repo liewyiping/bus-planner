@@ -69,7 +69,6 @@ $priceEach=$trip -> ticket_price;
  <input type="hidden" name="_token" value="{{ csrf_token() }}">
  <input id="totalprice" type="hidden" name="totalprice">
  <input type="hidden" name="trip_id" value="{{ $trip -> trip_id }}">
- <input type="hidden" name="route_id" value="{{ $route_id->route_id	 }}">
  
 
 
@@ -83,22 +82,20 @@ $priceEach=$trip -> ticket_price;
 	<div class="row" id="preticket">
 		<h3> BOOKING SUMMARY <br></h3>
 		
-		<div><p> Depart From: {{ $route_id -> origin_terminal }} </p></div><br>
-		<div><p> Destination: {{ $route_id -> destination_terminal }} </p><div>
-
-		<div>Date of Departure: {{ $trip -> date_depart }}</div><br>
-	    <div>Time of Departure : {{ $trip -> time_depart }} </div><br>
+		
+		<div>Date of Departure: {{ $trip -> date_depart }}</div>
+	    <div>Time of Departure : {{ $trip -> time_depart }} </div>
 	    <div> 
 	    	<span>  Number of seat(s) selected:  </span>
 	    	<span id="container"  ></span>
 
-	    </div><br>
+	    </div>
 
 		<div>
         	<span>Total Price: RM </span>
         	<span name="price" id="price"> 0.00   <br> </span>
 			
-		</div><br><br>
+		</div>
         <div> <input type='submit' name="submit" class='btn btn-primary' value="Proceed to payment >>" id="submit" disabled="" />  </div>
        
 
