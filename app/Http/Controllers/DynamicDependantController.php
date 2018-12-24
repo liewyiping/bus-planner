@@ -29,10 +29,23 @@ class DynamicDependantController extends Controller
     // }
 
     public function index(){
-        $buses = DB::table("buses")->lists("registration_plate","bus_id");
+        $buses = DB::table("buses")->pluck("registration_plate","bus_id");
 
         return view('operator-views.insert-ajax-trip',compact('buses'));
     }
+
+    public function myform()
+
+    {
+
+        $buses = DB::table("buses")->pluck("registration_plate","bus_id");
+
+        return view('operator-views.insert-ajax-trip')->with('buses',$buses);
+
+    }
+
+
+
 
     function fetch(Request $request)
     {
@@ -55,13 +68,13 @@ class DynamicDependantController extends Controller
 
     {
 
-        $cities = DB::table("bus_routes")
+        $routes = DB::table("bus_routes")
 
-                    ->where("bus_route_id",$id)
+                    ->where("bus_id",$id)
 
-                    ->lists("name","id");
+                    ->pluck("route_id","bus_route_id");
 
-        return json_encode($cities);
+        return json_encode($routes);
 
     }
 

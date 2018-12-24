@@ -19,7 +19,7 @@
                 </div>
 
                     <div class="card-body">
-                     {{--<form method="POST" action="{{ route('program.page.submit') }}" enctype="multipart/form-data">--}}
+                     {{-- <form method="POST" action="{{ route('applicationForm.approved.submit') }}" enctype="multipart/form-data">--}}
                                 @csrf           
 
                               
@@ -34,8 +34,8 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Company name</th>
-                                <th scope="col">Resume(PDF)</th>
-                                <th scope="col">License(PDF)</th>
+                                <!-- <th scope="col">Resume(PDF)</th>
+                                <th scope="col">License(PDF)</th> -->
                                 </tr>
 
                             </thead>
@@ -43,16 +43,18 @@
 
                                  <!-- <table class="table  table-striped"> -->
 
-                                @if( ! $application_forms->isEmpty() )
+                                @if( ! $application_forms->isEmpty())
                                 @foreach($application_forms as $application_form)
                                 <tr>
-                                <th><label><input  id="{{ $application_form->id }}"  class="id-select" type="checkbox"  name="id[]" class="checkmark" /></label> </th>    
-                                <th scope="row">{{$application_form->id}}</th>
+                                <th><label><input  id="{{ $application_form->id }}"  class="id-select" type="checkbox"  name="id[]" class="checkmark" /></label> </th>
+
+                                <!-- <th scope="row">{{$application_form->id}}</th> -->
+                                <td scope="row"><a href="/application-form/{{$application_form->id}}">{{$application_form->id}}</td>
                                 <td>{{$application_form->name}} </td>
                                 <td>{{$application_form->email}} </td>
                                 <td>{{$application_form->company_name}} </td>
-                                <td><a href="<?php echo asset("storage/operator_resume/$application_form->operator_resume_link")?>">{{basename($application_form->operator_resume)}}</a></td> 
-                                <td><a href="<?php echo asset("storage/operator_license/$application_form->operator_license_link")?>">{{basename($application_form->operator_license)}}</a></td> 
+                                <!-- <td><a href="<?php echo asset("storage/operator_resume/$application_form->operator_resume_link")?>">{{basename($application_form->operator_resume)}}</a></td> 
+                                <td><a href="<?php echo asset("storage/operator_license/$application_form->operator_license_link")?>">{{basename($application_form->operator_license)}}</a></td>  -->
                                 </tr>
 
                                 @endforeach

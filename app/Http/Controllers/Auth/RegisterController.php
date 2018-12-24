@@ -83,4 +83,14 @@ class RegisterController extends Controller
             'role' => $data['role'],
         ]);
     }
+
+    protected function create_operator(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => 'operator',
+        ]);
+    }
 }

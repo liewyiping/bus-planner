@@ -63,7 +63,10 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('/registration', 'Auth\AdminRegistrationController@showRegistrationForm')->name('admin.registration');
 	Route::post('/registration', 'Auth\AdminRegistrationController@register')->name('admin.registration.submit');
 
+	//Admin approve application form
 	Route::get('/view-new-operator-application','ApplicationFormController@index')->name('admin.viewApplicationForm');
+	Route::get('/application-forms/{application_forms}','ApplicationFormController@show')->name('admin.approveApplicationForm');
+	Route::post('/application-forms/{application_forms}','RegisterController@create_operator')->name('admin.createOperator');
 
 	Route::get('/insert-new-terminal','TerminalController@index')->name('admin.insertTerminal');
 	Route::post('/insert-new-terminal','TerminalController@store')->name('admin.insertTerminal.submit');
@@ -116,9 +119,13 @@ Route::group(['prefix' => 'operator'], function()
 	//Route::post('/insert-trip-info/fetch', 'TripController@fetch')->name('dynamicdependent.fetch');
 
 	//Operator Insert Dynamic Dependant
-	Route::get('/insert-dynamic-trip', 'DynamicDependantController@index')->name('operator.insertDynamicDependant');
-	Route::get('/insert-dynamic-trip/fetch', 'DynamicDependantController@fetch')->name('dynamicdependent.fetch');
+	// Route::get('/insert-dynamic-trip', 'DynamicDependantController@index')->name('operator.insertDynamicDependant');
+	// Route::get('/insert-dynamic-trip/fetch', 'DynamicDependantController@fetch')->name('dynamicdependent.fetch');
 	Route::post('/insert-dynamic-trip', 'DynamicDependant@store')->name('operator.insertDynamicDependant');
+
+	//Operator insert ajax dynamic
+	Route::get('/myform', 'DynamicDependantController@myform')->name('operator.insertDynamicDependant');
+	Route::get('myform/ajax/{id}', 'DynamicDependantController@myformAjax')->name('dynamicdependent.ajax');
 
 
 	
