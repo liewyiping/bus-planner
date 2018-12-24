@@ -24,6 +24,7 @@ class CreateBusesTable extends Migration
             //$table->integer('route_id')->unsigned();
             //$table->foreign('route_id')->references('route_id')->on('routes');
             //$table->integer('route_id')->references('route_id')->on('routes');
+        
             $table->rememberToken();
             $table->timestamps();
         });
