@@ -101,6 +101,8 @@ Route::group(['prefix' => 'operator'], function()
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 	Route::get('/view-bus-info', 'BusController@indexView');
 
+	
+
 	//Operator Edit Bus Info
 	//Route::get('/edit-bus-info', 'BusController@edit');
 
@@ -111,6 +113,13 @@ Route::group(['prefix' => 'operator'], function()
 	//Operator insert trip info
 	Route::get('/insert-trip-info', 'TripController@index')->name('operator.insertTripInfo');
 	Route::post('/insert-trip-info', 'TripController@store')->name('operator.insertTripInfo.submit');
+	//Route::post('/insert-trip-info/fetch', 'TripController@fetch')->name('dynamicdependent.fetch');
+
+	//Operator Insert Dynamic Dependant
+	Route::get('/insert-dynamic-trip', 'DynamicDependantController@index')->name('operator.insertDynamicDependant');
+	Route::get('/insert-dynamic-trip/fetch', 'DynamicDependantController@fetch')->name('dynamicdependent.fetch');
+	Route::post('/insert-dynamic-trip', 'DynamicDependant@store')->name('operator.insertDynamicDependant');
+
 
 	
 
