@@ -9,12 +9,15 @@
 
     <title>Bus Planner System</title>
 
+<<<<<<< HEAD
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  <!-- For dynamic dependant Trip -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
+=======
+>>>>>>> 6874e06affb5f039824dc5222884e75ce6d524c5
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">

@@ -22,7 +22,9 @@ class CreateApplicationFormsTable extends Migration
             $table->string('operator_resume_link');
             $table->string('operator_license');
             $table->string('operator_license_link');
-            
+            $table->string('status');
+            $table->boolean('admin')->default(false);
+            $table->timestamps('approved_at')->nullable();
             $table->timestamps();
         });
     }
