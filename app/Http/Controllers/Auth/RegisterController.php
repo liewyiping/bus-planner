@@ -7,8 +7,6 @@ use busplannersystem\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
-use busplannersystem\Notifications\NewUser;
 
 class RegisterController extends Controller
 {
@@ -30,18 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    // protected function redirectPath() {
-    //     if (Auth::user()->role == 'customer') {
-    //         return '/customer';
-    //     }
-    //     else {
-    //         return '/operator';
-    //     }
-    // }
-
     protected $redirectTo = '/home';
-
-   
 
     /**
      * Create a new controller instance.
@@ -72,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \busplannersystem\User
+     * @return \App\User
      */
     protected function create(array $data)
     {
@@ -81,11 +68,5 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        $admin = User::where('admin',1)->first();
-        if ($admin) {
-            $admin->notify(new NewUser($user));
-        }
-        return $user;
     }
 }

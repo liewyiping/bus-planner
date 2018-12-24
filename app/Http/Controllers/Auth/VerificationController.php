@@ -27,7 +27,6 @@ class VerificationController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-    //Auth::routes(['verify' => true]);
 
     /**
      * Create a new controller instance.
