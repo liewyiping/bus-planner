@@ -19,7 +19,7 @@
                 </div>
 
                     <div class="card-body">
-                     {{--<form method="POST" action="{{ route('program.page.submit') }}" enctype="multipart/form-data">--}}
+                     {{-- <form method="POST" action="{{ route('applicationForm.approved.submit') }}" enctype="multipart/form-data">--}}
                                 @csrf           
 
                             @if (session('message'))
@@ -55,11 +55,13 @@
 
                                  <!-- <table class="table  table-striped"> -->
 
-                                @if( ! $application_forms->isEmpty() )
+                                @if( ! $application_forms->isEmpty())
                                 @foreach($application_forms as $application_form)
                                 <tr>
-                                <th><label><input  id="{{ $application_form->id }}"  class="id-select" type="checkbox"  name="id[]" class="checkmark" /></label> </th>    
-                                <th scope="row">{{$application_form->id}}</th>
+                                <th><label><input  id="{{ $application_form->id }}"  class="id-select" type="checkbox"  name="id[]" class="checkmark" /></label> </th>
+
+                                <!-- <th scope="row">{{$application_form->id}}</th> -->
+                                <td scope="row"><a href="/application-form/{{$application_form->id}}">{{$application_form->id}}</td>
                                 <td>{{$application_form->name}} </td>
                                 <td>{{$application_form->email}} </td>
                                 <td>{{$application_form->company_name}} </td>

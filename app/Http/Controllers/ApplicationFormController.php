@@ -64,9 +64,11 @@ class ApplicationFormController extends Controller
      * @param  \busplannersystem\ApplicationForm  $applicationForm
      * @return \Illuminate\Http\Response
      */
-    public function show(ApplicationForm $applicationForm)
+    public function show(Request $request,$id)
     {
-        //
+        $application_forms= ApplicationForm::find($id);
+
+        return  view('admin.approve-new-application')->with('application_forms',$application_forms);
     }
 
     /**

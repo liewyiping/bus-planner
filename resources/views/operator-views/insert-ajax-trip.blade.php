@@ -25,13 +25,13 @@
 
             <div class="form-group">
 
-                <label for="title">Select State:</label>
+                <label for="title">Select Bus:</label>
 
-                <select name="state" class="form-control" style="width:350px">
+                <select name="bus" class="form-control" style="width:350px">
 
-                    <option value="">--- Select State ---</option>
+                    <option value="">--- Select Buses ---</option>
 
-                    @foreach ($states as $key => $value)
+                    @foreach ($buses as $key => $value)
 
                         <option value="{{ $key }}">{{ $value }}</option>
 
@@ -43,9 +43,9 @@
 
             <div class="form-group">
 
-                <label for="title">Select City:</label>
+                <label for="title">Select Route:</label>
 
-                <select name="city" class="form-control" style="width:350px">
+                <select name="route" class="form-control" style="width:350px">
 
                 </select>
 
@@ -62,15 +62,15 @@
 
     $(document).ready(function() {
 
-        $('select[name="state"]').on('change', function() {
+        $('select[name="bus"]').on('change', function() {
 
-            var stateID = $(this).val();
+            var bus_id = $(this).val();
 
-            if(stateID) {
+            if(bus_id) {
 
                 $.ajax({
 
-                    url: '/myform/ajax/'+stateID,
+                    url: '/myform/ajax/'+bus_id,
 
                     type: "GET",
 
@@ -81,11 +81,11 @@
 
                         
 
-                        $('select[name="city"]').empty();
+                        $('select[name="route"]').empty();
 
                         $.each(data, function(key, value) {
 
-                            $('select[name="city"]').append('<option value="'+ key +'">'+ value +'</option>');
+                            $('select[name="route"]').append('<option value="'+ key +'">'+ value +'</option>');
 
                         });
 
@@ -96,7 +96,7 @@
 
             }else{
 
-                $('select[name="city"]').empty();
+                $('select[name="route"]').empty();
 
             }
 
