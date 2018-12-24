@@ -60,8 +60,8 @@
 
                             </tbody>
                         </table>
-                        <tr><input type="submit" class="btn btn-primary" value="APPROVE"></tr>
-                        <tr><input type="submit" class="btn btn-primary" value="REJECT"></tr>
+                        <tr><input type="submit" class="btn btn-success" value="APPROVE"></tr>
+                        <tr><input type="submit" class="btn btn-danger" value="REJECT"></tr>
                     </form>
                 </div>
             </div>
