@@ -135,8 +135,10 @@ span.price {
 			
 			<div class="col-50">
 
+			<h1>
+				<span>Total Price: RM</span><span id="harga">{{$totalprice}}</span>
+			</h1>
 			
-			<h1 id="price">Total Price: RM{{$totalprice}}</h1>
 
 
 
@@ -154,12 +156,13 @@ span.price {
           <form action="{{ action('CreateSeatController@store') }}" method="post" id="payment-form">  
 				<!-- <form action="/api/payment" method="post" id="payment-form"> -->
 		   <!-- input hidden -->
-				 <input type="hidden" name="totalprice" value="{{ $totalprice }}">
+				 <input id="finalprice" type="hidden" name="totalprice" value="{{ $totalprice }}">
 				 <input type="hidden" name="trip_id" value="{{ $trip_id }}"> 
 				 <input type="hidden" name="route_id" value="{{ $route}}">
 				 <input type="hidden" name="trip_id" value="{{ $trip_id }}">
 				 <input type="hidden" name="trip_id" value="{{ $trip_id }}">
 				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+				 <input id="point" type="hidden" name="point" value={{$point}}>
 
 
 				  <div class="form-row">
@@ -183,21 +186,21 @@ span.price {
 
 <!--redeem point-->
 
-                  <!-- <div class="form-row">
-                  	<h4>Current Point: {{ $point }}points</h4>
-                  	<p>You're eligible to redeem your reward! Here's rm10 off. Select below button to redeem:  </p>
-                  	<input type="button" name="redeem" value="Redeem" onclick="redeem()">
-
+                  <div class="form-row">
+                  	<!-- <h4> <span>Current Point:  </span><span id="showpoint">{{ $point }}</span> <span> points </span></h4> -->
+                  	
                   	<?php
-                    // if ($point >50)
-                    {
-                      	
-                    }
+                    if ($point >49)
+                    { ?>         
+                      <p id="msg">You're eligible to redeem your reward! Here's rm10 off. Select below button to redeem:  </p>
+                     <!--  <input type="button" name="redeem" value="Redeem" onclick="return redeem(this)"> -->
+                     <button type="button" onclick="redeem()">redeem</button>
+              <?php }
 
-                  	?>
-                  </div> -->
+                  ?>
+                  </div>
  <!--redeem point-->
-				  <button class="btn btn-primary">Submit Payment</button>
+				  <button type="submit" class="btn btn-primary">Submit Payment</button>
 				</form>
 			</div>
 		</div>
@@ -207,11 +210,23 @@ span.price {
 
 	<script>
 
-		function redeem(){
-			$totalprice= $totalprice   - 10;
-			document.getElementById('price').innerHTML=$totalprice;
 
-		}
+		function redeem (){
+			$totalprice={{ $totalprice }};
+			$newprice =$totalprice -10;
+			document.getElementById('harga').innerHTML=$newprice ;
+			document.getElementById('finalprice').value=$newprice;
+			document.getElementById('msg').innerHTML="You've successfully redeemed rm10 voucher";
+			// document.getElementById('showpoint').innerHTML=$point; *ubah  dkt line bawah sekali dlm functio nikalau nk show point
+			$point={{ $point }}-50;
+			document.getElementById('point').value= $point;
+			
+}
+		
+
+		
+		
+
 
 		// Create a Stripe client.
 		var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');

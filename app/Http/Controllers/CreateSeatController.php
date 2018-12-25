@@ -92,7 +92,7 @@ class CreateSeatController extends Controller
         $company=Company::where('bus_company_id', $bus_company_id)->first();
         $bus_company_name=$company -> bus_company_name;
 
-//create ticket--store above info to table ticket
+//create ticket--store above infos to table ticket
         $tickets= new Ticket();
         $tickets -> trip_id =$trip_id;
         $tickets -> company_name = $bus_company_name;
@@ -112,20 +112,18 @@ class CreateSeatController extends Controller
         // $trips= Trip::find($trip_id);
 
 
-//add point to user acc --every rm10 get 3 points
-        $addpoint=$totalprice / 10 * 3;
+//point addition & deduction to table user 
+        $point=$request -> point; //-50 point if redeem  
+        $addpoint=$totalprice / 10 * 3; //every rm10 get 3 points
+        $point+=$addpoint;
         $user_id = Auth::user()->user_id;
         $user=User::where('user_id', $user_id)->first();
-        $point=$user -> point;
-        $point+= $addpoint;
+        // $point=$user -> point;
+        // $point=$point + $addpoint - $minuspoint;
         $user -> point =$point;
         $user -> save();
         
 
-
-//sementara tiada company 
-        // $bus_company_name = "Company";
-        
         return view('ticket')-> with('trips', $trips) -> with('totalprice', $totalprice) ->with('route_id', $route_id)->with('bus_company_name', $bus_company_name)->with('point', $point);
     }
 
