@@ -61,7 +61,7 @@
                                 <th><label><input  id="{{ $application_form->id }}"  class="id-select" type="checkbox"  name="id[]" class="checkmark" /></label> </th>
 
                                 <!-- <th scope="row">{{$application_form->id}}</th> -->
-                                <td scope="row"><a href="/application-form/{{$application_form->id}}">{{$application_form->id}}</td>
+                                <td scope="row"><a href="/admin/application-forms/{{$application_form->id}}">{{$application_form->id}}</td>
                                 <td>{{$application_form->name}} </td>
                                 <td>{{$application_form->email}} </td>
                                 <td>{{$application_form->company_name}} </td>
