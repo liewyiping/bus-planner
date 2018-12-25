@@ -20,10 +20,6 @@
 
                         <br>
                         
-                        <a href="{{ url('/operator/new-application') }}">
-                        <input type="button" class="btn btn-primary" value="Verify Account"/>
-                        </a>
-                        
                         <a href="{{ url('/operator/insert-bus-info') }}">
                         <input type="button" class="btn btn-primary" value="Insert Bus"/>
                         </a>
