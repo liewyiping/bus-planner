@@ -132,29 +132,32 @@ Route::group(['prefix' => 'operator'], function()
 
 }); // grouped by operator. Easier to read
 
-// For ticket controller
-Route::resource('/ticket', 'TicketController');
+
 // For bus controller
 Route::resource('/bus', 'BusController');
 
 //seat
-Route::get('/createseat/{ID}','BookSeatController@index')->name('operator.createSeatInfo');
-Route::post('/createseat/created','BookSeatController@create');
-
 Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');
 // Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
-Route::post('/seatlist/edit','CreateSeatController@edit')->middleware('auth');
+Route::post('/seatlist/pay','CreateSeatController@edit')->middleware('auth');
 
-Route::post('/seatlist/test','CreateSeatController@store');
+Route::post('/ticket','CreateSeatController@store');
 Route::post('/seatlist/ticket','CreateSeatController@show');
 
-Route::get('/payment', function () {
-    return view('payment');
-});
+
 
 // google-api chart for bus companies
 Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
 
 
 
+
+//DAH TAK PAKAI:
+// Route::get('/payment', function () {
+//     return view('payment');
+// });
+Route::get('/createseat/{ID}','BookSeatController@index')->name('operator.createSeatInfo');
+Route::post('/createseat/created','BookSeatController@create');
+
+// Route::resource('/ticket', 'TicketController'); // For ticket controller
 ?>

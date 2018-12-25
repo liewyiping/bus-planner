@@ -51,33 +51,37 @@ class CreateSeatController extends Controller
     
     
 
-    
-
 //ADD SEAT NO IN SEAT TAKEN COLUMN AFTER SELECT SEAT
     public function edit(Request $request)
     {
         
         $seat = Seat::find($request -> seatid);
+        $seatid=$seat -> seatid;
         $seatSelect=$request-> seat;
         $seatTaken = explode(",", $request->input('seatTaken'));
         $seatTaken=array_merge($seatSelect, $seatTaken);
-        $seat -> seatTaken =implode(",", $seatTaken);
-        $seat ->save();
+        $seatTaken=implode(",", $seatTaken);
+        // $seat -> seatTaken =implode(",", $seatTaken);
+
+        // $seat ->save();
         $totalprice=$request -> totalprice;
         $trip_id=$request -> trip_id;
         $route=$request -> route_id;
 
         $point = Auth::user()->point;
         
-        return view('payment')->with('totalprice', $totalprice)->with('trip_id', $trip_id)->with('route', $route)->with('point', $point);
-
-        // return view('payment',['totalprice' => $totalprice],['trip_id' => $trip_id] );
+        return view('payment')->with('totalprice', $totalprice)->with('trip_id', $trip_id)->with('route', $route)->with('point', $point)->with('seatTaken', $seatTaken)->with('seatid', $seatid);
     }
 
 
 //TICKET
     public function store(Request $request)
     {
+        //add selected seat id to column seatTaken
+        $seat = Seat::find($request -> seatid);
+        $seat -> seatTaken =$request -> seatTaken;
+        $seat ->save();
+
 //find time & date from table trips             
         $trip_id = $request-> trip_id;
         $trips=Trip::where('trip_id', $trip_id)->first();
@@ -107,9 +111,7 @@ class CreateSeatController extends Controller
 
 //for ticket details in view
         $route_id=Route::where('route_id', $route_id)->first();
-        // $trip_id=$request -> trip_id;
         $totalprice=$request -> totalprice;
-        // $trips= Trip::find($trip_id);
 
 
 //point addition & deduction to table user 
@@ -118,8 +120,6 @@ class CreateSeatController extends Controller
         $point+=$addpoint;
         $user_id = Auth::user()->user_id;
         $user=User::where('user_id', $user_id)->first();
-        // $point=$user -> point;
-        // $point=$point + $addpoint - $minuspoint;
         $user -> point =$point;
         $user -> save();
         
@@ -139,7 +139,7 @@ public function create()
     
     public function show()
     {
-        return 'success';
+        return redirect ('/home');
     }
 
     public function update(Request $request, $id)

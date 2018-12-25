@@ -162,7 +162,10 @@ span.price {
 				 <input type="hidden" name="trip_id" value="{{ $trip_id }}">
 				 <input type="hidden" name="trip_id" value="{{ $trip_id }}">
 				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+				 <input type="hidden" name="seatid" value="{{$seatid}}">
+				 <input type="hidden" name="seatTaken" value="{{$seatTaken}}">
 				 <input id="point" type="hidden" name="point" value={{$point}}>
+				 
 
 
 				  <div class="form-row">
