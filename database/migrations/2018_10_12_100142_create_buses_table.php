@@ -21,6 +21,7 @@ class CreateBusesTable extends Migration
             $table->string('registration_plate')->unique();            
             $table->integer('operator_id')->unsigned();
             $table->foreign('operator_id')->references('user_id')->on('users');
+             $table->foreign('bus_company_id')->references('bus_company_id')->on('companies');
             //$table->integer('route_id')->unsigned();
             //$table->foreign('route_id')->references('route_id')->on('routes');
             //$table->integer('route_id')->references('route_id')->on('routes');
