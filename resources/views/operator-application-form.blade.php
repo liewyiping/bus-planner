@@ -45,22 +45,18 @@
                             </div>
                         </div>
 
-                       
-
-                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
-                        <div class="col-md-6">
-                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('company_name') }}" required autofocus>
-
-                                @if ($errors->has('company_name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('company_name') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="form-group row">
+                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
+                            <div class="col-md-6">
+                            <select id="company_name" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" required>
+                                <option value="">Select</option>
+                                @foreach(busplannersystem\Company::all()->unique('bus_company_id') as $bus_company)
+                                <option  class="option "value="{{ $bus_company->bus_company_name }}">{{$bus_company->bus_company_name}}</option>
+                                @endforeach
+                            </select>
                             </div>
                         </div>
 
-                        
                         <div class="form-group row">
                             <label for="operator_resume" class="col-md-4 col-form-label text-md-right">{{ __('Resume') }}</label>
 
