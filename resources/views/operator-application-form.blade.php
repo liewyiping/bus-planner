@@ -51,7 +51,7 @@
                             <select id="company_name" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" required>
                                 <option value="">Select</option>
                                 @foreach(busplannersystem\Company::all()->unique('bus_company_id') as $bus_company)
-                                <option  class="option "value="{{ $bus_company->bus_company_name }}">{{$bus_company->bus_company_name}}</option>
+                                <option  class="option "value="{{ $bus_company->bus_company_id }}">{{$bus_company->bus_company_name}}</option>
                                 @endforeach
                             </select>
                             </div>

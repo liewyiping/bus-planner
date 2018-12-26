@@ -17,8 +17,6 @@
                     <h5 align="center"><strong>Bus Information</strong></h5>
                 </div>
 <br>
-<h5 align="center"><strong><i>Total existing buses = [ {{ $buses->total() }} ]</i></strong></h5>
-<hr>
 
 @if(isset($buses))
 @if (count($buses)>0)
@@ -50,7 +48,7 @@
     <hr>
 
 @endforeach
-{{ $buses->links() }}
+
 @else
 
 <p> No buses found </p>

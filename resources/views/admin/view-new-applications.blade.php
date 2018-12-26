@@ -39,7 +39,7 @@
                                 <th scope="col">Application ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Company name</th>
+                                <th scope="col">Company ID</th>
                                 <th scope="col">Resume(PDF)</th>
                                 <th scope="col">License(PDF)</th>
                                 <th scope="col">Status</th>

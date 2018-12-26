@@ -3,6 +3,7 @@
 namespace busplannersystem\Http\Controllers;
 use busplannersystem\Bus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BusController extends Controller
 {
@@ -21,7 +22,8 @@ class BusController extends Controller
 
     public function indexView()
     {
-        $buses = Bus::paginate(3);
+        $id = Auth::user()->user_id;
+        $buses = Bus::paginate(3)->where('operator_id', $id);
         return view ('operator-views.operator-view-bus')->with('buses',$buses);
     }
 
