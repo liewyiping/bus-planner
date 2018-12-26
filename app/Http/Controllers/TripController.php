@@ -7,6 +7,8 @@ use busplannersystem\Seat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+
 class TripController extends Controller
 {
     /**
@@ -16,9 +18,11 @@ class TripController extends Controller
      */
     public function index()
     {
-        $trips = Trip::all();
+        $id = Auth::user()->user_id;
+        
         $routes = Route::all();
-        $buses = Bus::all();
+        $buses = Bus::all()->where('operator_id', $id);
+        $trips = Trip::all();
         return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
     }
     /**
