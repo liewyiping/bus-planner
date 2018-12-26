@@ -36,14 +36,21 @@ class ApplicationFormController extends Controller
         return view('operator-application-form');
     }
 
-    public function create_operator(Request $request)
-    {
+    public function create_operator(Request $request,$id)
+    {   
         $user= new User();
         $user->name = $request -> input('operator_name');
         $user->email = $request -> input('operator_email');
         $user->role = 'operator';
         $user->password= Hash::make($request -> input('password'));
         $user->save();
+
+        $application_forms=ApplicationForm::find($id);
+        $application_forms->status='Approved';
+        $application_forms->save();
+
+        return redirect('/home');
+
 
     }
 
