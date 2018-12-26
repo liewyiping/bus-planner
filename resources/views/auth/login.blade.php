@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (Session::has('message'))
+       <div class="alert alert-success" role="alert">
+           {{Session::get('message')}}
+       </div>
+  @elseif (Session::has('error'))
+       <div class="alert alert-warning" role="alert">
+           {{Session::get('error')}}
+       </div>
+  @endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

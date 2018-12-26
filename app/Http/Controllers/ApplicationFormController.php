@@ -49,7 +49,19 @@ class ApplicationFormController extends Controller
         $application_forms->status='Approved';
         $application_forms->save();
 
-        return redirect('/home');
+        //return redirect('/home');
+        if(true) {
+           $msg = [
+                'message' => 'Data Added.',
+               ];
+
+           return redirect()->route('admin.viewApplicationForm')->with($msg);
+        } else {
+          $msg = [
+               'error' => 'Some error!',
+          ];
+          return redirect()->route('admin.viewApplicationForm')->with($msg);
+        }
 
 
     }
@@ -76,7 +88,19 @@ class ApplicationFormController extends Controller
 
         $application_forms = new ApplicationForm();
         $application_forms->create($request);
-        return redirect('/');
+        // return redirect('/');
+        if(true) {
+           $msg = [
+                'message' => 'Thank you for joining us!',
+               ];
+
+           return redirect()->route('login')->with($msg);
+        } else {
+          $msg = [
+               'error' => 'Some error!',
+          ];
+          return redirect()->route('login')->with($msg);
+        }
 
     }
 

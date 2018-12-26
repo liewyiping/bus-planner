@@ -10,12 +10,23 @@
             <div class="card-body">
 
                          <form method="POST" action="{{ route('admin.createOperator',['application_forms' => $application_forms->id])}}" >
-                     
-                     
 
                         @csrf
                     
-
+                        @if ($message = Session::get('success'))
+                          <div class="alert alert-success">
+                            <p>
+                              {{ $message }}
+                            </p>
+                          </div>
+                        @endif
+                        @if ($message = Session::get('warning'))
+                          <div class="alert alert-warning">
+                            <p>
+                              {{ $message }}
+                            </p>
+                          </div>
+                        @endif
                         
 
                          <div class="form-group row">
