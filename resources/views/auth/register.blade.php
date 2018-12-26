@@ -82,7 +82,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                                <a href="http://localhost:8000/operator/new-application" class="btn btn-default">Interested to be Operator?</a>
+                                <a href="{{ route('operator.application.show') }}" class="btn btn-default">Interested to be Operator?</a>
                             </div>
                         </div>
                     </form>
