@@ -4,6 +4,9 @@ namespace busplannersystem\Http\Controllers;
 
 use busplannersystem\ApplicationForm;
 use Illuminate\Http\Request;
+use busplannersystem\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class ApplicationFormController extends Controller
 {
@@ -32,6 +35,19 @@ class ApplicationFormController extends Controller
     {
         return view('operator-application-form');
     }
+
+    public function create_operator(Request $request)
+    {
+        $user= new User();
+        $user->name = $request -> input('operator_name');
+        $user->email = $request -> input('operator_email');
+        $user->role = 'operator';
+        $user->password= Hash::make($request -> input('password'));
+        $user->save();
+
+    }
+
+    
 
     /**
      * Store a newly created resource in storage.
