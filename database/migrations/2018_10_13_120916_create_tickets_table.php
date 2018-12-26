@@ -28,9 +28,7 @@ class CreateTicketsTable extends Migration
             $table->string('route_id')->references('route_id')->on('routes');
 
             $table->timestamps();
-        });
-
-        DB::update("ALTER TABLE tickets AUTO_INCREMENT = 6000000001;");        
+        });     
     }
 
     /**
