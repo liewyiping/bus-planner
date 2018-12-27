@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +67,7 @@ Route::group(['prefix' => 'admin'], function(){
 	//Admin approve application form
 	Route::get('/view-new-operator-application','ApplicationFormController@index')->name('admin.viewApplicationForm');
 	Route::get('/application-forms/{application_forms}','ApplicationFormController@show')->name('admin.approveApplicationForm');
+	Route::post('/application-forms/{application_forms}','ApplicationFormController@post_Reject')->name('admin.rejectApplicationForm');
 	Route::post('/application-forms/{application_forms}','ApplicationFormController@create_operator')->name('admin.createOperator');
 
 	Route::get('/insert-new-terminal','TerminalController@index')->name('admin.insertTerminal');

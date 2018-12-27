@@ -45,10 +45,19 @@ class ApplicationFormController extends Controller
         $user->password= Hash::make($request -> input('password'));
         $user->save();
 
-        $application_forms=ApplicationForm::find($id);
-        $application_forms->status='Approved';
-        $application_forms->save();
-
+        switch($request->submitbutton){
+            case'approve':
+            $application_forms=ApplicationForm::find($id);
+            $application_forms->status='Approved';
+            $application_forms->save();
+            break;
+            case'reject':
+            $application_forms=ApplicationForm::find($id);
+            $application_forms->status='Rejected';
+            $application_forms->save();
+            break;
+        }
+        
         //return redirect('/home');
         if(true) {
            $msg = [
@@ -63,9 +72,7 @@ class ApplicationFormController extends Controller
           return redirect()->route('admin.viewApplicationForm')->with($msg);
         }
 
-
     }
-
     
 
     /**
@@ -138,7 +145,7 @@ class ApplicationFormController extends Controller
      */
     public function update(Request $request, ApplicationForm $applicationForm)
     {
-        //
+        
     }
 
     /**
