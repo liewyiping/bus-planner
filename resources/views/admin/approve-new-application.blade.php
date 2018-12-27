@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="company_name" class="col-md-4 col-form-label text-md-right">{{ __('Company name') }}</label>
+                            <label for="company_name" class="col-md-4 col-form-label text-md-right">{{ __('Company ID') }}</label>
 
                             <div class="col-md-6">
                                 <input id="company_name" type="text"  value="{{ @$application_forms['company_name']}}" class="form-control" name="company_name"  required autofocus readonly>
