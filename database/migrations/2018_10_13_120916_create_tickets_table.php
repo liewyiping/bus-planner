@@ -22,7 +22,7 @@ class CreateTicketsTable extends Migration
             $table->string('to');           
             $table->string('date_depart');
             $table->string('time_depart');
-            $table->string('number_of_ticket');
+            $table->int('pax_num');
             $table->string('ticket_price');
             //$table->string('route_id');
             //$table->foreign('route_id')->references('route_id')->on('routes');
