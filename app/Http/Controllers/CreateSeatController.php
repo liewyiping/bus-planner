@@ -67,10 +67,11 @@ class CreateSeatController extends Controller
         $totalprice=$request -> totalprice;
         $trip_id=$request -> trip_id;
         $route=$request -> route_id;
+        $pax_num=$request -> pax_num;
 
         $point = Auth::user()->point;
         
-        return view('payment')->with('totalprice', $totalprice)->with('trip_id', $trip_id)->with('route', $route)->with('point', $point)->with('seatTaken', $seatTaken)->with('seatid', $seatid);
+        return view('payment')->with('totalprice', $totalprice)->with('trip_id', $trip_id)->with('route', $route)->with('point', $point)->with('seatTaken', $seatTaken)->with('seatid', $seatid)->with('pax_num', $pax_num);
     }
 
 
@@ -90,11 +91,12 @@ class CreateSeatController extends Controller
         $trip_id = $trips -> trip_id; 
 
 //find company name
-        $bus_id = $trips -> bus_id;
-        $bus = Bus::where('bus_id', $bus_id)->first();
-        $bus_company_id = $bus -> bus_company_id;
-        $company=Company::where('bus_company_id', $bus_company_id)->first();
-        $bus_company_name=$company -> bus_company_name;
+        // $bus_id = $trips -> bus_id;
+        // $bus = Bus::where('bus_id', $bus_id)->first();
+        // $bus_company_id = $bus -> bus_company_id;
+        // $company=Company::where('bus_company_id', $bus_company_id)->first();
+        // $bus_company_name=$company -> bus_company_name;
+        $bus_company_name="company";
 
 //create ticket--store above infos to table ticket
         $tickets= new Ticket();
@@ -107,6 +109,7 @@ class CreateSeatController extends Controller
         $tickets ->  ticket_price=$request-> totalprice;
         $route_id = $request -> route_id; 
         $tickets -> route_id =$route_id ;
+        $tickets -> pax_num=$request -> pax_num;
         $tickets -> save(); 
 
 //for ticket details in view
@@ -122,9 +125,11 @@ class CreateSeatController extends Controller
         $user=User::where('user_id', $user_id)->first();
         $user -> point =$point;
         $user -> save();
+
+        
         
 
-        return view('ticket')-> with('trips', $trips) -> with('totalprice', $totalprice) ->with('route_id', $route_id)->with('bus_company_name', $bus_company_name)->with('point', $point);
+        return view('ticket')-> with('trips', $trips) -> with('totalprice', $totalprice) ->with('route_id', $route_id)->with('bus_company_name', $bus_company_name)->with('point', $point)->with('tickets', $tickets);
     }
 
 public function create()
