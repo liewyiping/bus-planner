@@ -5,6 +5,7 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\ApplicationForm;
 use Illuminate\Http\Request;
 use busplannersystem\User;
+use busplannersystem\Operator;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -38,18 +39,33 @@ class ApplicationFormController extends Controller
 
     public function create_operator(Request $request,$id)
     {   
-        $user= new User();
-        $user->name = $request -> input('operator_name');
-        $user->email = $request -> input('operator_email');
-        $user->role = 'operator';
-        $user->password= Hash::make($request -> input('password'));
-        $user->save();
+      
 
         switch($request->submitbutton){
             case'approve':
+            //Create a new user
+            $user= new User();
+            $user->name = $request -> input('operator_name');
+            $user->email = $request -> input('operator_email');
+            $user->role = 'operator';
+            $user->password= Hash::make($request -> input('password'));
+            $user->save();
+
+            //Change status of approval to Approved
             $application_forms=ApplicationForm::find($id);
             $application_forms->status='Approved';
             $application_forms->save();
+
+            //Create new operator information
+            $operators= new Operator();
+            $operators->user_id_operators = $user->user_id;
+            $operators->applicationform_id_operators = $application_forms->id;
+            $operators->bus_company_id =  $request -> input('company_id');
+            $operators->save();
+
+
+
+
             break;
             case'reject':
             $application_forms=ApplicationForm::find($id);
@@ -87,7 +103,7 @@ class ApplicationFormController extends Controller
 
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'company_name' => 'required|string|max:255',
+            'company_id' => 'required|string|max:255',
             'operator_resume' => 'required|file|max:1999',
             'operator_license' => 'required|file|max:1999',
 
@@ -96,6 +112,7 @@ class ApplicationFormController extends Controller
         $application_forms = new ApplicationForm();
         $application_forms->create($request);
         // return redirect('/');
+
         if(true) {
            $msg = [
                 'message' => 'Thank you for joining us!',

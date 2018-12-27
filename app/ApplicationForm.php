@@ -70,7 +70,7 @@ class ApplicationForm extends Model
      $application_forms = new ApplicationForm();
      $application_forms -> name = $request -> input('name');
      $application_forms -> email = $request -> input('email');
-     $application_forms -> company_name = $request -> input('company_name');          
+     $application_forms -> company_id = $request -> input('company_id');          
      $application_forms -> operator_resume = $resumeWithExt;
      $application_forms -> operator_resume_link = $resumefileNameToStore;
      $application_forms -> operator_license =  $licenseWithExt;

@@ -15,13 +15,13 @@ class CreateOperatorsTable extends Migration
     {
         Schema::create('operators', function (Blueprint $table) {
             $table->increments('operator_id');
-            $table->string('name',250);
-            $table->string('email')->unique();
-            $table->string('license_number', 10);  
-            //$table->string('company_name',250);      
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('bus_company_id')->references('bus_company_id')->on('companies'); 
-            $table->string('password');
+            $table->integer('user_id_operators')->unsigned();
+            $table->integer('applicationform_id_operators')->unsigned();
+            $table->integer('bus_company_id')->unsigned(); 
+            // $table->string('license_number', 10);     
+            $table->foreign('bus_company_id')->references('bus_company_id')->on('companies');  
+            $table->foreign('user_id_operators')->references('user_id')->on('users'); 
+            $table->foreign('applicationform_id_operators')->references('id')->on('application_forms');
             $table->rememberToken();
             $table->timestamps();
         });

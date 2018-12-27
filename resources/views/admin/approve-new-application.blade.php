@@ -51,10 +51,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="company_name" class="col-md-4 col-form-label text-md-right">{{ __('Company ID') }}</label>
+                            <label for="company_id" class="col-md-4 col-form-label text-md-right">{{ __('Company ID') }}</label>
 
                             <div class="col-md-6">
-                                <input id="company_name" type="text"  value="{{ @$application_forms['company_name']}}" class="form-control" name="company_name"  required autofocus readonly>
+                                <input id="company_id" type="text"  value="{{ @$application_forms['company_id']}}" class="form-control" name="company_id"  required autofocus readonly>
 
                                
                             </div>
@@ -121,10 +121,10 @@
               
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-5">
-                            <button type="submit" class="btn btn-success" value="approve-program" name="submitbutton" >
+                            <button type="submit" class="btn btn-success" value="approve" name="submitbutton" >
                                 {{ __('Register Operator') }}
                             </button>
-                            <button type="submit" class="btn btn-danger" value="reject-program" name="submitbutton" >
+                            <button type="submit" class="btn btn-danger" value="reject" name="submitbutton" >
                                 {{ __('Reject operator') }}
                             </button>
                             </div>

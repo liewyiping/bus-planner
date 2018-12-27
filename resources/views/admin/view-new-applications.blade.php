@@ -60,7 +60,7 @@
                                 <td scope="row"><a href="/admin/application-forms/{{$application_form->id}}">{{$application_form->id}}</td>
                                 <td>{{$application_form->name}} </td>
                                 <td>{{$application_form->email}} </td>
-                                <td>{{$application_form->company_name}} </td>
+                                <td>{{$application_form->company_id}} </td>
                                 <td><a href="<?php echo asset("storage/operator_resume/$application_form->operator_resume_link")?>">{{basename($application_form->operator_resume)}}</a></td> 
                                 <td><a href="<?php echo asset("storage/operator_license/$application_form->operator_license_link")?>">{{basename($application_form->operator_license)}}</a></td> 
                                 <td>{{$application_form->status}} </td>

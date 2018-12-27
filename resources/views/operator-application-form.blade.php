@@ -46,9 +46,9 @@
                         </div>
 
                         <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
+                        <label for="company_id" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
                             <div class="col-md-6">
-                            <select id="company_name" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" required>
+                            <select id="company_id" class="form-control{{ $errors->has('company_id') ? ' is-invalid' : '' }}" name="company_id" required>
                                 <option value="">Select</option>
                                 @foreach(busplannersystem\Company::all()->unique('bus_company_id') as $bus_company)
                                 <option  class="option "value="{{ $bus_company->bus_company_id }}">{{$bus_company->bus_company_name}}</option>

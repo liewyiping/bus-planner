@@ -23,7 +23,7 @@ class Operator extends Authenticatable implements MustVerifyEmail
     protected $primaryKey = 'operator_id';
 
     protected $fillable = [
-        'name', 'email','license_number', 'bus_company_id', 'password',
+        'license_number', 'bus_company_id', 'password',
     ];
 
    
