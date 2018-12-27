@@ -121,7 +121,7 @@
               
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-5">
-                            <button type="submit" class="btn btn-success" value="reject-program" name="submitbutton" >
+                            <button type="submit" class="btn btn-success" value="approve-program" name="submitbutton" >
                                 {{ __('Register Operator') }}
                             </button>
                             <button type="submit" class="btn btn-danger" value="reject-program" name="submitbutton" >
@@ -129,12 +129,6 @@
                             </button>
                             </div>
                         </div>
-
-                        
-                        
-
-                     
-                      
 
                          <hr style="border-color:white;">
                         

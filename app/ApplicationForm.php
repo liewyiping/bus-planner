@@ -10,7 +10,7 @@ class ApplicationForm extends Model
     
 
     protected $fillable = [
-        'name', 'email' , 'file_link' ,'company_name', 'operator_resume','operator_license', 'admin','approved_at'
+        'name', 'email' , 'file_link' ,'company_name', 'operator_resume','operator_license',
  
  
     ];
