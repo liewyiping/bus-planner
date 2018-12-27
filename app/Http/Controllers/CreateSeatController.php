@@ -98,6 +98,9 @@ class CreateSeatController extends Controller
         // $bus_company_name=$company -> bus_company_name;
         $bus_company_name="company";
 
+
+
+
 //create ticket--store above infos to table ticket
         $tickets= new Ticket();
         $tickets -> trip_id =$trip_id;
@@ -107,14 +110,18 @@ class CreateSeatController extends Controller
         $tickets -> date_depart =$date_depart;
         $tickets -> time_depart =$time_depart;
         $tickets ->  ticket_price=$request-> totalprice;
+        $tickets -> pax_num=$request -> pax_num;
         $route_id = $request -> route_id; 
         $tickets -> route_id =$route_id ;
-        $tickets -> pax_num=$request -> pax_num;
-        $tickets -> save(); 
 
-//for ticket details in view
+        //for ticket details in view
         $route_id=Route::where('route_id', $route_id)->first();
         $totalprice=$request -> totalprice;
+        $to=$route_id -> destination_terminal;
+
+        $tickets -> to=$to;
+        $tickets -> save(); 
+
 
 
 //point addition & deduction to table user 
