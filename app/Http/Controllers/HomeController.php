@@ -40,4 +40,9 @@ class HomeController extends Controller
         }
 
     }
+
+    public function operator_report()
+    {
+        return view ('operator-views.operator-view-report');
+    }
 }

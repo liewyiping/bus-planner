@@ -132,6 +132,7 @@ Route::group(['prefix' => 'operator'], function()
 	// Chart // Chart // Chart // Chart // Chart // Chart // Chart //
 	//Operator view line chart for popular date(month)
 	Route::get('/popular_date_line_chart', 'LaravelGoogleGraph@index_popular_date_line_graph');
+	Route::get('/report', 'HomeController@operator_report');
 
 
 
