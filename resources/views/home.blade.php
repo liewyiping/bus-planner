@@ -15,10 +15,11 @@
 
 <div class="container">
     @if(isset($details))
-
     @foreach($details as $seat)
-        <h4 align="left"><strong>{{$seat->trip->route->origin_terminal}} → {{$seat->trip->route->destination_terminal}}</strong></h4>
-        <h5 align="right">{{$seat->trip->date_depart}}</h5>
+        @if ($loop->first)
+            <h4 align="left"><strong>{{$seat->trip->route->origin_terminal}} → {{$seat->trip->route->destination_terminal}}</strong></h4>
+            <h5 align="right">{{$seat->trip->date_depart}}</h5>
+        @endif
     @endforeach
     <table class="table table-striped">
         <thead>
@@ -35,7 +36,7 @@
         <tbody>
             @foreach($details as $seat)
             <tr>
-                <td>{{$seat->trip->bus->operator->name}}</td>
+                <td>{{$seat->trip->bus->operator->user_operator->name}}</td>
                 <td>{{$seat->trip->route->origin_terminal}}</td>
                 <td>{{$seat->trip->route->destination_terminal}}</td>
                 <td>{{$seat->trip->date_depart}}</td>

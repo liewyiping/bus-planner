@@ -24,10 +24,13 @@ class BusController extends Controller
     public function indexView()
     {   
         //Get user id from auth
-        $user_id = auth()->user()->user_id;
+        //$user_id = auth()->user()->user_id;
+        $id = Auth::user()->user_id;
         //Search operators table to find buses belong to operator_id
-        $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
-        $buses = Bus::paginate(3)->where('operator_id', $operator_id);
+        //$operator_id = Operator::where('user_id_operators', $user_id)->value('operator_id');
+        $buses = Bus::all()->where('operator.user_id_operators', $id);
+        //$buses = Bus::paginate(3)->where('operator.user_id_operators', $id);
+        
         
         return view ('operator-views.operator-view-bus')->with('buses',$buses);
     }

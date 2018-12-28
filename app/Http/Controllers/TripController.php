@@ -21,7 +21,7 @@ class TripController extends Controller
         $id = Auth::user()->user_id;
         
         $routes = Route::all();
-        $buses = Bus::all()->where('operator_id', $id);
+        $buses = Bus::all()->where('operator.user_id_operators', $id);
         $trips = Trip::all();
         return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
     }

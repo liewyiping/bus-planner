@@ -6,14 +6,16 @@ use busplannersystem\BusRoute;
 use busplannersystem\Bus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class RouteController extends Controller
 {
     //
     public function index()
     {
+        $id = Auth::user()->user_id;
         $routes = Route::all();
-        $buses= Bus::all();
+        $buses = Bus::all()->where('operator.user_id_operators', $id);
         $bus_routes = BusRoute::all();
         
        // $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
