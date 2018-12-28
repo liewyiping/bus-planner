@@ -17,11 +17,13 @@ class CreateTicketsTable extends Migration
 
             $table->increments('ticket_id');
             $table->integer('trip_id');
+            $table->integer('customer_id');
             $table->string('company_name');
             $table->string('from');
             $table->string('to');           
             $table->string('date_depart');
             $table->string('time_depart');
+            $table->string('pax_num');
             $table->string('ticket_price');
             //$table->string('route_id');
             //$table->foreign('route_id')->references('route_id')->on('routes');

@@ -129,6 +129,12 @@ Route::group(['prefix' => 'operator'], function()
 	Route::get('/myform', 'DynamicDependantController@myform')->name('operator.insertDynamicDependant');
 	Route::get('myform/ajax/{id}', 'DynamicDependantController@myformAjax')->name('dynamicdependent.ajax');
 
+	// Chart // Chart // Chart // Chart // Chart // Chart // Chart //
+	//Operator view line chart for popular date(month)
+	Route::get('/popular_date_line_chart', 'LaravelGoogleGraph@index_popular_date_line_graph');
+	Route::get('/report', 'HomeController@operator_report');
+
+
 
 	
 
@@ -150,10 +156,6 @@ Route::post('/seatlist/ticket','CreateSeatController@show');
 
 // google-api chart for bus companies
 Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
-
-// line chart for popular date(months)
-Route::get('operator/popular_date_line_chart', 'LaravelGoogleGraph@index_popular_date_line_graph');
-
 
 
 

@@ -70,6 +70,7 @@ $priceEach=$trip -> ticket_price;
  <input id="totalprice" type="hidden" name="totalprice">
  <input type="hidden" name="trip_id" value="{{ $trip -> trip_id }}">
  <input type="hidden" name="route_id" value="{{ $route_id->route_id	 }}">
+ <input id="pax_num" type="hidden" name="pax_num" value="0">
  
 
 
@@ -143,11 +144,14 @@ function writeTo(object)
       document.getElementById('price').innerHTML=$totalprice;
       document.getElementById("submit").disabled = false;
       document.getElementById("totalprice").value=$totalprice;
+      document.getElementById('pax_num').value=$numseat;
+      
   }
   else if (object.checked==false)
   {
   	 $totalprice= $totalprice - {{ $priceEach }}
     document.getElementById('price').innerHTML=$totalprice;
+    document.getElementById('pax_num').value=$numseat;
 
   	container.innerHTML=--$numseat;
   	if ($numseat==0) 

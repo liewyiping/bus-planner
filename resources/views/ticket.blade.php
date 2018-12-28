@@ -17,6 +17,7 @@
 
    <div>Date of Departure: {{ $trips -> date_depart }}</div>
    <div>Time of Departure : {{ $trips -> time_depart }} </div>
+   <div>Number of seat(s) booked: {{ $tickets -> pax_num }}</div>
 
    <br><br><br>
    <div>Point: {{ $point }}</div>
