@@ -1,6 +1,6 @@
 <html>
   <head>
-  <title>Line Chart of Popular Date</title>
+  <title>Popular Month</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" align="center">
       var popular_month = <?php echo $popular_month; ?>;
@@ -10,7 +10,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable(popular_month);
         var options = {
-          title: 'Popular month',
+          title: 'Popular Date',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
