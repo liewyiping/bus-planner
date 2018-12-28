@@ -37,9 +37,15 @@ class Operator extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    public function user_operator(){
+    public function buses(){
 
-        return $this->belongsTo('busplannersystem\User', 'user_id_operators');
-    
+        return $this->hasMany('busplannersystem\Bus');
+     
+     }
+
+     public function user(){
+
+        return $this->belongsTo('busplannersystem\User','user_id_operators');
+     
      }
 }

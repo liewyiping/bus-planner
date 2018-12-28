@@ -36,7 +36,7 @@
         <tbody>
             @foreach($details as $seat)
             <tr>
-                <td>{{$seat->trip->bus->operator->user_operator->name}}</td>
+                <td>{{$seat->trip->bus->operator->user->name}}</td>
                 <td>{{$seat->trip->route->origin_terminal}}</td>
                 <td>{{$seat->trip->route->destination_terminal}}</td>
                 <td>{{$seat->trip->date_depart}}</td>

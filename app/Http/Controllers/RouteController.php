@@ -4,6 +4,7 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Route;
 use busplannersystem\BusRoute;
 use busplannersystem\Bus;
+use busplannersystem\Operator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,10 @@ class RouteController extends Controller
         $bus_routes = BusRoute::all();
         
        // $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
-       
+    
        return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('buses',$buses)->with('bus_routes',$bus_routes);
 
+  
 
 
     }
