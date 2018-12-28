@@ -1,6 +1,68 @@
 @extends('layouts.app')
 
+        <!-- Styles -->
+        <style>
+            /* Create four equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 25%;
+                padding: 10px;
+                height: 60px; /* Should be removed. Only for demonstration */
+            }
+            button {
+                width: 100%;
+                height: 100%;
+            }
+
+        </style>
+
 @section('content')
+
+        <div class="row">
+            <div class="container">
+                <div class="page-header">
+                </div>
+
+                <form action="/home" method="POST" role="search">
+                      {{ csrf_field() }}
+                        <div class="column">
+                            <select id="" class="form-control" name="search_origin" required>
+                                <option value="">Bus: Origin</option>
+                                @foreach(busplannersystem\Route::all()->unique('origin_terminal') as $route_list)
+                                <option  class="option "value="{{$route_list->origin_terminal}}">{{$route_list->origin_terminal}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="column">
+                            <select id="" class="form-control" name="search_destination" required>
+                                <option value="">Bus: Destination</option>
+                                @foreach(busplannersystem\Route::all()->unique('destination_terminal') as $route_list)
+                                <option  class="option "value="{{$route_list->destination_terminal}}">{{$route_list->destination_terminal}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
+                        <!-- Malaysia Time Zone UTC +8-->
+                        <?php
+                            date_default_timezone_set("Asia/Kuala_Lumpur");
+                        ?>
+
+                        <div class="column">
+                            <input value="{{ date('Y-m-d') }}" type="date" class="form-control" name="search_date" placeholder="Search date" required><span class="input-group-btn">
+                        </div>
+
+                        <div class="column">
+                            <button type="submit" class="btn btn-success">
+                            <span class="button glyphicon glyphicon-search"> Search </span>
+                            </button>
+                            
+                        </div>
+                </form>
+
+            </div>
+        </div>
+
 <div class="container">
     <div class="card text-center">
       <div class="card-header">
@@ -17,8 +79,10 @@
     @if(isset($details))
     @foreach($details as $seat)
         @if ($loop->first)
-            <h4 align="left"><strong>{{$seat->trip->route->origin_terminal}} → {{$seat->trip->route->destination_terminal}}</strong></h4>
-            <h5 align="right">{{$seat->trip->date_depart}}</h5>
+        <div style="clear: both">
+            <h4 style="float: left"><strong>{{$seat->trip->route->origin_terminal}} → {{$seat->trip->route->destination_terminal}}</strong></h4>
+            <h5 style="float: right">{{$seat->trip->date_depart}}</h5>
+        </div>
         @endif
     @endforeach
     <table class="table table-striped">
@@ -57,7 +121,7 @@
         </thead>
 
         <tbody>
-            <td><a href="/">No details found.. Try to search again!</a></td>
+            <td align="center"><a>No details found.. Try to search again!</a></td>
             
         </tbody>
     </table>

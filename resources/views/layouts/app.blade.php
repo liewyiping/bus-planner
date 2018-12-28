@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,8 +67,27 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <ul class="nav navbar-nav">
+                @guest
+                @else
+                @if (Auth::user()->role == 'customer')
                     <li class="links"><a href="/"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
-                    <li class="links" style="padding: 12px;"><a href="{{ url('/home') }}">Dashboard</a></li>
+                    <li class="links" style="padding: 12px;"><a href="
+                    {{ url('/home') }}">Dashboard</a></li>
+                    <li class="" style="padding: 13px;"><a></a></li>
+                    <li class="" style="padding: 13px;"><a><i>Ease your journey</i></a></li>
+                    <li class="" style="padding: 13px;"><a>|</a></li>
+                    <li class="" style="padding: 13px;"><a><i>Simple</i></a></li>
+                    <li class="" style="padding: 13px;"><a>|</a></li>
+                    <li class="" style="padding: 13px;"><a><i>Effective</i></a></li>
+                    <li class="" style="padding: 13px;"><a>|</a></li>
+                    <li class="" style="padding: 13px;"><a><i>Excellent services</i></a></li>
+
+                @else
+                    <li class="links"><a href="/home"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
+                    <li class="" style="padding: 13px;"><a></a></li>
+                    <li class="" style="padding: 13px;"><a><i>Welcome to Bus Planner System</i></a></li>
+                @endif
+                @endguest
                 </ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
