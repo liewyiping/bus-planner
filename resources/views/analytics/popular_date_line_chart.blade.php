@@ -1,7 +1,8 @@
 <html>
   <head>
+  <title>Line Chart of Popular Date</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" align="center">
       var popular_month = <?php echo $popular_month; ?>;
       console.log(popular_month);
       google.charts.load('current', {'packages':['corechart']});
@@ -19,6 +20,10 @@
     </script>
   </head>
   <body>
-    <div id="linechart" style="width: 1300px; height: 500px"></div>
+  <br><br>
+    <div align="center">
+      <h3 class="panel-title">Number of tickets sold per month</h3>
+      <div id="linechart" style="width: 1300px; height: 500px" align="center"></div>
+    </div>
   </body>
 </html>
