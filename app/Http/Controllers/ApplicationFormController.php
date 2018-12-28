@@ -63,9 +63,7 @@ class ApplicationFormController extends Controller
             $operators->bus_company_id =  $request -> input('company_id');
             $operators->save();
 
-
-
-
+            //Reject operator and change status
             break;
             case'reject':
             $application_forms=ApplicationForm::find($id);
@@ -163,6 +161,9 @@ class ApplicationFormController extends Controller
     public function update(Request $request, ApplicationForm $applicationForm)
     {
         
+            $application_forms = ApplicationForm::whereIn("status",["Approved","Rejected"])-> get();
+            return view ('admin.list-of-operators')->with('application_forms',$application_forms);
+        // return  view('admin.list-of-operators');
     }
 
     /**
