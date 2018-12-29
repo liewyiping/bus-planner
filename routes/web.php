@@ -108,8 +108,10 @@ Route::group(['prefix' => 'operator'], function()
 
 	
 
-	//Operator Edit Bus Info
-	//Route::get('/edit-bus-info', 'BusController@edit');
+	//Operator edit bus
+	Route::get('/bus/{bus}/edit','BusController@edit')->name('bus.edit');
+	Route::get('/bus/{bus}','BusController@destroy')->name('bus.destroy');
+	Route::patch('/bus/{bus}','BusController@update')->name('bus.update');
 
 	//Operator Insert Route Info
 	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertRouteInfo');
@@ -131,7 +133,11 @@ Route::group(['prefix' => 'operator'], function()
 
 	// Chart // Chart // Chart // Chart // Chart // Chart // Chart //
 	//Operator view line chart for popular date(month)
-	Route::get('/popular_date_line_chart', 'LaravelGoogleGraph@index_popular_date_line_graph');
+	Route::get('/popular_date_line_chart', 'LaravelGoogleGraph@index_popular_date_line_chart');
+	
+	//Operator view donut chart for popular destination
+	Route::get('/popular_destination_donut_chart', 'LaravelGoogleGraph@index_popular_destination_donut_chart');
+
 	Route::get('/report', 'HomeController@operator_report');
 
 
@@ -141,8 +147,11 @@ Route::group(['prefix' => 'operator'], function()
 }); // grouped by operator. Easier to read
 
 
-// For bus controller
-Route::resource('/bus', 'BusController');
+// For bus controller //Syazany: 
+//Route::resource('bus', 'BusController');
+
+
+
 
 //seat
 Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');

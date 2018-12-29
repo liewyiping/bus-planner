@@ -19,8 +19,8 @@ class CreateTicketsTable extends Migration
             $table->integer('trip_id');
             $table->integer('customer_id');
             $table->string('company_name');
-            $table->string('from');
-            $table->string('to');           
+            $table->string('origin_terminal');
+            $table->string('destination_terminal');           
             $table->string('date_depart');
             $table->string('time_depart');
             $table->string('pax_num');

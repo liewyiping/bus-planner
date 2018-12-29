@@ -54,9 +54,11 @@
                             </div>
                      </div>
                         <hr>
+                        
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for bus routes">
 
                         
-         <table class="table table-striped">
+         <table class="table table-striped" id='myTable'>
 
 <thead>
     <tr>
@@ -71,8 +73,8 @@
                     @foreach($bus_routes as $br)
                     <tr>
                     <th scope="row">{{$br->bus_route_id}}</th> 
-                    <td>{{$br->route->origin_terminal}} - {{$br->route->destination_terminal}}</td>   
-                    <td>{{$br->bus->registration_plate}}</td>
+                    <td>{{$br->route->origin_terminal}} - {{$br->route->destination_terminal}}</td> 
+                   <td>{{$br->bus->registration_plate}}</td>
                     </tr>
                     @endforeach
 
@@ -113,7 +115,31 @@
 
 </div>
 
-  
+  <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
 
 
 @endsection
