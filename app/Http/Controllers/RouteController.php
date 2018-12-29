@@ -8,6 +8,7 @@ use busplannersystem\Operator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RouteController extends Controller
 {
