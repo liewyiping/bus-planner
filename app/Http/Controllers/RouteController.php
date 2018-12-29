@@ -23,7 +23,7 @@ class RouteController extends Controller
         //Get list of buses_id from the buses
         $buses_id= $buses->pluck('bus_id');
         //Get the list of registered bus_id by referring to operator_id
-        $bus_routes = DB::table('bus_routes')->whereIn('bus_id', $buses_id)->get();
+        //$bus_routes = DB::table('bus_routes')->whereIn('bus_id', $buses_id)->get();
 
         $bus_routes=BusRoute::whereIn('bus_id',$buses_id)->get();
        
