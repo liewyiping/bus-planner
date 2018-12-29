@@ -91,12 +91,13 @@ class CreateSeatController extends Controller
         $trip_id = $trips -> trip_id; 
 
 //find company name
-        // $bus_id = $trips -> bus_id;
-        // $bus = Bus::where('bus_id', $bus_id)->first();
-        // $bus_company_id = $bus -> bus_company_id;
-        // $company=Company::where('bus_company_id', $bus_company_id)->first();
-        // $bus_company_name=$company -> bus_company_name;
-        $bus_company_name="company";
+        $bus_id = $trips -> bus_id;
+        $bus = Bus::where('bus_id', $bus_id)->first();
+        $operator_id=$bus -> operator_id;
+        $operator=Operator::where('operator_id', $operator_id)->first();
+        $bus_company_id=$operator -> bus_company_id;
+        $company=Company::where('bus_company_id', $bus_company_id)->first();
+        $bus_company_name=$company -> bus_company_name;
 
 
 
