@@ -1,6 +1,11 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+
 <html>
   <head>
-  <title>Popular Month</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" align="center">
       var popular_month = <?php echo $popular_month; ?>;
@@ -20,10 +25,13 @@
     </script>
   </head>
   <body>
-  <br><br>
     <div align="center">
       <h3 class="panel-title">Number of tickets sold per month</h3>
       <div id="linechart" style="width: 1300px; height: 500px" align="center"></div>
     </div>
   </body>
 </html>
+
+</div>
+</div>
+@endsection

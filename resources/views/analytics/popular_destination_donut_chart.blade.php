@@ -1,3 +1,9 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+
 <html>
   <head>
   <title>Popular Destination</title>
@@ -20,10 +26,13 @@
     </script>
   </head>
   <body>
-  <br><br>
     <div align="center">
       <h3 class="panel-title">Popular Destination</h3>
       <div id="donutchart" style="width: 1300px; height: 500px" align="center"></div>
     </div>
   </body>
 </html>
+
+</div>
+</div>
+@endsection
