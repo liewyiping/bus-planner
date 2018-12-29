@@ -29,7 +29,7 @@
 <thead>
 <tr>
 <th scope="col">Bus ID</th>  
-<th scope="col">Bus Registration Plate</th>  
+<th scope="col">Registration Plate</th>  
 <th scope="col">Number of seats</th>
 <th scope="col">Operator ID</th>
 <th scope="col">Added on</th>
