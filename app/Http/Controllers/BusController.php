@@ -96,6 +96,8 @@ class BusController extends Controller
     {
         $bus = Bus::find($id);
         return view('operator-views.operator-edit-bus', compact('bus', 'id'));
+
+        //return view('operator-views.operator-edit-bus')->with('bus',$bus);
     }
 
     /**
