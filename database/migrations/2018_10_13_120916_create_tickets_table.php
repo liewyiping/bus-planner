@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
 
             $table->increments('ticket_id');
             $table->integer('trip_id');
-            $table->integer('customer_id');
+            $table->integer('user_id');
             $table->string('company_name');
             $table->string('origin_terminal');
             $table->string('destination_terminal');           
