@@ -71,8 +71,8 @@
                     @foreach($bus_routes as $br)
                     <tr>
                     <th scope="row">{{$br->bus_route_id}}</th> 
-                    <td>{{$br->route->origin_terminal}} - {{$br->route->destination_terminal}}</td>   
-                    <td>{{$br->bus->registration_plate}}</td>
+                    <td>{{$br->route->origin_terminal}} - {{$br->route->destination_terminal}}</td> 
+                   <td>{{$br->bus->registration_plate}}</td>
                     </tr>
                     @endforeach
 
