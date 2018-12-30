@@ -55,9 +55,10 @@
                      </div>
                         <hr>
                         
+                        <div align="center">
                         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for bus routes">
+                        </div>
 
-                        
          <table class="table table-striped" id='myTable'>
 
 <thead>
