@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<form id="book" method="post" action="{{ action('CreateSeatController@show') }}" >
+	
    <h1>Ticket</h1>
    <h3>{{ $bus_company_name }} </h3>
    <div> price: RM {{ $totalprice }}</div>
@@ -34,11 +34,11 @@
    <br><br><br>
    <div>Point: {{ $point }}</div>
 
-	<div> <input type='submit' name="submit" class='btn btn-primary' value="Complete" id="submit"  />  </div>
+   <a href="{{ url('/schedule') }}" class="btn btn-primary">Complete</a>
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
-</form>
+
 </body>
 </div>
         </div>
