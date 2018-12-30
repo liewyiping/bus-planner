@@ -1,3 +1,15 @@
+<?php
+
+namespace busplannersystem\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use busplannersystem\Ticket;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+?>
+
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -22,6 +34,47 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <style>
+.dropbtn {
+  
+  border: none;
+  height: 30px;
+
+  color: #636b6f;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+/*.dropdown:hover .dropbtn {background-color: #3e8e41;}*/
+
         .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -63,6 +116,7 @@
     </style>
 </head>
 <body>
+    
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -74,6 +128,46 @@
                     <li class="links"><a href="/"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
                     <li class="links" style="padding: 12px;"><a href="{{ url('/home') }}">Dashboard</a></li>
                     <li class="links" style="padding: 12px;"><a href="{{ url('/customer/records') }}">Booking Records</a></li>
+                   
+
+<!--upcoming trip-->
+                    <li>
+                        <div class="dropdown">
+                        <button class="dropbtn">Your Upcoming Trip</button>
+                        <div class="dropdown-content">
+   
+                         <?php
+                         $user_id= Auth::user()->user_id;
+                         $ticket=Ticket::where('user_id',$user_id)->get();
+                          foreach ($ticket as $ticket)
+                          {
+                           if ($ticket -> date_depart >= date("Y-m-d")) 
+                           { ?>
+                              <a href="/showticket/{{$ticket->ticket_id}}">
+
+                            <table style="width:100%">
+                            <li class="dropdown-item" style="min-width: 530px"  > 
+                            <tr style="color: grey">
+                              <th>Ticket ID:</th>
+                              <th>Date of Departure:</th>
+                              <th>Time of Departure:</th>
+                            </tr>
+                            <tr>
+                              <th><u style=" cursor:grabbing"; id="showticket" onclick="showticket()" value="{{ $ticket -> ticket_id }}" > {{ $ticket -> ticket_id }}</u>  </th>
+                              <th> {{ $ticket -> date_depart }}</th>
+                              <th> {{ $ticket -> time_depart }} </th>
+                             </tr>
+                           </li>
+                           </table>
+                              </a>
+                     <?php  }
+
+                          } ?>
+
+   
+                        </div>
+                        </div>
+                    </li>
 
                 @else
                     <li class="links"><a href="/home"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
