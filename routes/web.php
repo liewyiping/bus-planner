@@ -163,11 +163,9 @@ Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');
 Route::post('/seatlist/pay','CreateSeatController@edit')->middleware('auth');
 //ticket
 Route::post('/ticket','CreateSeatController@store');
-// Route::post('/seatlist/ticket','CreateSeatController@home'); **
-Route::post('/schedule','CreateSeatController@show');
+Route::post('/seatlist/ticket','CreateSeatController@home');
 //schedule
-// Route::get('/schedule','CreateSeatController@show')->middleware('auth');  **
-Route::post('/showticket', 'CreateSeatController@showticket')->middleware('auth');
+Route::get('/schedule','CreateSeatController@show')->middleware('auth');
 // google-api chart for bus companies
 Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
 
