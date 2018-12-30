@@ -27,6 +27,7 @@
 <th scope="col">No. of Pax</th>
 <th scope="col">Total Price</th>
 <th scope="col">Booking at</th>
+<th scope="col"></th>
 <!-- <th scope="col">Modify bus info</th>  
 <th scope="col">Delete bus</th>   -->
 
@@ -45,6 +46,7 @@
             <td>{{$ticket->pax_num}}</td>
             <td>RM {{$english_format_number = number_format($ticket->ticket_price, 2, '.', '')}}</td>
             <td>{{$ticket->created_at->format('d/m/Y')}}</td>
+            <td><a href="{{action('TicketController@downloadPDF', $ticket->ticket_id)}}">PDF</a></td>
           
             </tr>
             @endforeach

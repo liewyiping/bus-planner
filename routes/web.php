@@ -55,6 +55,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 
 /* customer booking records */
 Route::get('customer/records', 'TicketController@index_customer');
+Route::get('/downloadPDF/{id}','TicketController@downloadPDF');
 
 
 
