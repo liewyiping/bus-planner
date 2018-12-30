@@ -153,7 +153,7 @@ class CreateSeatController extends Controller
         $user_id = Auth::user()-> user_id;
         $ticket=Ticket::where('user_id',$user_id)->get();
 
-        return view('shedule')->with('ticket', $ticket);
+        return view('schedule')->with('ticket', $ticket);
     }
 
     public function showticket(Request $request)
