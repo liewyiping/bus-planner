@@ -56,4 +56,8 @@ class Trip extends Model
     {
         return $this->belongsTo('busplannersystem\Bus', 'bus_id');
     }
+
+    
+
+
 }
