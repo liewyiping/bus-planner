@@ -23,6 +23,10 @@
                         <a href="{{ url('/admin/insert-new-terminal') }}">
                         <input type="button" class="btn btn-primary" value="Insert New Terminal"/>
                         </a>
+
+                        <a href="{{ url('/admin/list-of-operators') }}">
+                        <input type="button" class="btn btn-primary" value="List Of Operator"/>
+                        </a>
                     </div>
                     <br>
                     </div>
