@@ -49,7 +49,7 @@
           <td>{{$bus->total_seat}}</td>
           <td>{{$bus->operator_id}}</td>
           <td>{{$bus->created_at->format('h:i a d/m/Y')}}</td>
-          <td>  <a href="{{route('bus.edit', ['bus' =>$bus->bus_id])}}">Edit</a></td>
+          <td>  <a href="{{route('bus.edit', ['bus' =>$bus->bus_id])}}" class="btn btn-primary">Edit</a></td>
           <td>  <a href="{{route('bus.destroy', ['bus' =>$bus->bus_id])}}" class="btn btn-danger">Delete</a></td>
           
            </tr>
