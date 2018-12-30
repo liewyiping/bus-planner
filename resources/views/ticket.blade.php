@@ -34,7 +34,7 @@
    <br><br><br>
    <div>Point: {{ $point }}</div>
 
-   <a href="{{ url('/schedule') }}" class="btn btn-primary">Complete</a>
+   <a href="{{ url('/schedule') }}" class="btn btn-primary" style='width:40%;'>Complete</a>
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
