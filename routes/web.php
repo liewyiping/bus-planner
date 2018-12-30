@@ -141,8 +141,13 @@ Route::group(['prefix' => 'operator'], function()
 	
 	//Operator view donut chart for popular destination
 	Route::get('/popular_destination_donut_chart', 'LaravelGoogleGraph@index_popular_destination_donut_chart');
-
 	Route::get('/report', 'HomeController@operator_report');
+
+	//Operator view financial report
+	Route::get('/financial-report', 'FinancialAnalytics@index');
+	
+
+
 
 
 
