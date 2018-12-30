@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,19 +68,12 @@
             <div class="container">
                 <ul class="nav navbar-nav">
                 @guest
+                    <li class="links"><a href="/"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
                 @else
                 @if (Auth::user()->role == 'customer')
                     <li class="links"><a href="/"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
-                    <li class="links" style="padding: 12px;"><a href="
-                    {{ url('/home') }}">Dashboard</a></li>
-                    <li class="" style="padding: 13px;"><a></a></li>
-                    <li class="" style="padding: 13px;"><a><i>Ease your journey</i></a></li>
-                    <li class="" style="padding: 13px;"><a>|</a></li>
-                    <li class="" style="padding: 13px;"><a><i>Simple</i></a></li>
-                    <li class="" style="padding: 13px;"><a>|</a></li>
-                    <li class="" style="padding: 13px;"><a><i>Effective</i></a></li>
-                    <li class="" style="padding: 13px;"><a>|</a></li>
-                    <li class="" style="padding: 13px;"><a><i>Excellent services</i></a></li>
+                    <li class="links" style="padding: 12px;"><a href="{{ url('/home') }}">Dashboard</a></li>
+                    <li class="links" style="padding: 12px;"><a href="{{ url('/customer/records') }}">Booking Records</a></li>
 
                 @else
                     <li class="links"><a href="/home"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
@@ -113,9 +105,11 @@
                                 @endif
                             </li>
                         @else
-                            <li class="nav-item dropdown">
+                            @if (Auth::user()->role == 'customer')
+                            <li class="links" style="padding: 12px;"><a>Point: {{ Auth::user()->point }}</a></li>
+                            <li class="links nav-item dropdown" style="margin:15px;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <strong>{{ Auth::user()->name }}<strong> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -130,6 +124,25 @@
                                     </form>
                                 </div>
                             </li>
+                            @else
+                            <li class="links nav-item dropdown" style="margin:15px;">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <strong>{{ Auth::user()->name }}<strong> <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                            @endif
                         @endguest
                     </ul>
                 </div>

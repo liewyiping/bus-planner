@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
                     <a href="{{ url('/home') }}">
@@ -20,9 +20,9 @@
 
 
 @if (count($buses)>0)
-
- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for registered bus">
-
+<div align="center">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for registered bus">
+</div>
                         
 <table class="table table-striped" id='myTable'>
 
@@ -33,6 +33,8 @@
 <th scope="col">Number of seats</th>
 <th scope="col">Operator ID</th>
 <th scope="col">Added on</th>
+<th scope="col"></th>
+<th scope="col"></th>
 <!-- <th scope="col">Modify bus info</th>  
 <th scope="col">Delete bus</th>   -->
 
@@ -47,7 +49,7 @@
           <td>{{$bus->total_seat}}</td>
           <td>{{$bus->operator_id}}</td>
           <td>{{$bus->created_at->format('h:i a d/m/Y')}}</td>
-          <td>  <a href="{{route('bus.edit', ['bus' =>$bus->bus_id])}}">Edit</a></td>
+          <td>  <a href="{{route('bus.edit', ['bus' =>$bus->bus_id])}}" class="btn btn-primary">Edit</a></td>
           <td>  <a href="{{route('bus.destroy', ['bus' =>$bus->bus_id])}}" class="btn btn-danger">Delete</a></td>
           
            </tr>
