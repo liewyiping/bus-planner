@@ -11,7 +11,7 @@
 	<form id="book" method="post" action="{{ action('CreateSeatController@show') }}" >
    <h1>Ticket</h1>
    <h3>{{ $bus_company_name }} </h3>
-   <div> price: RM {{ $totalprice }}</div>
+   <div> price: RM {{ $tickets -> ticket_price }}</div>
    <div>From: {{$route_id -> origin_terminal }} </div>
    <div>To: {{$route_id -> destination_terminal }} </div>
 
