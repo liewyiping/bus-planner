@@ -26,6 +26,8 @@ class Ticket extends Model
           return $this->belongsTo('busplannersystem\User');
       
        }
+    protected $primaryKey="ticket_id";
+  
          
 
 }

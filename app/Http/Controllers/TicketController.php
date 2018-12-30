@@ -4,6 +4,7 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class TicketController extends Controller
 {
@@ -133,5 +134,13 @@ class TicketController extends Controller
     {
         //
     }
+
+    public function downloadPDF($id){
+        $ticket = Ticket::find($id);
+  
+        $pdf = PDF::loadView('pdf', compact('ticket'));
+        return $pdf->download('invoice.pdf');
+  
+      }
 }
 
