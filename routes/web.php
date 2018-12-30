@@ -166,6 +166,7 @@ Route::post('/ticket','CreateSeatController@store');
 Route::post('/seatlist/ticket','CreateSeatController@home');
 //schedule
 Route::get('/schedule','CreateSeatController@show')->middleware('auth');
+Route::post('/showticket','CreateSeatController@showticket')->middleware('auth');
 // google-api chart for bus companies
 Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
 
