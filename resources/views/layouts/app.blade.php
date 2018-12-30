@@ -72,16 +72,8 @@
                 @else
                 @if (Auth::user()->role == 'customer')
                     <li class="links"><a href="/"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
-                    <li class="links" style="padding: 12px;"><a href="
-                    {{ url('/home') }}">Dashboard</a></li>
-                    <li class="" style="padding: 13px;"><a></a></li>
-                    <li class="" style="padding: 13px;"><a><i>Ease your journey</i></a></li>
-                    <li class="" style="padding: 13px;"><a>|</a></li>
-                    <li class="" style="padding: 13px;"><a><i>Simple</i></a></li>
-                    <li class="" style="padding: 13px;"><a>|</a></li>
-                    <li class="" style="padding: 13px;"><a><i>Effective</i></a></li>
-                    <li class="" style="padding: 13px;"><a>|</a></li>
-                    <li class="" style="padding: 13px;"><a><i>Excellent services</i></a></li>
+                    <li class="links" style="padding: 12px;"><a href="{{ url('/home') }}">Dashboard</a></li>
+                    <li class="links" style="padding: 12px;"><a href="{{ url('/customer/records') }}">Booking Records</a></li>
 
                 @else
                     <li class="links"><a href="/home"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
