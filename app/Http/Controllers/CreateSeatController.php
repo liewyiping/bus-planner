@@ -51,7 +51,7 @@ class CreateSeatController extends Controller
     
     
 
-//ADD SEAT NO IN SEAT TAKEN COLUMN AFTER SELECT SEAT
+//GET SEAT_NO
     public function edit(Request $request)
     {
         
@@ -78,7 +78,7 @@ class CreateSeatController extends Controller
 //TICKET
     public function store(Request $request)
     {
-        //add selected seat id to column seatTaken
+//add selected seat id to column seatTaken
         $seat = Seat::find($request -> seatid);
         $seat -> seatTaken =$request -> seatTaken;
         $seat ->save();
@@ -106,10 +106,8 @@ class CreateSeatController extends Controller
         $tickets= new Ticket();
         $tickets -> trip_id =$trip_id;
         $user_id = auth()->user()->user_id;
-        $tickets -> customer_id = $user_id;
+        $tickets -> user_id = $user_id;
         $tickets -> company_name = $bus_company_name;
-        // $tickets -> from = $from ; *both columns still null 
-        // $tickets -> to= $to;
         $tickets -> date_depart =$date_depart;
         $tickets -> time_depart =$time_depart;
         $tickets ->  ticket_price=$request-> totalprice;
@@ -117,7 +115,7 @@ class CreateSeatController extends Controller
         $route_id = $request -> route_id; 
         $tickets -> route_id =$route_id ;
 
-        //for ticket details in view
+//for ticket details in view
         $route_id=Route::where('route_id', $route_id)->first();
         $totalprice=$request -> totalprice;
         $destination_terminal=$route_id -> destination_terminal;
@@ -142,9 +140,27 @@ class CreateSeatController extends Controller
         return view('ticket')-> with('trips', $trips) -> with('totalprice', $totalprice) ->with('route_id', $route_id)->with('bus_company_name', $bus_company_name)->with('point', $point)->with('tickets', $tickets);
     }
 
-public function create()
+
+     public function home()
     {
-        //
+        return redirect ('/home');
+    }
+
+
+//CHECK UPCOMING SCHEDULE FOR CUSTOMER
+    public function show()
+    {
+        $user_id = Auth::user()-> user_id;
+        $ticket=Ticket::where('user_id',$user_id)->get();
+
+        return view('shedule')->with('ticket', $ticket);
+    }
+
+    public function showticket(Request $request)
+    {
+        $ticket_id=Ticket::find($request -> ticket_id);
+        return view('showticket') ->with('ticket_id', $ticket_id);
+
     }
 
 
@@ -152,11 +168,7 @@ public function create()
     
 
     
-    public function show()
-    {
-        return redirect ('/home');
-    }
-
+   
     public function update(Request $request, $id)
     {
         
