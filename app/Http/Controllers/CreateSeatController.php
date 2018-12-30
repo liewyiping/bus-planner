@@ -106,7 +106,7 @@ class CreateSeatController extends Controller
         $tickets= new Ticket();
         $tickets -> trip_id =$trip_id;
         $user_id = auth()->user()->user_id;
-        $tickets -> customer_id = $user_id;
+        $tickets -> user_id = $user_id;
         $tickets -> company_name = $bus_company_name;
         // $tickets -> from = $from ; *both columns still null 
         // $tickets -> to= $to;

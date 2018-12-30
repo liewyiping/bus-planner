@@ -68,6 +68,7 @@
             <div class="container">
                 <ul class="nav navbar-nav">
                 @guest
+                    <li class="links"><a href="/"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
                 @else
                 @if (Auth::user()->role == 'customer')
                     <li class="links"><a href="/"><img src="/img/logo.jpg" style="width: 100px; height: 50px;"></a></li>
