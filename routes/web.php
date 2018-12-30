@@ -161,12 +161,11 @@ Route::group(['prefix' => 'operator'], function()
 Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');
 // Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
 Route::post('/seatlist/pay','CreateSeatController@edit')->middleware('auth');
-
+//ticket
 Route::post('/ticket','CreateSeatController@store');
-Route::post('/seatlist/ticket','CreateSeatController@show');
-
-
-
+Route::post('/seatlist/ticket','CreateSeatController@home');
+//schedule
+Route::get('/schedule','CreateSeatController@show')->middleware('auth');
 // google-api chart for bus companies
 Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
 
