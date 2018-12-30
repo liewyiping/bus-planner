@@ -48,4 +48,8 @@ class Operator extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo('busplannersystem\User','user_id_operators');
      
      }
+
+     public function company(){
+        return $this->belongsTo('busplannersystem\Company','bus_company_id');
+     }
 }
