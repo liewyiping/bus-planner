@@ -28,4 +28,19 @@ class Ticket extends Model
         return $this->belongsTo('busplannersystem\User', 'user_id');
     }
 
+    public function route()
+    {
+        return $this->belongsTo('busplannersystem\User', 'user_id');
+    }
+
+    public function trip()
+    {
+        return $this->belongsTo('busplannersystem\Trip', 'trip_id');
+    }
+
+    
+
+
+
+
 }

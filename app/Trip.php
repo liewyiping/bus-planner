@@ -57,6 +57,11 @@ class Trip extends Model
         return $this->belongsTo('busplannersystem\Bus', 'bus_id');
     }
 
+    public function tickets()
+    {
+        return $this->hasMany('busplannersystem\Ticket', 'ticket_id');
+    }
+
     
 
 
