@@ -40,7 +40,7 @@ class DriverController extends Controller
         $this->validate($request,[
 
             'driver_name' => 'required|string|max:255',
-            'driver_ic' => 'required|integer|max:255',
+            'driver_ic' => 'required|string|max:255',
             'driver_email' => 'required|email|max:255',
             'driver_address' => 'required|string|max:255',
 

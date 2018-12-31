@@ -18,56 +18,56 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Driver Name') }}</label>
+                            <label for="driver_name" class="col-md-4 col-form-label text-md-right">{{ __('Driver Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="driver_name" type="text" class="form-control{{ $errors->has('driver_name') ? ' is-invalid' : '' }}" name="driver_name" value="{{ old('driver_name') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('driver_name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('driver_name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="ic" class="col-md-4 col-form-label text-md-right">{{ __('IC Number') }}</label>
+                            <label for="driver_ic" class="col-md-4 col-form-label text-md-right">{{ __('IC Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="ic" type="text" class="form-control{{ $errors->has('ic') ? ' is-invalid' : '' }}" name="ic" value="{{ old('ic') }}" required autofocus>
+                                <input id="driver_ic" type="text" class="form-control{{ $errors->has('driver_ic') ? ' is-invalid' : '' }}" name="driver_ic" value="{{ old('driver_ic') }}" required autofocus>
 
-                                @if ($errors->has('ic'))
+                                @if ($errors->has('driver_ic'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('ic') }}</strong>
+                                        <strong>{{ $errors->first('driver_ic') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="driver_email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="driver_email" type="driver_email" class="form-control{{ $errors->has('driver_email') ? ' is-invalid' : '' }}" name="driver_email" value="{{ old('driver_email') }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('driver_email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('driver_email') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                            <label for="driver_address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required>
+                                <input id="driver_address" type="driver_address" class="form-control{{ $errors->has('driver_address') ? ' is-invalid' : '' }}" name="driver_address" value="{{ old('driver_address') }}" required>
 
-                                @if ($errors->has('address'))
+                                @if ($errors->has('driver_address'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address') }}</strong>
+                                        <strong>{{ $errors->first('driver_address') }}</strong>
                                     </span>
                                 @endif
                             </div>
