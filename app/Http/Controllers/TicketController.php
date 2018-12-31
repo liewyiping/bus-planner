@@ -3,6 +3,8 @@
 namespace busplannersystem\Http\Controllers;
 use busplannersystem\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class TicketController extends Controller
 {
@@ -18,9 +20,13 @@ class TicketController extends Controller
         $tickets = Ticket::all();
         $tickets = Ticket::orderBy('tripID','desc')->get(); //susun tripID by descending order.
         return view ('posts.operator-insert-tickets-info')->with('tickets',$tickets);
+    }
 
-
-
+    public function index_customer()
+    {
+        $id = Auth::user()->user_id;
+        $tickets = Ticket::all()->where('user_id', $id);
+        return view ('customer-booking-record')->with('tickets',$tickets);
     }
 
     /**
@@ -128,5 +134,13 @@ class TicketController extends Controller
     {
         //
     }
+
+    public function downloadPDF($id){
+        $ticket = Ticket::find($id);
+  
+        $pdf = PDF::loadView('pdf', compact('ticket'));
+        return $pdf->download('invoice.pdf');
+  
+      }
 }
 

@@ -36,4 +36,20 @@ class Operator extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function buses(){
+
+        return $this->hasMany('busplannersystem\Bus');
+     
+     }
+
+     public function user(){
+
+        return $this->belongsTo('busplannersystem\User','user_id_operators');
+     
+     }
+
+     public function company(){
+        return $this->belongsTo('busplannersystem\Company','bus_company_id');
+     }
 }

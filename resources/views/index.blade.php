@@ -236,7 +236,7 @@
                         <div class="column" style="background-color:#228B22;">
                             <label for="from">From</label>
                             <select id="" class="form-control" name="search_origin" required>
-                                <option value="">Select</option>
+                                <option value="">Bus: Origin</option>
                                 @foreach(busplannersystem\Route::all()->unique('origin_terminal') as $route_list)
                                 <option  class="option "value="{{$route_list->origin_terminal}}">{{$route_list->origin_terminal}}</option>
                                 @endforeach
@@ -246,16 +246,21 @@
                         <div class="column" style="background-color:#228B22;">
                             <label for="from">To</label>
                             <select id="" class="form-control" name="search_destination" required>
-                                <option value="">Select</option>
+                                <option value="">Bus: Destination</option>
                                 @foreach(busplannersystem\Route::all()->unique('destination_terminal') as $route_list)
                                 <option  class="option "value="{{$route_list->destination_terminal}}">{{$route_list->destination_terminal}}</option>
                                 @endforeach
                             </select>
                         </div>
 
+                        <!-- Malaysia Time Zone UTC +8-->
+                        <?php
+                            date_default_timezone_set("Asia/Kuala_Lumpur");
+                        ?>
+
                         <div class="column" style="background-color:#228B22;">
                             <label for="departure">Departure Date</label>
-                            <input type="date" class="form-control" name="search_date" placeholder="Search date" required> <span class="input-group-btn">
+                            <input value="{{ date('Y-m-d') }}" type="date" class="form-control" name="search_date" placeholder="Search date" required> <span class="input-group-btn">
                         </div>
 
                         <div class="column" style="background-color:#228B22;">

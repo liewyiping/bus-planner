@@ -6,28 +6,29 @@
 
 <html>
   <head>
+  <title>Popular Destination</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" align="center">
-      var popular_month = <?php echo $popular_month; ?>;
-      console.log(popular_month);
+      var popular_destination = <?php echo $popular_destination; ?>;
+      console.log(popular_destination);
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable(popular_month);
+        var data = google.visualization.arrayToDataTable(popular_destination);
         var options = {
-          title: 'Popular Date',
+          title: 'Percentage of Popular Destination',
           curveType: 'function',
-          legend: { position: 'bottom' }
+          pieHole:0.4
         };
-        var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
       }
     </script>
   </head>
   <body>
     <div align="center">
-      <h3 class="panel-title">Number of tickets sold per month</h3>
-      <div id="linechart" style="width: 1300px; height: 500px" align="center"></div>
+      <h3 class="panel-title">Popular Destination</h3>
+      <div id="donutchart" style="width: 1300px; height: 500px" align="center"></div>
     </div>
   </body>
 </html>

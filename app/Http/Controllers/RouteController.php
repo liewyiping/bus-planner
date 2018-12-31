@@ -4,22 +4,40 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Route;
 use busplannersystem\BusRoute;
 use busplannersystem\Bus;
+use busplannersystem\Operator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RouteController extends Controller
 {
     //
     public function index()
-    {
-        $routes = Route::all();
-        $buses= Bus::all();
-        $bus_routes = BusRoute::all();
-        
-       // $routes = route::orderBy('routeID','desc')->get(); //susun ticketID by descending order.
-       
-       return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('buses',$buses)->with('bus_routes',$bus_routes);
+    {   
+        //Get user id from auth
+        $user_id = auth()->user()->user_id;
+        //Search operators table to find buses belong to operator_id
+        $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
+       $buses= Bus::where('operator_id', $operator_id)->get();
+        //Get list of buses_id from the buses
+        $buses_id= $buses->pluck('bus_id');
+        //Get the list of registered bus_id by referring to operator_id
+        //$bus_routes = DB::table('bus_routes')->whereIn('bus_id', $buses_id)->get();
 
+        $bus_routes=BusRoute::whereIn('bus_id',$buses_id)->get();
+       
+
+        $routes=Route::all();
+
+        
+        
+      
+    
+     return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('buses',$buses)->with('bus_routes',$bus_routes);
+
+   // return view ('operator-views.operator-insert-route-info')->with('routes',$routes)->with('buses',$operator_id->buses)->with('bus_routes',$bus_routes);
+   
 
 
     }

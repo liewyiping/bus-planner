@@ -22,11 +22,7 @@ class ApplicationFormController extends Controller
         return view ('admin.view-new-applications')->with('application_forms',$application_forms)->withMessage('User approved successfully');
     }
 
-    public function approval()
-    {
-        return view('approval');
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -24,8 +24,8 @@ class LaravelGoogleGraph extends Controller
      return view('analytics.google_pie_chart')->with('company_name', json_encode($array));
     }
 
-    ////////////////////line graph part ///////////////////////////////////////////////////////
-    function index_popular_date_line_graph()
+    ////////////////////line chart part ///////////////////////////////////////////////////////
+    function index_popular_date_line_chart()
     {
         $ticket = DB::table('tickets')
                     ->select(
@@ -40,6 +40,24 @@ class LaravelGoogleGraph extends Controller
         }
 
         return view('analytics.popular_date_line_chart')->with('popular_month', json_encode($result));
+      }
+
+    ////////////////////donut chart part ///////////////////////////////////////////////////////
+    function index_popular_destination_donut_chart()
+    {
+      $ticket = DB::table('tickets')
+                    ->select(
+                        DB::raw("destination_terminal as destination"),
+                        DB::raw("sum(pax_num) as number"))
+                    ->groupBy("destination")
+                    ->get();
+                    
+        $result[] = ['Destination','Number'];
+        foreach ($ticket as $key => $value) {
+            $result[++$key] = [$value->destination, $value->number];
+        }
+
+        return view('analytics.popular_destination_donut_chart')->with('popular_destination', json_encode($result));
       }
 
 }

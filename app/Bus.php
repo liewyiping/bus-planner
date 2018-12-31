@@ -4,6 +4,8 @@ namespace busplannersystem;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use busplannersystem\Operator;
 
 class Bus extends Model
 {
@@ -20,7 +22,9 @@ class Bus extends Model
 
     public function create(Request $request){
 
-     $operator_id = auth()->user()->user_id;
+     $user_id = auth()->user()->user_id;
+     $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
+   //  $operator_id= DB::table('operators')->where('user_id_operators', $user_id)->value('operator_id');
 
      //create a new Bus
      $buses = new Bus();
@@ -35,7 +39,7 @@ class Bus extends Model
 
     public function operator(){
 
-        return $this->belongsTo('busplannersystem\User', 'operator_id');
+        return $this->belongsTo('busplannersystem\Operator', 'operator_id');
     
      }
 
@@ -45,11 +49,11 @@ class Bus extends Model
       
      }
 
-     public function bus_routes(){
+     public function trips(){
 
-        return $this->hasMany('busplannersystem\BusRoute');
-     
-     }
+          return $this->hasMany('busplannersystem\Trips');
+       
+       }
 
 
 }

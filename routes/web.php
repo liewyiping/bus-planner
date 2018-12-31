@@ -53,6 +53,10 @@ Route::any ('/home', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
+/* customer booking records */
+Route::get('customer/records', 'TicketController@index_customer');
+Route::get('/downloadPDF/{id}','TicketController@downloadPDF');
+
 
 
 /* For admin */
@@ -106,10 +110,16 @@ Route::group(['prefix' => 'operator'], function()
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 	Route::get('/view-bus-info', 'BusController@indexView');
 
+	//Operator Insert Driver
+	Route::get('/insert-driver', 'DriverController@index')->name('operator.insert-driver');
+	Route::post('/insert-driver', 'DriverController@store')->name('operator.insert-driver.submit');
+
 	
 
-	//Operator Edit Bus Info
-	//Route::get('/edit-bus-info', 'BusController@edit');
+	//Operator edit bus
+	Route::get('/bus/{bus}/edit','BusController@edit')->name('bus.edit');
+	Route::get('/bus/{bus}','BusController@destroy')->name('bus.destroy');
+	Route::patch('/bus/{bus}','BusController@update')->name('bus.update');
 
 	//Operator Insert Route Info
 	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertRouteInfo');
@@ -131,8 +141,19 @@ Route::group(['prefix' => 'operator'], function()
 
 	// Chart // Chart // Chart // Chart // Chart // Chart // Chart //
 	//Operator view line chart for popular date(month)
-	Route::get('/popular_date_line_chart', 'LaravelGoogleGraph@index_popular_date_line_graph');
+	Route::get('/popular_date_line_chart', 'LaravelGoogleGraph@index_popular_date_line_chart');
+	
+	//Operator view donut chart for popular destination
+	Route::get('/popular_destination_donut_chart', 'LaravelGoogleGraph@index_popular_destination_donut_chart');
 	Route::get('/report', 'HomeController@operator_report');
+
+	//Operator view financial report
+	Route::get('/financial-report-dashboard', 'FinancialAnalyticsController@index');
+	Route::get('/yearly-financial-report', 'FinancialAnalyticsController@years_report');
+	// Route::get('/yearly-financial-report', 'FinancialAnalyticsController@month_report');
+	
+
+
 
 
 
@@ -141,19 +162,26 @@ Route::group(['prefix' => 'operator'], function()
 }); // grouped by operator. Easier to read
 
 
-// For bus controller
-Route::resource('/bus', 'BusController');
+// For bus controller //Syazany: 
+//Route::resource('bus', 'BusController');
+
+
+
 
 //seat
 Route::get('/seatlist/{ID}','CreateSeatController@index')->middleware('auth');
 // Route::post('/seatlist/choose/{id}','CreateSeatController@edit') -> id('edit');
 Route::post('/seatlist/pay','CreateSeatController@edit')->middleware('auth');
-
+//ticket
 Route::post('/ticket','CreateSeatController@store');
-Route::post('/seatlist/ticket','CreateSeatController@show');
+// Route::post('/seatlist/ticket','CreateSeatController@home'); **
+Route::post('/schedule','CreateSeatController@show');
+//schedule
 
+Route::get('/schedule','CreateSeatController@show')->middleware('auth');
+Route::get('/showticket/{id}','CreateSeatController@showticket')->middleware('auth');
 
-
+// Route::get('/schedule','CreateSeatController@show')->middleware('auth');  **
 // google-api chart for bus companies
 Route::get('/laravel_google_chart', 'LaravelGoogleGraph@index');
 

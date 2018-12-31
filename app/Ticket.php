@@ -20,12 +20,29 @@ class Ticket extends Model
            'time',
            'price_total',
          ];
-         
-         public function user(){
 
-          return $this->belongsTo('busplannersystem\User');
-      
-       }
-         
+    protected $primaryKey="ticket_id";
+  
+    public function user()
+    {
+        return $this->belongsTo('busplannersystem\User', 'user_id');
+    }
+
+    public function route()
+    {
+        return $this->belongsTo('busplannersystem\User', 'user_id');
+    }
+
+    public function trip()
+    {
+        return $this->belongsTo('busplannersystem\Trip', 'trip_id');
+    }
+
+    
+
+    
+
+
+
 
 }

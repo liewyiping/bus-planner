@@ -25,7 +25,11 @@
                     <div align="center">
 
                         <a href="{{ url('/operator/popular_date_line_chart') }}">
-                        <input type="button" class="btn btn-primary" value="Popular date"/>
+                        <input type="button" class="btn btn-primary" value="Popular Date"/>
+                        </a>
+
+                        <a href="{{ url('/operator/popular_destination_donut_chart') }}">
+                        <input type="button" class="btn btn-primary" value="Popular Destination"/>
                         </a>
 
                         <a href="{{ url('/laravel_google_chart') }}">

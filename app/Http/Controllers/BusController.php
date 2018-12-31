@@ -4,6 +4,7 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Bus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use busplannersystem\Operator;
 
 class BusController extends Controller
 {
@@ -21,9 +22,16 @@ class BusController extends Controller
     }
 
     public function indexView()
-    {
+    {   
+        //Get user id from auth
+        //$user_id = auth()->user()->user_id;
         $id = Auth::user()->user_id;
-        $buses = Bus::paginate(3)->where('operator_id', $id);
+        //Search operators table to find buses belong to operator_id
+        //$operator_id = Operator::where('user_id_operators', $user_id)->value('operator_id');
+        $buses = Bus::all()->where('operator.user_id_operators', $id);
+        //$buses = Bus::paginate(3)->where('operator.user_id_operators', $id);
+        
+        
         return view ('operator-views.operator-view-bus')->with('buses',$buses);
     }
 
@@ -88,6 +96,8 @@ class BusController extends Controller
     {
         $bus = Bus::find($id);
         return view('operator-views.operator-edit-bus', compact('bus', 'id'));
+
+        //return view('operator-views.operator-edit-bus')->with('bus',$bus);
     }
 
     /**

@@ -46,4 +46,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
+    public function operator(){
+
+        return $this->hasOne('busplannersystem\Operator');
+
+    }
+
+
+
 }

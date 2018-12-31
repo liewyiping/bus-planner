@@ -3,6 +3,7 @@ namespace busplannersystem\Http\Controllers;
 use busplannersystem\Trip;
 use busplannersystem\Route;
 use busplannersystem\Bus;
+use busplannersystem\BusRoute;
 use busplannersystem\Seat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +21,13 @@ class TripController extends Controller
     {
         $id = Auth::user()->user_id;
         
+       
+        $buses = Bus::all()->where('operator.user_id_operators', $id);
+        $buses_id =$buses->pluck('bus_id');
+
         $routes = Route::all();
-        $buses = Bus::all()->where('operator_id', $id);
-        $trips = Trip::all();
+        $trips = Trip::whereIn('bus_id',$buses_id)->get();
+
         return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
     }
     /**
