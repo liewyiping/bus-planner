@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" style="clear: both">
-                    <h6 style="float: left; margin:5px;">Financial Analytics Dashboard &nbsp;<strong>|</strong>&nbsp;
+                    <h6 style="float: left; margin:5px;">Financial Analytics Dashboard </h6>
                 </div>
 
                 <div class="card-body">
@@ -35,21 +35,13 @@
                                 <option value=2014>2014</option>
                             </select>
                             </div>
-                        </div>
-
-                        <div id="app">
+                    </div>
+                    <div id="app">
             {!! $chart->container() !!}
         </div>
-        <script src="https://unpkg.com/vue"></script>
-        <script>
-            var app = new Vue({
-                el: '#app',
-            });
-        </script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>
+       
         {!! $chart->script() !!}
-
-
+                   
                 </div>
             </div>
         </div>
