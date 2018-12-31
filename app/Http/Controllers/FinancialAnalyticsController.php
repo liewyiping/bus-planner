@@ -27,7 +27,7 @@ class FinancialAnalyticsController extends Controller
 
         
         $sort_sums_years = Ticket::where('company_name', $bus_company_name)->select(
-        DB::raw('sum(ticket_price) as sums'), 
+        DB::raw('sum(ticket_price) as sums'),DB::raw('sum(pax_num) as pax_num_total'),
         DB::raw("DATE_FORMAT(created_at,'%Y') as years")
         )->orderBy('created_at','asc')->groupBy('years')->get();   
        
@@ -38,35 +38,14 @@ class FinancialAnalyticsController extends Controller
         $chart->labels($sort_sums_years->pluck('years')); 
         $chart->dataset('Revenue over the years', 'line',$sorted_tickets);
        
-        return view('operator-views.financial-analytics', ['chart' => $chart]);
+        return view('operator-views.financial-analytics')->with('chart',$chart)->with('sort_sum_years',$sort_sums_years);
        
     }
 
     public function years_report()
     {   
          
-        $user_id = Auth::user()->user_id;
-        $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
-        $operator=Operator::find($operator_id);
-        $bus_company_name=$operator->company->bus_company_name; 
-
-        
-        $sort_sums_years = Ticket::where('company_name', $bus_company_name)->select(
-        DB::raw('sum(ticket_price) as sums'), 
-        DB::raw("DATE_FORMAT(created_at,'%Y') as years")
-        )->orderBy('created_at','asc')->groupBy('years')->get();   
        
-        $sorted_tickets=$sort_sums_years->pluck('sums');     
-        
-       
-        $chart = new FinancialChart();       
-        $chart->labels($sort_sums_years->pluck('years')); 
-        $chart->dataset('Annual financial report RM', 'line',$sorted_tickets);
-
-        return view('operator-views.yearly-financial-report', ['chart' => $chart]);
-       
-       
-      
        
 
     }

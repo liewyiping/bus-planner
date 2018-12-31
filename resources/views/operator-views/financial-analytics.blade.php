@@ -55,6 +55,36 @@
         </div>
        
         {!! $chart->script() !!}
+
+        <table class="table table-striped">
+
+<thead>
+    <tr>
+    <th scope="col">Years</th>
+    <th scope="col">Revenue generated(RM)</th>
+    <th scope="col">Total tickets sold</th>
+    
+    
+
+
+    
+    </tr>
+</thead>
+<tbody>
+@foreach($sort_sum_years as $ticket)
+<tr>
+
+<td> {{$ticket->years}}</td> 
+<td> {{number_format($ticket->sums)}}</td>    
+<td> {{$ticket->pax_num_total}}</td>  
+
+
+</tr>
+@endforeach
+
+
+</tbody>
+</table>
                    
                 </div>
             </div>
