@@ -18,7 +18,7 @@ class CreateTripsTable extends Migration
             $table->integer('bus_id')->unsigned();
             $table->integer('route_id')->unsigned();
             $table->date('date_depart');
-            $table->string('time_depart');
+             $table->time('time_depart');
             $table->decimal('ticket_price',19,4);
             $table->foreign('bus_id')->references('bus_id')->on('buses');
             $table->foreign('route_id')->references('route_id')->on('routes');
