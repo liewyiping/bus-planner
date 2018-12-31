@@ -1,6 +1,13 @@
 
 
+<?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use busplannersystem\Ticket;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
