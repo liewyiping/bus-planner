@@ -60,7 +60,7 @@ class FinancialAnalyticsController extends Controller
        
         $chart = new FinancialChart();       
         $chart->labels($sort_sums_years->pluck('years')); 
-        $chart->dataset('Annual financial report', 'line',$sorted_tickets);
+        $chart->dataset('Annual financial report RM', 'line',$sorted_tickets);
 
         return view('operator-views.yearly-financial-report', ['chart' => $chart]);
        
