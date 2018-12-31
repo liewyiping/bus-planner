@@ -8,6 +8,8 @@ use busplannersystem\Ticket;
 use busplannersystem\Company;
 use busplannersystem\Trip;
 use busplannersystem\Operator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class FinancialAnalyticsController extends Controller
 {
     /**
@@ -19,9 +21,40 @@ class FinancialAnalyticsController extends Controller
     {   
         $user_id = Auth::user()->user_id;
         $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
+        $operator=Operator::find($operator_id);
+        $bus_company_name=$operator->company->bus_company_name;
+
+        $ticket = Ticket::where('company_name', $bus_company_name)->get();
+
+
+
+
+        $chart = new FinancialChart();
+        $chart->labels(['This week']);
+        $ticket= Ticket::all();
+    }
+
+    public function yearly_report()
+    {   
+        $user_id = Auth::user()->user_id;
+        $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
         $bus_company_name=$operator_id->company->bus_company_name;
 
-        
+        $chart->labels(['This week']);
+
+
+
+        $chart = new FinancialChart();
+        $ticket= Ticket::all();
+    }
+
+    public function monthly_report()
+    {   
+        $user_id = Auth::user()->user_id;
+        $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
+        $bus_company_name=$operator_id->company->bus_company_name;
+
+        $chart->labels(['This week']);
 
 
 
