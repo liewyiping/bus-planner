@@ -129,6 +129,11 @@ use Illuminate\Support\Facades\Input;
                    
 
                 <!--upcoming trip-->
+
+                        <!-- Malaysia Time Zone UTC +8-->
+                        <?php
+                            date_default_timezone_set("Asia/Kuala_Lumpur");
+                        ?>
                     <li>
                         <div class="dropdown" style="padding: 9px;">
                         <button class="dropbtn">Your Upcoming Trip</button>
@@ -137,6 +142,7 @@ use Illuminate\Support\Facades\Input;
                          <?php
                          $user_id= Auth::user()->user_id;
                          $ticket=Ticket::where('user_id',$user_id)->get();
+                         
                           foreach ($ticket as $ticket)
                           {
                            if ($ticket -> date_depart >= date("Y-m-d")) 
