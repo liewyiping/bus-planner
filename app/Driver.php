@@ -22,7 +22,7 @@ class Driver extends Model
     public function create(Request $request){
 
      $driver = new Driver();
-     $driver -> driver_id =  $driver_id;  
+    
      $driver -> driver_name = $request -> input('driver_name');
      $driver -> driver_ic = $request -> input('driver_ic');
      $driver -> driver_email = $request -> input('driver_email');
