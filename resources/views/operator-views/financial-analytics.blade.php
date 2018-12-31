@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="form-group row">
-                            <label for="year-selected" class="col-md-4 col-form-label text-md-right">{{ __('Choose year report') }}</label>
+                            <label for="year-report" class="col-md-4 col-form-label text-md-right">{{ __('Choose year report') }}</label>
 
                             <div class="col-md-6">
                             <select class=”form-control” name='year_report' style="width:150px;" id='type'>

@@ -11,7 +11,7 @@
 
                 <div class="card-body">
 
-                
+                <h5>Total revenue for {{$year_report}} :RM {{$total_revenue_year}} </h5>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
