@@ -128,9 +128,9 @@ use Illuminate\Support\Facades\Input;
                     <li class="links" style="padding: 12px;"><a href="{{ url('/customer/records') }}">Booking Records</a></li>
                    
 
-<!--upcoming trip-->
+                <!--upcoming trip-->
                     <li>
-                        <div class="dropdown">
+                        <div class="dropdown" style="padding: 9px;">
                         <button class="dropbtn">Your Upcoming Trip</button>
                         <div class="dropdown-content">
    
