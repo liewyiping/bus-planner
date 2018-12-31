@@ -36,7 +36,7 @@ class FinancialAnalyticsController extends Controller
        
         $chart = new FinancialChart();       
         $chart->labels($sort_sums_years->pluck('years')); 
-        $chart->dataset('Annual financial report', 'line',$sorted_tickets);
+        $chart->dataset('Revenue over the years', 'line',$sorted_tickets);
        
         return view('operator-views.financial-analytics', ['chart' => $chart]);
        
@@ -92,22 +92,28 @@ class FinancialAnalyticsController extends Controller
         //Nak sort sums of ticket_price by months so dalam ni ada dua attribute (sums,months)
         $sort_sums_months = Ticket::where('company_name', $bus_company_name)->whereYear('created_at', '=', $year_report)->select(
         DB::raw('sum(ticket_price) as sums'), 
-        DB::raw("DATE_FORMAT(created_at,'%M') as months")
+        DB::raw("DATE_FORMAT(created_at,'%M') as months"), DB::raw('sum(pax_num) as pax_num_total')
         )->orderBy('created_at','asc')->groupBy('months')->get();
 
         $total_revenue_year =Ticket::where('company_name', $bus_company_name)->whereYear('created_at', '=', $year_report)->select(
         DB::raw('sum(ticket_price) as sums'))->value('sums'); //get total revenue based on selected year
+
+        $total_seat_sold =$sort_sums_months->sum('pax_num_total'); //get total seat sold
         
         //When dah sorted, kita nak value sums yang dah sorted tadi based on months so kat sini kita just pluck 'sums'
         //pluck ni ialah dia akan return array which precisely what we want to render the chart
         $sorted_tickets=$sort_sums_months->pluck('sums');
+       
         
         //Create a new chart
         $chart = new FinancialChart();
         $chart->labels($sort_sums_months->pluck('months')); //Either way sama je but this one json dah tolong sort so we can use the attribute
         $chart->dataset('Annual financial report', 'line',$sorted_tickets);
 
-        return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report)->with('total_revenue_year',$total_revenue_year);
+        
+
+        return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report)->with('total_revenue_year',$total_revenue_year)
+        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months);
 
 
 

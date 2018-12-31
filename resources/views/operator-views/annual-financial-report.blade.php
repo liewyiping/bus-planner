@@ -11,7 +11,8 @@
 
                 <div class="card-body">
 
-                <h5>Total revenue for {{$year_report}} :RM {{$total_revenue_year}} </h5>
+                <h5>Total revenue for {{$year_report}} :RM {{number_format($total_revenue_year)}} </h5>
+                <h5>Total tickets sold : {{$total_seat_sold}}  </h5>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -29,6 +30,37 @@
         </div>
        
         {!! $chart->script() !!}
+
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                <th scope="col">Months</th>
+                <th scope="col">Revenue generated(RM)</th>
+                <th scope="col">Total tickets sold</th>
+                
+                
+
+
+                
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($sort_sum_months as $ticket)
+            <tr>
+            
+            <td> {{$ticket->months}}</td> 
+            <td> {{number_format($ticket->sums)}}</td>    
+            <td> {{$ticket->pax_num_total}}</td>  
+            
+
+            </tr>
+            @endforeach
+
+
+            </tbody>
+            </table>
+
                    
                 </div>
             </div>
