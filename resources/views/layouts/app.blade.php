@@ -209,7 +209,7 @@ use Illuminate\Support\Facades\Input;
                             <li class="links" style="padding: 12px;"><a>Point: {{ Auth::user()->point }}</a></li>
                             <li class="links nav-item dropdown" style="margin:15px;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <strong>{{ Auth::user()->name }}<strong> <span class="caret"></span>
+                                    <strong>{{ Auth::user()->name }}</strong> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -227,7 +227,7 @@ use Illuminate\Support\Facades\Input;
                             @else
                             <li class="links nav-item dropdown" style="margin:15px;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <strong>{{ Auth::user()->name }}<strong> <span class="caret"></span>
+                                    <strong>{{ Auth::user()->name }}</strong> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
