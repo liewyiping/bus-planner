@@ -1,13 +1,4 @@
-<?php
 
-namespace busplannersystem\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use busplannersystem\Ticket;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-?>
 
 
 <!DOCTYPE html>
