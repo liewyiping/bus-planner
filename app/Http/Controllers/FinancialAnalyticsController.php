@@ -10,6 +10,7 @@ use busplannersystem\Trip;
 use busplannersystem\Operator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 class FinancialAnalyticsController extends Controller
 {
     /**
@@ -70,19 +71,31 @@ class FinancialAnalyticsController extends Controller
 
     }
 
-    public function annual_report()
+    public function annual_report(Request $request)
     {   
+
+        $this->validate($request,[
+
+           
+            'year_report' => 'required|integer|min:2000',
+            
+
+        ]);
+
+        $year_report= $request -> input('year_report');
+
         $user_id = Auth::user()->user_id;
         $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
         $operator=Operator::find($operator_id);
         $bus_company_name=$operator->company->bus_company_name; //get the company name of the bus using eloquent orm yang kita dah set dalam model operator
 
         //Nak sort sums of ticket_price by months so dalam ni ada dua attribute (sums,months)
-        $sort_sums_months = Ticket::where('company_name', $bus_company_name)->select(
+        $sort_sums_months = Ticket::where('company_name', $bus_company_name)->whereYear('created_at', '=', $year_report)->select(
         DB::raw('sum(ticket_price) as sums'), 
-        DB::raw("DATE_FORMAT(created_at,'%M %Y') as months")
+        DB::raw("DATE_FORMAT(created_at,'%M') as months")
         )->orderBy('created_at','asc')->groupBy('months')->get();
-        
+
+             
         //When dah sorted, kita nak value sums yang dah sorted tadi based on months so kat sini kita just pluck 'sums'
         //pluck ni ialah dia akan return array which precisely what we want to render the chart
         $sorted_tickets=$sort_sums_months->pluck('sums');
@@ -90,10 +103,10 @@ class FinancialAnalyticsController extends Controller
         
         //Create a new chart
         $chart = new FinancialChart();
-        // $chart->labels(['Jan','Feb','March','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec']);
         $chart->labels($sort_sums_months->pluck('months')); //Either way sama je but this one json dah tolong sort so we can use the attribute
         $chart->dataset('Annual financial report', 'line',$sorted_tickets);
-        return view('operator-views.annual-financial-report', ['chart' => $chart]);
+
+        return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report);
 
 
 

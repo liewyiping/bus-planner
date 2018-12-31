@@ -1,22 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Chart with VueJS</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+@extends('layouts.app')
 
-    </head>
-    <body>
-        <div id="app">
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" style="clear: both">
+                    <h6 style="float: left; margin:5px;">Annual report for year {{$year_report}} </h6> 
+                </div>
+
+                <div class="card-body">
+
+                
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                  
+                    <br>
+                    <div align="center">
+                    </div>
+
+                    <div id="app">
             {!! $chart->container() !!}
         </div>
-        <script src="https://unpkg.com/vue"></script>
-        <script>
-            var app = new Vue({
-                el: '#app',
-            });
-        </script>
-        <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>
+       
         {!! $chart->script() !!}
-    </body>
-</html>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
