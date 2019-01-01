@@ -7,9 +7,11 @@ use busplannersystem\Charts\FinancialChart;
 use busplannersystem\Ticket;
 use busplannersystem\Company;
 use busplannersystem\Trip;
+use busplannersystem\Bus;
 use busplannersystem\Operator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon;
 
 class FinancialAnalyticsController extends Controller
 {
@@ -80,6 +82,27 @@ class FinancialAnalyticsController extends Controller
         //When dah sorted, kita nak value sums yang dah sorted tadi based on months so kat sini kita just pluck 'sums'
         //pluck ni ialah dia akan return array which precisely what we want to render the chart
         $sorted_tickets=$sort_sums_months->pluck('sums');
+        
+        //Find number of unsold tickets
+        $bus_company_id=$operator->bus_company_id;
+        $operators_id=Operator::where('bus_company_id',$bus_company_id)->pluck('operator_id');
+        $buses_id=Bus::whereIn('operator_id',$operators_id)->pluck('bus_id'); //Get array of bus_id
+
+        $trips = DB::table('trips')->whereIn('bus_id',$buses_id)->whereYear('date_depart', $year_report)->select(
+            DB::raw('count(trip_id) as total_trip'), 
+            DB::raw("DATE_FORMAT(date_depart,'%M') as months")
+            )->orderBy('date_depart','asc')->groupBy('months')->get(); //get trips and sort by months
+                
+
+            for ($y = 0; $y < $trips->count(); $y++) {
+            $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
+            }
+
+       
+
+       $total_trips=$trips->sum('total_trip');
+
+       
 
         //Create a new chart
         $chart = new FinancialChart();
@@ -88,7 +111,7 @@ class FinancialAnalyticsController extends Controller
         
 
         return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report)->with('total_revenue_year',$total_revenue_year)
-        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name);
+        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name)->with('total_trips',$total_trips);
        
     }
 

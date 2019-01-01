@@ -14,6 +14,7 @@
                 <h5>{{$bus_company_name}}</h5>
                 <h5>Total revenue :RM {{number_format($total_revenue_year)}} </h5>
                 <h5>Total tickets sold : {{$total_seat_sold}}  </h5>
+                <h5>Total trips : {{$total_trips}}  </h5>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -39,6 +40,7 @@
                 <th scope="col">Months</th>
                 <th scope="col">Revenue generated(RM)</th>
                 <th scope="col">Total tickets sold</th>
+                <th scope="col">Total trips</th>
                 
                 
 
@@ -52,11 +54,19 @@
             
             <td> {{$ticket->months}}</td> 
             <td> {{number_format($ticket->sums)}}</td>    
-            <td> {{$ticket->pax_num_total}}</td>  
-            
+            <td> {{$ticket->pax_num_total}}</td> 
+            <td> {{$ticket->total_trip}}</td> 
 
             </tr>
             @endforeach
+
+            
+
+
+            
+
+        
+           
 
 
             </tbody>
