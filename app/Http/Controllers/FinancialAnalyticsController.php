@@ -94,7 +94,7 @@ class FinancialAnalyticsController extends Controller
             )->orderBy('date_depart','asc')->groupBy('months')->get(); //get trips and sort by months
                 
 
-            for ($y = 0; $y < $trips->count(); $y++) {
+            for ($y = 0; $y < isset($trips[$y]); $y++) {
             $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
             }
         
