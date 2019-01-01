@@ -21,9 +21,11 @@
                     @endif
 
                   
-                    <br>
-                    <div align="center">
-                    </div>
+                 
+                    
+
+                    <h3>{{$bus_company_name}}</h3>
+                    
 
                     <div class="form-group row">
                             <label for="year-report" class="col-md-4 col-form-label text-md-right">{{ __('Choose year report') }}</label>
@@ -40,6 +42,7 @@
                             </select>
                             </div>
                     </div>
+                    
 
                     
                     <div class="form-group row mb-0">

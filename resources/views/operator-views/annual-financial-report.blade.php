@@ -6,12 +6,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" style="clear: both">
-                    <h6 style="float: left; margin:5px;">Annual report for year {{$year_report}} </h6> 
+                    <h6 style="float: left; margin:5px;">{{$year_report}} annual report </h6> 
                 </div>
 
                 <div class="card-body">
 
-                <h5>Total revenue for {{$year_report}} :RM {{number_format($total_revenue_year)}} </h5>
+                <h5>{{$bus_company_name}}</h5>
+                <h5>Total revenue :RM {{number_format($total_revenue_year)}} </h5>
                 <h5>Total tickets sold : {{$total_seat_sold}}  </h5>
 
                     @if (session('status'))

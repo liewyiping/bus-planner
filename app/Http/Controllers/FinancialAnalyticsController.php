@@ -38,7 +38,7 @@ class FinancialAnalyticsController extends Controller
         $chart->labels($sort_sums_years->pluck('years')); 
         $chart->dataset('Revenue over the years', 'line',$sorted_tickets);
        
-        return view('operator-views.financial-analytics')->with('chart',$chart)->with('sort_sum_years',$sort_sums_years);
+        return view('operator-views.financial-analytics')->with('chart',$chart)->with('sort_sum_years',$sort_sums_years)->with('bus_company_name',$bus_company_name);
        
     }
 
@@ -80,22 +80,15 @@ class FinancialAnalyticsController extends Controller
         //When dah sorted, kita nak value sums yang dah sorted tadi based on months so kat sini kita just pluck 'sums'
         //pluck ni ialah dia akan return array which precisely what we want to render the chart
         $sorted_tickets=$sort_sums_months->pluck('sums');
-       
-       
-        
+
         //Create a new chart
         $chart = new FinancialChart();
         $chart->labels($sort_sums_months->pluck('months')); //Either way sama je but this one json dah tolong sort so we can use the attribute
         $chart->dataset('Annual financial report', 'line',$sorted_tickets);
-
         
 
         return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report)->with('total_revenue_year',$total_revenue_year)
-        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months);
-
-
-
-
+        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name);
        
     }
 
