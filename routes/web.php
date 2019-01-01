@@ -148,9 +148,9 @@ Route::group(['prefix' => 'operator'], function()
 	Route::get('/report', 'HomeController@operator_report');
 
 	//Operator view financial report
-	Route::get('/financial-report-dashboard', 'FinancialAnalyticsController@index');
-	Route::get('/yearly-financial-report', 'FinancialAnalyticsController@years_report');
-	// Route::get('/yearly-financial-report', 'FinancialAnalyticsController@month_report');
+	Route::get('/financial-report-dashboard', 'FinancialAnalyticsController@index')->name('operator.view_financial_dashboard');
+	Route::post('/annual-report', 'FinancialAnalyticsController@annual_report')->name('operator.insert_year_report');
+
 	
 
 
