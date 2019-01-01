@@ -217,6 +217,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Carbon' => 'Carbon\Carbon',
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        'auth.password.tokens' => Illuminate\Auth\Passwords\TokenRepositoryInterface::class,
 
     ],
 
