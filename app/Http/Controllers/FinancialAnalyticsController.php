@@ -130,10 +130,9 @@ class FinancialAnalyticsController extends Controller
                 // $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereRaw('created_at', '<=', date('Y-m-d H:i:s', strtotime("$date $time")))->get();
 
                 // $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereRaw('created_at', '<=', 'updated_at')->get();
-                $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereDate('created_at->toDateString()', '<=', 'date_depart')->get();
-              
+               
 
-                return $unsold_tickets;
+              
 
        $total_trips=$trips->sum('total_trip');
 
