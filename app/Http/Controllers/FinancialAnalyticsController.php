@@ -97,8 +97,43 @@ class FinancialAnalyticsController extends Controller
             for ($y = 0; $y < $trips->count(); $y++) {
             $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
             }
+        
+    
 
-       
+            $trips_months = Trip::whereIn('bus_id',$buses_id)->whereYear('date_depart', $year_report)->select(
+                DB::raw('(trip_id) as trip_id'), 
+                DB::raw("DATE_FORMAT(date_depart,'%M') as months")
+                )->orderBy('date_depart','asc')->get();
+
+            
+           
+            $total_seat_months = DB::table('trips')->whereYear('date_depart', $year_report)
+            ->join('buses', 'trips.bus_id', '=', 'buses.bus_id')
+            ->whereIn('trips.bus_id', $buses_id)
+            ->select('trips.*', 'buses.total_seat')->select(
+                DB::raw('sum(total_seat) as total_seat'), 
+                DB::raw("DATE_FORMAT(date_depart,'%M') as months")
+                )->orderBy('date_depart','asc')->groupBy('months')->get();
+
+               
+                // $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereDate('created_at', '<=','date_depart')->select(
+                //     DB::raw('sum(pax_num) as pax_num_total'),
+                //     DB::raw("DATE_FORMAT(created_at,'%M') as months")
+                //     )->orderBy('created_at','asc')->groupBy('months')->get();
+                
+              
+                // $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->where('created_at', '<=', date('Y-m-d H:i:s', strtotime()))->get();
+                // $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereDate('created_at', '<=','date_depart')->get();
+                
+                $date="date_depart";
+                $time="time_depart";
+                // $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereRaw('created_at', '<=', date('Y-m-d H:i:s', strtotime("$date $time")))->get();
+
+                // $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereRaw('created_at', '<=', 'updated_at')->get();
+                $unsold_tickets = Ticket::where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->whereDate('created_at->toDateString()', '<=', 'date_depart')->get();
+              
+
+                return $unsold_tickets;
 
        $total_trips=$trips->sum('total_trip');
 

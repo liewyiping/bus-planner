@@ -28,12 +28,13 @@
                     
 
                     <div class="form-group row">
-                            <label for="year-report" class="col-md-4 col-form-label text-md-right">{{ __('Choose year report') }}</label>
+                            <label for="year-report" class="col-md-4 col-form-label text-md-right">{{ __('Choose annual report') }}</label>
 
                             <div class="col-md-6">
                             <select class=”form-control” name='year_report' style="width:150px;" id='type'>
                                 
                                 <option value=#>Please choose</option>
+                                <option value=2019>2019</option>
                                 <option value=2018>2018</option>
                                 <option value=2017>2017</option>
                                 <option value=2016>2016</option>
