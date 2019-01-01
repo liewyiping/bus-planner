@@ -19,17 +19,10 @@
                         <a href="{{ url('/admin/view-new-operator-application') }}">
                         <input type="button" class="btn btn-primary" value="View Operator Application"/>
                         </a>
-<<<<<<< HEAD
                         
-                        <a href="{{ url('/admin/insert-new-terminal') }}">
-                        <input type="button" class="btn btn-primary" value="Insert New Terminal"/>
-                        </a>
-
                         <a href="{{ url('/admin/list-of-operators') }}">
                         <input type="button" class="btn btn-primary" value="List Of Operator"/>
                         </a>
-=======
->>>>>>> 33224b169ab5ec95929f635fa6ac9caf85c79cea
                     </div>
                     <br>
                     </div>
