@@ -146,10 +146,7 @@ class FinancialAnalyticsController extends Controller
                
                 //     }
 
-                // for ($x = 0; $x <$total_seat_months->count(); $x++) {
-                //     $sort_sums_months[$x]->unsold_ticket_month=($total_seat_months[$x]->total_seat)-($total_pax_num_months[$x]->pax_num);
                
-                //     }
                 
                 //$total_pax_num_months[0]->pax_num='30';
 
