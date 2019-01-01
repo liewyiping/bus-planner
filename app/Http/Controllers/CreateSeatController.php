@@ -118,8 +118,10 @@ class CreateSeatController extends Controller
 //for ticket details in view
         $route_id=Route::where('route_id', $route_id)->first();
         $totalprice=$request -> totalprice;
+        $origin_terminal=$route_id -> origin_terminal;
         $destination_terminal=$route_id -> destination_terminal;
 
+        $tickets -> origin_terminal=$origin_terminal;
         $tickets -> destination_terminal=$destination_terminal;
         $tickets -> save(); 
 
