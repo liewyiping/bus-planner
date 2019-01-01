@@ -107,33 +107,66 @@ class FinancialAnalyticsController extends Controller
 
             
            
-            // $total_seat_months = DB::table('trips')->whereYear('date_depart', $year_report)
-            // ->join('buses', 'trips.bus_id', '=', 'buses.bus_id')
-            // ->whereIn('trips.bus_id', $buses_id)
-            // ->select('trips.*', 'buses.total_seat')->select(
-            //     DB::raw('sum(total_seat) as total_seat'), 
-            //     DB::raw("DATE_FORMAT(date_depart,'%M') as months")
-            //     )->orderBy('date_depart','asc')->groupBy('months')->get();
+            $total_seat_months = DB::table('trips')->whereYear('date_depart', $year_report)
+            ->join('buses', 'trips.bus_id', '=', 'buses.bus_id')
+            ->whereIn('trips.bus_id', $buses_id)
+            ->select('trips.*', 'buses.total_seat')->select(
+                DB::raw('sum(total_seat) as total_seat'), 
+                DB::raw("DATE_FORMAT(date_depart,'%M') as months")
+                )->orderBy('date_depart','asc')->groupBy('months')->get();
 
+       
+            //Finding the tickets id that sold before depart_date by months
+            $tickets =DB::table('tickets')->where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->select(
+            DB::raw('(ticket_id) as ticket_id') , DB::raw('CONCAT(date_depart, " ", time_depart) as datetime_depart'),DB::raw('(created_at) as created_at')
+            )->get();
+            
+            $A=0;
+            //Comparing ticket that is created based on created_at is earlier than datetime_depart
+            for ($x = 0; $x < $tickets->count(); $x++) {
+                
+                if(($tickets[$x]->created_at)<=($tickets[$x]->datetime_depart))
+                    {
+                        $tickets[$A]->sold_trip_id=$tickets[$x]->ticket_id;
+                        $A=$A+1;
+                       
+                    }
+                }
+        
+                
+                $sold_tickets=$tickets->pluck('sold_trip_id');
+
+                $total_pax_num_months =Ticket::whereIn('ticket_id', $sold_tickets)->select(
+                DB::raw('sum(pax_num) as pax_num') ,DB::raw("DATE_FORMAT(date_depart,'%M') as months")
+                )->orderBy('date_depart','asc')->groupBy('months')->get();
+                
+                
+                // for ($x = 0; $x <$total_seat_months->count(); $x++) {
+                //     $sort_sums_months[$x]->unsold_ticket_month=($total_seat_months[$x]->total_seat)-($total_pax_num_months[$x]->pax_num);
                
-            //    $sold_tickets =DB::table('tickets')->where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->select(
-            //         DB::raw('CONCAT(date_depart, " ", time_depart) AS datetime_depart')
-            //         )->where('created_at', '<', 'datetime_depart')->orderBy('date_depart','asc')->get();
+                //     }
 
-            // $sold_tickets =DB::table('tickets')->where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->select(
-            //     DB::raw('CONCAT(date_depart, " ", time_depart) AS datetime_depart'),DB::raw('(created_at) as created_at')
-            //     )->whereDate('created_at', '<', 'datetime_depart')->orderBy('datetime_depart','asc')->get();
+                // for ($x = 0; $x <$total_seat_months->count(); $x++) {
+                //     $sort_sums_months[$x]->unsold_ticket_month=($total_seat_months[$x]->total_seat)-($total_pax_num_months[$x]->pax_num);
+               
+                //     }
+                
+                //$total_pax_num_months[0]->pax_num='30';
 
-            // $sold_tickets =DB::table('tickets')->where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->select(
-            //     DB::raw('(ticket_id) as id') , DB::raw('CONCAT(date_depart, " ", time_depart) AS datetime_depart'),DB::raw('(created_at) as created_at')
-            //     )->where('created_at', '>', 'datetime_depart')->get();
-     
-         
-            //     return $sold_tickets;
+                //$sort=($total_seat_months[0]->total_seat)-($total_pax_num_months[0]->pax_num);
+
+                return $total_pax_num_months;
 
               
+      
 
-       $total_trips=$trips->sum('total_trip');
+               
+                
+                $total_seat_year=$total_seat_months->sum('total_seat'); //Find advertised total seat
+                $total_pax_num_year=$total_pax_num_months->sum('pax_num'); //Find number of pax that were sold
+                $unsold_ticket_year=$total_seat_year - $total_pax_num_year; 
+
+                $total_trips=$trips->sum('total_trip'); //Find total trip annually
 
        
 
@@ -144,7 +177,7 @@ class FinancialAnalyticsController extends Controller
         
 
         return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report)->with('total_revenue_year',$total_revenue_year)
-        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name)->with('total_trips',$total_trips);
+        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name)->with('total_trips',$total_trips)->with('unsold_ticket_year',$unsold_ticket_year);
        
     }
 
