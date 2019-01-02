@@ -1,6 +1,6 @@
-<?php
 
-namespace busplannersystem\Http\Controllers;
+
+<?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -8,8 +8,6 @@ use busplannersystem\Ticket;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 ?>
-
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -24,6 +22,15 @@ use Illuminate\Support\Facades\Input;
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+            var app = new Vue({
+                el: '#app',
+            });
+        </script>
+          <script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -130,16 +137,29 @@ use Illuminate\Support\Facades\Input;
                     <li class="links" style="padding: 12px;"><a href="{{ url('/customer/records') }}">Booking Records</a></li>
                    
 
+<<<<<<< HEAD
 <!--upcoming trip *controlled at createseatcontroller-->
+=======
+                <!--upcoming trip-->
+
+                        <!-- Malaysia Time Zone UTC +8-->
+                        <?php
+                            date_default_timezone_set("Asia/Kuala_Lumpur");
+                        ?>
+>>>>>>> 9fc59ccaed5329cd696c2ab45d9ea62d321d43bc
                     <li>
-                        <div class="dropdown">
+                        <div class="dropdown" style="padding: 9px;">
                         <button class="dropbtn">Your Upcoming Trip</button>
                         <div class="dropdown-content">
    
                          <?php
                          $user_id= Auth::user()->user_id;
                          $ticket=Ticket::where('user_id',$user_id)->get();
+<<<<<<< HEAD
             
+=======
+                         
+>>>>>>> 9fc59ccaed5329cd696c2ab45d9ea62d321d43bc
                           foreach ($ticket as $ticket)
                           {
                            if ($ticket -> date_depart >= date("Y-m-d")) 
@@ -204,7 +224,7 @@ use Illuminate\Support\Facades\Input;
                             <li class="links" style="padding: 12px;"><a>Point: {{ Auth::user()->point }}</a></li>
                             <li class="links nav-item dropdown" style="margin:15px;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <strong>{{ Auth::user()->name }}<strong> <span class="caret"></span>
+                                    <strong>{{ Auth::user()->name }}</strong> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -222,7 +242,7 @@ use Illuminate\Support\Facades\Input;
                             @else
                             <li class="links nav-item dropdown" style="margin:15px;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <strong>{{ Auth::user()->name }}<strong> <span class="caret"></span>
+                                    <strong>{{ Auth::user()->name }}</strong> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
