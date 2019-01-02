@@ -72,7 +72,7 @@
     <td class="text-right">{{ $ticket->date_depart }}</td>
     <td class="text-right">{{ $ticket->time_depart }}</td>
     <td class="text-right">{{ $ticket->pax_num }}</td>
-    <td class="text-right">{{ $ticket->ticket_price }}</td>
+    <td class="text-right">{{$english_format_number = number_format($ticket->ticket_price, 2, '.', '')}}</td>
   </tr>
 </table>
 
