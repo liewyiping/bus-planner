@@ -15,7 +15,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable(popular_month);
         var options = {
-          title: 'Popular Date',
+          title: '',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
@@ -25,9 +25,43 @@
     </script>
   </head>
   <body>
-    <div align="center">
+    <div align="center" class="">
       <h3 class="panel-title">Number of tickets sold per month</h3>
-      <div id="linechart" style="width: 1300px; height: 500px" align="center"></div>
+      <div id="linechart" style="width: 800px; height: 400px" align="center"></div>
+      <br><br>
+      <table class="table table-striped col-md-8">
+
+            <thead>
+                <tr>
+                <th scope="col">Month</th>
+                <th scope="col">Tickets sold (per seat)</th>
+                <th scope="col">Revenue generated (RM)</th>
+                
+                
+
+
+                
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($tickets as $ticket)
+            <tr>
+            
+            <td> {{$ticket->date}}</td>
+            <td> {{$ticket->number}}</td>
+            <td> {{number_format($ticket->revenue)}}</td>
+            </tr>
+            @endforeach
+            
+            @foreach($total_revenue as $tp)
+            <tr>
+            <td> Total Revenue (RM)</td>
+            <td></td>
+            <td> {{number_format($tp->revenue)}}</td>
+            </tr>
+            @endforeach
+            </tbody>
+            </table>
     </div>
   </body>
 </html>
