@@ -119,6 +119,7 @@ class BusController extends Controller
     {
         //date_default_timezone_set("Asia/Kuala_Lumpur");
         //$date = date('d-m-Y H:i:s');
+        try{
         $this->validate($request, [
             'total_seat' => 'required',
             'registration_plate' => 'required',
@@ -131,6 +132,10 @@ class BusController extends Controller
         // $bus->created_at =  $date;
         $bus->save();
         return redirect('operator/view-bus-info')->with('success', 'Bus Info Updated');
+        
+        }catch (Exception $e) {
+            return view('errors.1062');
+        }
     }
 
     /**
