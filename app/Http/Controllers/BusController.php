@@ -5,6 +5,7 @@ use busplannersystem\Bus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use busplannersystem\Operator;
+use Exception;
 
 class BusController extends Controller
 {
@@ -57,6 +58,7 @@ class BusController extends Controller
      */
     public function store(Request $request)
     {
+        try{
         $this->validate($request,[
 
             'registration_plate' => 'required|string|max:20',
@@ -68,9 +70,14 @@ class BusController extends Controller
         ]);
 
         //Create a new bus
+        
             $buses = new Bus();
             $buses ->create($request);
-            return redirect('operator/insert-bus-info');
+            return redirect()->route('operator.viewBusInfo');
+
+        }catch (Exception $e) {
+            return view('errors.1062');
+        }
 
 
     }
