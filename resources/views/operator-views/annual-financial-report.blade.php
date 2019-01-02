@@ -15,7 +15,7 @@
                 <h5>Total revenue :RM {{number_format($total_revenue_year)}} </h5>
                 <h5>Total tickets sold : {{$total_seat_sold}}  </h5>
                 <h5>Total trips : {{$total_trips}}  </h5>
-                <!-- <h5>Total unsold tickets : {{$unsold_ticket_year}}  </h5> -->
+                <h5>Total unsold tickets : {{$unsold_ticket_year}}  </h5>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

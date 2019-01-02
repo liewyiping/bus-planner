@@ -94,9 +94,13 @@ class FinancialAnalyticsController extends Controller
             )->orderBy('date_depart','asc')->groupBy('months')->get(); //get trips and sort by months
                 
 
-            for ($y = 0; $y < isset($trips->count); $y++) {
-            $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
-            }
+            // for ($y = 0; $y < isset($trips->count); $y++) {
+            // $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
+            // }
+
+            for ($y = 0; $y < $trips->count(); $y++) {
+                $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
+                }
         
     
 
@@ -139,6 +143,8 @@ class FinancialAnalyticsController extends Controller
                 $total_pax_num_months =Ticket::whereIn('ticket_id', $sold_tickets)->select(
                 DB::raw('sum(pax_num) as pax_num') ,DB::raw("DATE_FORMAT(date_depart,'%M') as months")
                 )->orderBy('date_depart','asc')->groupBy('months')->get();
+
+                
                 
                 
                 // for ($x = 0; $x <$total_seat_months->count(); $x++) {
@@ -152,8 +158,7 @@ class FinancialAnalyticsController extends Controller
 
                 //$sort=($total_seat_months[0]->total_seat)-($total_pax_num_months[0]->pax_num);
 
-                return $total_pax_num_months;
-
+                //Work in progress
               
       
 
@@ -174,7 +179,7 @@ class FinancialAnalyticsController extends Controller
         
 
         return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report)->with('total_revenue_year',$total_revenue_year)
-        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name)->with('total_trips',$total_trips)->with('unsold_ticket_year',$unsold_ticket_year);
+        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name)->with('total_trips',$total_trips)->with('unsold_ticket_year',$unsold_ticket_year)->with('trips_months', $trips_months );
        
     }
 
