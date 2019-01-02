@@ -53,6 +53,14 @@
 
             </tr>
             @endforeach
+<tr></tr>
+            @foreach($total_revenue as $tp)
+            <tr>
+            <td> Total Revenue (RM)</td>
+            <td></td>
+            <td> {{number_format($tp->revenue)}}</td>
+            </tr>
+            @endforeach
 
             </tbody>
             </table>

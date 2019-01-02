@@ -50,10 +50,16 @@
             <td> {{$ticket->date}}</td>
             <td> {{$ticket->number}}</td>
             <td> {{number_format($ticket->revenue)}}</td>
-
             </tr>
             @endforeach
-
+            
+            @foreach($total_revenue as $tp)
+            <tr>
+            <td> Total Revenue (RM)</td>
+            <td></td>
+            <td> {{number_format($tp->revenue)}}</td>
+            </tr>
+            @endforeach
             </tbody>
             </table>
     </div>

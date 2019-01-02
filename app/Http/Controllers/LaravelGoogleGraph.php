@@ -47,7 +47,14 @@ class LaravelGoogleGraph extends Controller
             $result[++$key] = [ $value->date,  $value->number];
         }
 
-        return view('analytics.popular_date_line_chart')->with('popular_month', json_encode($result))->with('tickets',$tickets);
+        $total_revenue = Ticket::where('company_name', $bus_company_name)->select(
+            DB::raw("company_name as company_name"),
+            DB::raw('sum(ticket_price) as revenue'))
+            ->groupBy(DB::raw("company_name"))
+            ->get();
+
+        return view('analytics.popular_date_line_chart')->with('popular_month', json_encode($result))->with('tickets',$tickets)
+        ->with('total_revenue',$total_revenue);
       }
 
     ////////////////////donut chart part ///////////////////////////////////////////////////////
@@ -73,7 +80,14 @@ class LaravelGoogleGraph extends Controller
             $result[++$key] = [$value->destination, $value->number];
         }
 
-        return view('analytics.popular_destination_donut_chart')->with('popular_destination', json_encode($result))->with('tickets_destination',$tickets_destination);
+        $total_revenue = Ticket::where('company_name', $bus_company_name)->select(
+            DB::raw("company_name as company_name"),
+            DB::raw('sum(ticket_price) as revenue'))
+            ->groupBy(DB::raw("company_name"))
+            ->get();
+
+        return view('analytics.popular_destination_donut_chart')->with('popular_destination', json_encode($result))->with('tickets_destination',$tickets_destination)
+        ->with('total_revenue',$total_revenue);
       }
 
 }
