@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
             <div class="card-header">
                     <a href="{{ url('/home') }}">
@@ -25,11 +25,11 @@
                     <div align="center">
 
                         <a href="{{ url('/operator/popular_date_line_chart') }}">
-                        <input type="button" class="btn btn-primary" value="Popular Date"/>
+                        <input type="button" class="btn btn-primary" value="Monthly Revenue Report"/>
                         </a>
 
                         <a href="{{ url('/operator/popular_destination_donut_chart') }}">
-                        <input type="button" class="btn btn-primary" value="Popular Destination"/>
+                        <input type="button" class="btn btn-primary" value="Popular Destination Report"/>
                         </a>
 
                         <a href="{{ url('/laravel_google_chart') }}">

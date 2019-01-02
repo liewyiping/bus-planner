@@ -28,7 +28,34 @@
   <body>
     <div align="center">
       <h3 class="panel-title">Popular Destination</h3>
-      <div id="donutchart" style="width: 1300px; height: 500px" align="center"></div>
+      <div id="donutchart" style="width: 800px; height: 400px" align="center"></div>
+      <br><br>
+      <table class="table table-striped col-md-10">
+
+            <thead>
+                <tr>
+                <th scope="col">Destination</th>
+                <th scope="col">Tickets sold (per seat)</th>
+                <th scope="col">Revenue generated (RM)</th>
+                
+                
+
+
+                
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($tickets_destination as $ticket)
+            <tr>
+            <td> {{$ticket->destination}}</td>
+            <td> {{$ticket->number}}</td>
+            <td> {{number_format($ticket->revenue)}}</td>
+
+            </tr>
+            @endforeach
+
+            </tbody>
+            </table>
     </div>
   </body>
 </html>
