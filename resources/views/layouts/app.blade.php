@@ -137,16 +137,16 @@ use Illuminate\Support\Facades\Input;
                     <li class="links" style="padding: 12px;"><a href="{{ url('/customer/records') }}">Booking Records</a></li>
                    
 
-<<<<<<< HEAD
+
 <!--upcoming trip *controlled at createseatcontroller-->
-=======
+
                 <!--upcoming trip-->
 
                         <!-- Malaysia Time Zone UTC +8-->
                         <?php
                             date_default_timezone_set("Asia/Kuala_Lumpur");
                         ?>
->>>>>>> 9fc59ccaed5329cd696c2ab45d9ea62d321d43bc
+
                     <li>
                         <div class="dropdown" style="padding: 9px;">
                         <button class="dropbtn">Your Upcoming Trip</button>
@@ -155,11 +155,7 @@ use Illuminate\Support\Facades\Input;
                          <?php
                          $user_id= Auth::user()->user_id;
                          $ticket=Ticket::where('user_id',$user_id)->get();
-<<<<<<< HEAD
-            
-=======
-                         
->>>>>>> 9fc59ccaed5329cd696c2ab45d9ea62d321d43bc
+
                           foreach ($ticket as $ticket)
                           {
                            if ($ticket -> date_depart >= date("Y-m-d")) 
