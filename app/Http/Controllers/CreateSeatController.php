@@ -147,16 +147,7 @@ class CreateSeatController extends Controller
         return redirect ('/home');
     }
 
-
-//CHECK UPCOMING SCHEDULE FOR CUSTOMER
-    public function show()
-    {
-        $user_id = Auth::user()-> user_id;
-        $ticket=Ticket::where('user_id',$user_id)->get();
-
-        return view('schedule')->with('ticket', $ticket);
-    }
-//show back ticket 
+    //SHOW BACK TICKET 
     public function showticket(Request $request, $ticket_id)
     {
         // $tickets=Ticket::find($request -> ticket_id);
@@ -170,14 +161,23 @@ class CreateSeatController extends Controller
         $user_id = Auth::user()->user_id;
         $user=User::where('user_id', $user_id)->first();
         $point = $user -> point;
-        // $point="12";
         $route_id=$tickets -> route_id;
          $route_id=Route::where('route_id', $route_id)->first();
 
-// return('success');
-
         return view('ticket')-> with('trips', $trips) ->with('route_id', $route_id)->with('bus_company_name', $bus_company_name)->with('point', $point)->with('tickets', $tickets);
     
+
+
+
+// //CHECK UPCOMING SCHEDULE FOR CUSTOMER
+//     public function show()
+//     {
+//         $user_id = Auth::user()-> user_id;
+//         $ticket=Ticket::where('user_id',$user_id)->get();
+
+//         return view('schedule')->with('ticket', $ticket);
+//     }
+
 
     }
 

@@ -40,12 +40,12 @@ use Illuminate\Support\Facades\Input;
   height: 30px;
 
   color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
+  padding: 0 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .dropdown {
@@ -130,7 +130,7 @@ use Illuminate\Support\Facades\Input;
                     <li class="links" style="padding: 12px;"><a href="{{ url('/customer/records') }}">Booking Records</a></li>
                    
 
-<!--upcoming trip-->
+<!--upcoming trip *controlled at createseatcontroller-->
                     <li>
                         <div class="dropdown">
                         <button class="dropbtn">Your Upcoming Trip</button>
@@ -139,6 +139,7 @@ use Illuminate\Support\Facades\Input;
                          <?php
                          $user_id= Auth::user()->user_id;
                          $ticket=Ticket::where('user_id',$user_id)->get();
+            
                           foreach ($ticket as $ticket)
                           {
                            if ($ticket -> date_depart >= date("Y-m-d")) 
