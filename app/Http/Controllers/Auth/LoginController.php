@@ -26,7 +26,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-
+    // public function session(Request $request){
+    //     $request -> session()->put('email', $email);
+    // }
     protected $redirectTo = '/home';
 
     /**

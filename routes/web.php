@@ -110,10 +110,6 @@ Route::group(['prefix' => 'operator'], function()
 	Route::post('/insert-bus-info', 'BusController@store')->name('operator.insertBusInfo.submit');
 	Route::get('/view-bus-info', 'BusController@indexView');
 
-	//Operator Insert Driver
-	Route::get('/insert-driver', 'DriverController@index')->name('operator.insert-driver');
-	Route::post('/insert-driver', 'DriverController@store')->name('operator.insert-driver.submit');
-
 	
 
 	//Operator edit bus
@@ -148,9 +144,9 @@ Route::group(['prefix' => 'operator'], function()
 	Route::get('/report', 'HomeController@operator_report');
 
 	//Operator view financial report
-	Route::get('/financial-report-dashboard', 'FinancialAnalyticsController@index')->name('operator.view_financial_dashboard');
-	Route::post('/annual-report', 'FinancialAnalyticsController@annual_report')->name('operator.insert_year_report');
-
+	Route::get('/financial-report', 'FinancialAnalytics@index');
+	Route::get('/monthly-financial-report', 'FinancialAnalytics@yearly_report');
+	Route::get('/yearly-financial-report', 'FinancialAnalytics@month_report');
 	
 
 

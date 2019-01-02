@@ -21,20 +21,19 @@
 
 <body>
 	
-   <!-- <h1>Ticket</h1> -->
+   <h1>Ticket</h1>
    <h3>{{ $bus_company_name }} </h3>
-   <div>&nbsp;&nbsp;&nbsp;Price: RM {{$english_format_number = number_format($tickets->ticket_price, 2, '.', '')}}</div>
-   <div>&nbsp;&nbsp;&nbsp;Ticket ID: {{$tickets -> ticket_id}}</div>
-   <div>&nbsp;&nbsp;&nbsp;From: {{$route_id -> origin_terminal }} </div>
-   <div>&nbsp;&nbsp;&nbsp;To: {{$route_id -> destination_terminal }} </div>
+   <div> price: RM {{ $tickets -> ticket_price }}</div>
+   <div>Ticket ID: {{$tickets -> ticket_id}}</div>
+   <div>From: {{$route_id -> origin_terminal }} </div>
+   <div>To: {{$route_id -> destination_terminal }} </div>
 
-   <div>&nbsp;&nbsp;&nbsp;Date of Departure: {{ $trips -> date_depart }}</div>
-   <div>&nbsp;&nbsp;&nbsp;Time of Departure : {{ $trips -> time_depart }} </div>
-   <div>&nbsp;&nbsp;&nbsp;Number of seat(s) booked: {{ $tickets -> pax_num }}</div>
+   <div>Date of Departure: {{ $trips -> date_depart }}</div>
+   <div>Time of Departure : {{ $trips -> time_depart }} </div>
+   <div>Number of seat(s) booked: {{ $tickets -> pax_num }}</div>
 
-   <br><br>
-   <div>&nbsp;&nbsp;&nbsp;Point: {{ $point }}</div>
-   <br>
+   <br><br><br>
+   <div>Point: {{ $point }}</div>
 
    <!-- <a href="{{ url('/schedule') }}" class="btn btn-primary" style='width:40%;'>Complete</a> -->
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">

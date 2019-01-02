@@ -40,8 +40,6 @@ class Ticket extends Model
 
     
 
-    
-
 
 
 

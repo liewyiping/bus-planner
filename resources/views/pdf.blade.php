@@ -35,11 +35,11 @@
       <div class="panel-heading">
         <h4>From: {{ $ticket->company_name }}</h4>
       </div>
-      <!-- <div class="panel-body">
+      <div class="panel-body">
         <p>
             Company address
         </p>
-      </div> -->
+      </div>
     </div>
   </div>
     <div class="col-xs-5 col-xs-offset-2 text-right">
@@ -47,11 +47,11 @@
             <div class="panel-heading">
               <h4>To : {{ $ticket->user->name }}</h4>
             </div>
-            <!-- <div class="panel-body">
+            <div class="panel-body">
         <p>
         {{ $ticket->user->email }}
         </p>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>
@@ -72,7 +72,7 @@
     <td class="text-right">{{ $ticket->date_depart }}</td>
     <td class="text-right">{{ $ticket->time_depart }}</td>
     <td class="text-right">{{ $ticket->pax_num }}</td>
-    <td class="text-right">{{$english_format_number = number_format($ticket->ticket_price, 2, '.', '')}}</td>
+    <td class="text-right">{{ $ticket->ticket_price }}</td>
   </tr>
 </table>
 
