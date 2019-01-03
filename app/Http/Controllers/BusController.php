@@ -5,6 +5,7 @@ use busplannersystem\Bus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use busplannersystem\Operator;
+use busplannersystem\Driver;
 use Exception;
 
 class BusController extends Controller
@@ -17,9 +18,14 @@ class BusController extends Controller
    
 
     public function index()
-    {
-        $buses = Bus::all();
-        return view ('operator-views.operator-insert-bus')->with('buses',$buses);
+    {   
+        $user_id = Auth::user()->user_id;
+        $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
+        $operator=Operator::find($operator_id);
+        $bus_company_id=$operator->bus_company_id;
+        $drivers = Driver::where('bus_company_id',$bus_company_id)->get();
+
+        return view ('operator-views.operator-insert-bus')->with('drivers',$drivers);
     }
 
     public function indexView()

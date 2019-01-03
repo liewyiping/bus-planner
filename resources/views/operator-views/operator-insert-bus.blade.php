@@ -20,6 +20,23 @@
                     <form method="POST" action="{{ route('operator.insertBusInfo.submit') }}">
                         @csrf
 
+                        
+                        <div class="form-group row">
+                            <label for="driver_id" class="col-md-4 col-form-label text-md-right">{{ __('Driver') }}</label>
+
+                            <div class="col-md-6">
+                            
+                            <select class="form-control" name='driver_id' id='driver_id'>                                
+                            @foreach($drivers as $driver)
+                                 <option value="{{ $driver->driver_id}}">{{ $driver->driver_name}}</option>
+                            @endforeach
+                            </select>
+
+                            </div>
+                            
+                        </div>
+
+
                         <div class="form-group row">
                             <label for="registration_plate" class="col-md-4 col-form-label text-md-right">{{ __('Registration plate') }}</label>
 

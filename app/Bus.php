@@ -29,6 +29,7 @@ class Bus extends Model
      //create a new Bus
      $buses = new Bus();
      $buses -> registration_plate = $request -> input('registration_plate');
+     $buses -> driver_id = $request -> input('driver_id');
      $buses -> total_seat = $request -> input('total_seat');
      $buses -> bus_layout = $request -> input('bus_layout');
 
