@@ -32,9 +32,6 @@
                         <input type="button" class="btn btn-primary" value="Popular Destination Report"/>
                         </a>
 
-                        <a href="{{ url('/laravel_google_chart') }}">
-                        <input type="button" class="btn btn-primary" value="Popular Bus Company"/>
-                        </a>
 
                         <a href="{{ url('/operator/financial-report-dashboard') }}">
                         <input type="button" class="btn btn-primary" value="Financial Report"/>
