@@ -5,7 +5,6 @@ namespace busplannersystem;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Mail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -53,17 +52,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
-    public static function sendWelcomeEmail($user)
-    {
-      // Generate a new reset password token
-      $token = app('auth.password.broker')->createToken($user);
-      
-      // Send email
-      Mail::send('emails.welcome', ['user' => $user, 'token' => $token], function ($m) use ($user) {
-        $m->from('hello@appsite.com', 'Your App Name');
-        $m->to($user->email, $user->name)->subject('Welcome to Bus Planner System');
-      });
-    }
 
 
 }

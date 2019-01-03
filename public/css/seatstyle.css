@@ -7,6 +7,12 @@
 
 }
 
+div #top{
+ text-align: right;
+ background-color: lightblue;
+ padding: 10px;
+}
+
 .center
 {
   
@@ -40,7 +46,7 @@
   grid-gap: 6px;
   background-color: #fff;
   color: #444;
-  margin-top: 70px;
+  margin-top: 40px;
   margin-right: 300px;
   margin-left: 50px;
   padding-left: 30px
@@ -55,17 +61,23 @@
   border: 1px solid blue;
   background-color: lightblue;
   padding: 10px;
-  width: 35                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   0px;
-  height: 400px;
+  width: 400px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   0px;
+  /*height: 60%;*/
   margin-top: 150px;
+  /*padding-bottom: 10px;*/
+   /*white-space: pre-line;*/
+   display: inline-block;
 }
 
 #reference{
   border: 1px solid blue;
   background: white;
   
-  margin-top: 150px;
-  grid-template-rows: 1fr 2fr 1fr;
+  margin-top: 60px;
+  /*grid-template-rows: 1fr 2fr 1fr;*/
+  display: block;
+ 
+  padding:20px;
 }
 
 .booked input{
@@ -119,20 +131,14 @@ input:checked[type="checkbox"]
   background: #03a9f4;
 }
 
-
-
-.square {
-  height: 50px;
-  width: 50px;
-  background-color: #555;
-}
-
-#circle {
-  height: 50px;
-  width: 50px;
-  background-color: #555;
+.dot {
+  height: 13px;
+  width: 15px;
+  /*background-color: #bbb*/;
   border-radius: 50%;
+  display: inline-block;
 }
+
 
 
 </style>

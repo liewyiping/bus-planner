@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use busplannersystem\Seat;
 use busplannersystem\Operator;
 use busplannersystem\Company;
+use busplannersystem\User;
+use Illuminate\Support\Facades\Auth;
+use busplannersystem\Ticket;
+
 
 class HomeController extends Controller
 {
@@ -39,8 +43,11 @@ class HomeController extends Controller
                     ->with('company_id',$company_id)->with('company_name',$company_name)->with('company_address',$company_address);
                 break;
             case 'customer':
+                    $user_id = Auth::user()-> user_id;
+                    $ticket=Ticket::where('user_id',$user_id)->get();
+
                     $seats = Seat::all();
-                    return view('home')->with('seats',$seats);
+                    return view('home')->with('seats',$seats)->with('ticket', $ticket);
                 break;
             case 'admin':
                 return view('admin');

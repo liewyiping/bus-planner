@@ -23,6 +23,7 @@ class CreateTicketsTable extends Migration
             $table->string('destination_terminal');           
             $table->string('date_depart');
             $table->string('time_depart');
+            $table->string('seatSelect');
             $table->string('pax_num');
             $table->decimal('ticket_price',19,4);
             //$table->string('route_id');
@@ -33,6 +34,7 @@ class CreateTicketsTable extends Migration
 
             $table->timestamps();
         });     
+        DB::update("ALTER TABLE routes AUTO_INCREMENT = 200001;");  
     }
 
     /**

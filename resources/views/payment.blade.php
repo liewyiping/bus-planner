@@ -166,6 +166,7 @@ span.price {
 				 <input type="hidden" name="seatTaken" value="{{$seatTaken}}">
 				 <input id="point" type="hidden" name="point" value={{$point}}>
 				 <input type="hidden" name="pax_num" value="{{ $pax_num }}">
+				 <input type="hidden" name="seatSelect" value="{{$seatSelect}}">
 				 
 
 
