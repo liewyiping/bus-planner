@@ -16,7 +16,7 @@ class operatorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->type != 'operator' )
+        if ($request->user() && $request->user()->role != 'operator' )
                     { 
                     return new Response(view('unauthorized')->with('role', 'Operator' ));
                     }

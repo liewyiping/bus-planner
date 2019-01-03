@@ -137,7 +137,7 @@ class FinancialAnalyticsController extends Controller
                 //     }
                 
                 //Insert unsold tickets in $sort_sum_months for blade view by substracting total_seat in that month to the total pax_num in that month
-                for ($x = 0; $x <$total_pax_num_months->count(); $x++) {
+                for ($x = 0; $x <$sort_sums_months->count(); $x++) {
                         $sort_sums_months[$x]->unsold_ticket_month=($total_seat_months[$x]->total_seat)-($total_pax_num_months[$x]->pax_num);
                    
                         }

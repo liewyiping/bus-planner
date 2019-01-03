@@ -60,7 +60,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
 				<div class="title m-b-md">
-				   Akses dinafikan. Halaman ini hanya untuk {{$role}}
+				   This page is only for {{$role}}
 				</div>
             </div>
         </div>

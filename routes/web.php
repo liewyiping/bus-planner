@@ -87,13 +87,12 @@ Route::group(['prefix' => 'admin'], function(){
 
 
 /* For operator */
-Route::group(['prefix' => 'operator'], function()
+Route::group(['prefix' => 'operator','middleware' =>'operator'], function()
 {
 	Route::get('/new-application', 'ApplicationFormController@create')->name('operator.application.show');
 	Route::post('/new-application', 'ApplicationFormController@store')->name('operator.application.submit');
 
-	Route::get('/login', 'Auth\OperatorLoginController@showLoginForm')->name('operator.login');
-	Route::post('/login', 'Auth\OperatorLoginController@login')->name('operator.login.submit');
+	
 	// Route::get('/home', 'OperatorController@index')->name('operator.dashboard'); 	
 
 									

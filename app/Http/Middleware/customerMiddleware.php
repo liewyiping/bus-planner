@@ -17,7 +17,7 @@ class customerMiddleware
     public function handle($request, Closure $next)
     {
 
-        if ($request->user() && $request->user()->type != 'customer' )
+        if ($request->user() && $request->user()->role != 'customer' )
                     { 
                     return new Response(view('unauthorized')->with('role', 'Customer' ));
                     }
