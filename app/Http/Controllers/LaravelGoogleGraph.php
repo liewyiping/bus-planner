@@ -38,7 +38,6 @@ class LaravelGoogleGraph extends Controller
                         DB::raw("(DATE_FORMAT(date_depart,'%M, %Y')) as date"),
                         DB::raw("sum(pax_num) as number"),
                         DB::raw('sum(ticket_price) as revenue'))
-                        ->orderBy('number','decs')
                         ->groupBy(DB::raw("YEAR(date_depart)"), DB::raw("MONTH(date_depart)"))
                         ->get();
                         
