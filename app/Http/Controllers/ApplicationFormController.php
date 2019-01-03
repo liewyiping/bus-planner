@@ -63,6 +63,8 @@ class ApplicationFormController extends Controller
             $operators->bus_company_id =  $request -> input('company_id');
             $operators->save();
 
+            User::sendWelcomeEmail($user);
+
             //Reject operator and change status
             break;
             case'reject':
