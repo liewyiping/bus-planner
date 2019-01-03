@@ -113,12 +113,15 @@ Route::group(['prefix' => 'operator','middleware' =>'operator'], function()
 	Route::get('/insert-driver', 'DriverController@index')->name('operator.insert-driver');
 	Route::post('/insert-driver', 'DriverController@store')->name('operator.insert-driver.submit');
 
-	
-
 	//Operator edit bus
 	Route::get('/bus/{bus}/edit','BusController@edit')->name('bus.edit');
 	Route::get('/bus/{bus}','BusController@destroy')->name('bus.destroy');
 	Route::patch('/bus/{bus}','BusController@update')->name('bus.update');
+
+	//Operator edit driver
+	Route::get('/driver/{driver}/edit','DriverController@edit')->name('driver.edit');
+	Route::get('/driver/{driver}','DriverController@destroy')->name('driver.destroy');
+	Route::patch('/driver/{driver}','DriverController@update')->name('driver.update');
 
 	//Operator Insert Route Info
 	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertRouteInfo');

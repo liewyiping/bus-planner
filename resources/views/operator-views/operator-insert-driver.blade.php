@@ -104,6 +104,8 @@
                     <td>{{$driver->driver_ic}}</td>
                     <td>{{$driver->driver_email}}</td>
                     <td>{{$driver->driver_address}}</td>
+                <td>  <a href="{{route('driver.edit', ['driver' =>$driver->driver_id])}}" class="btn btn-primary">Edit</a></td>
+                <td>  <a href="{{route('driver.destroy', ['driver' =>$driver->driver_id])}}" class="btn btn-danger">Delete</a></td>
                     
                    
                   
