@@ -22,7 +22,11 @@ class ApplicationFormController extends Controller
         return view ('admin.view-new-applications')->with('application_forms',$application_forms)->withMessage('User approved successfully');
     }
 
-    
+    public function approval()
+    {
+        return view('approval');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,8 +62,6 @@ class ApplicationFormController extends Controller
             $operators->applicationform_id_operators = $application_forms->id;
             $operators->bus_company_id =  $request -> input('company_id');
             $operators->save();
-            
-            User::sendWelcomeEmail($user);
 
             //Reject operator and change status
             break;

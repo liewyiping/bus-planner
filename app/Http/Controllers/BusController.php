@@ -5,6 +5,7 @@ use busplannersystem\Bus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use busplannersystem\Operator;
+use Exception;
 
 class BusController extends Controller
 {
@@ -57,6 +58,7 @@ class BusController extends Controller
      */
     public function store(Request $request)
     {
+        try{
         $this->validate($request,[
 
             'registration_plate' => 'required|string|max:20',
@@ -68,9 +70,14 @@ class BusController extends Controller
         ]);
 
         //Create a new bus
+        
             $buses = new Bus();
             $buses ->create($request);
-            return redirect('operator/insert-bus-info');
+            return redirect()->route('operator.viewBusInfo');
+
+        }catch (Exception $e) {
+            return view('errors.1062');
+        }
 
 
     }
@@ -112,6 +119,7 @@ class BusController extends Controller
     {
         //date_default_timezone_set("Asia/Kuala_Lumpur");
         //$date = date('d-m-Y H:i:s');
+        try{
         $this->validate($request, [
             'total_seat' => 'required',
             'registration_plate' => 'required',
@@ -124,6 +132,10 @@ class BusController extends Controller
         // $bus->created_at =  $date;
         $bus->save();
         return redirect('operator/view-bus-info')->with('success', 'Bus Info Updated');
+        
+        }catch (Exception $e) {
+            return view('errors.1062');
+        }
     }
 
     /**

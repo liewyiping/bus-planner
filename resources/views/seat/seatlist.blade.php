@@ -20,6 +20,7 @@ $priceEach=$trip -> ticket_price;
 
 
 <div  class="container"> 
+	<div id="top" class="row"> <h2  >Select your seat</h2></div>
 	 <div class="row" >
 
 
@@ -58,7 +59,7 @@ $priceEach=$trip -> ticket_price;
  
         ?>
         <span> </span>
-       </div>
+       </div> 
 
 
 
@@ -82,39 +83,40 @@ $priceEach=$trip -> ticket_price;
 <!-- <div class="col order-last" id="preticket">  -->
 <div class="col order-last" > 
 	<div class="row" id="preticket">
-		<h3> BOOKING SUMMARY <br></h3>
-		
-		<div><p> Depart From: {{ $route_id -> origin_terminal }} </p></div><br>
-		<div><p> Destination: {{ $route_id -> destination_terminal }} </p><div>
 
-		<div>Date of Departure: {{ $trip -> date_depart }}</div><br>
-	    <div>Time of Departure : {{ $trip -> time_depart }} </div><br>
-	    <div> 
-	    	<span>  Number of seat(s) selected:  </span>
+		<div><h3 style=" white-space: pre;"> BOOKING SUMMARY </h3> </div>
+		<p > Depart From: {{ $route_id -> origin_terminal }} </p>
+		<p > Destination: {{ $route_id -> destination_terminal }}</p>
+		<p>Date of Departure: {{ $trip -> date_depart }} </p>
+	    <p>Time of Departure : {{ $trip -> time_depart }} </p>
+	    <p> 
+	    	<span>Number of seat(s) selected:  </span>
 	    	<span id="container"  ></span>
 
-	    </div><br>
+	    </p>
 
 		<div>
         	<span>Total Price: RM </span>
         	<span name="price" id="price"> 0.00   <br> </span>
 			
-		</div><br><br>
-        <div> <input type='submit' name="submit" class='btn btn-primary' value="Proceed to payment >>" id="submit" disabled="" />  </div>
+		</div><br><br>  
+        <div> <input type='submit' name="submit" class='btn btn-primary' value="Proceed to payment >>" id="submit" disabled="" />  </div> </div>
+
+        <div id="reference" class="row">
+		  <div > <span style="background-color: #B8B8B8" id="Occupied"  class="dot"></span>   Occupied seat <br></div>
+		  <div > <span style="background-color:  #98FB98" class="dot"></span>   Available seat <br></div>
+		  <div> <span style="background-color: #03a9f4" class="dot"></span>   selected seat <br></div>
+	    </div>
        
 
         
 
 	</div>
 
-	<div id="reference" class="row">
-		<div style="color: #B8B8B8 "> -> Occupied seat <br></div>
-		<div style="color:  #98FB98"> -> Available seat <br></div>
-		<div style="color: #03a9f4"> -> selected seat <br></div>
-	</div>
+	
 
 
-</div>
+
 
 
 	

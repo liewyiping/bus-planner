@@ -7,12 +7,7 @@ use busplannersystem\Charts\FinancialChart;
 use busplannersystem\Ticket;
 use busplannersystem\Company;
 use busplannersystem\Trip;
-use busplannersystem\Bus;
 use busplannersystem\Operator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Carbon;
-
 class FinancialAnalyticsController extends Controller
 {
     /**
@@ -24,52 +19,9 @@ class FinancialAnalyticsController extends Controller
     {   
         $user_id = Auth::user()->user_id;
         $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
-        $operator=Operator::find($operator_id);
-        $bus_company_name=$operator->company->bus_company_name; 
+        $bus_company_name=$operator_id->company->bus_company_name;
 
-        
-        $sort_sums_years = Ticket::where('company_name', $bus_company_name)->select(
-        DB::raw('sum(ticket_price) as sums'),DB::raw('sum(pax_num) as pax_num_total'),
-        DB::raw("DATE_FORMAT(created_at,'%Y') as years")
-        )->orderBy('created_at','asc')->groupBy('years')->get();   
-       
-        $sorted_tickets=$sort_sums_years->pluck('sums');     
-        
-       
-        $chart = new FinancialChart();       
-        $chart->labels($sort_sums_years->pluck('years')); 
-        $chart->dataset('Revenue over the years', 'line',$sorted_tickets);
-       
-        return view('operator-views.financial-analytics')->with('chart',$chart)->with('sort_sum_years',$sort_sums_years)->with('bus_company_name',$bus_company_name);
-       
-    }
-
-    public function years_report()
-    {   
-         
-       
-       
-
-    }
-
-    public function annual_report(Request $request)
-    {   
-
-        $this->validate($request,[
-
-           
-            'year_report' => 'required|integer|min:2000',
-            
-
-        ]);
-
-        $year_report= $request -> input('year_report');
-
-        $user_id = Auth::user()->user_id;
-        $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
-        $operator=Operator::find($operator_id);
-        $bus_company_name=$operator->company->bus_company_name; //get the company name of the bus using eloquent orm yang kita dah set dalam model operator
-
+<<<<<<< HEAD
         //Nak sort sums of ticket_price by months so dalam ni ada dua attribute (sums,months)
         $sort_sums_months = Ticket::where('company_name', $bus_company_name)->whereYear('created_at', '=', $year_report)->select(
         DB::raw('sum(ticket_price) as sums'), 
@@ -165,20 +117,14 @@ class FinancialAnalyticsController extends Controller
                 $total_seat_year=$total_seat_months->sum('total_seat'); //Find advertised total seat
                 $total_pax_num_year=$total_pax_num_months->sum('pax_num'); //Find number of pax that were sold
                 $unsold_ticket_year=$total_seat_year - $total_pax_num_year; 
-
-                $total_trips=$trips->sum('total_trip'); //Find total trip annually
-
-       
-
-        //Create a new chart
-        $chart = new FinancialChart();
-        $chart->labels($sort_sums_months->pluck('months')); //Either way sama je but this one json dah tolong sort so we can use the attribute
-        $chart->dataset('Annual financial report', 'line',$sorted_tickets);
+=======
         
 
-        return view('operator-views.annual-financial-report')->with('chart',$chart)->with('year_report',$year_report)->with('total_revenue_year',$total_revenue_year)
-        ->with('total_seat_sold',$total_seat_sold)->with('sort_sum_months',$sort_sums_months)->with('bus_company_name',$bus_company_name)->with('total_trips',$total_trips)->with('unsold_ticket_year',$unsold_ticket_year)->with('trips_months', $trips_months );
-       
+
+>>>>>>> 2fd4197b5884e96ac77bcfcc01805fd2c2a1565f
+
+        $chart = new FinancialChart();
+        $ticket= Ticket::all();
     }
 
     /**

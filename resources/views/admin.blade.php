@@ -19,10 +19,6 @@
                         <a href="{{ url('/admin/view-new-operator-application') }}">
                         <input type="button" class="btn btn-primary" value="View Operator Application"/>
                         </a>
-                        
-                        <a href="{{ url('/admin/list-of-operators') }}">
-                        <input type="button" class="btn btn-primary" value="List Of Operator"/>
-                        </a>
                     </div>
                     <br>
                     </div>
