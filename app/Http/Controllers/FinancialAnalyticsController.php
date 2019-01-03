@@ -76,8 +76,8 @@ class FinancialAnalyticsController extends Controller
         DB::raw("DATE_FORMAT(created_at,'%M') as months"), DB::raw('sum(pax_num) as pax_num_total')
         )->orderBy('created_at','asc')->groupBy('months')->get();
 
-        $total_revenue_year =$sort_sums_months->sum('sums'); //get total revenue based on selected year
-        $total_seat_sold =$sort_sums_months->sum('pax_num_total'); //get total seat sold
+        $total_revenue_year =$sort_sums_months->sum('sums'); //get total revenue annually
+        $total_seat_sold =$sort_sums_months->sum('pax_num_total'); //get total seat sold annually
         
         //When dah sorted, kita nak value sums yang dah sorted tadi based on months so kat sini kita just pluck 'sums'
         //pluck ni ialah dia akan return array which precisely what we want to render the chart
@@ -85,22 +85,24 @@ class FinancialAnalyticsController extends Controller
         
         //Find number of unsold tickets
         $bus_company_id=$operator->bus_company_id;
-        $operators_id=Operator::where('bus_company_id',$bus_company_id)->pluck('operator_id');
+        $operators_id=Operator::where('bus_company_id',$bus_company_id)->pluck('operator_id'); //get array of operators_id from the same company
         $buses_id=Bus::whereIn('operator_id',$operators_id)->pluck('bus_id'); //Get array of bus_id
 
         $trips = DB::table('trips')->whereIn('bus_id',$buses_id)->whereYear('date_depart', $year_report)->select(
             DB::raw('count(trip_id) as total_trip'), 
             DB::raw("DATE_FORMAT(date_depart,'%M') as months")
-            )->orderBy('date_depart','asc')->groupBy('months')->get(); //get trips and sort by months
+            )->orderBy('date_depart','asc')->groupBy('months')->get(); //get total_trips in each months and sort by months
                 
 
             // for ($y = 0; $y < isset($trips->count); $y++) {
             // $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
             // }
-
+            
+            //insert total trip by month into $sort_sum_months to pass it to view
             for ($y = 0; $y < $trips->count(); $y++) {
                 $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
                 }
+            
         
     
 
@@ -124,9 +126,12 @@ class FinancialAnalyticsController extends Controller
             $tickets =DB::table('tickets')->where('company_name', $bus_company_name)->whereYear('date_depart', '=', $year_report)->select(
             DB::raw('(ticket_id) as ticket_id') , DB::raw('CONCAT(date_depart, " ", time_depart) as datetime_depart'),DB::raw('(created_at) as created_at')
             )->get();
+
             
+            
+            
+            //Comparing ticket that was created based on attribute created_at must beearlier than datetime_depart
             $A=0;
-            //Comparing ticket that is created based on created_at is earlier than datetime_depart
             for ($x = 0; $x < $tickets->count(); $x++) {
                 
                 if(($tickets[$x]->created_at)<=($tickets[$x]->datetime_depart))
@@ -136,33 +141,26 @@ class FinancialAnalyticsController extends Controller
                        
                     }
                 }
-        
                 
-                $sold_tickets=$tickets->pluck('sold_trip_id');
-
+                $sold_tickets=$tickets->pluck('sold_trip_id'); //get array ticket_id that was sold before datetime_depart
                 $total_pax_num_months =Ticket::whereIn('ticket_id', $sold_tickets)->select(
                 DB::raw('sum(pax_num) as pax_num') ,DB::raw("DATE_FORMAT(date_depart,'%M') as months")
-                )->orderBy('date_depart','asc')->groupBy('months')->get();
-
-                
-                
+                )->orderBy('date_depart','asc')->groupBy('months')->get(); //get the total_seat for each months based on ticket_id by the company 
                 
                 // for ($x = 0; $x <$total_seat_months->count(); $x++) {
                 //     $sort_sums_months[$x]->unsold_ticket_month=($total_seat_months[$x]->total_seat)-($total_pax_num_months[$x]->pax_num);
                
                 //     }
-
-               
                 
-                //$total_pax_num_months[0]->pax_num='30';
+                //Insert unsold tickets in $sort_sum_months for blade view by substracting total_seat in that month to the total pax_num in that month
+                for ($x = 0; $x <$total_pax_num_months->count(); $x++) {
+                        $sort_sums_months[$x]->unsold_ticket_month=($total_seat_months[$x]->total_seat)-($total_pax_num_months[$x]->pax_num);
+                   
+                        }
 
-                //$sort=($total_seat_months[0]->total_seat)-($total_pax_num_months[0]->pax_num);
+                
 
                 //Work in progress
-              
-      
-
-               
                 
                 $total_seat_year=$total_seat_months->sum('total_seat'); //Find advertised total seat
                 $total_pax_num_year=$total_pax_num_months->sum('pax_num'); //Find number of pax that were sold
