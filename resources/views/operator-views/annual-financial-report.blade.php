@@ -40,7 +40,7 @@
                 <tr>
                 <th scope="col">Months</th>
                 <th scope="col">Revenue generated(RM)</th>
-                <th scope="col">Total tickets sold</th>
+                <th scope="col">Tickets sold</th>
                 <th scope="col">Total trips</th>
                 <th scope="col">Unsold tickets</th>
                 
@@ -58,7 +58,7 @@
             <td> {{number_format($ticket->sums)}}</td>    
             <td> {{$ticket->pax_num_total}}</td> 
             <td> {{$ticket->total_trip}}</td> 
-            <!-- <td> {{$ticket->unsold_ticket_month}}</td>  -->
+            <td> {{$ticket->unsold_ticket_month}}</td> 
 
             </tr>
             @endforeach

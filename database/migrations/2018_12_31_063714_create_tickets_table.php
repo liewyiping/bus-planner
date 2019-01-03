@@ -34,7 +34,7 @@ class CreateTicketsTable extends Migration
 
             $table->timestamps();
         });     
-        DB::update("ALTER TABLE routes AUTO_INCREMENT = 201901;");  
+        DB::update("ALTER TABLE routes AUTO_INCREMENT = 200001;");  
     }
 
     /**

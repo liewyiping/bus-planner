@@ -38,6 +38,10 @@
                         <input type="button" class="btn btn-primary" value="Insert Trip"/>
                         </a>
 
+                        <a href="{{ url('/operator/insert-driver') }}">
+                        <input type="button" class="btn btn-primary" value="Insert Driver"/>
+                        </a>
+
                         <a href="{{ url('/operator/report') }}">
                         <input type="button" class="btn btn-primary" value="View Report"/>
                         </a>
