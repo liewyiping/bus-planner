@@ -15,7 +15,7 @@ class CreateDriversTable extends Migration
             $table->increments('driver_id');
             $table->string('driver_name');
             $table->integer('bus_company_id')->unsigned();
-            $table->integer('driver_ic');
+            $table->string('driver_ic');
             $table->string('driver_email');
             $table->string('driver_address');
             $table->foreign('bus_company_id')->references('bus_company_id')->on('companies');
