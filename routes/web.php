@@ -195,4 +195,6 @@ Route::get('/createseat/{ID}','BookSeatController@index')->name('operator.create
 Route::post('/createseat/created','BookSeatController@create');
 
 // Route::resource('/ticket', 'TicketController'); // For ticket controller
+
+
 ?>

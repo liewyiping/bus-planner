@@ -21,7 +21,6 @@ class FinancialAnalyticsController extends Controller
         $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
         $bus_company_name=$operator_id->company->bus_company_name;
 
-<<<<<<< HEAD
         //Nak sort sums of ticket_price by months so dalam ni ada dua attribute (sums,months)
         $sort_sums_months = Ticket::where('company_name', $bus_company_name)->whereYear('created_at', '=', $year_report)->select(
         DB::raw('sum(ticket_price) as sums'), 
@@ -117,11 +116,6 @@ class FinancialAnalyticsController extends Controller
                 $total_seat_year=$total_seat_months->sum('total_seat'); //Find advertised total seat
                 $total_pax_num_year=$total_pax_num_months->sum('pax_num'); //Find number of pax that were sold
                 $unsold_ticket_year=$total_seat_year - $total_pax_num_year; 
-=======
-        
-
-
->>>>>>> 2fd4197b5884e96ac77bcfcc01805fd2c2a1565f
 
         $chart = new FinancialChart();
         $ticket= Ticket::all();
