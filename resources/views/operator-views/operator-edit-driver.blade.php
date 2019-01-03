@@ -6,9 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('/operator/insert-driver') }}">
-                        <input type="button" class="btn btn-primary" value="Back"/>
-                    </a>
                     
                     <h5 align="center"><strong>Driver Information</strong></h5>
                 </div>

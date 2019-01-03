@@ -6,9 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('/operator/insert-trip') }}">
-                        <input type="button" class="btn btn-primary" value="Back"/>
-                    </a>
                     
                     <h5 align="center"><strong>Trip Information</strong></h5>
                 </div>
@@ -24,7 +21,7 @@
         <div>
         @endif
 
-        <form method="post" action="{{action('TripController@update', $trip)}}">
+        <form method="post" action="{{action('TripController@update', $id)}}">
             {{csrf_field()}}
             <input type="hidden" name="_method" value="PATCH" />
 
