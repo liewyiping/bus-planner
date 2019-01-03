@@ -35,22 +35,12 @@
       <div class="panel-heading">
         <h4>From: {{ $ticket->company_name }}</h4>
       </div>
-      <div class="panel-body">
-        <p>
-            Company address
-        </p>
-      </div>
     </div>
   </div>
     <div class="col-xs-5 col-xs-offset-2 text-right">
         <div class="panel panel-default">
             <div class="panel-heading">
               <h4>To : {{ $ticket->user->name }}</h4>
-            </div>
-            <div class="panel-body">
-        <p>
-        {{ $ticket->user->email }}
-        </p>
             </div>
         </div>
     </div>
