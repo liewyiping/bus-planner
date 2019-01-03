@@ -174,10 +174,10 @@ span.price {
 				    <label for="card-element">
 				      Credit or debit card
 				    </label>
-<!-- card-->	     <!-- <div id="card-element">
+<!-- card-->	     <div id="card-element">
 				    </div>
 
-                 <div id="card-errors" role="alert"></div> -->
+                 <div id="card-errors" role="alert"></div>
 <!-- card--> 
 				  </div><br> 
 
