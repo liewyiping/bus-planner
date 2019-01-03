@@ -33,11 +33,11 @@
  <body>
   <br />
   <div class="container">
-   <h3 align="center">Pie Chart of Bus Companies</h3><br />
+   <h3 align="center">Pie Chart of Popular Bus Companies</h3><br />
    
    <div class="panel panel-default">
     <div class="panel-heading">
-     <h3 class="panel-title">Percentage of Bus Companies</h3>
+     <h3 class="panel-title">Popular Bus Companies</h3>
     </div>
     <div class="panel-body" align="center">
      <div id="pie_chart" style="width:750px; height:450px;">
@@ -45,6 +45,23 @@
      </div>
     </div>
    </div>
+   <table class="table table-striped col-md-10">
+
+            <thead>
+                <tr>
+                <th scope="col">Bus Company</th>    
+                <th scope="col">Total Number of Bookings</th> 
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($data as $company)
+            <tr>
+            <td> {{$company->company_name}}</td>
+            <td> {{$company->number}} </td>
+            </tr>
+            @endforeach
+            </tbody>
+            </table>
    
   </div>
  </body>

@@ -47,3 +47,4 @@ class CreateTicketsTable extends Migration
         Schema::dropIfExists('tickets');
     }
 }
+

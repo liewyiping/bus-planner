@@ -16,6 +16,7 @@ class LaravelGoogleGraph extends Controller
        ->select(
         DB::raw('company_name as company_name'),
         DB::raw('count(*) as number'))
+        ->orderBy('number','decs')
        ->groupBy('company_name')
        ->get();
      $array[] = ['Company', 'Number'];
@@ -23,7 +24,7 @@ class LaravelGoogleGraph extends Controller
      {
       $array[++$key] = [$value->company_name, $value->number];
      }
-     return view('analytics.google_pie_chart')->with('company_name', json_encode($array));
+     return view('analytics.google_pie_chart')->with('company_name', json_encode($array))->with('data',$data);
     }
 
     ////////////////////line chart part ///////////////////////////////////////////////////////
