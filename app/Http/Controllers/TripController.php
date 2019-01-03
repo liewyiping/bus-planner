@@ -28,6 +28,7 @@ class TripController extends Controller
         $routes = Route::all();
         $trips = Trip::whereIn('bus_id',$buses_id)->get();
 
+        
         return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);
     }
     /**
