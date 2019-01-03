@@ -199,13 +199,14 @@ span.price {
                     { ?>         
                       <p id="msg">You're eligible to redeem your reward! Here's rm10 off. Select below button to redeem:  </p>
                      <!--  <input type="button" name="redeem" value="Redeem" onclick="return redeem(this)"> -->
-                     <button type="button" onclick="redeem()">redeem</button>
+                     <button type="button" class="btn btn-primary" onclick="redeem()">redeem</button>
               <?php }
 
                   ?>
-                  </div>
- <!--redeem point-->
+									<!--redeem point-->
 				  <button type="submit" class="btn btn-primary">Submit Payment</button>
+                  </div>
+ 
 				</form>
 			</div>
 		</div>
