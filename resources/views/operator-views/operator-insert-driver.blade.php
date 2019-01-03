@@ -92,6 +92,8 @@
     <th scope="col">IC Number</th>
     <th scope="col">Driver Email</th>
     <th scope="col">Address</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
   
                         </tr>
                     </thead>

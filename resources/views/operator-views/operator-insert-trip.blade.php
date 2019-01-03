@@ -122,6 +122,8 @@
     <th scope="col">Depart Date</th>
     <th scope="col">Depart Time</th>
     <th scope="col">Ticket Price</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
   
                         </tr>
                     </thead>
