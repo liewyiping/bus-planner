@@ -19,6 +19,9 @@
                         <a href="{{ url('/admin/view-new-operator-application') }}">
                         <input type="button" class="btn btn-primary" value="View Operator Application"/>
                         </a>
+                        <a href="{{ url('/laravel_google_chart') }}">
+                        <input type="button" class="btn btn-primary" value="Popular Bus Company"/>
+                        </a>
                     </div>
                     <br>
                     </div>
