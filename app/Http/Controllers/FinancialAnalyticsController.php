@@ -83,7 +83,11 @@ class FinancialAnalyticsController extends Controller
             // }
             
             //insert total trip by month into $sort_sum_months to pass it to view
-            for ($y = 0; $y < $trips->count(); $y++) {
+            // for ($y = 0; $y < $trips->count(); $y++) {
+            //     $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
+            //     }
+
+            for ($y = 0; $y < $sort_sums_months->count(); $y++) {
                 $sort_sums_months[$y]->total_trip=$trips[$y]->total_trip;
                 }
             
