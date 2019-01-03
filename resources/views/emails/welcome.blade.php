@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Welcome to <a href="{{ config('app.url') }}">{{ config('app.name') }}</a></h1>
+
+<h1>Welcome to <a href="{{ config('app.url') }}">{{ config('app.name') }}</a></h1>
     <p>
-        
     </p>
     <p>
-        Your account has been approved. Your password is 123456.
+        Your account has been approved. You can now reset password and login.
     </p>
     <table>
         <tr>
             <td>
                 <p>
-                    <a class="btn-primary">
-                       
+                    <a href="{{ action('Auth\ResetPasswordController@showResetForm', [$token]) }}" type="button" class="btn-primary">
+                       Reset password
                     </a>
                 </p>
             </td>
@@ -22,3 +22,5 @@
 
     <p><em>This link is valid until {{ Carbon\Carbon::now()->addMinutes(config('auth.passwords.users.expire'))->format('Y/m/d') }}.</em></p>
 @endsection
+
+
