@@ -81,7 +81,7 @@
                         </div> 
 
                         <div class="form-group row">
-                            <label for="ticket_price" class="col-md-4 col-form-label text-md-right">{{ __('Price Ticket (RM)') }}</label>
+                            <label for="ticket_price" class="col-md-4 col-form-label text-md-right">{{ __('Ticket Price (RM)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="ticket_price" type="number" step="0.01" min="0" class="form-control{{ $errors->has('ticket_price') ? ' is-invalid' : '' }}" name="ticket_price" value="{{ old('ticket_price') }}" required autofocus>
@@ -134,10 +134,9 @@
                     <td>{{$trip->date_depart}}</td>
                     <td>{{$trip->time_depart}}</td>
                     <td>RM {{$english_format_number = number_format($trip->ticket_price, 2, '.', '')}}</td>
-                   
-                  
-                  
-
+                    <td>  <a href="{{route('trip.edit', ['trip' =>$trip->trip_id])}}" class="btn btn-primary">Edit</a></td>
+                    <td>  <a href="{{route('trip.destroy', ['trip' =>$trip->trip_id])}}" class="btn btn-danger">Delete</a></td>
+                    
                     </tr>
                     @endforeach
 

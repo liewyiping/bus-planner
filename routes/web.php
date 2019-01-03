@@ -123,6 +123,11 @@ Route::group(['prefix' => 'operator','middleware' =>'operator'], function()
 	Route::get('/driver/{driver}','DriverController@destroy')->name('driver.destroy');
 	Route::patch('/driver/{driver}','DriverController@update')->name('driver.update');
 
+	//Operator edit trip
+	Route::get('/trip/{trip}/edit','TripController@edit')->name('trip.edit');
+	Route::get('/trip/{trip}','TripController@destroy')->name('trip.destroy');
+	Route::patch('/trip/{trip}','TripController@update')->name('trip.update');
+
 	//Operator Insert Route Info
 	Route::get('/insert-route-info', 'RouteController@index')->name('operator.insertRouteInfo');
 	Route::post('/insert-route-info', 'RouteController@store')->name('operator.insertRouteInfo.submit');

@@ -80,32 +80,57 @@ class TripController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \busplannersystem\Trip  $trip
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trip $trip)
+    public function edit($id)
     {
-        //
+        $trip = Trip::find($id);
+        return view('operator-views.operator-edit-trip', compact('trip', 'id'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \busplannersystem\Trip  $trip
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $trip)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $this->validate($request, [
+                //'bus_id' => 'required',
+                //'route_id' => 'required',
+                'date_depart' => 'required',
+                'time_depart' => 'required',
+                'ticket_price' => 'required',
+            ]);
+            
+            $trip = Trip::find($id);
+           // $trip->bus_id = $request->get('bus_id');
+           // $trip->route_id = $request->get('route_id');
+            $trip->date_depart = $request->get('date_depart');
+            $trip->time_depart = $request->get('time_depart');
+            $trip->ticket_price = $request->get('ticket_price');
+    
+            $trip->save();
+            return redirect('operator/insert-trip-info')->with('success', 'Trip Info Updated');
+            
+            }catch (Exception $e) {
+                return view('errors.1062');
+            }
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \busplannersystem\Trip  $trip
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trip $trip)
+    public function destroy($id)
     {
-        //
+        $trip = Trip::find($id);
+        $trip->delete();
+
+        return redirect('operator/insert-trip-info');
     }
 }
