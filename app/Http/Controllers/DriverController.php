@@ -4,7 +4,8 @@ namespace busplannersystem\Http\Controllers;
 
 use Illuminate\Http\Request;
 use busplannersystem\Driver;
-
+use busplannersystem\Operator;
+use Illuminate\Support\Facades\Auth;
 
 class DriverController extends Controller
 {
@@ -14,8 +15,21 @@ class DriverController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $drivers = Driver::all();
+    {   
+        $user_id = Auth::user()->user_id;
+
+        
+
+        
+        $operator_id = Operator::where('user_id_operators', $user_id)->value('operator_id');
+
+        
+
+        
+        $operator=Operator::find($operator_id);
+        $bus_company_id=$operator->company->bus_company_id; //get the company name of the bus using eloquent orm yang kita dah set dalam model operator
+
+        $drivers = Driver::where('bus_company_id',$bus_company_id)->get();
         return view ('operator-views.operator-insert-driver')->with('drivers',$drivers);
     }
 

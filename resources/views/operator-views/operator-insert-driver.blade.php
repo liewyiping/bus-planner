@@ -81,7 +81,45 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                        <table class="table table-striped">
+
+<thead>
+    <tr>
+    <th scope="col">Driver ID</th>  
+    <th scope="col">Driver Name</th>
+    <th scope="col">IC Number</th>
+    <th scope="col">Driver Email</th>
+    <th scope="col">Address</th>
+  
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if( ! $drivers->isEmpty() )
+                    @foreach($drivers as $driver)
+                    <tr>
+                    <th scope="row">{{$driver->driver_id}}</th> 
+                    <td>{{$driver->driver_name}}</td>   
+                    <td>{{$driver->driver_ic}}</td>
+                    <td>{{$driver->driver_email}}</td>
+                    <td>{{$driver->driver_address}}</td>
+                    
+                   
+                  
+                  
+
+                    </tr>
+                    @endforeach
+
+                    </tbody>
+                    </table>
+
+
+
+                    @else
+
+                    <p> No trips were found </p>
+
+                    @endif
                 </div>
             </div>
         </div>
