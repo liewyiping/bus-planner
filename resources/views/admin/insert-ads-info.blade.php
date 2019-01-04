@@ -100,6 +100,8 @@
                             </div>
                         </div>
 
+                        <br>
+
                         <table class="table table-striped">
 
 <thead>

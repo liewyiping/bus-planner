@@ -27,6 +27,11 @@
                         <a href="{{ url('/laravel_google_chart') }}">
                         <input type="button" class="btn btn-primary" value="Popular Bus Company"/>
                         </a>
+
+                        <a href="{{ route('admin.insertAds') }}">
+                        <input type="button" class="btn btn-primary" value="Advertisements"/>
+                        </a>
+
                     </div>
                     <br>
                     </div>
