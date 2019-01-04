@@ -26,7 +26,16 @@ class CreateSeatController extends Controller
         switch ($role) 
         {
             case 'operator':
-                    return view('operator-dashboard');
+            $user_id = auth()->user()->user_id;
+            $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
+
+            //return $operator_id;
+            $bus_company_id = Operator::where('user_id_operators', '=', $user_id)->value('bus_company_id');
+            $company_id = Company::where('bus_company_id', '=', $bus_company_id)->value('bus_company_id');
+            $company_name = Company::where('bus_company_id', '=', $bus_company_id)->value('bus_company_name');
+            $company_address = Company::where('bus_company_id', '=', $bus_company_id)->value('bus_company_address');
+                    return view('operator-dashboard')->with('operator_id',$operator_id)->with('bus_company_id',$bus_company_id)
+                    ->with('company_id',$company_id)->with('company_name',$company_name)->with('company_address',$company_address);
                 break;
             case 'customer':
 
