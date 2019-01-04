@@ -26,7 +26,7 @@ class TripController extends Controller
         $buses_id =$buses->pluck('bus_id');
 
         $routes = Route::all();
-        $trips = Trip::whereIn('bus_id',$buses_id)->get();
+        $trips = Trip::whereIn('bus_id',$buses_id)->simplePaginate(10);
 
         
         return view('operator-views.operator-insert-trip')->with('trips',$trips)->with('routes',$routes)->with('buses',$buses);

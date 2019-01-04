@@ -21,7 +21,7 @@
                       <div class="row">
                     <div class="column">
                       
-                      <img src= "<?php echo asset("storage/banner_image_ads/$banner_image_ads_link")?>" />
+                      <img src= "<?php echo asset("storage/app/public/banner_image_ads/$banner_image_ads_link")?>" />
 
                      
                 

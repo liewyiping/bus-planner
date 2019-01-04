@@ -28,9 +28,9 @@
                         <input type="button" class="btn btn-primary" value="Popular Bus Company"/>
                         </a>
 
-                        <a href="{{ route('admin.insertAds') }}">
+                        <!-- <a href="{{ route('admin.insertAds') }}">
                         <input type="button" class="btn btn-primary" value="Advertisements"/>
-                        </a>
+                        </a> -->
 
                     </div>
                     <br>

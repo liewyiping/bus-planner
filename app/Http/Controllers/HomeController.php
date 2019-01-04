@@ -35,6 +35,8 @@ class HomeController extends Controller
             case 'operator':
                         $user_id = auth()->user()->user_id;
                         $operator_id = Operator::where('user_id_operators', '=', $user_id)->value('operator_id');
+
+                        //return $operator_id;
                         $bus_company_id = Operator::where('user_id_operators', '=', $user_id)->value('bus_company_id');
                         $company_id = Company::where('bus_company_id', '=', $bus_company_id)->value('bus_company_id');
                         $company_name = Company::where('bus_company_id', '=', $bus_company_id)->value('bus_company_name');

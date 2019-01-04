@@ -130,7 +130,7 @@
 
 </div>
         <br>
-         <div class="row">
+         <!-- <div class="row">
                     <div class="column">
                       <img src="img_snow.jpg" alt="Snow" style="width:100%">
                     </div>
@@ -140,7 +140,7 @@
                     <div class="column">
                       <img src="img_mountains.jpg" alt="Mountains" style="width:100%">
                     </div>
-        </div> 
+        </div>  -->
       </div>
     </div>
 
