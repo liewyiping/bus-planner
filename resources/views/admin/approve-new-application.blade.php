@@ -79,11 +79,7 @@
                              <label for="operator_resume" class="col-md-4 col-form-label text-md-right">{{ __('Resume(PDF)') }}</label>
 
                                 <div class="col-md-6">                       
-                                                    
-                               
-                               
-                               
-                                <a href ="<?php echo asset("storage/operator_resume/$application_forms->operator_resume_link")?>">{{ basename(@$application_forms[operator_resume]) }} </a>
+                                <a href ="<?php echo asset("storage/operator_resume/$application_forms->operator_resume_link")?>">{{ basename($application_forms->operator_resume) }} </a>
                                 </div>
                                 
                         </div>
@@ -91,7 +87,7 @@
                           <div class="form-group row">
                              <label for="file_link" class="col-md-4 col-form-label text-md-right">{{ __('License(PDF)') }}</label>
                                 <div class="col-md-6">                 
-                                <a href ="<?php echo asset("storage/operator_license/$application_forms->operator_license_link")?>">{{ basename(@$application_forms[operator_license]) }} </a>
+                                <a href ="<?php echo asset("storage/operator_license/$application_forms->operator_license_link")?>">{{ basename($application_forms->operator_license) }} </a>
                                 </div>
                                 
                          </div>

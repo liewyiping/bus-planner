@@ -71,7 +71,7 @@ class LaravelGoogleGraph extends Controller
                         DB::raw("destination_terminal as destination"),
                         DB::raw("sum(pax_num) as number"),
                         DB::raw('sum(ticket_price) as revenue'))
-                    ->orderBy('number','decs')
+                    ->orderBy('number','desc')
                     ->groupBy("destination")
                     ->get();
                     

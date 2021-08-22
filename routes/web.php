@@ -28,9 +28,9 @@ use busplannersystem\Seat;
 use busplannersystem\Trip;
 use Illuminate\Support\Facades\Input;
 Route::any ('/home', function () {
-	$p = Input::get ( 'search_origin' );
-	$q = Input::get ( 'search_destination' );
-	$r = Input::get ( 'search_date' );
+	$p = Request::input ( 'search_origin' );
+	$q = Request::input ( 'search_destination' );
+	$r = Request::input ( 'search_date' );
 
 	$seat = Seat::whereHas('trip', function($trip) use ($r)
     {

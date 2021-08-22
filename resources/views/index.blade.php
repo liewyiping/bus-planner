@@ -14,12 +14,35 @@
         <style>
             html, body {
                 background-color: #fff;
-                background-image: url('../img/bg.jpg');
+                background-image: url('../img/kl_bg.jpg');
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                overflow: hidden;
+            }
+
+            .header-colour {
+                background-color: white;
+                border-radius: 0;
+            }
+
+            .search-wrap {
+                margin-top: 50px;
+                margin-bottom: 15px;
+                padding: 15px 0 15px 0;
+                background: rgba(35, 30, 38, 0.9);
+                color: #fff;
+                font-size: 13px;
+                z-index: 99;
+            }
+
+            .search-wrap .notice-info {
+                border-radius: 5px;
+                /*padding: 5px;*/
+                margin-bottom: 20px;
+                background-color: rgba(0, 0, 0, 0.5);
             }
 
             .full-height {
@@ -156,6 +179,13 @@
                 background-color: #4CAF50;
                 color: white;
             }
+
+            .header {
+                padding-bottom: 9px;
+                margin: 10px 0 20px;
+                border-bottom: 1px solid #eee;
+            }
+
             button {
                 width: 100%;
                 height: 50%;
@@ -170,8 +200,7 @@
     </head>
 
     <body>
-
-        <div class="navbar navbar-expand-md navbar-light navbar-laravel" id="bs-example-navbar-collapse-1 top-right links">
+        <div class="navbar navbar-expand-md navbar-light navbar-laravel header-colour" style="margin-bottom: 0" id="">
             <ul class="nav navbar-nav">
                 <li class="links"><a href="{{ url('/') }}">Bus Planner System</a></li>
             </ul>
@@ -213,27 +242,33 @@
             </ul>
         </div><!-- /.navbar-collapse -->
 
-        <div class="flex-center position-ref full-height">
+<!--         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
 
                 <a href="/"><img src="/img/logo.jpg" style="width: 400px; height: 200px; margin-right: auto; margin-left: auto; display: block; "></a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
-            <div class="container">
-                <div class="page-header">
+            <div class="container search-wrap">
+                <div class="header">
                     <h4>Bus Ticket</h4>
                 </div>
 
                 <div class="form-group">
                 <form action="/home" method="POST" role="search">
                       {{ csrf_field() }}
-                      <h5><strong>Please select route</strong></h5>
 
-                        <div class="column" style="background-color:#228B22;">
+                        <div class="col-sm-12">
+                            <div class="notice-info">
+                                <ul>
+                                    <li><text>Malaysia: During partial/full lock-down, inter-state or district travel are allowed with MITI or police authorization letter.</text></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
                             <label for="from">From</label>
                             <select id="" class="form-control" name="search_origin" required>
                                 <option value="">Bus: Origin</option>
@@ -243,7 +278,7 @@
                             </select>
                         </div>
 
-                        <div class="column" style="background-color:#228B22;">
+                        <div class="column">
                             <label for="from">To</label>
                             <select id="" class="form-control" name="search_destination" required>
                                 <option value="">Bus: Destination</option>
@@ -258,12 +293,12 @@
                             date_default_timezone_set("Asia/Kuala_Lumpur");
                         ?>
 
-                        <div class="column" style="background-color:#228B22;">
+                        <div class="column">
                             <label for="departure">Departure Date</label>
                             <input value="{{ date('Y-m-d') }}" type="date" class="form-control" name="search_date" placeholder="Search date" required> <span class="input-group-btn">
                         </div>
 
-                        <div class="column" style="background-color:#228B22;">
+                        <div class="column">
                             <label for="">&nbsp;</label>
                             <button type="submit" class="btn btn-success">
                             <span class="button glyphicon glyphicon-search"> Search </span>
@@ -276,27 +311,46 @@
             </div>
         </div>
 
-        <div class="flex-center position-ref full-height">
-            <div class="content">
+        <br><br><br>
 
-            <div class="row">
-                    <div class="column">
-                      <img src="/img/ad_unifi.jpg" alt="Unifi" style="width:100%; height:150px;">
+        <div class="container carousel carousel-showmanymoveone slide" id="homeCarousel">
+               
+            <div class="carousel-inner">
+                <div class="item active left">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <img src="/img/ldls.png" alt="Unifi" style="width:100%; height:150px;">
                     </div>
-                    <div class="column">
-                      <img src="/img/ad_nike.jpg" alt="Nike" style="width:100%; height:150px;">
+                    <div class="col-xs-12 col-sm-6 col-md-4 cloneditem-1">
+                        <img src="/img/sssh.jpg" alt="Nike" style="width:100%; height:150px;">
                     </div>
-                    <div class="column">
-                      <img src="/img/ad_polident.jpg" alt="Polident" style="width:100%; height:150px;">
+                    <div class="col-xs-12 col-sm-6 col-md-4 cloneditem-2">
+                        <img src="/img/mp.jpeg" alt="Polident" style="width:100%; height:150px;">
                     </div>
-                    <div class="column">
-                      <img src="/img/ad_christmas.jpg" alt="Christmas" style="width:100%; height:150px;">
+                </div>
+                <div class="item next left">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <img src="/img/sssh.jpg" alt="Nike" style="width:100%; height:150px;">
                     </div>
-            </div> 
-
+                    <div class="col-xs-12 col-sm-6 col-md-4 cloneditem-1">
+                        <img src="/img/mp.jpeg" alt="Polident" style="width:100%; height:150px;">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 cloneditem-2">
+                        <img src="/img/cm.jpg" alt="Christmas" style="width:100%; height:150px;">
+                    </div>
+                </div>
             </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#homeCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#homeCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <br><br>
+        <br>
     </body>
 </html>
 
